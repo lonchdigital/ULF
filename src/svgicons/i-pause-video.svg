@@ -1,0 +1,13 @@
+<svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip120_6464">
+			<rect id="Icon / Sorting/Icon/Pause" width="24.000000" height="24.000000" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip120_6464)">
+		<path id="Shape" d="M7 4L9 4C9.55231 4 10 4.44775 10 5L10 19C10 19.5522 9.55231 20 9 20L7 20C6.44769 20 6 19.5522 6 19L6 5C6 4.44775 6.44769 4 7 4ZM17 4L15 4C14.4477 4 14 4.44775 14 5L14 19C14 19.5522 14.4477 20 15 20L17 20C17.5523 20 18 19.5522 18 19L18 5C18 4.44775 17.5523 4 17 4Z" clip-rule="evenodd" fill="#FFFFFF" fill-opacity="1.000000" fill-rule="evenodd"/>
+	</g>
+</svg>
