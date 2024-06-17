@@ -1,0 +1,13 @@
+<svg width="24.000000" height="24.000000" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip1153_1376">
+			<rect id="Icon/Mail" width="24.000000" height="24.000000" transform="translate(0.000000 -0.765625)" fill="white" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip1153_1376)">
+		<path id="Shape" d="M19.38 5.08L4.61 5.08C4.45 5.08 4.29 5.14 4.18 5.26C4.06 5.37 4 5.53 4 5.69L4 16.15C4 16.48 4.12 16.79 4.36 17.02C4.59 17.25 4.9 17.38 5.23 17.38L18.76 17.38C19.09 17.38 19.4 17.25 19.63 17.02C19.87 16.79 20 16.48 20 16.15L20 5.69C20 5.53 19.93 5.37 19.81 5.26C19.7 5.14 19.54 5.08 19.38 5.08ZM9.74 11.23L5.23 15.37L5.23 7.09L9.74 11.23ZM10.65 12.06L11.58 12.91C11.69 13.02 11.84 13.08 11.99 13.08C12.15 13.08 12.29 13.02 12.41 12.91L13.33 12.06L17.79 16.15L6.19 16.15L10.65 12.06ZM14.25 11.23L18.76 7.09L18.76 15.37L14.25 11.23Z" fill="#8A90A4" fill-opacity="1.000000" fill-rule="nonzero"/>
+	</g>
+</svg>
