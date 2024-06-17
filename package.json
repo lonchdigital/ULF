@@ -1,0 +1,30 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "axios": "^1.1.2",
+        "laravel-vite-plugin": "^1.0.4",
+        "sass": "^1.77.4"
+    },
+    "dependencies": {
+        "@fancyapps/ui": "^5.0.36",
+        "@popperjs/core": "^2.11.8",
+        "air-datepicker": "^3.5.3",
+        "bootstrap": "^4.6.2",
+        "gsap": "^3.12.5",
+        "jquery": "^3.6.3",
+        "plyr": "^3.7.8",
+        "readmore-js": "^2.2.1",
+        "select2": "^4.1.0-rc.0",
+        "svelte-range-slider-pips": "^2.3.1",
+        "swiper": "^11.1.4",
+        "vite": "^5.2.12"
+    }
+}
