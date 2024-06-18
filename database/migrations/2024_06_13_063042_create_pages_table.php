@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('pageable_id')->nullable();
-            $table->string('pageable_type');
+            $table->string('section');
             $table->string('slug')->comment('url-страницы');
+            $table->string('pageable_type');
             $table->string('action')->nullable();
             $table->string('controller')->nullable();
+            $table->boolean('active')->default(true);
 
             $table->softDeletes();
             $table->index(['pageable_type', 'pageable_id'], 'pageable_index_columns');

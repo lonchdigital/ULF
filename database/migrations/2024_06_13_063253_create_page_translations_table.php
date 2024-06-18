@@ -16,7 +16,7 @@ return new class extends Migration
             $table->bigInteger('page_id')->unsigned();
             $table->string('locale', 3)->index();
             $table->string('name');
-            $table->string('slug')->comment('url-страницы');
+//            $table->string('slug')->comment('url-страницы');
             $table->text('description')->nullable();
             $table->text('text')->nullable();
 
