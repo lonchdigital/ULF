@@ -12,8 +12,6 @@ class BaseComposer
 {
     public function compose(View $view)
     {
-
-        // some test changes
         $applicationConfigService = new ApplicationConfigService;
 
         try {
