@@ -1,14 +1,11 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\DynamicPageController;
 
 
-
-/*Route::get('/car', function () {
-    return view('web.car.show');
-});*/
-
+require __DIR__.'/auth.php';
 
 Route::group([
     'namespace' => 'Web',
