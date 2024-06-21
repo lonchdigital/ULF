@@ -14709,3 +14709,13 @@ mark {
     background: yellow;
     color: black;
 }
+
+.card-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-head .card-head-title {
+    margin-right: 15px;
+}

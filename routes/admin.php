@@ -1,6 +1,7 @@
 <?php
 
 //use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\CarCommonSettingsController;
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,12 @@ Route::group([
 //        'middleware' => ['admin_auth']
     ], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('adminDashboard');
+
+        Route::prefix('homePage')->group(function () {
+            Route::get('edit', [CarCommonSettingsController::class, 'edit'])->name('admin.car-common-settings.edit.page');
+//            Route::post('edit', [CarCommonSettingsController::class, 'update'])->name('admin.home-page.edit');
+        });
+
     });
 
 });

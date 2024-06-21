@@ -24,6 +24,20 @@
                             <span>Головна</span>
                         </a>
                     </li>
+
+                    <li class="treeview {{ in_array($currentRoute, [
+                            'admin.car-common-settings.edit.page',
+                        ]) ? 'active' : '' }}">
+                        <a href="javascript:void(0)">
+                            <i class='fa fa-folder-open'></i>
+                            <span>{{ trans('admin.settings') }}</span>
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li @if( $currentRoute === 'admin.car-common-settings.edit.page' ) class="active"@endif><a href="{{ route('admin.car-common-settings.edit.page') }}">{{ trans('admin.car_common_settings') }}</a></li>
+                        </ul>
+                    </li>
+
                 </ul>
             </nav>
         </div>
