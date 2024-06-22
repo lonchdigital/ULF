@@ -29,7 +29,7 @@ Route::group([
     ], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('adminDashboard');
 
-        Route::prefix('homePage')->group(function () {
+        Route::prefix('car-common-settings')->group(function () {
             Route::get('edit', [CarCommonSettingsController::class, 'edit'])->name('admin.car-common-settings.edit.page');
 //            Route::post('edit', [CarCommonSettingsController::class, 'update'])->name('admin.home-page.edit');
         });

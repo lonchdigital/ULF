@@ -8,4 +8,5 @@ return [
     'add_item' => 'добавить пункт',
     'delete_item' => 'Удалить пункт',
     'subscribes_month_settings' => 'Опции месячной подписки',
+    'first_payment_note' => 'Подсказка "Первый платеж"',
 ];

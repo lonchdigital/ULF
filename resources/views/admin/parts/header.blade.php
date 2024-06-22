@@ -24,6 +24,11 @@
 
         <!-- Top Bar Nav -->
         <ul class="right-side-content d-flex align-items-center">
+
+            <div>
+                <x-admin.multilanguage-switch/>
+            </div>
+
             <li class="nav-item dropdown">
                 <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-thumb-cu"><img src="img/core-img/l1.jpg" alt=""></span></button>
                 <div class="dropdown-menu language-dropdown dropdown-menu-right">

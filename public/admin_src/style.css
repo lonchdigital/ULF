@@ -14719,3 +14719,30 @@ mark {
 .card-head .card-head-title {
     margin-right: 15px;
 }
+
+
+.subscribe-benefit-row a {
+    color: #3c4858;
+}
+.subscribe-benefit-row a i {
+    color: red;
+}
+
+.month-setting-item {
+    display: flex;
+    align-items: center;
+}
+.month-setting-item .checkbox {
+    margin-top: 32px;
+}
+.month-setting-item .art-input-field {
+    flex-grow: 2;
+}
+.month-setting-item .art-remove-button {
+    margin-left: 20px;
+    margin-top: 28px;
+    cursor: pointer;
+}
+.month-setting-item .art-remove-button a {
+    color: red;
+}

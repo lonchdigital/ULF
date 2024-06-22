@@ -8,18 +8,18 @@
                     <div class="card-body">
                         <div class="card-head mb-20">
                             <h4 class="card-head-title">{{ trans('admin.car_common_settings') }}</h4>
-                            <x-admin.multilanguage-switch/>
                         </div>
 
 
-                        {{--<x-admin.multilanguage-input :label="trans('admin.name')"
-                                                     :is-required="true"
-                                                     field-name="test_string"
-                                                     :values="[]"/>--}}
+                        <section class="mb-50">
+                            <x-admin.multilanguage-input :label="trans('admin.first_payment_note')"
+                                                         :is-required="true"
+                                                         field-name="first_payment_note"
+                                                         :values="[]"/>
+                        </section>
 
 
-
-                        <section>
+                        <section class="mb-50">
                             <h6 class="card-title">{{ trans('admin.subscribe_benefits') }}</h6>
 
                             <div class="row" id="subscribe-benefits">
@@ -43,9 +43,8 @@
                                                         </div>
 
                                                         <div class="col-md-5">
-                                                            <a href="#" class="btn btn-danger"
-                                                               onclick="artRemoveSubscribeBenefit(event, {{ $subscribeBenefit->id }})">
-                                                                <span class="ti-close font-weight-bold mr-2"></span>
+                                                            <a href="#" onclick="artRemoveSubscribeBenefit(event, {{ $subscribeBenefit->id }})">
+                                                                <i class="ti-close font-weight-bold mr-2"></i>
                                                                 {{ trans('admin.delete_item') }}
                                                             </a>
                                                         </div>
@@ -68,8 +67,69 @@
                         </section>
 
 
+                        <section class="mb-50">
+                            <h6 class="card-title">{{ trans('admin.subscribes_month_settings') }}</h6>
 
-                        <h6 class="card-title">{{ trans('admin.subscribes_month_settings') }}</h6>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="profile-crm-area">
+                                        <div class="card mb-30">
+                                            <div class="card-body">
+                                                <!-- Nav tabs -->
+                                                <ul class="nav nav-tabs profile-tab" id="myTab" role="tablist">
+                                                    @foreach(App\DataClasses\SubscribeMonthSectionsClass::get() as $subscribeMonthSection)
+                                                        <li class="nav-item">
+                                                            <a class="nav-link @if( $loop->first ) active show @endif" id="basic-tab" data-toggle="tab" href="#months-{{ $subscribeMonthSection['id'] }}" role="tab" aria-controls="basic" aria-selected="true">{{ $subscribeMonthSection['id'] }}</a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                                <div class="tab-content" id="myTabContent">
+                                                    @foreach(App\DataClasses\SubscribeMonthSectionsClass::get() as $subscribeMonthSection)
+                                                        <!--first tab-->
+                                                        <div class="tab-pane fade @if( $loop->first ) active show @endif" id="months-{{ $subscribeMonthSection['id'] }}" role="tabpanel" aria-labelledby="basic-tab">
+                                                            <div class="card-body">
+                                                                @if(isset($subscribeMonthSettings))
+                                                                    <div class="month-setting-item" id="month-setting-item-id-{{ $subscribeMonthSetting->id }}">
+                                                                        <div class="checkbox checkbox-primary d-inline">
+                                                                            <input type="checkbox" name="month_settings[{{ $subscribeMonthSection['id'] }}][{{ $subscribeMonthSetting->id }}][active]" id="checkbox-{{ $subscribeMonthSection['id'] }}-{{ $subscribeMonthSetting->id }}">
+                                                                            <label for="checkbox-{{ $subscribeMonthSection['id'] }}-{{ $subscribeMonthSetting->id }}" class="cr"></label>
+                                                                        </div>
+                                                                        <div class="art-input-field">
+                                                                            <x-admin.multilanguage-input
+                                                                                :is-required="true"
+                                                                                :label="trans('admin.item')"
+                                                                                field-name="month_settings[{{ $subscribeMonthSection['id'] }}][{{ $subscribeMonthSetting->id }}][name]"
+                                                                                :values="[]"/>
+                                                                        </div>
+                                                                        <div class="art-remove-button">
+                                                                            <a href="#" onclick="artRemoveSubscribeMonthSetting(event, {{ $subscribeMonthSection['id'] }} {{ $subscribeMonthSetting->id }})">
+                                                                                <i class="ti-close font-weight-bold ml-10"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                            <div class="row pt-3">
+                                                                <div class="col-md-12 text-center">
+                                                                    <a href="#" id="add-subscribe-month-setting-{{ $subscribeMonthSection['id'] }}" class="btn mb-2 btn-secondary" data-tab-id="{{ $subscribeMonthSection['id'] }}">
+                                                                        <span class="ti-plus font-weight-bold"></span>
+                                                                        {{ trans('admin.add_item') }}
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </section>
+
 
 
                     </div>
@@ -85,14 +145,13 @@
     <script type='text/javascript'>
         $(document).ready(function () {
 
-            /* add FAQs */
+            /* add subscribe benefit */
             let highestFAQsId = 0;
             $('.subscribe-benefit-row').each(function () {
                 const id = parseInt($(this).attr('id').replace('subscribe-benefit-id-', ''));
                 if (id >= highestFAQsId) {
                     highestFAQsId = id;
                 }
-
             });
 
             $('#add-subscribe-benefit').click(function (event) {
@@ -101,7 +160,27 @@
                 highestFAQsId++;
                 addSubscribeBenefit(highestFAQsId);
             });
-            /* add FAQs END */
+            /* subscribe benefit END */
+
+
+            /* add subscribe Month Settings */
+            $(document).on('click', '[id^="add-subscribe-month-setting-"]', function(event) {
+                event.preventDefault();
+                let tabID = $(this).data('tab-id');
+                let highestSettingID = 0;
+
+                $('#months-' + tabID + ' .card-body .month-setting-item').each(function () {
+                    const id = parseInt($(this).attr('id').replace('month-setting-item-id-', ''));
+                    if (id >= highestSettingID) {
+                        highestSettingID = id;
+                    }
+                });
+                highestSettingID++;
+
+                addSubscribeMonthSetting(tabID, highestSettingID);
+            });
+            /* subscribe Month Settings END */
+
 
         });
 
@@ -126,9 +205,8 @@
                                 </div>
 
                                 <div class="col-md-5">
-                                    <a href="#" class="btn btn-danger"
-                                       onclick="artRemoveSubscribeBenefit(event, ${id})">
-                                        <span class="ti-close font-weight-bold mr-2"></span>
+                                    <a href="#" onclick="artRemoveSubscribeBenefit(event, ${id})">
+                                        <i class="ti-close font-weight-bold mr-2"></i>
                                         {{ trans('admin.delete_item') }}
                                     </a>
                                 </div>
@@ -144,6 +222,36 @@
             event.preventDefault();
 
             $(`#subscribe-benefit-id-${id}`).remove();
+        }
+
+        function addSubscribeMonthSetting(tabID, id) {
+            $('#months-' + tabID + ' .card-body').append(`
+                <div class="month-setting-item" id="month-setting-item-id-${id}">
+                    <div class="checkbox checkbox-primary d-inline">
+                        <input type="checkbox" name="month_settings[${tabID}][${id}][active]" id="checkbox-${tabID}-${id}">
+                        <label for="checkbox-${tabID}-${id}" class="cr"></label>
+                    </div>
+                    <div class="art-input-field">
+                        <x-admin.multilanguage-input
+                            :is-required="true"
+                            :label="trans('admin.item')"
+                            field-name="month_settings[${tabID}][${id}][name]"
+                            :values="[]"/>
+                    </div>
+                    <div class="art-remove-button">
+                        <a href="#" onclick="artRemoveSubscribeMonthSetting(event, ${tabID}, ${id})">
+                            <i class="ti-close font-weight-bold ml-10"></i>
+                        </a>
+                    </div>
+                </div>
+            `);
+        }
+
+        function artRemoveSubscribeMonthSetting(event, tabID, id) {
+            event.preventDefault();
+
+            $(`#months-${tabID} .card-body #month-setting-item-id-${id}`).remove();
+            // $(`#subscribe-benefit-id-${id}`).remove();
         }
 
     </script>
