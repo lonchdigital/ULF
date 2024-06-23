@@ -34,6 +34,15 @@ class CarCommonSettingsController extends Controller
         ]);
     }
 
+    public function oneCar()
+    {
+
+
+        return view('admin.car-common-settings.one-car', [
+
+        ]);
+    }
+
     /**
      * Update the specified resource in storage.
      * @param HomePageUpdateRequest $request

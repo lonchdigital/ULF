@@ -10,14 +10,12 @@
                             <h4 class="card-head-title">{{ trans('admin.car_common_settings') }}</h4>
                         </div>
 
-
                         <section class="mb-50">
                             <x-admin.multilanguage-input :label="trans('admin.first_payment_note')"
                                                          :is-required="true"
                                                          field-name="first_payment_note"
                                                          :values="[]"/>
                         </section>
-
 
                         <section class="mb-50">
                             <h6 class="card-title">{{ trans('admin.subscribe_benefits') }}</h6>
@@ -36,8 +34,8 @@
                                                                     <x-admin.multilanguage-input
                                                                         :is-required="true"
                                                                         :label="trans('admin.item')"
-                                                                        field-name="faqs[{{ $subscribeBenefit->id }}][question]"
-                                                                        :values="$subscribeBenefit->question ? $subscribeBenefit->getTranslations('question') : []"/>
+                                                                        field-name="subscribe-benefit[{{ $subscribeBenefit->id }}][name]"
+                                                                        :values="$subscribeBenefit->name ? $subscribeBenefit->getTranslations('name') : []"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -66,7 +64,6 @@
                             </div>
                         </section>
 
-
                         <section class="mb-50">
                             <h6 class="card-title">{{ trans('admin.subscribes_month_settings') }}</h6>
 
@@ -85,7 +82,6 @@
                                                 </ul>
                                                 <div class="tab-content" id="myTabContent">
                                                     @foreach(App\DataClasses\SubscribeMonthSectionsClass::get() as $subscribeMonthSection)
-                                                        <!--first tab-->
                                                         <div class="tab-pane fade @if( $loop->first ) active show @endif" id="months-{{ $subscribeMonthSection['id'] }}" role="tabpanel" aria-labelledby="basic-tab">
                                                             <div class="card-body">
                                                                 @if(isset($subscribeMonthSettings))
@@ -130,7 +126,64 @@
 
                         </section>
 
+                        <section class="mb-50">
+                            <h6 class="card-title">{{ trans('admin.faqs_cars') }}</h6>
 
+                            <div class="row" id="faqs-cars">
+                                @if(isset($faqsCars))
+                                    @foreach($faqsCars as $faqCar)
+
+                                        <div class="col-12 faq-car-row pb-1 mb-4" id="faq-car-id-{{ $faqCar->id }}">
+                                            <div class="border border-secondary rounded p-3">
+                                                <div class="row justify-content-between align-items-center">
+
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <x-admin.multilanguage-input
+                                                                    :is-required="true"
+                                                                    :label="trans('admin.question')"
+                                                                    field-name="faqs[{{ $faqCar->id }}][question]"
+                                                                    :values="$faqCar->question ? $faqCar->getTranslations('question') : []"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <x-admin.multilanguage-text-area
+                                                                    :is-required="true"
+                                                                    :label="trans('admin.answer')"
+                                                                    field-name="faqs[{{ $faqCar->id }}][answer]"
+                                                                    :values="$faqCar->answer ? $faqCar->getTranslations('answer') : []"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-5">
+                                                        <a href="#" onclick="artRemoveFaqsCarsRow(event, {{ $faqCar->id }})">
+                                                            <i class="ti-close font-weight-bold mr-2"></i>
+                                                            {{ trans('admin.delete') }}
+                                                        </a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    @endforeach
+                                @endif
+                            </div>
+                            <div class="row pt-3">
+                                <div class="col-md-12 text-center">
+                                    <a href="#" id="add-faqs-cars" class="btn mb-2 btn-secondary">
+                                        <span class="ti-plus font-weight-bold"></span>
+                                        {{ trans('admin.add') }}
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
 
                     </div>
                 </div>
@@ -146,21 +199,19 @@
         $(document).ready(function () {
 
             /* add subscribe benefit */
-            let highestFAQsId = 0;
-            $('.subscribe-benefit-row').each(function () {
-                const id = parseInt($(this).attr('id').replace('subscribe-benefit-id-', ''));
-                if (id >= highestFAQsId) {
-                    highestFAQsId = id;
-                }
-            });
-
             $('#add-subscribe-benefit').click(function (event) {
                 event.preventDefault();
+                let highestSubscribeBenefitId = 0;
+                $('.subscribe-benefit-row').each(function () {
+                    const id = parseInt($(this).attr('id').replace('subscribe-benefit-id-', ''));
+                    if (id >= highestSubscribeBenefitId) {
+                        highestSubscribeBenefitId = id;
+                    }
+                });
 
-                highestFAQsId++;
-                addSubscribeBenefit(highestFAQsId);
+                highestSubscribeBenefitId++;
+                addSubscribeBenefit(highestSubscribeBenefitId);
             });
-            /* subscribe benefit END */
 
 
             /* add subscribe Month Settings */
@@ -179,8 +230,23 @@
 
                 addSubscribeMonthSetting(tabID, highestSettingID);
             });
-            /* subscribe Month Settings END */
 
+
+            /* add FAQs */
+            $('#add-faqs-cars').click(function (event) {
+                event.preventDefault();
+                let highestFAQsId = 0;
+                $('.faq-car-row').each(function () {
+                    const id = parseInt($(this).attr('id').replace('faq-car-id-', ''));
+                    if (id >= highestFAQsId) {
+                        highestFAQsId = id;
+                    }
+                });
+                highestFAQsId++;
+
+
+                addFaqsCarsRow(highestFAQsId);
+            });
 
         });
 
@@ -198,7 +264,7 @@
                                             <x-admin.multilanguage-input
                                                 :is-required="true"
                                                 :label="trans('admin.item')"
-                                                field-name="faqs[${id}][question]"
+                                                field-name="subscribe-benefit[${id}][name]"
                                                 :values="[]"/>
                                         </div>
                                     </div>
@@ -246,12 +312,59 @@
                 </div>
             `);
         }
-
         function artRemoveSubscribeMonthSetting(event, tabID, id) {
             event.preventDefault();
 
             $(`#months-${tabID} .card-body #month-setting-item-id-${id}`).remove();
             // $(`#subscribe-benefit-id-${id}`).remove();
+        }
+
+        function addFaqsCarsRow($id) {
+            $('#faqs-cars').append(`
+                <div class="col-12 faq-car-row pb-1 mb-4" id="faq-car-id-${$id}">
+                    <div class="border border-secondary rounded p-3">
+                        <div class="row justify-content-between align-items-center">
+
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <x-admin.multilanguage-input
+                                            :is-required="true"
+                                            :label="trans('admin.question')"
+                                            field-name="faqs[${$id}][question]"
+                                            :values="[]"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <x-admin.multilanguage-text-area
+                                            :is-required="true"
+                                            :label="trans('admin.answer')"
+                                            field-name="faqs[${$id}][answer]"
+                                            :values="[]"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-5">
+                                <a href="#" onclick="artRemoveFaqsCarsRow(event, ${$id})">
+                                    <i class="ti-close font-weight-bold mr-2"></i>
+                                    {{ trans('admin.delete') }}
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            `);
+        }
+        function artRemoveFaqsCarsRow(event, id) {
+            event.preventDefault();
+
+            $(`#faq-car-id-${id}`).remove();
         }
 
     </script>

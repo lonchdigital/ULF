@@ -14721,9 +14721,11 @@ mark {
 }
 
 
+.faq-car-row a,
 .subscribe-benefit-row a {
     color: #3c4858;
 }
+.faq-car-row a i,
 .subscribe-benefit-row a i {
     color: red;
 }

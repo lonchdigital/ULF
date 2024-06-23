@@ -27,6 +27,7 @@
 
                     <li class="treeview {{ in_array($currentRoute, [
                             'admin.car-common-settings.edit.page',
+                            'admin.one.car.page',
                         ]) ? 'active' : '' }}">
                         <a href="javascript:void(0)">
                             <i class='fa fa-folder-open'></i>
@@ -35,6 +36,9 @@
                         </a>
                         <ul class="treeview-menu">
                             <li @if( $currentRoute === 'admin.car-common-settings.edit.page' ) class="active"@endif><a href="{{ route('admin.car-common-settings.edit.page') }}">{{ trans('admin.car_common_settings') }}</a></li>
+                        </ul>
+                        <ul class="treeview-menu">
+                            <li @if( $currentRoute === 'admin.one.car.page' ) class="active"@endif><a href="{{ route('admin.one.car.page') }}">{{ 'One Car Page' }}</a></li>
                         </ul>
                     </li>
 

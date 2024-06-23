@@ -8,17 +8,7 @@
                     <div class="card-body">
                         <h6 class="card-title">Тестовая Страница</h6>
 
-                        <x-admin.multilanguage-switch/>
-
-                        <x-admin.multilanguage-input :label="trans('admin.name')"
-                                                     :is-required="true"
-                                                     field-name="test_string"
-                                                     :values="[]"/>
-
-                        <x-admin.multilanguage-input :label="trans('admin.test')"
-                                                     :is-required="true"
-                                                     field-name="test_string"
-                                                     :values="[]"/>
+                        <p>hello</p>
 
                     </div>
                 </div>
