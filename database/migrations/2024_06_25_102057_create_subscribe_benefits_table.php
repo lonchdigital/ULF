@@ -13,9 +13,7 @@ return new class extends Migration
     {
         Schema::create('subscribe_benefits', function (Blueprint $table) {
             $table->id();
-            $table->integer('benefit_id')->unsigned();
-            $table->string('locale', 3)->index();
-            $table->string('title')->nullable();
+            
             $table->timestamps();
         });
     }
