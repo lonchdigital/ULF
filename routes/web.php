@@ -1,5 +1,6 @@
 <?php
 
+// hello from macbook =))))) yeah
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\DynamicPageController;
