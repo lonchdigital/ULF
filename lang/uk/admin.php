@@ -26,4 +26,5 @@ return [
     'first_payment' => 'Перший платіж',
     'meta_title' => 'Meta заголовок',
     'meta_description' => 'Meta опис',
+    'save' => 'Зберегти',
 ];

@@ -31,8 +31,10 @@ Route::group([
 
         Route::prefix('car-common-settings')->group(function () {
             Route::get('edit', [CarCommonSettingsController::class, 'edit'])->name('admin.car-common-settings.edit.page');
+            Route::post('edit', [CarCommonSettingsController::class, 'update'])->name('admin.car-common-settings.edit');
+
+
             Route::get('one-car', [CarCommonSettingsController::class, 'oneCar'])->name('admin.one.car.page');
-//            Route::post('edit', [CarCommonSettingsController::class, 'update'])->name('admin.home-page.edit');
         });
 
     });
