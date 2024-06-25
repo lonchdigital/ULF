@@ -15,6 +15,7 @@ class MultilanguageInput extends Component
         public readonly string $label,
         public readonly string $fieldName,
         public readonly ?array $values,
+        public readonly ?string $fieldDisplay = '',
         public readonly ?string $placeholder = null,
         public readonly ?bool $isRequired = false,
     ) { }
@@ -24,9 +25,19 @@ class MultilanguageInput extends Component
      */
     public function render(): View|Closure|string
     {
+        $valuesToDisplay = [];
+        if( $this->fieldDisplay ) {
+            foreach ($this->values as $lang => $value) {
+                $valuesToDisplay[$lang] = $value[$this->fieldDisplay];
+            }
+        }
+
+//        dd($valuesToDisplay);
+
         return view('components.admin.multilanguage-input', [
             'label' => $this->label,
             'fieldName' => $this->fieldName,
+            'fieldDisplay' => $this->fieldDisplay,
             'errorFieldName' => preg_replace(
                 '(\.$)',
                 '',
@@ -36,7 +47,7 @@ class MultilanguageInput extends Component
                     $this->fieldName
                 )
             ),
-            'values' => $this->values,
+            'valuesField' => $valuesToDisplay,
             'isRequired' => $this->isRequired,
             'placeholder' => $this->placeholder,
         ]);

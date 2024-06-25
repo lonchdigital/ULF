@@ -13,19 +13,20 @@
                         <form class="forms-sample" action="{{ route('admin.car-common-settings.edit') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
-                            <section class="mb-50">
+                            {{--<section class="mb-50">
                                 <x-admin.multilanguage-input :label="trans('admin.first_payment_note')"
                                                              :is-required="true"
                                                              field-name="first_payment_note"
                                                              :values="[]"/>
-                            </section>
+                            </section>--}}
 
                             <section class="mb-50">
                                 <h6 class="card-title">{{ trans('admin.subscribe_benefits') }}</h6>
 
                                 <div class="row" id="subscribe-benefits">
 
-                                    @dd('I am here!111', $subscribeBenefits)
+{{--                                    @dd($subscribeBenefits[0]->getTranslationsArray())--}}
+{{--                                    @dd($subscribeBenefits[0]->translate('ru')->title)--}}
 
                                     @if(isset($subscribeBenefits))
                                         @foreach($subscribeBenefits as $subscribeBenefit)
@@ -41,7 +42,8 @@
                                                                             :is-required="true"
                                                                             :label="trans('admin.item')"
                                                                             field-name="subscribe-benefit[{{ $subscribeBenefit->id }}][title]"
-                                                                            :values="$subscribeBenefit->title ? $subscribeBenefit->getTranslations('title') : []"/>
+                                                                            field-display="title"
+                                                                            :values="$subscribeBenefit->getTranslationsArray()"/>
                                                                     </div>
                                                                 </div>
                                                             </div>
