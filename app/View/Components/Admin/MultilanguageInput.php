@@ -32,8 +32,6 @@ class MultilanguageInput extends Component
             }
         }
 
-//        dd($valuesToDisplay);
-
         return view('components.admin.multilanguage-input', [
             'label' => $this->label,
             'fieldName' => $this->fieldName,

@@ -3,6 +3,7 @@
 
 namespace App\Services\Admin\CarCommonSettings;
 
+use App\Models\Faq;
 use App\Models\Page;
 use App\Models\SubscribeBenefit;
 use Illuminate\Http\UploadedFile;
@@ -35,7 +36,7 @@ class CarCommonService
 //        dd('updatePage!!!', $request);
 
         $this->syncBenefits($request['subscribe-benefit']);
-
+        $this->syncFaqs($request['faqs']);
 
     }
 
@@ -57,10 +58,8 @@ class CarCommonService
                     $existingBenefit = $existingBenefits->where('id', $benefit_id)->first();
 
                     if( !is_null($existingBenefit) ) {
-//                        dd('update');
                         $existingBenefit->update($dataToUpdate);
                     } else {
-//                        dd('create');
                         SubscribeBenefit::create($dataToUpdate);
                     }
 
@@ -85,6 +84,52 @@ class CarCommonService
         return SubscribeBenefit::all();
     }
 
+
+    private function syncFaqs(array $faqs): void
+    {
+        $dataToUpdate = [];
+        $existingFaqs = $this->getAllCommonFaqs();
+
+        if ($faqs) {
+            foreach ($faqs as $faq_id => $faqLanguages) {
+                $faqs[$faq_id]['id'] = $faq_id; // add id
+
+                foreach ($faqLanguages as $fieldName => $faq) {
+                    foreach ($faq as $lang => $value) {
+                        $dataToUpdate[$lang][$fieldName] = $value;
+                    }
+                }
+
+                $existingFaq = $existingFaqs->where('id', $faq_id)->first();
+
+                if( !is_null($existingFaq) ) {
+                    $existingFaq->update($dataToUpdate);
+                } else {
+                    Faq::create($dataToUpdate);
+                }
+
+            }
+        }
+
+        $existingFaqsInRequest = $faqs ? array_filter(array_column($faqs, 'id'), function ($item) {
+            return $item !== null;
+        }): [];
+
+        $faqsToDelete = $existingFaqs->whereNotIn('id', $existingFaqsInRequest);
+
+        foreach ($faqsToDelete as $faqToDelete) {
+            $faqToDelete->deleteTranslations();
+            $faqToDelete->delete();
+        }
+    }
+
+    public function getAllCommonFaqs()
+    {
+        return Faq::where('page_id', null)->get();
+    }
+
+
+
     // TODO:: remove later
     /*public function getAllSubscribeBenefitsAdmin(): array
     {
@@ -99,7 +144,6 @@ class CarCommonService
 
         return $allSubscribeBenefits;
     }*/
-
 /*    private function syncFaqs(int $infoSectionId, array $faqs): void
     {
         $existingFaqs = InfoFaq::where('info_section_id', $infoSectionId)->get();

@@ -25,9 +25,6 @@
 
                                 <div class="row" id="subscribe-benefits">
 
-{{--                                    @dd($subscribeBenefits[0]->getTranslationsArray())--}}
-{{--                                    @dd($subscribeBenefits[0]->translate('ru')->title)--}}
-
                                     @if(isset($subscribeBenefits))
                                         @foreach($subscribeBenefits as $subscribeBenefit)
                                             <div class="col-md-4 subscribe-benefit-row pb-1 mb-4" id="subscribe-benefit-id-{{ $subscribeBenefit->id }}">
@@ -152,7 +149,8 @@
                                                                         :is-required="true"
                                                                         :label="trans('admin.question')"
                                                                         field-name="faqs[{{ $faqCar->id }}][question]"
-                                                                        :values="$faqCar->question ? $faqCar->getTranslations('question') : []"/>
+                                                                        field-display="question"
+                                                                        :values="$faqCar->getTranslationsArray()"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -164,7 +162,8 @@
                                                                         :is-required="true"
                                                                         :label="trans('admin.answer')"
                                                                         field-name="faqs[{{ $faqCar->id }}][answer]"
-                                                                        :values="$faqCar->answer ? $faqCar->getTranslations('answer') : []"/>
+                                                                        field-display="answer"
+                                                                        :values="$faqCar->getTranslationsArray()"/>
                                                                 </div>
                                                             </div>
                                                         </div>

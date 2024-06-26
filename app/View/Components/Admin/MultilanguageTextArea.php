@@ -15,6 +15,7 @@ class MultilanguageTextArea extends Component
         public readonly string $label,
         public readonly string $fieldName,
         public readonly ?array $values,
+        public readonly ?string $fieldDisplay = '',
         public readonly ?bool $isRequired = false,
     ) { }
     /**
@@ -22,6 +23,13 @@ class MultilanguageTextArea extends Component
      */
     public function render(): View|Closure|string
     {
+        $valuesToDisplay = [];
+        if( $this->fieldDisplay ) {
+            foreach ($this->values as $lang => $value) {
+                $valuesToDisplay[$lang] = $value[$this->fieldDisplay];
+            }
+        }
+
         return view('components.admin.multilanguage-text-area', [
             'label' => $this->label,
             'fieldName' => $this->fieldName,
@@ -34,7 +42,7 @@ class MultilanguageTextArea extends Component
                     $this->fieldName
                 )
             ),
-            'values' => $this->values,
+            'valuesField' => $valuesToDisplay,
             'isRequired' => $this->isRequired,
         ]);
     }
