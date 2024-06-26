@@ -6,6 +6,7 @@ namespace App\Services\Admin\CarCommonSettings;
 use App\Models\Faq;
 use App\Models\Page;
 use App\Models\SubscribeBenefit;
+use App\Models\SubscribeSetting;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -36,6 +37,7 @@ class CarCommonService
 //        dd('updatePage!!!', $request);
 
         $this->syncBenefits($request['subscribe-benefit']);
+        $this->syncSubscribeSettings($request['subscribe-settings']);
         $this->syncFaqs($request['faqs']);
 
     }
@@ -128,6 +130,67 @@ class CarCommonService
         return Faq::where('page_id', null)->get();
     }
 
+
+    private function syncSubscribeSettings(array $settings): void
+    {
+        $dataToUpdate = [];
+        $existingSettings = $this->getAllSubscribeSettings();
+
+        if ($settings) {
+
+            foreach ($settings as $section_id => $setting) {
+                foreach ($setting as $item_id => $settingLanguages) {
+                    $settings[$item_id]['id'] = $item_id; // add id
+                    $dataToUpdate['section_id'] = $section_id;
+
+                    if(isset($settingLanguages['is_active']) && $settingLanguages['is_active'] == 'on') {
+                        $dataToUpdate['is_active'] = true;
+                    } else {
+                        $dataToUpdate['is_active'] = false;
+                    }
+
+                    foreach ($settingLanguages as $fieldName => $faq) {
+                        if($fieldName == 'is_active') {
+                            continue;
+                        }
+
+                        foreach ($faq as $lang => $value) {
+                            $dataToUpdate[$lang][$fieldName] = $value;
+                        }
+                    }
+
+                    $existingSetting = $existingSettings->where('section_id', $section_id)->where('id', $item_id)->first();
+
+                    if( !is_null($existingSetting) ) {
+                        $existingSetting->update($dataToUpdate);
+                    } else {
+                        SubscribeSetting::create($dataToUpdate);
+                    }
+
+                }
+
+            }
+
+        }
+
+
+
+        $existingSettingsInRequest = $settings ? array_filter(array_column($settings, 'id'), function ($item) {
+            return $item !== null;
+        }): [];
+
+        $existingSettingsToDelete = $existingSettings->whereNotIn('id', $existingSettingsInRequest);
+
+        foreach ($existingSettingsToDelete as $existingSettingToDelete) {
+            $existingSettingToDelete->deleteTranslations();
+            $existingSettingToDelete->delete();
+        }
+    }
+
+    public function getAllSubscribeSettings()
+    {
+        return SubscribeSetting::all();
+    }
 
 
     // TODO:: remove later

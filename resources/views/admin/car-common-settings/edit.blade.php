@@ -13,12 +13,12 @@
                         <form class="forms-sample" action="{{ route('admin.car-common-settings.edit') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
-                            {{--<section class="mb-50">
+                            <section class="mb-50">
                                 <x-admin.multilanguage-input :label="trans('admin.first_payment_note')"
                                                              :is-required="true"
                                                              field-name="first_payment_note"
                                                              :values="[]"/>
-                            </section>--}}
+                            </section>
 
                             <section class="mb-50">
                                 <h6 class="card-title">{{ trans('admin.subscribe_benefits') }}</h6>
@@ -89,26 +89,31 @@
                                                         @foreach(App\DataClasses\SubscribeMonthSectionsClass::get() as $subscribeMonthSection)
                                                             <div class="tab-pane fade @if( $loop->first ) active show @endif" id="months-{{ $subscribeMonthSection['id'] }}" role="tabpanel" aria-labelledby="basic-tab">
                                                                 <div class="card-body">
-                                                                    @if(isset($subscribeMonthSettings))
-                                                                        <div class="month-setting-item" id="month-setting-item-id-{{ $subscribeMonthSetting->id }}">
+
+                                                                    @foreach($subscribeMonthSettings->where('section_id', $subscribeMonthSection['id']) as $item)
+
+                                                                        <div class="month-setting-item" id="month-setting-item-id-{{ $item->id }}">
                                                                             <div class="checkbox checkbox-primary d-inline">
-                                                                                <input type="checkbox" name="month_settings[{{ $subscribeMonthSection['id'] }}][{{ $subscribeMonthSetting->id }}][active]" id="checkbox-{{ $subscribeMonthSection['id'] }}-{{ $subscribeMonthSetting->id }}">
-                                                                                <label for="checkbox-{{ $subscribeMonthSection['id'] }}-{{ $subscribeMonthSetting->id }}" class="cr"></label>
+                                                                                <input type="checkbox" name="subscribe-settings[{{ $subscribeMonthSection['id'] }}][{{ $item->id }}][is_active]" id="checkbox-{{ $subscribeMonthSection['id'] }}-{{ $item->id }}" @if($item->is_active) checked @endif>
+                                                                                <label for="checkbox-{{ $subscribeMonthSection['id'] }}-{{ $item->id }}" class="cr"></label>
                                                                             </div>
                                                                             <div class="art-input-field">
                                                                                 <x-admin.multilanguage-input
                                                                                     :is-required="true"
                                                                                     :label="trans('admin.item')"
-                                                                                    field-name="month_settings[{{ $subscribeMonthSection['id'] }}][{{ $subscribeMonthSetting->id }}][name]"
-                                                                                    :values="[]"/>
+                                                                                    field-name="subscribe-settings[{{ $subscribeMonthSection['id'] }}][{{ $item->id }}][title]"
+                                                                                    field-display="title"
+                                                                                    :values="$item->getTranslationsArray()"/>
                                                                             </div>
                                                                             <div class="art-remove-button">
-                                                                                <a href="#" onclick="artRemoveSubscribeMonthSetting(event, {{ $subscribeMonthSection['id'] }} {{ $subscribeMonthSetting->id }})">
+                                                                                <a href="#" onclick="artRemoveSubscribeMonthSetting(event, {{ $subscribeMonthSection['id'] }}, {{ $item->id }})">
                                                                                     <i class="ti-close font-weight-bold ml-10"></i>
                                                                                 </a>
                                                                             </div>
                                                                         </div>
-                                                                    @endif
+
+                                                                    @endforeach
+
                                                                 </div>
                                                                 <div class="row pt-3">
                                                                     <div class="col-md-12 text-center">
@@ -304,14 +309,14 @@
             $('#months-' + tabID + ' .card-body').append(`
                 <div class="month-setting-item" id="month-setting-item-id-${id}">
                     <div class="checkbox checkbox-primary d-inline">
-                        <input type="checkbox" name="month_settings[${tabID}][${id}][active]" id="checkbox-${tabID}-${id}">
+                        <input type="checkbox" name="subscribe-settings[${tabID}][${id}][is_active]" id="checkbox-${tabID}-${id}">
                         <label for="checkbox-${tabID}-${id}" class="cr"></label>
                     </div>
                     <div class="art-input-field">
                         <x-admin.multilanguage-input
                             :is-required="true"
                             :label="trans('admin.item')"
-                            field-name="month_settings[${tabID}][${id}][name]"
+                            field-name="subscribe-settings[${tabID}][${id}][title]"
                             :values="[]"/>
                     </div>
                     <div class="art-remove-button">
@@ -326,7 +331,6 @@
             event.preventDefault();
 
             $(`#months-${tabID} .card-body #month-setting-item-id-${id}`).remove();
-            // $(`#subscribe-benefit-id-${id}`).remove();
         }
 
         function addFaqsCarsRow($id) {

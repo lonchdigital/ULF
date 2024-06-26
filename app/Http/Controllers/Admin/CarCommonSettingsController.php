@@ -29,7 +29,8 @@ class CarCommonSettingsController extends Controller
     {
         return view('admin.car-common-settings.edit', [
             'subscribeBenefits' => $this->service->getAllSubscribeBenefits(),
-            'faqsCars' => $this->service->getAllCommonFaqs()
+            'faqsCars' => $this->service->getAllCommonFaqs(),
+            'subscribeMonthSettings' => $this->service->getAllSubscribeSettings()
         ]);
     }
 
