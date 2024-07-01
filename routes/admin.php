@@ -1,9 +1,10 @@
 <?php
 
 //use App\Http\Controllers\Admin\AdminAuthController;
-use App\Http\Controllers\Admin\CarCommonSettingsController;
-use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\CarCommonSettingsController;
+use Modules\Articles\Http\Controllers\Admin\ArticlesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ Route::group([
 
 
             Route::get('one-car', [CarCommonSettingsController::class, 'oneCar'])->name('admin.one.car.page');
+            Route::get('one-article', [ArticlesController::class, 'oneArticle'])->name('admin.one.article.page');
         });
 
     });
