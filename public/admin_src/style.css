@@ -14647,7 +14647,7 @@ tbody tr.active {
     opacity: unset !important;
 }
 .bg-main {
-    background-color: #2641B2;
+    background: linear-gradient(154.36deg,#041942 21.07%,#041526 81.669%);
 }
 .art-modal-buttons a {
     display: block;
@@ -14655,8 +14655,8 @@ tbody tr.active {
     font-size: 14px;
 }
 .art-modal-buttons .md-close {
-    background-color: #2641B2;
-    border-color: #2641B2;
+    background: linear-gradient(154.36deg,#041942 21.07%,#041526 81.669%);
+    /*border-color: #00afff;*/
     color: #fff;
 }
 
@@ -14695,7 +14695,7 @@ tbody tr.active {
     flex-wrap: wrap;
 }
 .art-tags .btn {
-    color: #2641b2;
+    color: #00afff;
     border-radius: 20px;
     background-color: #f2f9ff;
     margin-right: 15px;

@@ -1,8 +1,8 @@
-<div class="ecaps-sidemenu-area bg-img" style="background-color: #2641B2">
+<div class="ecaps-sidemenu-area bg-img" style="background: linear-gradient(154.36deg,#041942 21.07%,#041526 81.669%)">
     <!-- Desktop Logo -->
     <div class="ecaps-logo">
         <a href="{{ route('adminDashboard') }}">
-            <img class="desktop-logo" src="{{ asset('admin_src/img/core-img/logo.png') }}" alt="Desktop Logo">
+            <img class="desktop-logo" src="{{ asset('admin_src/img/core-img/Logo.png') }}" alt="Desktop Logo">
             <img class="small-logo" src="{{ asset('admin_src/img/core-img/small-logo.png') }}" alt="Mobile Logo">
         </a>
     </div>

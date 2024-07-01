@@ -20,7 +20,7 @@ class CarsController extends Controller
 
     public function index(Request $request, Page $page)
     {
-        dd('index Car !!! ' . $this->service->test());
+        dd('index Car !!!');
     }
 
     public function show(Request $request, Page $page)
