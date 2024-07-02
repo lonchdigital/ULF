@@ -4,24 +4,26 @@ namespace Modules\Articles\Http\Controllers\Admin;
 
 use App\Models\Page;
 use Illuminate\Http\Request;
+use Modules\Articles\Http\Requests\Admin\ArticleCreateRequest;
 use Illuminate\Routing\Controller;
+use Modules\Articles\Services\Admin\ArticlesService;
 
 
 class ArticlesController extends Controller
 {
     /**
-//     * @var WebService
+    * @var ArticlesService
      */
-//    private WebService $service;
+   private ArticlesService $service;
 
     /**
      * ProfessionogramsController constructor.
-//     * @param WebService $service
+    * @param ArticlesService $service
      */
-    /*public function __construct(WebService $service)
+    public function __construct(ArticlesService $service)
     {
         $this->service = $service;
-    }*/
+    }
 
     public function index(Request $request, Page $page)
     {
@@ -38,11 +40,20 @@ class ArticlesController extends Controller
 
     public function create()
     {
-        return view('articles::admin.create', [
-
-        ]);
+        return view('articles::admin.create', []);
     }
 
+    /**
+     * Store a newly created resource in storage.
+     * @param ArticleCreateRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(ArticleCreateRequest $request)
+    {
+        return redirect()->route('samples.edit', [
+            'document' => $this->service->createDocument($request->all()),
+        ])->with('success', 'Докум1111111111.');
+    }
 
     public function show(Request $request, Page $page)
     {

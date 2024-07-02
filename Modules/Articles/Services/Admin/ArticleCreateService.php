@@ -15,27 +15,17 @@ final class ArticleCreateService extends ArticleBaseService
 {
     public function make(array $data): Article
     {
-        $document = $this->createDocument();
-
-        $article = $this->createArticleDocument($document, $data);
+        $article = $this->createArticle($data);
 
         $this->pageService->create($article, $data);
 
         return $article;
     }
 
-    private function createDocument(): Document
+    private function createArticle(array $data): Article
     {
-        $document = new Document;
+        dd($data);
 
-        $document->setAttribute('type', Article::class);
-        $document->save();
-
-        return $document;
-    }
-
-    private function createArticleDocument(Document $document, array $data): Article
-    {
         $article = new Article;
 
         $article->setAttribute('name', $data['name']);

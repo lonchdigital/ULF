@@ -41,6 +41,7 @@ Route::group([
         Route::prefix('articles')->group(function () {
             Route::get('/', [ArticlesController::class, 'index'])->name('article.index');
             Route::get('/create', [ArticlesController::class, 'create'])->name('article.create');
+            Route::post('/store', [ArticlesController::class, 'store'])->name('article.store');
         });
 
     });
