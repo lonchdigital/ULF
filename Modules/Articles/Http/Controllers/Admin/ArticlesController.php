@@ -25,17 +25,24 @@ class ArticlesController extends Controller
 
     public function index(Request $request, Page $page)
     {
+        // $documents = $page->getLatestDocumentsWithPaginate(10);
 
-        dd('index !!!');
-
-        $documents = $page->getLatestDocumentsWithPaginate(10);
-
-        return view('professionograms::web.index', [
-            'page' => $page,
-            'documents' => $documents,
-//            'variations' => ProfessionogramVariety::all(),
+        return view('articles::admin.index', [
+            // 'page' => $page,
+            // 'documents' => $documents,
+            'documents' => collect([]),
+            //            'variations' => ProfessionogramVariety::all(),
         ]);
     }
+
+
+    public function create()
+    {
+        return view('articles::admin.create', [
+
+        ]);
+    }
+
 
     public function show(Request $request, Page $page)
     {
@@ -53,13 +60,6 @@ class ArticlesController extends Controller
             'htmlDocument' => $this->service->getHtmlDocument($page),
             'editorDownloadLink' => $this->service->getEditorDownloadLink($document),
             'downloadDocumentLink' => $this->service->getDownloadLink($page->getAttribute('file')),
-        ]);
-    }
-
-    public function oneArticle()
-    {
-        return view('admin.article', [
-
         ]);
     }
 

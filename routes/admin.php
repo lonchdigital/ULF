@@ -34,9 +34,13 @@ Route::group([
             Route::get('edit', [CarCommonSettingsController::class, 'edit'])->name('admin.car-common-settings.edit.page');
             Route::post('edit', [CarCommonSettingsController::class, 'update'])->name('admin.car-common-settings.edit');
 
-
             Route::get('one-car', [CarCommonSettingsController::class, 'oneCar'])->name('admin.one.car.page');
-            Route::get('one-article', [ArticlesController::class, 'oneArticle'])->name('admin.one.article.page');
+        });
+
+
+        Route::prefix('articles')->group(function () {
+            Route::get('/', [ArticlesController::class, 'index'])->name('article.index');
+            Route::get('/create', [ArticlesController::class, 'create'])->name('article.create');
         });
 
     });

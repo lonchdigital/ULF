@@ -21,7 +21,7 @@
                     <li @if( $currentRoute === 'adminDashboard' ) class="active"@endif>
                         <a href="{{ route('adminDashboard') }}">
                             <i class='fa fa-home'></i>
-                            <span>Головна</span>
+                            <span>{{ trans('admin.main') }}</span>
                         </a>
                     </li>
 
@@ -42,22 +42,13 @@
                         </ul>
                     </li>
 
-                    <li class="treeview {{ in_array($currentRoute, [
-                        'admin.car-common-settings.edit.page',
-                        'admin.one.car.page',
-                    ]) ? 'active' : '' }}">
-                    <a href="javascript:void(0)">
-                        <i class='fa fa-folder-open'></i>
-                        <span>{{ trans('admin.blog') }}</span>
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                    {{-- <ul class="treeview-menu">
-                        <li @if( $currentRoute === 'admin.car-common-settings.edit.page' ) class="active"@endif><a href="{{ route('admin.car-common-settings.edit.page') }}">{{ trans('admin.car_common_settings') }}</a></li>
-                    </ul> --}}
-                    <ul class="treeview-menu">
-                        <li @if( $currentRoute === 'admin.one.article.page' ) class="active"@endif><a href="{{ route('admin.one.article.page') }}">{{ 'One Article Page' }}</a></li>
-                    </ul>
-                </li>
+                
+                    <li @if( $currentRoute === 'article.index' ) class="active"@endif>
+                        <a href="{{ route('article.index') }}">
+                            <i class='fa fa-folder-open'></i>
+                            <span>{{ trans('admin.blog') }}</span>
+                        </a>
+                    </li>
 
                 </ul>
             </nav>

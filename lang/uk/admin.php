@@ -27,4 +27,8 @@ return [
     'meta_title' => 'Meta заголовок',
     'meta_description' => 'Meta опис',
     'save' => 'Зберегти',
+    'blog' => 'Блог',
+    'main' => 'Головна',
+    'add_new_article' => 'Додати нову статтю',
+    'title' => 'Заголовок',
 ];
