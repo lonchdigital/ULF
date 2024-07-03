@@ -42,6 +42,9 @@ Route::group([
             Route::get('/', [ArticlesController::class, 'index'])->name('article.index');
             Route::get('/create', [ArticlesController::class, 'create'])->name('article.create');
             Route::post('/store', [ArticlesController::class, 'store'])->name('article.store');
+            Route::get('/{article}/edit', [ArticlesController::class, 'edit'])->name('article.edit');
+            Route::post('/{article}', [ArticlesController::class, 'update'])->name('article.update');
+            Route::get('/{article}', [ArticlesController::class, 'destroy'])->name('article.destroy');
         });
 
     });

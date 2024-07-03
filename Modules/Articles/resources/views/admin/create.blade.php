@@ -16,7 +16,7 @@
                             <div class=form-group">
                                 <x-admin.multilanguage-input :label="trans('admin.title')"
                                                             :is-required="true"
-                                                            field-name="tag"
+                                                            field-name="name"
                                                             :values="[]"/>
                             </div>
 
@@ -59,6 +59,14 @@
                                     :is-required="true"
                                     :label="trans('admin.desc')"
                                     field-name="description"
+                                    :values="[]"/>
+                            </div>
+
+                            <div class="form-group">
+                                <x-admin.multilanguage-text-area
+                                    :is-required="true"
+                                    :label="trans('admin.text')"
+                                    field-name="text"
                                     :values="[]"/>
                             </div>
 

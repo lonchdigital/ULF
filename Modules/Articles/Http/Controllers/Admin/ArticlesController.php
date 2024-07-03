@@ -6,6 +6,7 @@ use App\Models\Page;
 use Illuminate\Http\Request;
 use Modules\Articles\Http\Requests\Admin\ArticleCreateRequest;
 use Illuminate\Routing\Controller;
+use Modules\Articles\Entities\Article;
 use Modules\Articles\Services\Admin\ArticlesService;
 
 
@@ -27,52 +28,51 @@ class ArticlesController extends Controller
 
     public function index(Request $request, Page $page)
     {
-        // $documents = $page->getLatestDocumentsWithPaginate(10);
-
         return view('articles::admin.index', [
-            // 'page' => $page,
-            // 'documents' => $documents,
-            'documents' => collect([]),
-            //            'variations' => ProfessionogramVariety::all(),
+            'articles' => $this->service->getLatestArticles(10),
         ]);
     }
-
 
     public function create()
     {
         return view('articles::admin.create', []);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param ArticleCreateRequest $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(ArticleCreateRequest $request)
     {
-        return redirect()->route('samples.edit', [
-            'document' => $this->service->createDocument($request->all()),
-        ])->with('success', 'Докум1111111111.');
+        return redirect()->route('article.edit', [
+            'article' => $this->service->createDocument($request->all()),
+        ])->with('success', trans('admin.document_saved'));
     }
 
-    public function show(Request $request, Page $page)
+    public function edit(Article $article)
     {
+        // dd('edit!!!', $article);
 
-        dd('show admin car !!!');
-
-        $document = $page->getAttribute('document');
-
-        return view('professionograms::web.show', [
-            'page' => $page,
-            'document' => $document,
-            'isFavActive' => $this->service->isFavoriteActive($document->document, $request->user()),
-            'documents' => $page->getDocumentsWithLimit(5),
-            'file' => $page->getAttribute('file'),
-            'htmlDocument' => $this->service->getHtmlDocument($page),
-            'editorDownloadLink' => $this->service->getEditorDownloadLink($document),
-            'downloadDocumentLink' => $this->service->getDownloadLink($page->getAttribute('file')),
+        return view('articles::admin.edit', [
+            'article' => $article,
+            // 'document' => $document->load('page'),
         ]);
     }
 
+    public function update(Article $article)
+    {
+        dd('update!!!', $article);
+
+        $this->service->updateDocument($document, $request->all());
+
+        return redirect()->route('samples.edit', $document)->with('success', 'Документ успішно оновлено.');
+    }
+
+    public function destroy(Article $article)
+    {
+        dd('destroy!!!', $article);
+
+        $this->service->removeDocument($document);
+
+        return response()->redirectToRoute('samples.index')->with([
+            'documents' => $this->service->getDocuments(),
+        ]);
+    }
 
 }

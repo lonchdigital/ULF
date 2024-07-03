@@ -31,11 +31,11 @@ class ArticlesService extends ArticleBaseService
      * @param array $data
      * @return LengthAwarePaginator
      */
-    public function getDocuments(array $data = []): LengthAwarePaginator
+    public function getLatestArticles($perPage = 10): LengthAwarePaginator
     {
-        $query = Article::query()->filter($data)->latest();
+        $query = Article::query()->latest();
 
-        return $query->paginate(10);
+        return $query->paginate($perPage);
     }
 
     /**

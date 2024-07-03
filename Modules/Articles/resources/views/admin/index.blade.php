@@ -31,32 +31,30 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($documents as $document)
+                                @foreach($articles as $article)
                                     <tr>
-                                        <td>{{ $document->id ?? '' }}</td>
+                                        <td>{{ $article->getAttribute('id') }}</td>
+                                        <td>{{ $article->name ?? '' }}</td>
                                         <td>
-                                            {{ $document->name ?? '' }}
-                                        </td>
-                                        <td>
-                                            @if($document->page)
+                                            {{-- @if($document->page)
                                             <a href="{{ route('slug.page', ['section' => $document->page->section, 'slug' => $document->page->slug]) }}" target="_blank" class="mr-2"><i class="fa fa-eye text-info font-18"></i></a>
-                                            @endif
-                                            <a href="#" class="md-trigger" data-modal="modal-{{ $document->getAttribute('id') }}">
+                                            @endif --}}
+                                            <a href="#" class="md-trigger" data-modal="modal-{{ $article->getAttribute('id') }}">
                                                 <i class="fa fa-trash text-danger font-18"></i>
                                             </a>
-                                            <div class="md-modal md-effect-1" id="modal-{{ $document->getAttribute('id') }}">
+                                            <div class="md-modal md-effect-1" id="modal-{{ $article->getAttribute('id') }}">
                                                 <div class="md-content">
                                                     <h3 class="bg-main">Увага!</h3>
-                                                    <p class="text-center mt-4">Видалити "{{ $document->getAttribute('name') }}"?</p>
+                                                    <p class="text-center mt-4">Видалити "{{ $article->name }}"?</p>
                                                     <div class="d-flex art-modal-buttons">
                                                         <button class="btn md-close">Закрити</button>
-                                                        <a href="{{ route('samples.destroy', $document) }}" class="btn btn-danger d-block">Видалити</a>
+                                                        <a href="{{ route('article.destroy', $article) }}" class="btn btn-danger d-block">Видалити</a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <a href="{{ route('samples.edit', $document) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                            <a href="{{ route('article.edit', $article) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -66,7 +64,7 @@
                     </div>
                 </div>
                 <div class="pagination-wrapper d-flex justify-content-center mt-4 mb-5">
-                    {{-- {{ $documents->links('vendor.pagination.default') }} --}}
+                    {{-- {{ $articles->links('vendor.pagination.default') }} --}}
                 </div>
             </div>
         </div>

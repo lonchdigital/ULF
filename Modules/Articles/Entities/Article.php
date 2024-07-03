@@ -2,42 +2,25 @@
 
 namespace Modules\Articles\Entities;
 
-//use App\Models\Document;
 use App\Models\Page;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
-//use Modules\Professionograms\Traits\QueryTrait;
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
 
-//class Article extends Document
-class Article extends Model
+class Article extends Model implements TranslatableContract
 {
-    use HasFactory;
+    use Translatable;
 
-//    use QueryTrait;
+    public $translatedAttributes = ['name', 'description', 'text'];
+    protected $fillable = [0];
 
-    protected $casts = [
-        'document_date' => 'datetime'
-    ];
+    // protected $casts = [
+    //     'document_date' => 'datetime'
+    // ];
 
-    protected static function newFactory()
-    {
-        return \Modules\Documents\Database\factories\ProfessionogramFactory::new();
-    }
 
     public function pages()
     {
         return $this->belongsToMany(Page::class);
     }
-
-   /* public function document(): BelongsTo
-    {
-        return $this->belongsTo(Document::class);
-    }
-
-    public function page(): MorphOne
-    {
-        return $this->morphOne(Page::class, 'pageable');
-    }*/
 }

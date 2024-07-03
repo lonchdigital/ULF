@@ -12,56 +12,30 @@ use Modules\Articles\Http\Controllers\Web\ArticlesController;
 
 class PageCreateService
 {
-    public function create(Article $document, array $data): void
+    public function create(Article $article, array $data): void
     {
-        $page = new Page;
+        $dataToUpdate = [];
 
-        $section = config('articles.section');
-
-        $parentPage = Page::where('page_id', null)->where('section', $section)->first();
-
-        $page->setAttribute('name', $document->getAttribute('name'));
-
-        $page->setAttribute('title', $data['meta_title']);
-        $page->setAttribute('meta_description', $data['meta_desc']);
-
-        $page->setAttribute('controller', ArticlesController::class);
-        $page->setAttribute('action', config('articles.new_document_action'));
-
-        $page->setAttribute('section', $section);
-        $page->setAttribute('slug', $this->generateSlug($page));
-
-        $page->setAttribute('pageable_type', Article::class);
-        $page->setAttribute('pageable_id', $document->getAttribute('id'));
-
-        if ($parentPage) {
-            $page->setAttribute('page_id', $parentPage->getAttribute('id'));
+        $dataToUpdate['pageable_id'] = $article->id;
+        $dataToUpdate['section'] = config('articles.section');
+        $dataToUpdate['slug'] = $data['slug'];
+        $dataToUpdate['pageable_type'] = Article::class;
+        $dataToUpdate['action'] = config('articles.new_document_action');
+        $dataToUpdate['controller'] = ArticlesController::class;
+        
+        foreach ($data['name'] as $lang => $value) {
+            $dataToUpdate[$lang]['name'] = $value;
+            $dataToUpdate[$lang]['h1'] = $value;
+        }
+        foreach ($data['meta_title'] as $lang => $value) {
+            $dataToUpdate[$lang]['meta_title'] = $value;
+        }
+        foreach ($data['meta_description'] as $lang => $value) {
+            $dataToUpdate[$lang]['meta_description'] = $value;
         }
 
-        $page->setAttribute('is_available', isset($data['is_available']));
-        $page->setAttribute('is_user_available', isset($data['is_user_available']));
-
-        $publishAt = Carbon::createFromFormat('d.m.Y H:i', $data['publish_date'] . ' ' . $data['publish_time']);
-        $page->setAttribute('publish_at', $publishAt);
-
-        $page->save();
+        $page = Page::create($dataToUpdate);
+        $page->articles()->attach($article->id);
     }
 
-    public function updatePageSlug(Page $page): void
-    {
-        $page->slug = $this->generateSlug($page);
-        $page->save();
-    }
-
-    private function generateSlug(Page $page): string
-    {
-        $slug = Str::slug($page->getAttribute('name'));
-        $hasSlug = Page::where('slug', $slug)->exists();
-
-        if ($hasSlug) {
-            $slug = $slug . '-' . uniqid();
-        }
-
-        return $slug;
-    }
 }

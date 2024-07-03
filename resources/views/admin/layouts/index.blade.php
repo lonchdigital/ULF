@@ -13,7 +13,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Title -->
-    <title>KUA</title>
+    <title>ULF</title>
 
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
