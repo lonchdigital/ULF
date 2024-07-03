@@ -30,11 +30,11 @@ final class ArticleCreateService extends ArticleBaseService
 
         $article->setAttribute('name', $data['name']);
 
-        $preview_image_path = 'articles-images/'  . sha1(time()) . '_' . Str::random(6) . '.jpg';
+        /*$preview_image_path = 'articles-images/'  . sha1(time()) . '_' . Str::random(6) . '.jpg';
         $image = Image::make($data['preview_image'])->encode('jpg', 100);
         if( Storage::disk(config('app.images_disk_default'))->put($preview_image_path, $image) ) {
             $article->setAttribute('preview_image', $preview_image_path);
-        }
+        }*/
 
         $article->setAttribute('short_desc', $data['short_desc']);
         $article->setAttribute('content', $data['content']);

@@ -5,12 +5,13 @@ namespace Modules\Articles\Entities;
 //use App\Models\Document;
 use App\Models\Page;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 //use Modules\Professionograms\Traits\QueryTrait;
 
 //class Article extends Document
-class Article
+class Article extends Model
 {
     use HasFactory;
 
@@ -23,6 +24,11 @@ class Article
     protected static function newFactory()
     {
         return \Modules\Documents\Database\factories\ProfessionogramFactory::new();
+    }
+
+    public function pages()
+    {
+        return $this->belongsToMany(Page::class);
     }
 
    /* public function document(): BelongsTo

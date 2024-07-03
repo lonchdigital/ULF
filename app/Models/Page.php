@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Modules\Articles\Entities\Article;
+
 //use Modules\Consultations\Entities\Consultation;
 
 class Page extends Model
@@ -45,6 +47,11 @@ class Page extends Model
     public function pageable(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    public function articles()
+    {
+        return $this->belongsToMany(Article::class);
     }
 
     /**
