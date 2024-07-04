@@ -1,4 +1,4 @@
-<div class="ecaps-sidemenu-area bg-img" style="background: linear-gradient(154.36deg,#041942 21.07%,#041526 81.669%)">
+<div class="ecaps-sidemenu-area bg-img" style="background: #fff">
     <!-- Desktop Logo -->
     <div class="ecaps-logo">
         <a href="{{ route('adminDashboard') }}">

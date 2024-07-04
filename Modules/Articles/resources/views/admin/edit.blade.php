@@ -6,18 +6,26 @@
             <div class="col-12 box-margin">
                 <div class="card">
                     <div class="card-body">
+
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
                         <div class="card-head mb-20">
-                            <h4 class="card-head-title">{{ trans('admin.add_new_article') }}</h4>
+                            <h4 class="card-head-title">{{ trans('admin.edit_article') }}</h4>
                         </div>
 
-                        <form class="forms-sample" action="{{ route('article.store') }}" method="POST" enctype="multipart/form-data">
+                        <form class="forms-sample" action="{{ route('article.update', $article) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             
                             <div class=form-group">
                                 <x-admin.multilanguage-input :label="trans('admin.title')"
                                                             :is-required="true"
                                                             field-name="name"
-                                                            :values="[]"/>
+                                                            field-display="name"
+                                                            :values="$article->getTranslationsArray()"/>
                             </div>
 
                             <div class="form-group">
@@ -26,7 +34,7 @@
                                     class="form-control"
                                     id="slug"
                                     name="slug"
-                                    value="{{ old('slug') }}"
+                                    value="{{ $article->page->slug }}"
                                 >
                                 @error('slug')
                                 <label id="firstname-error" class="error mt-2 text-danger" for="firstname">{{ $message }}</label>
@@ -59,7 +67,8 @@
                                     :is-required="true"
                                     :label="trans('admin.desc')"
                                     field-name="description"
-                                    :values="[]"/>
+                                    field-display="description"
+                                    :values="$article->getTranslationsArray()"/>
                             </div>
 
                             <div class="form-group">
@@ -67,21 +76,25 @@
                                     :is-required="true"
                                     :label="trans('admin.text')"
                                     field-name="text"
-                                    :values="[]"/>
+                                    field-display="text"
+                                    :values="$article->getTranslationsArray()"/>
                             </div>
+
 
                             <div class=form-group">
                                 <x-admin.multilanguage-input :label="trans('admin.meta_title')"
-                                                            :is-required="true"
-                                                            field-name="meta_title"
-                                                            :values="[]"/>
+                                    :is-required="true"
+                                    field-name="meta_title"
+                                    field-display="meta_title"
+                                    :values="$article->page->getTranslationsArray()"/>
                             </div>
                             <div class=form-group">
                                 <x-admin.multilanguage-text-area
                                     :is-required="true"
                                     :label="trans('admin.meta_description')"
                                     field-name="meta_description"
-                                    :values="[]"/>
+                                    field-display="meta_description"
+                                    :values="$article->page->getTranslationsArray()"/>
                             </div>
 
                             <button type="submit" class="btn btn-primary mr-2">{{ trans('admin.save') }}</button>

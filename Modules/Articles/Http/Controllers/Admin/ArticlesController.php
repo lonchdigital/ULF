@@ -5,6 +5,7 @@ namespace Modules\Articles\Http\Controllers\Admin;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use Modules\Articles\Http\Requests\Admin\ArticleCreateRequest;
+use Modules\Articles\Http\Requests\Admin\ArticleUpdateRequest;
 use Illuminate\Routing\Controller;
 use Modules\Articles\Entities\Article;
 use Modules\Articles\Services\Admin\ArticlesService;
@@ -16,6 +17,7 @@ class ArticlesController extends Controller
     * @var ArticlesService
      */
    private ArticlesService $service;
+   private const PER_PAGE = 10;
 
     /**
      * ProfessionogramsController constructor.
@@ -29,7 +31,7 @@ class ArticlesController extends Controller
     public function index(Request $request, Page $page)
     {
         return view('articles::admin.index', [
-            'articles' => $this->service->getLatestArticles(10),
+            'articles' => $this->service->getLatestArticles(self::PER_PAGE)
         ]);
     }
 
@@ -41,38 +43,31 @@ class ArticlesController extends Controller
     public function store(ArticleCreateRequest $request)
     {
         return redirect()->route('article.edit', [
-            'article' => $this->service->createDocument($request->all()),
+            'article' => $this->service->createDocument($request->all())
         ])->with('success', trans('admin.document_saved'));
     }
 
     public function edit(Article $article)
     {
-        // dd('edit!!!', $article);
-
         return view('articles::admin.edit', [
-            'article' => $article,
-            // 'document' => $document->load('page'),
+            'article' => $article->load('page')
         ]);
     }
 
-    public function update(Article $article)
+    public function update(Article $article, ArticleUpdateRequest $request)
     {
-        dd('update!!!', $article);
-
-        $this->service->updateDocument($document, $request->all());
-
-        return redirect()->route('samples.edit', $document)->with('success', 'Документ успішно оновлено.');
+        return redirect()->route('article.edit', [
+            'article' => $this->service->updateDocument($article, $request->all())
+        ])->with('success', trans('admin.document_updated'));
     }
 
     public function destroy(Article $article)
     {
-        dd('destroy!!!', $article);
+        $this->service->removeDocument($article);
 
-        $this->service->removeDocument($document);
-
-        return response()->redirectToRoute('samples.index')->with([
-            'documents' => $this->service->getDocuments(),
-        ]);
+        return redirect()->route('article.index', [
+            'articles' => $this->service->getLatestArticles(self::PER_PAGE)
+        ])->with('success', trans('admin.document_deleted'));
     }
 
 }

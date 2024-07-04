@@ -1,11 +1,7 @@
 <?php
 
-
 namespace Modules\Articles\Services\Admin;
 
-
-use App\Models\Category;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Storage;
 use Modules\Articles\Entities\Article;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -34,7 +30,6 @@ class ArticlesService extends ArticleBaseService
     public function getLatestArticles($perPage = 10): LengthAwarePaginator
     {
         $query = Article::query()->latest();
-
         return $query->paginate($perPage);
     }
 
@@ -48,82 +43,31 @@ class ArticlesService extends ArticleBaseService
     }
 
     /**
-     * @param Article $document
+     * @param Article $article
      * @param array $data
      */
-    public function updateDocument(Article $document, array $data): void
+    public function updateDocument(Article $article, array $data): Article
     {
-        $this->updateService->make($document, $data);
-    }
-
-    /**
-     * @return Collection
-     */
-    public function getCategories(): Collection
-    {
-        return Category::where('parent_id', 0)->get();
-    }
-
-    /**
-     * @param Article $document
-     * @return string|null
-     */
-    public function getFilePath(Article $document): string|null
-    {
-        $filePath = null;
-
-        $documentFile = $document->document->documentFile;
-
-        if ($documentFile) {
-            $filePath = $documentFile->file->path;
-        }
-
-        return $filePath;
+        return $this->updateService->make($article, $data);
     }
 
     /**
      * @param Article $document
      */
-    public function removeDocument(Article $document): void
+    public function removeDocument(Article $article): void
     {
-        if ($document->document && $document->document->documentFile) {
-            $documentFile = $document->document->documentFile;
+        $page = $article->page;
 
-            if ($documentFile->file) {
-                $documentFile->file->delete();
-            }
+        $article->pages()->detach($page->id);
+        $page->deleteTranslations();
+        $page->delete();
 
-            $documentFile->delete();
-        }
+        $article->deleteTranslations();
+        $article->delete();
 
-        $document->document->delete();
 
-        $document->page->delete();
-
-        if (Storage::disk(config('app.images_disk_default'))->exists($document->preview_image)) {
-            Storage::disk(config('app.images_disk_default'))->delete($document->preview_image);
-        }
-
-        $document->delete();
-    }
-
-    public function searchArticlePosts(array $request): array
-    {
-        $query = Article::query();
-
-        if( !is_null($request['excludeArticleIds']) ) {
-            $excludeArticleIds = explode(",", $request['excludeArticleIds']);
-            $query->whereNotIn('id', $excludeArticleIds);
-        }
-
-        if( !is_null($request['search']) ) {
-            $searchTerm = str_replace(' ', '\s*', $request['search']);
-            $searchTerm = preg_replace('/\s+/', ' ', $searchTerm);
-            $query->where('name', 'REGEXP', '.*' . $searchTerm . '.*');
-        }
-
-        return [
-            'documents' => $query->select(['id', 'name'])->limit(6)->get()
-        ];
+        // if (Storage::disk(config('app.images_disk_default'))->exists($document->preview_image)) {
+        //     Storage::disk(config('app.images_disk_default'))->delete($document->preview_image);
+        // }
     }
 }

@@ -6,11 +6,11 @@ namespace Modules\Articles\Services\Admin;
 class ArticleBaseService
 {
     /**
-     * @var PageCreateService
+     * @var PageService
      */
-    protected PageCreateService $pageService;
+    protected PageService $pageService;
 
-    public function __construct(PageCreateService $pageService)
+    public function __construct(PageService $pageService)
     {
         $this->pageService = $pageService;
     }

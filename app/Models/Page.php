@@ -11,7 +11,13 @@ class Page extends Model implements TranslatableContract
 {
     use Translatable;
 
-    public $translatedAttributes = ['name', 'description', 'text'];
+    public $translatedAttributes = [
+        'name', 
+        'description',
+        'text',
+        'meta_title',
+        'meta_description',
+    ];
 
     protected $fillable = [
         'pageable_id',
