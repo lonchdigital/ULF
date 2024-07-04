@@ -40,4 +40,5 @@ return [
     'attention' => 'Увага!',
     'remove' => 'Видалити',
     'close' => 'Закрити',
+    'content' => 'Контент',
 ];

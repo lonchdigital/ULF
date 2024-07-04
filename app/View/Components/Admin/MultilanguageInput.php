@@ -30,6 +30,10 @@ class MultilanguageInput extends Component
             foreach ($this->values as $lang => $value) {
                 $valuesToDisplay[$lang] = $value[$this->fieldDisplay];
             }
+        } else {
+            foreach ($this->values as $lang => $value) {
+                $valuesToDisplay[$lang] = $value;
+            }
         }
 
         return view('components.admin.multilanguage-input', [

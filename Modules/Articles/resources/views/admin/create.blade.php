@@ -15,13 +15,13 @@
                             
                             <div class=form-group">
                                 <x-admin.multilanguage-input :label="trans('admin.title')"
-                                                            :is-required="true"
-                                                            field-name="name"
-                                                            :values="[]"/>
+                                    :is-required="true"
+                                    field-name="name"
+                                    :values="old('name') ? old('name'): []"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="slug">URL</label>
+                                <label for="slug">URL<strong class="text-danger">*</strong></label>
                                 <input type="text"
                                     class="form-control"
                                     id="slug"
@@ -59,26 +59,26 @@
                                     :is-required="true"
                                     :label="trans('admin.desc')"
                                     field-name="description"
-                                    :values="[]"/>
+                                    :values="old('description') ? old('description'): []"/>
                             </div>
 
                             <div class="form-group">
                                 <x-admin.multilanguage-text-area
                                     :is-required="true"
-                                    :label="trans('admin.text')"
+                                    :label="trans('admin.content')"
                                     field-name="text"
-                                    :values="[]"/>
+                                    :values="old('text') ? old('text'): []"/>
                             </div>
 
                             <div class=form-group">
                                 <x-admin.multilanguage-input :label="trans('admin.meta_title')"
-                                                            :is-required="true"
-                                                            field-name="meta_title"
-                                                            :values="[]"/>
+                                    :is-required="false"
+                                    field-name="meta_title"
+                                    :values="[]"/>
                             </div>
                             <div class=form-group">
                                 <x-admin.multilanguage-text-area
-                                    :is-required="true"
+                                    :is-required="false"
                                     :label="trans('admin.meta_description')"
                                     field-name="meta_description"
                                     :values="[]"/>

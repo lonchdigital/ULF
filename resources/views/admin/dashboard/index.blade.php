@@ -6,9 +6,9 @@
             <div class="col-12 box-margin">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">Тестовая Страница</h6>
+                        <h6 class="card-title">Home</h6>
 
-                        <p>hello</p>
+                        <p>We can display anything here!</p>
 
                     </div>
                 </div>

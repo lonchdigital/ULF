@@ -22,7 +22,7 @@
     @stack('head')
 
     <link rel="stylesheet" href="{{ asset('admin_src/style.css') }}">
-
+    <meta name="robots" content="noindex, nofollow">
 </head>
 
 <body>

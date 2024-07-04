@@ -2,7 +2,7 @@
     <!-- Desktop Logo -->
     <div class="ecaps-logo">
         <a href="{{ route('adminDashboard') }}">
-            <img class="desktop-logo" src="{{ asset('admin_src/img/core-img/Logo.png') }}" alt="Desktop Logo">
+            <img class="desktop-logo" src="{{ asset('admin_src/img/core-img/main-logo.png') }}" alt="Desktop Logo">
             <img class="small-logo" src="{{ asset('admin_src/img/core-img/small-logo.png') }}" alt="Mobile Logo">
         </a>
     </div>
@@ -30,7 +30,7 @@
                             'admin.one.car.page',
                         ]) ? 'active' : '' }}">
                         <a href="javascript:void(0)">
-                            <i class='fa fa-folder-open'></i>
+                            <i class='fa fa-cog'></i>
                             <span>{{ trans('admin.settings') }}</span>
                             <i class="fa fa-angle-right"></i>
                         </a>
@@ -45,7 +45,7 @@
                 
                     <li @if( $currentRoute === 'article.index' ) class="active"@endif>
                         <a href="{{ route('article.index') }}">
-                            <i class='fa fa-folder-open'></i>
+                            <i class='fa fa-book'></i>
                             <span>{{ trans('admin.blog') }}</span>
                         </a>
                     </li>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <meta name="viewport" content="width=400, initial-scale=1"> -->
     <title>@yield('title', 'Автопарк')</title>
+    <meta name="robots" content="noindex, nofollow">
 
     @yield('head')
 
