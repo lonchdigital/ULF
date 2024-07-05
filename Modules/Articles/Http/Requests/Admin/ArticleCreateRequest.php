@@ -17,6 +17,11 @@ class ArticleCreateRequest extends FormRequest
                 'unique:pages,slug',
                 'string',
             ],
+            'preview_image' => [
+                'required',
+                'image',
+                'mimes:jpeg,png,jpg',
+            ]
         ];
 
         foreach(['uk', 'ru'] as $lang){
@@ -65,6 +70,9 @@ class ArticleCreateRequest extends FormRequest
 
         $messages['slug.required'] = trans('rules.field') .' "URL" '. trans('rules.required');
         $messages['slug.unique'] = trans('rules.unique_url');
+
+        $messages['preview_image.required'] = trans('rules.field') .' "'. trans('admin.preview') .'" '. trans('rules.required');
+        $messages['preview_image.image'] = trans('rules.field') .' "'. trans('admin.preview') .'" '. trans('rules.image');
 
         foreach(['uk', 'ru'] as $lang){
             $messages['name.' . $lang . '.required'] = trans('rules.field') .' "'. trans('admin.title')  .' (' . $lang . ')" '. trans('rules.required');

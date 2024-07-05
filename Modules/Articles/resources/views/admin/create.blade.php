@@ -45,7 +45,7 @@
                                         <input type="file" name="preview_image" id="preview_image_input" class="custom-input-file">
                                         <label for="preview_image_input">
                                             <i class="fa fa-upload"></i>
-                                            <span>Оберіть зображення…</span>
+                                            <span>{{ trans('admin.choose_image') }}</span>
                                         </label>
                                         @error('preview_image')
                                         <label id="preview_image-error" class="error mt-2 text-danger" for="preview_image">{{ $message }}</label>

@@ -3,9 +3,8 @@
 namespace Modules\Articles\Services\Admin;
 
 use Modules\Articles\Entities\Article;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 final class ArticleCreateService extends ArticleBaseService
 {
@@ -24,6 +23,12 @@ final class ArticleCreateService extends ArticleBaseService
     private function createArticle(array $data): Article
     {
         $dataToUpdate = [];
+
+        $imagePath = self::ARTICLE_IMAGES_FOLDER . '/'  . sha1(time()) . '_' . Str::random(10);
+        $this->storeImage($imagePath, $data['preview_image'], 'webp');
+        $this->storeImage($imagePath, $data['preview_image'], 'jpg');
+
+        $dataToUpdate['image_path'] = $imagePath . '.webp';
 
         foreach ($data['name'] as $lang => $value) {
             $dataToUpdate[$lang]['name'] = $value;

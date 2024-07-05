@@ -58,16 +58,13 @@ class ArticlesService extends ArticleBaseService
     {
         $page = $article->page;
 
+        $this->deleteImage($article->image_path);
+
         $article->pages()->detach($page->id);
         $page->deleteTranslations();
         $page->delete();
 
         $article->deleteTranslations();
         $article->delete();
-
-
-        // if (Storage::disk(config('app.images_disk_default'))->exists($document->preview_image)) {
-        //     Storage::disk(config('app.images_disk_default'))->delete($document->preview_image);
-        // }
     }
 }

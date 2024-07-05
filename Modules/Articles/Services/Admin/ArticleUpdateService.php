@@ -25,6 +25,16 @@ final class ArticleUpdateService extends ArticleBaseService
     {
         $dataToUpdate = [];
 
+        if (isset($data['preview_image'])) {
+            $imagePath = self::ARTICLE_IMAGES_FOLDER . '/'  . sha1(time()) . '_' . Str::random(10);
+
+            $this->storeImage($imagePath, $data['preview_image'], 'webp');
+            $this->storeImage($imagePath, $data['preview_image'], 'jpg');
+
+            $dataToUpdate['image_path'] = $imagePath . '.webp';
+            $this->deleteImage($article->image_path);
+        }
+
         foreach ($data['name'] as $lang => $value) {
             $dataToUpdate[$lang]['name'] = $value;
         }

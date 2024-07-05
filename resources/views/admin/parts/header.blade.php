@@ -41,9 +41,6 @@
 
 
             <li class="nav-item dropdown">
-                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="admin-header-bell">
-                    <i class="bx bx-bell"></i>
-                </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <!-- Top Notifications Area -->
                     <div class="top-notifications-area">

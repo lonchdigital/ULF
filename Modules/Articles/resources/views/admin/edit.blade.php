@@ -22,10 +22,10 @@
                             
                             <div class=form-group">
                                 <x-admin.multilanguage-input :label="trans('admin.title')"
-                                                            :is-required="true"
-                                                            field-name="name"
-                                                            field-display="name"
-                                                            :values="$article->getTranslationsArray()"/>
+                                    :is-required="true"
+                                    field-name="name"
+                                    field-display="name"
+                                    :values="$article->getTranslationsArray()"/>
                             </div>
 
                             <div class="form-group">
@@ -45,7 +45,7 @@
                                 <p style="margin-bottom: 8px">{{ trans('admin.preview') . ' (250px x 100px)' }}</p>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <img style="display: none;" id="article_image" alt="">
+                                        <img @if(isset($article) && isset($article->image_url)) src="{{ $article->image_url }}" @else style="display: none;" @endif id="article_image" alt="">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -53,10 +53,10 @@
                                         <input type="file" name="preview_image" id="preview_image_input" class="custom-input-file">
                                         <label for="preview_image_input">
                                             <i class="fa fa-upload"></i>
-                                            <span>Оберіть зображення…</span>
+                                            <span>{{ trans('admin.choose_image') }}</span>
                                         </label>
                                         @error('preview_image')
-                                        <label id="preview_image-error" class="error mt-2 text-danger" for="preview_image">{{ $message }}</label>
+                                            <label id="preview_image-error" class="error mt-2 text-danger" for="preview_image">{{ $message }}</label>
                                         @enderror
                                     </div>
                                 </div>

@@ -18,12 +18,11 @@ class ArticleUpdateRequest extends ArticleCreateRequest
             'string',
         ];
 
-        // $rules['main_image' ] = [
-        //     'nullable',
-        //     'image',
-        //     'mimes:jpeg,png,jpg',
-        // ];
-
+        $rules['preview_image' ] = [
+            'nullable',
+            'image',
+            'mimes:jpeg,png,jpg',
+        ];
 
         return $rules;
     }

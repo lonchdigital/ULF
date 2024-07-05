@@ -123,4 +123,6 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    // Default disk to save images
+    'images_disk_default' => 'public',
 ];
