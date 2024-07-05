@@ -33,7 +33,7 @@
                                         <li class="list-inline-item list-inline-item--menu menu-for-you">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="404.html">Блог</a></span>
+                                                    <span><a href="4046666666666666.html">Блог</a></span>
                                                 </div>
                                             </div>
                                         </li>

@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 <div class="pagination-wrapper d-flex justify-content-center mt-4 mb-5">
-                    {{-- {{ $articles->links('vendor.pagination.default') }} --}}
+                    {{ $articles->links('vendor.pagination.default') }}
                 </div>
             </div>
         </div>
