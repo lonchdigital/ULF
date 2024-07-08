@@ -36,6 +36,8 @@ class DynamicPageService implements DynamicPage
         return $this->call($request, $page);
     }
 
+
+
     public function slug(Request $request, string $section, string $slug): View
     {
         if($section === 'articles') {
