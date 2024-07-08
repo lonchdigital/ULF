@@ -3,7 +3,7 @@
 
 namespace Modules\Articles\Services\Web;
 
-use Modules\Articles\Entities\Article;
+use Modules\Articles\Models\Article;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class WebService

@@ -2,12 +2,12 @@
 
 namespace Modules\Articles\Services\Admin;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
-use Modules\Articles\Entities\Article;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Modules\Articles\Models\Article;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 final class ArticleUpdateService extends ArticleBaseService
 {

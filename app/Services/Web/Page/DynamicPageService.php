@@ -3,11 +3,11 @@
 namespace App\Services\Web\Page;
 
 use App\Models\Page;
-use Illuminate\Http\Request;
-use App\Contracts\Page\DynamicPage;
 use Illuminate\View\View;
-use Modules\Articles\Entities\ArticlePage;
+use Illuminate\Http\Request;
 use Modules\Cars\Models\CarPage;
+use App\Contracts\Page\DynamicPage;
+use Modules\Articles\Models\ArticlePage;
 
 class DynamicPageService implements DynamicPage
 {

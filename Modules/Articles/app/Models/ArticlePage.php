@@ -1,6 +1,7 @@
 <?php
 
-namespace Modules\Articles\Entities;
+namespace Modules\Articles\Models;
+
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;

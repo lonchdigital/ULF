@@ -2,9 +2,9 @@
 
 namespace Modules\Articles\Services\Admin;
 
-use Modules\Articles\Entities\Article;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use Modules\Articles\Models\Article;
 
 final class ArticleCreateService extends ArticleBaseService
 {

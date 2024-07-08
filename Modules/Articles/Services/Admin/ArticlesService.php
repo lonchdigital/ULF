@@ -2,8 +2,8 @@
 
 namespace Modules\Articles\Services\Admin;
 
+use Modules\Articles\Models\Article;
 use Illuminate\Support\Facades\Storage;
-use Modules\Articles\Entities\Article;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class ArticlesService extends ArticleBaseService

@@ -2,12 +2,9 @@
 
 namespace Modules\Articles\database\seeders;
 
-use App\Models\Page;
-use App\Models\PageTranslation;
 use Illuminate\Database\Seeder;
-use Modules\Articles\Entities\Article;
-use Modules\Articles\Entities\ArticlePage;
-use Modules\Articles\Entities\ArticlePageTranslation;
+use Modules\Articles\Models\ArticlePage;
+use Modules\Articles\Models\ArticlePageTranslation;
 use Modules\Articles\Http\Controllers\Web\ArticlesController;
 
 class ArticlesPageSeeder extends Seeder

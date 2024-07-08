@@ -1,14 +1,12 @@
 <?php
 
-
 namespace Modules\Articles\Services\Admin;
 
-
-use App\Models\Page;
 use Carbon\Carbon;
+use App\Models\Page;
 use Illuminate\Support\Str;
-use Modules\Articles\Entities\Article;
-use Modules\Articles\Entities\ArticlePage;
+use Modules\Articles\Models\Article;
+use Modules\Articles\Models\ArticlePage;
 use Modules\Articles\Http\Controllers\Web\ArticlesController;
 
 class PageService

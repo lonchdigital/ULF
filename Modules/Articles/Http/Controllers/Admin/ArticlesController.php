@@ -4,11 +4,11 @@ namespace Modules\Articles\Http\Controllers\Admin;
 
 use App\Models\Page;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Modules\Articles\Models\Article;
+use Modules\Articles\Services\Admin\ArticlesService;
 use Modules\Articles\Http\Requests\Admin\ArticleCreateRequest;
 use Modules\Articles\Http\Requests\Admin\ArticleUpdateRequest;
-use Illuminate\Routing\Controller;
-use Modules\Articles\Entities\Article;
-use Modules\Articles\Services\Admin\ArticlesService;
 
 
 class ArticlesController extends Controller

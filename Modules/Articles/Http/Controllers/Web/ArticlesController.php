@@ -2,14 +2,11 @@
 
 namespace Modules\Articles\Http\Controllers\Web;
 
-
 use App\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Modules\Articles\Entities\ArticlePage;
+use Modules\Articles\Models\ArticlePage;
 use Modules\Articles\Services\Web\WebService;
-//use Modules\Articles\Entities\ProfessionogramVariety;
-
 
 class ArticlesController extends Controller
 {
@@ -39,11 +36,11 @@ class ArticlesController extends Controller
         ]);
     }
 
-    public function show(Request $request, Page $page)
+    public function show(Request $request, ArticlePage $page)
     {
         return view('articles::web.show', [
             'page' => $page,
-            'article' => $page->articles->first()
+            'article' => $page->article
         ]);
     }
 
