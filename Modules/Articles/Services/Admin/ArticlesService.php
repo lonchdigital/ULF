@@ -60,7 +60,6 @@ class ArticlesService extends ArticleBaseService
 
         $this->deleteImage($article->image_path);
 
-        $article->pages()->detach($page->id);
         $page->deleteTranslations();
         $page->delete();
 

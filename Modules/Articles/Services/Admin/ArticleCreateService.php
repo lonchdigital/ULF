@@ -39,7 +39,7 @@ final class ArticleCreateService extends ArticleBaseService
         foreach ($data['text'] as $lang => $value) {
             $dataToUpdate[$lang]['text'] = $value;
         }
-        
+
         return Article::create($dataToUpdate);
     }
 

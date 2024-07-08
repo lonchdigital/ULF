@@ -6,6 +6,7 @@ namespace Modules\Articles\Http\Controllers\Web;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Articles\Entities\ArticlePage;
 use Modules\Articles\Services\Web\WebService;
 //use Modules\Articles\Entities\ProfessionogramVariety;
 
@@ -27,7 +28,7 @@ class ArticlesController extends Controller
         $this->service = $service;
     }
 
-    public function index(Request $request, Page $page)
+    public function index(Request $request, ArticlePage $page)
     {
         return view('articles::web.index', [
             'page' => $page,

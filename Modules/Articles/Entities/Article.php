@@ -22,7 +22,12 @@ class Article extends Model implements TranslatableContract
     // ];
 
 
-    public function pages()
+    public function page()
+    {
+        return $this->hasOne(ArticlePage::class);
+    }
+
+    /*public function pages()
     {
         return $this->belongsToMany(Page::class);
     }
@@ -30,7 +35,7 @@ class Article extends Model implements TranslatableContract
     public function page(): MorphOne
     {
         return $this->morphOne(Page::class, 'pageable');
-    }
+    }*/
 
     public function imageUrl(): Attribute
     {
