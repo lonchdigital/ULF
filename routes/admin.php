@@ -29,7 +29,8 @@ Route::group([
 //        'middleware' => ['admin_auth']
     ], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('adminDashboard');
-
+        Route::get('/test', [DashboardController::class, 'test'])->name('test');
+        
         Route::prefix('car-common-settings')->group(function () {
             Route::get('edit', [CarCommonSettingsController::class, 'edit'])->name('admin.car-common-settings.edit.page');
             Route::post('edit', [CarCommonSettingsController::class, 'update'])->name('admin.car-common-settings.edit');
