@@ -13,17 +13,16 @@ return new class extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
-            $table->string('vin', 17);
+            $table->string('vin', 17)->nullable();
             $table->smallInteger('manufacturedYear')->nullable();
             $table->unsignedBigInteger('engineVolume')->nullable();
             $table->unsignedBigInteger('mileage')->nullable();
-            $table->foreignId('model_id')->constrained()->onDelete('cascade');
-            $table->foreignId('fuel_type_id')->constrained()->onDelete('cascade');
-            $table->foreignId('transmission_type_id')->constrained()->onDelete('cascade');
-            $table->foreignId('color_type_id')->constrained()->onDelete('cascade');
-            $table->foreignId('equipment_id')->constrained()->onDelete('cascade');
-            $table->foreignId('type_id')->constrained()->onDelete('cascade');
-            $table->foreignId('driver_type_id')->constrained()->onDelete('cascade');
+            $table->foreignId('model_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('fuel_type_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('transmission_type_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('color_type_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('type_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('driver_type_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

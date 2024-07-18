@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreign('car_id')->references('id')->on('cars')->onDelete('cascade');
             $table->string('Url')->nullable();
             $table->unsignedBigInteger('TypeId')->nullable();
-            $table->timestamps();
         });
     }
 

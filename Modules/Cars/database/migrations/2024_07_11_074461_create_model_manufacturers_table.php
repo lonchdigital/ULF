@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('model_manufacturers', function (Blueprint $table) {
             $table->id();
-            
+            $table->unsignedBigInteger('autoria_id')->nullable();
+            $table->unsignedBigInteger('model_manufacturer_id')->nullable();
+            $table->string('name');
             $table->timestamps();
         });
     }

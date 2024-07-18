@@ -2,6 +2,8 @@
 
 namespace Modules\Cars\Services\Admin;
 
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Modules\Cars\Models\Car;
 
 class CarsService extends CarBaseService
 {
@@ -12,7 +14,7 @@ class CarsService extends CarBaseService
     public function __construct(
         CarCreateService $createService,
         CarUpdateService $updateService,
-        CarTypesService $typesService
+        CarTypesService $typesService,
     )
     {
         $this->createService = $createService;
@@ -20,5 +22,16 @@ class CarsService extends CarBaseService
         $this->typesService = $typesService;
     }
 
+
+    /**
+     * @param array $data
+     * @return LengthAwarePaginator
+     */
+    public function getLatestCars($perPage = 10): LengthAwarePaginator
+    {
+        // $query = Car::query()->with('vehicle')->latest();
+        $query = Car::query()->latest();
+        return $query->paginate($perPage);
+    }
 
 }

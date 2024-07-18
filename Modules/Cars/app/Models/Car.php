@@ -5,6 +5,7 @@ namespace Modules\Cars\Models;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
+use Illuminate\Support\Facades\Storage;
 
 class Car extends Model implements TranslatableContract
 {
@@ -20,4 +21,24 @@ class Car extends Model implements TranslatableContract
         'subscription_extentional_id',
         'advertisement_city_id'
     ];
+
+    public function vehicle()
+    {
+        return $this->belongsTo(Vehicle::class);
+    }
+    public function images()
+    {
+        return $this->hasMany(CarImage::class);
+    }
+
+    public function getFullName(): string
+    {
+        return $this->vehicle->model->manufacturer->name .' '. $this->vehicle->model->name .' '. $this->vehicle->manufacturedYear;
+    }
+
+    public function getMainImageUrl(): ?string
+    {
+        $mainImage = $this->images->where('TypeId', 1)->first();
+        return ($mainImage) ? Storage::url($mainImage->Url) : null;
+    }
 }

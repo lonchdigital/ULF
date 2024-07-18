@@ -46,13 +46,4 @@ class CarCommonSettingsController extends Controller
 
         return redirect()->route('admin.car-common-settings.edit.page');
     }
-
-    public function oneCar()
-    {
-
-
-        return view('admin.car-common-settings.one-car', [
-
-        ]);
-    }
 }

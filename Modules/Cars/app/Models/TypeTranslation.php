@@ -4,7 +4,7 @@ namespace Modules\Cars\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ModelManufacturerTranslation extends Model
+class TypeTranslation extends Model
 {
     public $timestamps = false;
     protected $fillable = ['name'];

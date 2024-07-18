@@ -37,9 +37,6 @@
                         <ul class="treeview-menu">
                             <li @if( $currentRoute === 'admin.car-common-settings.edit.page' ) class="active"@endif><a href="{{ route('admin.car-common-settings.edit.page') }}">{{ trans('admin.car_common_settings') }}</a></li>
                         </ul>
-                        <ul class="treeview-menu">
-                            <li @if( $currentRoute === 'admin.one.car.page' ) class="active"@endif><a href="{{ route('admin.one.car.page') }}">{{ 'One Car Page' }}</a></li>
-                        </ul>
                     </li>
 
                 
@@ -47,6 +44,13 @@
                         <a href="{{ route('article.index') }}">
                             <i class='fa fa-book'></i>
                             <span>{{ trans('admin.blog') }}</span>
+                        </a>
+                    </li>
+
+                    <li @if( $currentRoute === 'car.index' ) class="active"@endif>
+                        <a href="{{ route('car.index') }}">
+                            <i class='fa fa-car'></i>
+                            <span>{{ trans('admin.cars_title') }}</span>
                         </a>
                     </li>
 

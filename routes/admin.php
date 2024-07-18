@@ -3,6 +3,7 @@
 //use App\Http\Controllers\Admin\AdminAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
+use Modules\Cars\Http\Controllers\Admin\CarsController;
 use App\Http\Controllers\Admin\CarCommonSettingsController;
 use Modules\Articles\Http\Controllers\Admin\ArticlesController;
 
@@ -34,8 +35,6 @@ Route::group([
         Route::prefix('car-common-settings')->group(function () {
             Route::get('edit', [CarCommonSettingsController::class, 'edit'])->name('admin.car-common-settings.edit.page');
             Route::post('edit', [CarCommonSettingsController::class, 'update'])->name('admin.car-common-settings.edit');
-
-            Route::get('one-car', [CarCommonSettingsController::class, 'oneCar'])->name('admin.one.car.page');
         });
 
 
@@ -46,6 +45,15 @@ Route::group([
             Route::get('/{article}/edit', [ArticlesController::class, 'edit'])->name('article.edit');
             Route::post('/{article}', [ArticlesController::class, 'update'])->name('article.update');
             Route::get('/{article}', [ArticlesController::class, 'destroy'])->name('article.destroy');
+        });
+
+        Route::prefix('cars')->group(function () {
+            Route::get('/', [CarsController::class, 'index'])->name('car.index');
+            // Route::get('/create', [ArticlesController::class, 'create'])->name('article.create');
+            // Route::post('/store', [ArticlesController::class, 'store'])->name('article.store');
+            Route::get('/{car}/edit', [CarsController::class, 'edit'])->name('car.edit');
+            // Route::post('/{article}', [ArticlesController::class, 'update'])->name('article.update');
+            // Route::get('/{article}', [ArticlesController::class, 'destroy'])->name('article.destroy');
         });
 
     });

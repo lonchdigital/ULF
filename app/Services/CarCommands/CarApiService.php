@@ -17,5 +17,28 @@ class CarApiService extends AuthService
 
         return $response->json();
     }
+
+    public function getLotsList($accessToken, int $take = 5, int $skip = 0)
+    {
+        $response = Http::withOptions(['verify' => false])
+            ->withToken($accessToken)
+            ->post($this->baseUrl . '/command/GetSubscriptionLotsList', [
+                'Top' => $take,
+                'Skip' => $skip
+            ]);
+
+        return $response->json();
+    }
+
+    public function getLotInfo($accessToken, array $lotIds)
+    {
+        $response = Http::withOptions(['verify' => false])
+            ->withToken($accessToken)
+            ->post($this->baseUrl . '/command/GetSubscriptionLotInfo', [
+                'LotIds' => $lotIds
+            ]);
+
+        return $response->json();
+    }
     
 }

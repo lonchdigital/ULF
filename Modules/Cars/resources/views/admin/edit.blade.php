@@ -7,9 +7,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="card-head mb-20">
-                            <h4 class="card-head-title">One Car Page</h4>
+                            <h4 class="card-head-title">{{ $car->getFullName() }}</h4>
                         </div>
-
 
                         <div class="form-group">
                             <div class="row">

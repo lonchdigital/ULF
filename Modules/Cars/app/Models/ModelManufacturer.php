@@ -2,14 +2,18 @@
 
 namespace Modules\Cars\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
-use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 
-class ModelManufacturer extends Model implements TranslatableContract
+class ModelManufacturer extends EloquentModel
 {
-    use Translatable;
+    protected $fillable = [
+        'autoria_id',
+        'model_manufacturer_id', 
+        'name'
+    ];
 
-    public $translatedAttributes = ['name'];
-    protected $fillable = [0];
+    public function model()
+    {
+        return $this->hasOne(Model::class);
+    }
 }

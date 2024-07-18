@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
+            // $table->foreignId('vehicle_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('vehicle_id')->constrained()->onDelete('cascade');
             $table->foreignId('car_page_id')->constrained()->onDelete('cascade');
             $table->unsignedBigInteger('lot_id')->nullable();
             $table->string('subscription_category')->nullable();
-            $table->foreignId('subscription_period_id')->constrained()->onDelete('cascade');
-            $table->foreignId('subscription_extentional_id')->constrained()->onDelete('cascade');
-            $table->foreignId('advertisement_city_id')->constrained()->onDelete('cascade');
+            $table->foreignId('subscription_period_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('subscription_extentional_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('advertisement_city_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

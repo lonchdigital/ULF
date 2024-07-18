@@ -3,7 +3,7 @@
 namespace Modules\Cars\Services\Admin;
 
 
-class CarCreateService
+class CarCreateService extends CarBaseService
 {
 
 }

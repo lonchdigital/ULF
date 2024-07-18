@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('car_pages', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('page_id');
+            $table->unsignedBigInteger('page_id')->nullable();
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

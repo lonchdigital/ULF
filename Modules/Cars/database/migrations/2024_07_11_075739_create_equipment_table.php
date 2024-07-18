@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('equipment', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('vehicle_id')->nullable()->constrained()->onDelete('cascade');
             $table->unsignedBigInteger('VehicleId')->nullable();
             $table->unsignedBigInteger('equipment_id')->nullable();
             $table->boolean('HasGasInstallation')->nullable();
@@ -38,6 +39,7 @@ return new class extends Migration
             $table->boolean('HasGasInstallation2')->nullable();
             $table->boolean('HasHeadlightWasher')->nullable();
             $table->boolean('HasHeatingMirrors')->nullable();
+            $table->boolean('hasHeatingSeatsBack')->nullable();
             $table->boolean('HasHeatingSeatDr')->nullable();
             $table->boolean('HasHeatingSeats')->nullable();
             $table->boolean('HasImmobilizer')->nullable();

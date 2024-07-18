@@ -2,11 +2,13 @@
 
 namespace Modules\Cars\Services\Admin;
 
-use Modules\Cars\Models\FuelType;
 use Modules\Cars\Models\Type;
-use Modules\Cars\Models\TransmissionType;
-use Modules\Cars\Models\DriverType;
+use Modules\Cars\Models\Model;
+use Modules\Cars\Models\FuelType;
 use Modules\Cars\Models\ColorType;
+use Modules\Cars\Models\DriverType;
+use Modules\Cars\Models\TransmissionType;
+use Modules\Cars\Models\ModelManufacturer;
 
 class CarTypesService
 {
@@ -102,9 +104,9 @@ class CarTypesService
 
     public function updateAllVehicleColorTypes(array $data)
     {
-        $dataToUpdate = [];
-
         foreach($data as $item) {
+            $dataToUpdate = [];
+            
             $dataToUpdate['color_type_id'] = $item['id'];
             $dataToUpdate['autoria_id'] = $item['autoRiaId'];
 
@@ -117,6 +119,45 @@ class CarTypesService
                 $existingItem->update($dataToUpdate);
             } else {
                 ColorType::create($dataToUpdate);
+            }
+        }
+    }
+
+    public function updateAllManufacturers(array $data)
+    {
+        foreach($data as $item) {
+            $dataToUpdate = [];
+            
+            $dataToUpdate['model_manufacturer_id'] = $item['id'];
+            $dataToUpdate['autoria_id'] = $item['autoRiaId'];
+            $dataToUpdate['name'] = $item['name'];
+
+            $existingItem = ModelManufacturer::where('model_manufacturer_id', $item['id'])->first();
+            if($existingItem) {
+                $existingItem->update($dataToUpdate);
+            } else {
+                ModelManufacturer::create($dataToUpdate);
+            }
+        }
+    }
+
+    public function updateAllVehicleModels(array $data)
+    {
+        foreach($data as $item) {
+            $dataToUpdate = [];
+            
+            $dataToUpdate['model_id'] = $item['id'];
+            $dataToUpdate['autoria_id'] = $item['autoRiaId'];
+            $dataToUpdate['name'] = $item['name'];
+
+            $modelManufacturer = ModelManufacturer::where('model_manufacturer_id', $item['manufacturerId'])->first();
+            $dataToUpdate['model_manufacturer_id'] = ($modelManufacturer) ? $modelManufacturer->id : null;
+
+            $existingItem = Model::where('model_id', $item['id'])->first();
+            if($existingItem) {
+                $existingItem->update($dataToUpdate);
+            } else {
+                Model::create($dataToUpdate);
             }
         }
     }

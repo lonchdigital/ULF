@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('models', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('model_id');
-            $table->foreignId('model_manufacturer_id')->constrained()->onDelete('cascade');
+            $table->foreignId('model_manufacturer_id')->nullable()->constrained()->onDelete('cascade');
             $table->unsignedBigInteger('autoria_id');
+            $table->string('name')->nullable();
             $table->timestamps();
         });
     }

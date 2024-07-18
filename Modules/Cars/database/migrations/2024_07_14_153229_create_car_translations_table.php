@@ -16,7 +16,7 @@ return new class extends Migration
             $table->bigInteger('car_id')->unsigned();
             $table->foreign('car_id')->references('id')->on('cars')->onDelete('cascade');
             $table->string('locale', 10)->index();
-            $table->text('description');
+            $table->text('description')->nullable();
         });
     }
 

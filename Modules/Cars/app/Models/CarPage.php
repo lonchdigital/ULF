@@ -11,5 +11,5 @@ class CarPage extends Model implements TranslatableContract
     use Translatable;
 
     public $translatedAttributes = ['name'];
-    protected $fillable = ['page_id'];
+    protected $fillable = ['page_id', 'slug'];
 }

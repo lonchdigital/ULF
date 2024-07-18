@@ -1855,9 +1855,6 @@ div.tagsinput span.tag a {
 }
 
 .sidebar-menu li a span {
-    -webkit-transition-duration: 500ms;
-    -o-transition-duration: 500ms;
-    transition-duration: 500ms;
     -webkit-box-flex: 0;
     -ms-flex: 0 0 calc(100% - 30px);
     flex: 0 0 calc(100% - 30px);
@@ -2037,9 +2034,6 @@ div.tagsinput span.tag a {
 
 .side-menu-area .sidebar-menu>li>a>span {
     line-height: 1;
-    -webkit-transition-duration: 500ms;
-    -o-transition-duration: 500ms;
-    transition-duration: 500ms;
 }
 
 .sidebar-menu>.active>.treeview-menu {
@@ -12241,8 +12235,8 @@ a.mytooltip {
 
 /* :: Analytic CSS Area */
 .order-stats tbody tr td:first-child {
-    width: 70px;
-    max-width: 70px;
+    width: 100px;
+    max-width: 100px;
 }
 
 .analaytic-img {
@@ -14724,6 +14718,13 @@ mark {
     margin-right: 15px;
 }
 
+td.image-preview-td {
+    max-width: 150px;
+    width: 150px;
+}
+.art-cars-list .art-car-image-preview {
+    width: 150px;
+}
 
 .faq-car-row a,
 .subscribe-benefit-row a {

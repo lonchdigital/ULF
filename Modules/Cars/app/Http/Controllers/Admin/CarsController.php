@@ -22,10 +22,16 @@ class CarsController extends Controller
         $this->service = $service;
     }
 
-    public function index(Request $request, Page $page)
+    public function index()
     {
         return view('cars::admin.index', [
-            // 'articles' => $this->service->getLatestArticles(self::PER_PAGE)
+            'cars' => $this->service->getLatestCars(self::PER_PAGE)
+        ]);
+    }
+    public function edit(Car $car)
+    {
+        return view('cars::admin.edit', [
+            'car' => $car
         ]);
     }
 

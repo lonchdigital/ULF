@@ -2,21 +2,27 @@
 
 namespace Modules\Cars\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Modules\Cars\Database\Factories\VehicleFactory;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
+use Modules\Cars\Models\Model;
 
-class Vehicle extends Model
+class Vehicle extends EloquentModel
 {
-    use HasFactory;
+    protected $fillable = [
+        'vin',
+        'manufacturedYear',
+        'engineVolume',
+        'mileage',
+        'model_id',
+        'fuel_type_id',
+        'transmission_type_id',
+        'color_type_id',
+        'equipment_id',
+        'type_id',
+        'driver_type_id'
+    ];
 
-    /**
-     * The attributes that are mass assignable.
-     */
-    protected $fillable = [];
-
-    protected static function newFactory(): VehicleFactory
+    public function model()
     {
-        //return VehicleFactory::new();
+        return $this->belongsTo(Model::class);
     }
 }
