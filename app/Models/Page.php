@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
+use Modules\Articles\Models\Article;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Articles\Entities\Article;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 
 class Page extends Model implements TranslatableContract
 {

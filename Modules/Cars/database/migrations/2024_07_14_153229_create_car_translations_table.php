@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('car_id')->references('id')->on('cars')->onDelete('cascade');
             $table->string('locale', 10)->index();
             $table->text('description')->nullable();
+            $table->text('label')->nullable();
         });
     }
 

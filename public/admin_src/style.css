@@ -14753,3 +14753,12 @@ td.image-preview-td {
 .month-setting-item .art-remove-button a {
     color: red;
 }
+.art-radio-line {
+    display: flex;
+    align-items: center;
+    height: 37px;
+}
+.art-radio-line .form-check label span {
+    position: relative;
+    top: 2px;
+}

@@ -34,4 +34,9 @@ class CarsService extends CarBaseService
         return $query->paginate($perPage);
     }
 
+    public function updateDocument(Car $car, array $data): Car
+    {
+        return $this->updateService->updateCarFromDashboard($car, $data);
+    }
+
 }

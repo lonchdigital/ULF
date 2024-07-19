@@ -2,11 +2,10 @@
 
 namespace Modules\Cars\database\seeders;
 
-use App\Models\Page;
-use App\Models\PageTranslation;
 use Illuminate\Database\Seeder;
-use Modules\Cars\Entities\Car;
 use Modules\Cars\Http\Controllers\Web\CarsController;
+use Modules\Cars\Models\CarPage;
+use Modules\Cars\Models\CarPageTranslation;
 
 class CarsPageSeeder extends Seeder
 {
@@ -15,23 +14,22 @@ class CarsPageSeeder extends Seeder
      */
     public function run(): void
     {
-        $page = Page::firstOrCreate([
+        $page = CarPage::firstOrCreate([
             'section' => 'cars',
             'slug' => 'cars',
-            'pageable_type' => Car::class,
             'action' => 'index',
             'controller' => CarsController::class,
         ]);
 
-        PageTranslation::firstOrCreate([
-            'page_id' => $page->id,
+        CarPageTranslation::firstOrCreate([
+            'car_page_id' => $page->id,
             'name' => 'Авто',
             'h1' => 'Авто',
             'locale' => 'ua',
         ]);
 
-        PageTranslation::firstOrCreate([
-            'page_id' => $page->id,
+        CarPageTranslation::firstOrCreate([
+            'car_page_id' => $page->id,
             'name' => 'Авто',
             'h1' => 'Авто',
             'locale' => 'ru',

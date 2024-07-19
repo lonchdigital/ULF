@@ -16,7 +16,14 @@ return new class extends Migration
             $table->bigInteger('car_page_id')->unsigned();
             $table->foreign('car_page_id')->references('id')->on('car_pages')->onDelete('cascade');
             $table->string('locale', 10)->index();
-            $table->string('name');
+            $table->string('name')->nullable();
+            $table->string('h1')->nullable();
+            $table->string('text')->nullable();
+            $table->string('seo_text')->nullable();
+            $table->string('description')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_description')->nullable();
+            $table->string('meta_keywords')->nullable();
         });
     }
 

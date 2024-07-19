@@ -1,3 +1,5 @@
+{{-- @dd($gallery) --}}
+
 <section class="gallery-car pb-4 pb-md-7 pb-lg-9">
     <div class="container">
         <div class="row">
@@ -6,127 +8,32 @@
                     <!-- main slider -->
                     <div class="gallery-car--swiper mb-4 mb-xl-5">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <a data-fancybox="gallery" data-src="#gallery-car-video-1">
-                                    <div class="wrap-img">
-                                        <div class="video-wrap">
-                                            <img src="img/gallery-car-1.jpeg" alt="img">
+                            
+                            @foreach ($gallery as $slide)
+                                <div class="swiper-slide">
+                                    <a data-fancybox="gallery" href="{{ '/storage/' . $slide->Url }}">
+                                        <div class="wrap-img">
+                                            <img src="{{ '/storage/' . $slide->Url }}" alt="img">
                                         </div>
-                                    </div>
-                                </a>
-                                <div id="gallery-car-video-1" class="video-wrap" style="display:none">
-                                    <video class="js-player" playsinline controls data-poster="img/gallery-car-1.jpeg">
-                                        <source src="assets/video/example.mp4" type="video/mp4" />
-                                    </video>
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <a data-fancybox="gallery" data-src="#gallery-car-video-2">
-                                    <div class="wrap-img">
-                                        <div class="video-wrap">
-                                            <img src="img/scroll-gallery-car-2.jpeg" alt="img">
-                                        </div>
-                                    </div>
-                                </a>
-                                <div id="gallery-car-video-2" class="video-wrap" style="display:none">
-                                    <video class="js-player" playsinline controls data-poster="img/scroll-gallery-car-2.jpeg">
-                                        <source src="assets/video/example.mp4" type="video/mp4" />
-                                    </video>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <a data-fancybox="gallery" href="img/scroll-gallery-car-3.jpeg">
-                                    <div class="wrap-img">
-                                        <img src="img/scroll-gallery-car-3.jpeg" alt="img">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a data-fancybox="gallery" href="img/scroll-gallery-car-4.jpeg">
-                                    <div class="wrap-img">
-                                        <img src="img/scroll-gallery-car-4.jpeg" alt="img">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a data-fancybox="gallery" href="img/scroll-gallery-car-5.jpeg">
-                                    <div class="wrap-img">
-                                        <img src="img/scroll-gallery-car-5.jpeg" alt="img">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a data-fancybox="gallery" href="img/scroll-gallery-car-5.jpeg">
-                                    <div class="wrap-img">
-                                        <img src="img/scroll-gallery-car-6.jpeg" alt="img">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a data-fancybox="gallery" href="img/scroll-gallery-car-1.jpeg">
-                                    <div class="wrap-img">
-                                        <img src="img/scroll-gallery-car-1.jpeg" alt="img">
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a data-fancybox="gallery" href="img/scroll-gallery-car-2.jpeg">
-                                    <div class="wrap-img">
-                                        <img src="img/scroll-gallery-car-2.jpeg" alt="img">
-                                    </div>
-                                </a>
-                            </div>
+                            @endforeach
+                            
                         </div>
                         <div class="swiper-pagination d-sm-none"></div>
                     </div>
                     <!-- thumbs slider -->
                     <div class="gallery-car-thumbs--swiper d-none d-sm-block">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="wrap-img">
-                                    <div class="video-wrap">
-                                        <img src="img/gallery-car-1.jpeg" alt="img">
+
+                            @foreach ($gallery as $slide)
+                                <div class="swiper-slide">
+                                    <div class="wrap-img">
+                                        <img src="{{ '/storage/' . $slide->Url }}" alt="img">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="wrap-img">
-                                    <div class="video-wrap">
-                                        <img src="img/scroll-gallery-car-2.jpeg" alt="img">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="wrap-img">
-                                    <img src="img/scroll-gallery-car-3.jpeg" alt="img">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="wrap-img">
-                                    <img src="img/scroll-gallery-car-4.jpeg" alt="img">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="wrap-img">
-                                    <img src="img/scroll-gallery-car-5.jpeg" alt="img">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="wrap-img">
-                                    <img src="img/scroll-gallery-car-6.jpeg" alt="img">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="wrap-img">
-                                    <img src="img/scroll-gallery-car-1.jpeg" alt="img">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="wrap-img">
-                                    <img src="img/scroll-gallery-car-2.jpeg" alt="img">
-                                </div>
-                            </div>
-                        </div>
+                            @endforeach
+
                     </div>
                     <div class="mb-2 btn-wrap d-sm-none">
                         <a href="##" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">Назад</a>

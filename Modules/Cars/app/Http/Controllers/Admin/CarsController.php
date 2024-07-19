@@ -4,9 +4,10 @@ namespace Modules\Cars\Http\Controllers\Admin;
 
 use App\Models\Page;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Modules\Cars\Models\Car;
+use Illuminate\Routing\Controller;
 use Modules\Cars\Services\Admin\CarsService;
+use Modules\Cars\Http\Requests\Admin\CarUpdateRequest;
 
 
 class CarsController extends Controller
@@ -33,6 +34,13 @@ class CarsController extends Controller
         return view('cars::admin.edit', [
             'car' => $car
         ]);
+    }
+
+    public function update(Car $car, CarUpdateRequest $request)
+    {
+        return redirect()->route('car.edit', [
+            'car' => $this->service->updateDocument($car, $request->all())
+        ])->with('success', trans('admin.document_updated'));
     }
 
 

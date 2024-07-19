@@ -7,5 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class CarPageTranslation extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'name',
+        'seo_text',
+        'description',
+        'text',
+        'h1',
+        'meta_title',
+        'meta_description',
+        'meta_keywords',
+    ];
 }

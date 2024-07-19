@@ -44,7 +44,7 @@
                                         <td>{{ $car->getFullName() }}</td>
                                         <td>{{ $car->getAttribute('lot_id') }}</td>
                                         <td>{{ $car->vehicle->getAttribute('manufacturedYear') }}</td>
-                                        <td></td>
+                                        <td>{{ App\DataClasses\CarStatusesClass::get($car->status_id)['name'] }}</td>
                                         <td>
                                             {{-- @if($document->page)
                                             <a href="{{ route('slug.page', ['section' => $document->page->section, 'slug' => $document->page->slug]) }}" target="_blank" class="mr-2"><i class="fa fa-eye text-info font-18"></i></a>

@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('car_pages', function (Blueprint $table) {
+        Schema::create('car_faqs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('page_id')->nullable();
-            $table->string('section');
-            $table->string('slug')->unique();
-            $table->string('action')->nullable();
-            $table->string('controller')->nullable();
-            $table->boolean('active')->default(true);
+            $table->foreignId('car_id')->nullable()->constrained('cars')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('car_pages');
+        Schema::dropIfExists('car_faqs');
     }
 };

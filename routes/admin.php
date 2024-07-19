@@ -52,7 +52,7 @@ Route::group([
             // Route::get('/create', [ArticlesController::class, 'create'])->name('article.create');
             // Route::post('/store', [ArticlesController::class, 'store'])->name('article.store');
             Route::get('/{car}/edit', [CarsController::class, 'edit'])->name('car.edit');
-            // Route::post('/{article}', [ArticlesController::class, 'update'])->name('article.update');
+            Route::post('/{car}', [CarsController::class, 'update'])->name('car.update');
             // Route::get('/{article}', [ArticlesController::class, 'destroy'])->name('article.destroy');
         });
 

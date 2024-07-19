@@ -2,6 +2,9 @@
 
 namespace Modules\Cars\Services\Web;
 
+use Modules\Cars\Models\Car;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+
 
 
 class WebService
@@ -11,9 +14,10 @@ class WebService
 
     }
 
-    public function test()
+    public function getCarsCatalog($perPage = 10): LengthAwarePaginator
     {
-        return 'hello I am a Car Service';
+        $query = Car::query()->latest();
+        return $query->paginate($perPage);
     }
 
 }

@@ -10,6 +10,24 @@ class CarPage extends Model implements TranslatableContract
 {
     use Translatable;
 
-    public $translatedAttributes = ['name'];
-    protected $fillable = ['page_id', 'slug'];
+    public $translatedAttributes = [
+        'name', 
+        'seo_text',
+        'meta_title',
+        'meta_description',
+        'meta_keywords',
+    ];
+
+    protected $fillable = [
+        'page_id',
+        'controller',
+        'action',
+        'section',
+        'slug',
+    ];
+
+    public function car()
+    {
+        return $this->hasOne(Car::class);
+    }
 }
