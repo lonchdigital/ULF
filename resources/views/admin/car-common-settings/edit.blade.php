@@ -6,6 +6,13 @@
             <div class="col-12 box-margin">
                 <div class="card">
                     <div class="card-body">
+
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
                         <div class="card-head mb-20">
                             <h4 class="card-head-title">{{ trans('admin.car_common_settings') }}</h4>
                         </div>
@@ -15,9 +22,9 @@
 
                             <section class="mb-50">
                                 <x-admin.multilanguage-input :label="trans('admin.first_payment_note')"
-                                                             :is-required="true"
-                                                             field-name="first_payment_note"
-                                                             :values="[]"/>
+                                    :is-required="false"
+                                    field-name="first_payment_note"
+                                    :values="[]"/>
                             </section>
 
                             <section class="mb-50">
@@ -36,7 +43,7 @@
                                                                 <div class="row" id="benefit-item-{{ $subscribeBenefit->id }}">
                                                                     <div class="col-md-12">
                                                                         <x-admin.multilanguage-input
-                                                                            :is-required="true"
+                                                                            :is-required="false"
                                                                             :label="trans('admin.item')"
                                                                             field-name="subscribe-benefit[{{ $subscribeBenefit->id }}][title]"
                                                                             field-display="title"
@@ -99,7 +106,7 @@
                                                                             </div>
                                                                             <div class="art-input-field">
                                                                                 <x-admin.multilanguage-input
-                                                                                    :is-required="true"
+                                                                                    :is-required="false"
                                                                                     :label="trans('admin.item')"
                                                                                     field-name="subscribe-settings[{{ $subscribeMonthSection['id'] }}][{{ $item->id }}][title]"
                                                                                     field-display="title"
@@ -151,7 +158,7 @@
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <x-admin.multilanguage-input
-                                                                        :is-required="true"
+                                                                        :is-required="false"
                                                                         :label="trans('admin.question')"
                                                                         field-name="faqs[{{ $faqCar->id }}][question]"
                                                                         field-display="question"
@@ -164,7 +171,7 @@
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <x-admin.multilanguage-text-area
-                                                                        :is-required="true"
+                                                                        :is-required="false"
                                                                         :label="trans('admin.answer')"
                                                                         field-name="faqs[{{ $faqCar->id }}][answer]"
                                                                         field-display="answer"
@@ -277,7 +284,7 @@
                                     <div class="row" id="benefit-item-${id}">
                                         <div class="col-md-12">
                                             <x-admin.multilanguage-input
-                                                :is-required="true"
+                                                :is-required="false"
                                                 :label="trans('admin.item')"
                                                 field-name="subscribe-benefit[${id}][title]"
                                                 :values="[]"/>
@@ -314,7 +321,7 @@
                     </div>
                     <div class="art-input-field">
                         <x-admin.multilanguage-input
-                            :is-required="true"
+                            :is-required="false"
                             :label="trans('admin.item')"
                             field-name="subscribe-settings[${tabID}][${id}][title]"
                             :values="[]"/>
@@ -343,7 +350,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <x-admin.multilanguage-input
-                                            :is-required="true"
+                                            :is-required="false"
                                             :label="trans('admin.question')"
                                             field-name="faqs[${$id}][question]"
                                             :values="[]"/>
@@ -355,7 +362,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <x-admin.multilanguage-text-area
-                                            :is-required="true"
+                                            :is-required="false"
                                             :label="trans('admin.answer')"
                                             field-name="faqs[${$id}][answer]"
                                             :values="[]"/>

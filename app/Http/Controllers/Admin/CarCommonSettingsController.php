@@ -44,6 +44,7 @@ class CarCommonSettingsController extends Controller
     {
         $this->service->updatePage($request->all());
 
-        return redirect()->route('admin.car-common-settings.edit.page');
+        return redirect()->route('admin.car-common-settings.edit.page')
+        ->with('success', trans('admin.document_updated'));
     }
 }

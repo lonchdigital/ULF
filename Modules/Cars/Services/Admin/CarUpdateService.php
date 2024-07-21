@@ -46,7 +46,6 @@ class CarUpdateService extends CarBaseService
         $this->syncSubscribePrices($car, $data['month_settings']);
         (isset($data['faqs'])) ? $this->syncFaqs($car, $data['faqs']) : $car->faqs()->delete();
 
-
         $dataToUpdate = [];
         $dataToUpdate['status_id'] = $data['status_id'];
         $dataToUpdate['label_color_id'] = $data['label_color_id'];
@@ -58,8 +57,9 @@ class CarUpdateService extends CarBaseService
         $car->update($dataToUpdate);
 
 
-        // update car page meta
+        // update car page data
         $dataPageToUpdate = [];
+        $dataPageToUpdate['slug'] = $data['slug'];
         foreach ($data['meta_title'] as $lang => $value) {
             $dataPageToUpdate[$lang]['meta_title'] = $value;
         }

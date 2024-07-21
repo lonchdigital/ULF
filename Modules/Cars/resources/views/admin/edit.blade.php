@@ -52,11 +52,24 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label for="slug">URL</label>
+                                <input type="text"
+                                    class="form-control"
+                                    id="slug"
+                                    name="slug"
+                                    value="{{ $car->page->slug }}"
+                                >
+                                @error('slug')
+                                <label id="firstname-error" class="error mt-2 text-danger" for="firstname">{{ $message }}</label>
+                                @enderror
+                            </div>
+
                             <div class="form-group" id="label-line" {{ ($car->status_id === 2) ? 'style=display:none' : '' }}>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <x-admin.multilanguage-input :label="trans('admin.tag')"
-                                                            :is-required="true"
+                                                            :is-required="false"
                                                             field-name="label"
                                                             field-display="label"
                                                             :values="$car->getTranslationsArray()"/>
@@ -222,7 +235,7 @@
 
                             <div class="form-group">
                                 <x-admin.multilanguage-text-area-rich
-                                    :is-required="true"
+                                    :is-required="false"
                                     :label="'SEO блок'"
                                     field-name="seo_data"
                                     :values="[]"/>
@@ -230,14 +243,14 @@
 
                             <div class=form-group">
                                 <x-admin.multilanguage-input :label="trans('admin.meta_title')"
-                                                            :is-required="true"
-                                                            field-name="meta_title"
-                                                            field-display="meta_title"
-                                                            :values="$car->page->getTranslationsArray()"/>
+                                    :is-required="false"
+                                    field-name="meta_title"
+                                    field-display="meta_title"
+                                    :values="$car->page->getTranslationsArray()"/>
                             </div>
                             <div class=form-group">
                                 <x-admin.multilanguage-text-area
-                                    :is-required="true"
+                                    :is-required="false"
                                     :label="trans('admin.meta_description')"
                                     field-name="meta_description"
                                     field-display="meta_description"
@@ -298,7 +311,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <x-admin.multilanguage-input
-                                            :is-required="true"
+                                            :is-required="false"
                                             :label="trans('admin.question')"
                                             field-name="faqs[${$id}][question]"
                                             :values="[]"/>
@@ -310,7 +323,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <x-admin.multilanguage-text-area
-                                            :is-required="true"
+                                            :is-required="false"
                                             :label="trans('admin.answer')"
                                             field-name="faqs[${$id}][answer]"
                                             :values="[]"/>

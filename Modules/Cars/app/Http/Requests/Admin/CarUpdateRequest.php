@@ -13,11 +13,11 @@ class CarUpdateRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            // 'slug' => [
-            //     'required',
-            //     'unique:pages,slug',
-            //     'string',
-            // ],
+            'slug' => [
+                'required',
+                'unique:car_pages,slug,' . $this->route('car')->page->id,
+                'string',
+            ],
             'status_id' => [
                 'required',
                 'integer',

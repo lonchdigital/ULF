@@ -57,6 +57,11 @@ class Car extends Model implements TranslatableContract
         return $this->vehicle->model->manufacturer->name .' '. $this->vehicle->model->name .' '. $this->vehicle->manufacturedYear;
     }
 
+    public function getShortDesc(): string
+    {
+        return $this->vehicle->fuelType->name . ' ';
+    }
+
     public function getMainImageUrl(): ?string
     {
         $mainImage = $this->images->where('TypeId', 1)->first();

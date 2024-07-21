@@ -61,12 +61,19 @@
                                             <div class="wrap-img">
                                                 <img src="{{ $car->getMainImageUrl() }}" alt="Car image">
                                             </div>
-                                            <div class="price mb-1"><span class="currency">$</span> <span class="value">1
-                                                    080</span> / міс.</div>
+                                            @if(count($car->subscribePrices) > 0)
+                                                <div class="price mb-1">
+                                                    <span class="currency">$</span> 
+                                                    <span class="value">{{ $car->subscribePrices->where('section_id', 1)->first()->monthly_payment }}</span> / міс.
+                                                </div>
+                                            @endif
                                             <a href="{{ route('slug.page', ['section' => $car->page->section, 'slug' => $car->page->slug]) }}" class="btn-arrow btn btn-block">
-                                                <span>Бензин, 2.0, Автомат, Повний привод</span>
+                                                <span>{{ $car->getShortDesc() }}</span>
+                                                {{-- <span>Бензин, 2.0, Автомат, Повний привод</span> --}}
                                             </a>
-                                            <div class="discount">&#128293; -20% &#128293;</div>
+                                            @if($car->label)
+                                                <div class="discount">{!! $car->label !!}</div>
+                                            @endif
                                         </div>
                                     </div>
                                 @endforeach

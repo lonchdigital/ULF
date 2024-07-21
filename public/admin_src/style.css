@@ -14725,6 +14725,9 @@ td.image-preview-td {
 .art-cars-list .art-car-image-preview {
     width: 150px;
 }
+.art-cars-list tr td a {
+    color: #495057;
+}
 
 .faq-car-row a,
 .subscribe-benefit-row a {

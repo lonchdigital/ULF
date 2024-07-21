@@ -34,12 +34,9 @@ class CarCommonService
 
     public function updatePage(array $request): void
     {
-//        dd('updatePage!!!', $request);
-
-        $this->syncBenefits($request['subscribe-benefit']);
-        $this->syncSubscribeSettings($request['subscribe-settings']);
-        $this->syncFaqs($request['faqs']);
-
+       (isset($request['subscribe-benefit'])) ? $this->syncBenefits($request['subscribe-benefit']) : $this->syncBenefits([]);
+       (isset($request['subscribe-settings'])) ? $this->syncSubscribeSettings($request['subscribe-settings']) : $this->syncSubscribeSettings([]);
+       (isset($request['faqs'])) ? $this->syncFaqs($request['faqs']) : $this->syncFaqs([]);
     }
 
     private function syncBenefits(array $benefits): void
