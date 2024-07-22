@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Articles\Http\Controllers\Web;
+namespace Modules\Articles\app\Http\Controllers\Web;
 
 use App\Models\Page;
 use Illuminate\Http\Request;
@@ -36,11 +36,13 @@ class ArticlesController extends Controller
         ]);
     }
 
-    public function show(Request $request, ArticlePage $page)
+    public function show(string $slug)
     {
+        $articlePage = ArticlePage::where('slug', $slug)->firstOrFail();
+
         return view('articles::web.show', [
-            'page' => $page,
-            'article' => $page->article
+            'page' => $articlePage,
+            'article' => $articlePage->article
         ]);
     }
 

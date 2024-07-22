@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Http;
 
 class AuthService
 {
-    // public $baseUrl = 'https://api-test.ulf24.com:2223';
+//     public $baseUrl = 'https://api-test.ulf24.com:2223';
     public $baseUrl = 'https://api.ulf24.com';
     public $accessToken;
 

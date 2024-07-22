@@ -3,9 +3,9 @@
 //use App\Http\Controllers\Admin\AdminAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
+use Modules\Articles\app\Http\Controllers\Admin\ArticlesController;
 use Modules\Cars\Http\Controllers\Admin\CarsController;
 use App\Http\Controllers\Admin\CarCommonSettingsController;
-use Modules\Articles\Http\Controllers\Admin\ArticlesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +31,7 @@ Route::group([
     ], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('adminDashboard');
         Route::get('/test', [DashboardController::class, 'test'])->name('test');
-        
+
         Route::prefix('car-common-settings')->group(function () {
             Route::get('edit', [CarCommonSettingsController::class, 'edit'])->name('admin.car-common-settings.edit.page');
             Route::post('edit', [CarCommonSettingsController::class, 'update'])->name('admin.car-common-settings.edit');

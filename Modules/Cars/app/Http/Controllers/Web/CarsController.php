@@ -25,11 +25,13 @@ class CarsController extends Controller
         ]);
     }
 
-    public function show(Request $request, CarPage $page)
+    public function show(string $slug)
     {
+        $carPage = CarPage::where('slug', $slug)->firstOrFail();
+
         return view('cars::web.show', [
-            'page' => $page,
-            'car' => $page->car
+            'page' => $carPage,
+            'car' => $carPage->car
         ]);
     }
 }

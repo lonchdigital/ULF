@@ -15,7 +15,7 @@ class Article extends Model implements TranslatableContract
     use Translatable;
 
     public $translatedAttributes = ['name', 'description', 'text'];
-    protected $fillable = ['image_path'];
+    protected $fillable = ['image_path', 'article_page_id'];
 
     // protected $casts = [
     //     'document_date' => 'datetime'
@@ -24,7 +24,7 @@ class Article extends Model implements TranslatableContract
 
     public function page()
     {
-        return $this->hasOne(ArticlePage::class);
+        return $this->belongsTo(ArticlePage::class, 'article_page_id', 'id');
     }
 
     /*public function pages()

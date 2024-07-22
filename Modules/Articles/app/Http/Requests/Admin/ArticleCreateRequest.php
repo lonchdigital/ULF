@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Articles\Http\Requests\Admin;
+namespace Modules\Articles\app\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 // use app\Traits\LangTrait;
@@ -14,7 +14,7 @@ class ArticleCreateRequest extends FormRequest
         $rules = [
             'slug' => [
                 'required',
-                'unique:pages,slug',
+                'unique:article_pages,slug',
                 'string',
             ],
             'preview_image' => [
@@ -80,7 +80,7 @@ class ArticleCreateRequest extends FormRequest
 
             $messages['description.' . $lang . '.required'] = trans('rules.field') .' "'. trans('admin.desc') .' (' . $lang . ')" '. trans('rules.required');
             $messages['description.' . $lang . '.string'] = trans('rules.field') .' "'. trans('admin.desc') .' (' . $lang . ')" '. trans('rules.string');
-            
+
             $messages['text.' . $lang . '.required'] = trans('rules.field') .' "'. trans('admin.content') .' (' . $lang . ')" '. trans('rules.required');
             $messages['text.' . $lang . '.string'] = trans('rules.field') .' "'. trans('admin.content') .' (' . $lang . ')" '. trans('rules.string');
         }

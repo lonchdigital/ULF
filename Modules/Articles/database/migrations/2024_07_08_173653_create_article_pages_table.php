@@ -13,10 +13,6 @@ return new class extends Migration
     {
         Schema::create('article_pages', function (Blueprint $table) {
             $table->id();
-
-            $table->unsignedBigInteger('article_id')->nullable();
-            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
-
             $table->string('section');
             $table->string('slug')->comment('url-страницы');
             $table->string('action')->nullable();

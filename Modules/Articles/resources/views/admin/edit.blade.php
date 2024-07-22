@@ -19,7 +19,7 @@
 
                         <form class="forms-sample" action="{{ route('article.update', $article) }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            
+
                             <div class=form-group">
                                 <x-admin.multilanguage-input :label="trans('admin.title')"
                                     :is-required="true"

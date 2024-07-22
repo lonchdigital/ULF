@@ -1,14 +1,14 @@
 <?php
 
-namespace Modules\Articles\Http\Controllers\Admin;
+namespace Modules\Articles\app\Http\Controllers\Admin;
 
 use App\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Articles\app\Http\Requests\Admin\ArticleCreateRequest;
+use Modules\Articles\app\Http\Requests\Admin\ArticleUpdateRequest;
 use Modules\Articles\Models\Article;
 use Modules\Articles\Services\Admin\ArticlesService;
-use Modules\Articles\Http\Requests\Admin\ArticleCreateRequest;
-use Modules\Articles\Http\Requests\Admin\ArticleUpdateRequest;
 
 
 class ArticlesController extends Controller

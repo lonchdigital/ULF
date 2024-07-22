@@ -5,17 +5,16 @@ namespace Modules\Articles\Services\Admin;
 use Carbon\Carbon;
 use App\Models\Page;
 use Illuminate\Support\Str;
+use Modules\Articles\app\Http\Controllers\Web\ArticlesController;
 use Modules\Articles\Models\Article;
 use Modules\Articles\Models\ArticlePage;
-use Modules\Articles\Http\Controllers\Web\ArticlesController;
 
 class PageService
 {
-    public function create(Article $article, array $data): void
+    public function create(array $data): ArticlePage
     {
         $dataToUpdate = [];
 
-        $dataToUpdate['article_id'] = $article->id;
         $dataToUpdate['section'] = config('articles.section');
         $dataToUpdate['slug'] = $data['slug'];
         $dataToUpdate['action'] = config('articles.new_document_action');
@@ -32,7 +31,7 @@ class PageService
             $dataToUpdate[$lang]['meta_description'] = $value;
         }
 
-        ArticlePage::create($dataToUpdate);
+        return ArticlePage::create($dataToUpdate);
     }
 
     public function update(ArticlePage $page, array $data)

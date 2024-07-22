@@ -5,6 +5,7 @@ namespace Modules\Articles\Services\Admin;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Modules\Articles\Models\Article;
+use Modules\Articles\Models\ArticlePage;
 
 final class ArticleCreateService extends ArticleBaseService
 {
@@ -13,14 +14,14 @@ final class ArticleCreateService extends ArticleBaseService
         $article = null;
 
         DB::transaction(function () use ($data, &$article) {
-            $article = $this->createArticle($data);
-            $this->pageService->create($article, $data);
+            $page = $this->pageService->create($data);
+            $article = $this->createArticle($data, $page);
         });
 
         return $article;
     }
 
-    private function createArticle(array $data): Article
+    private function createArticle(array $data, ArticlePage $page): Article
     {
         $dataToUpdate = [];
 
@@ -28,6 +29,7 @@ final class ArticleCreateService extends ArticleBaseService
         $this->storeImage($imagePath, $data['preview_image'], 'webp');
         $this->storeImage($imagePath, $data['preview_image'], 'jpg');
 
+        $dataToUpdate['article_page_id'] = $page->id;
         $dataToUpdate['image_path'] = $imagePath . '.webp';
 
         foreach ($data['name'] as $lang => $value) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Articles\Http\Requests\Admin;
+namespace Modules\Articles\app\Http\Requests\Admin;
 
 
 class ArticleUpdateRequest extends ArticleCreateRequest
@@ -14,7 +14,7 @@ class ArticleUpdateRequest extends ArticleCreateRequest
 
         $rules['slug'] = [
             'required',
-            'unique:pages,slug,' . $this->route('article')->page->id,
+            'unique:article_pages,slug,' . $this->route('article')->page->id,
             'string',
         ];
 

@@ -53,13 +53,13 @@
                                 <div class="content col-12 col-md-6 col-lg-4">
                                     <div class="our-fleet-preview--item">
                                         <div class="wrap-img">
-                                            <a href="{{ route('slug.page', ['section' => $article->page->section, 'slug' => $article->page->slug]) }}">
+                                            <a href="{{ route('blog.single.page', ['slug' => $article->page->slug]) }}">
                                                 <img src="{{ $article->image_url }}" alt="Image">
                                                 {{-- <span class="item-img-date">07 Травня 2024</span> --}}
                                             </a>
                                         </div>
                                         <div class="name">
-                                            <a href="{{ route('slug.page', ['section' => $article->page->section, 'slug' => $article->page->slug]) }}">
+                                            <a href="{{ route('blog.single.page', ['slug' => $article->page->slug]) }}">
                                                 {{ $article->name }}
                                             </a>
                                         </div>
@@ -79,10 +79,10 @@
                         </nav>
                     </div>
                 </div>
-                
+
             </div>
         </section>
-        
+
 </main>
 
 @endsection

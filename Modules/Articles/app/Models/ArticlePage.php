@@ -35,8 +35,7 @@ class ArticlePage extends Model implements TranslatableContract
 
     public function article()
     {
-        return $this->belongsTo(Article::class);
+        return $this->hasOne(Article::class);
     }
-
 
 }

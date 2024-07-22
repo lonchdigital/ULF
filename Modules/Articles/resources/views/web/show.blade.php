@@ -1,6 +1,6 @@
 @extends('web.layout.index')
 
-@section('title', 'Single Car!!!')
+@section('title', 'Single article!!!')
 
 @section('head')
 @endsection
@@ -21,7 +21,7 @@
                             <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
                                 <ol class="breadcrumb mb-0">
                                     <li class="breadcrumb-item"><a href="{{ route('main.page') }}">Головна</a></li>
-                                    <li class="breadcrumb-item"><a href="{{ route('section.page', $page->section) }}">Блог</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ route('blog.page') }}">Блог</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">{{ $article->name }}</li>
                                 </ol>
                             </nav>

@@ -11,11 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('article_page', function (Blueprint $table) {
-            $table->unsignedBigInteger('article_id');
-            $table->unsignedBigInteger('page_id');
+        Schema::create('article_translations', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('article_id')->unsigned();
+            $table->string('locale', 10)->index();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->text('text')->nullable();
+
             $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
-            $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -24,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('article_page');
+        Schema::dropIfExists('article_translations');
     }
 };

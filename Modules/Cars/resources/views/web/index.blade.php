@@ -53,7 +53,7 @@
                     <div class="row">
                         <div class="col mx-auto">
                             <div class="our-fleet-preview row">
-                                
+
                                 @foreach ($cars as $car)
                                     <div class="content col-12 col-md-6 col-lg-4">
                                         <div class="our-fleet-preview--item">
@@ -63,11 +63,11 @@
                                             </div>
                                             @if(count($car->subscribePrices) > 0)
                                                 <div class="price mb-1">
-                                                    <span class="currency">$</span> 
+                                                    <span class="currency">$</span>
                                                     <span class="value">{{ $car->subscribePrices->where('section_id', 1)->first()->monthly_payment }}</span> / міс.
                                                 </div>
                                             @endif
-                                            <a href="{{ route('slug.page', ['section' => $car->page->section, 'slug' => $car->page->slug]) }}" class="btn-arrow btn btn-block">
+                                            <a href="{{ route('car.single.page', ['slug' => $car->page->slug]) }}" class="btn-arrow btn btn-block">
                                                 <span>{{ $car->getShortDesc() }}</span>
                                                 {{-- <span>Бензин, 2.0, Автомат, Повний привод</span> --}}
                                             </a>
@@ -77,7 +77,7 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                
+
                             </div>
                         </div>
                     </div>

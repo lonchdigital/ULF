@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('article_translations', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('article_id')->unsigned();
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->text('text')->nullable();
 
-            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
+            $table->string('image_path', 120);
+            $table->unsignedBigInteger('article_page_id')->nullable();
+            $table->foreign('article_page_id')->references('id')->on('article_pages')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('article_translations');
+        Schema::dropIfExists('articles');
     }
 };
