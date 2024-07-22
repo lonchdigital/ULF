@@ -1,6 +1,6 @@
 {
-  "_jquery-CqDs7TUd.js": {
-    "file": "assets/jquery-CqDs7TUd.js",
+  "_jquery-vEc8DvAz.js": {
+    "file": "assets/jquery-vEc8DvAz.js",
     "name": "jquery"
   },
   "resources/css/app.css": {
@@ -43,21 +43,21 @@
     ]
   },
   "resources/js/libs.js": {
-    "file": "assets/libs-Cclc0eUR.js",
+    "file": "assets/libs-DQtJ-TGY.js",
     "name": "libs",
     "src": "resources/js/libs.js",
     "isEntry": true,
     "imports": [
-      "_jquery-CqDs7TUd.js"
+      "_jquery-vEc8DvAz.js"
     ]
   },
   "resources/js/main.js": {
-    "file": "assets/main-gKK_aaFe.js",
+    "file": "assets/main-ftc8WdHb.js",
     "name": "main",
     "src": "resources/js/main.js",
     "isEntry": true,
     "imports": [
-      "_jquery-CqDs7TUd.js"
+      "_jquery-vEc8DvAz.js"
     ]
   },
   "resources/scss/fonts/Montserrat-Black.woff": {
