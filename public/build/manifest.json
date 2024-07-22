@@ -1,20 +1,24 @@
 {
-  "_jquery-vEc8DvAz.js": {
-    "file": "assets/jquery-vEc8DvAz.js",
+  "_jquery-CqDs7TUd.js": {
+    "file": "assets/jquery-CqDs7TUd.js",
     "name": "jquery"
   },
   "resources/css/app.css": {
-    "file": "assets/app-CBSMltbt.css",
+    "file": "assets/app-C95XYyTd.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
+  "resources/img/icons/icons.svg": {
+    "file": "assets/icons-CH-K8qS0.svg",
+    "src": "resources/img/icons/icons.svg"
+  },
   "resources/js/app.js": {
-    "file": "assets/app-D_Ngf9qG.js",
+    "file": "assets/app-CcDMwM5M.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-DETKnzhO.css"
+      "assets/app-6NMcLX_L.css"
     ],
     "assets": [
       "assets/Montserrat-Black-DHRMOOaf.woff2",
@@ -34,25 +38,26 @@
       "assets/Montserrat-SemiBold-CVwy29yH.woff2",
       "assets/Montserrat-SemiBold-CezpTGMO.woff",
       "assets/Montserrat-Thin-DZnZU91S.woff2",
-      "assets/Montserrat-Thin-D_BYdjTx.woff"
+      "assets/Montserrat-Thin-D_BYdjTx.woff",
+      "assets/icons-CH-K8qS0.svg"
     ]
   },
   "resources/js/libs.js": {
-    "file": "assets/libs-DQtJ-TGY.js",
+    "file": "assets/libs-Cclc0eUR.js",
     "name": "libs",
     "src": "resources/js/libs.js",
     "isEntry": true,
     "imports": [
-      "_jquery-vEc8DvAz.js"
+      "_jquery-CqDs7TUd.js"
     ]
   },
   "resources/js/main.js": {
-    "file": "assets/main-ftc8WdHb.js",
+    "file": "assets/main-gKK_aaFe.js",
     "name": "main",
     "src": "resources/js/main.js",
     "isEntry": true,
     "imports": [
-      "_jquery-vEc8DvAz.js"
+      "_jquery-CqDs7TUd.js"
     ]
   },
   "resources/scss/fonts/Montserrat-Black.woff": {

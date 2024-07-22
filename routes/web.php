@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\DynamicPageController;
 
@@ -11,7 +12,15 @@ Route::group([
 //    'middleware' => 'verified'
 ], function () {
 
-    Route::get('/', [DynamicPageController::class, 'index'])->name('main.page');
+
+
+    Route::get('/', [HomeController::class, 'index'])->name('main.page');
+
+
+
+
+    // TODO:: change routes to more flexible
+//    Route::get('/', [DynamicPageController::class, 'index'])->name('main.page');
     Route::get('/{section}', [DynamicPageController::class, 'section'])->name('section.page');
     Route::get('/{section}/{slug}', [DynamicPageController::class, 'slug'])->name('slug.page');
 });
