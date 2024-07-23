@@ -2,10 +2,11 @@
 
 //use App\Http\Controllers\Admin\AdminAuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
-use Modules\Articles\app\Http\Controllers\Admin\ArticlesController;
 use Modules\Cars\Http\Controllers\Admin\CarsController;
 use App\Http\Controllers\Admin\CarCommonSettingsController;
+use Modules\Articles\app\Http\Controllers\Admin\ArticlesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,11 @@ Route::group([
         Route::prefix('car-common-settings')->group(function () {
             Route::get('edit', [CarCommonSettingsController::class, 'edit'])->name('admin.car-common-settings.edit.page');
             Route::post('edit', [CarCommonSettingsController::class, 'update'])->name('admin.car-common-settings.edit');
+        });
+
+        Route::prefix('home-page-settings')->group(function () {
+            Route::get('edit', [HomeController::class, 'edit'])->name('admin.home-page-settings.edit.page');
+            Route::post('edit', [HomeController::class, 'update'])->name('admin.home-page-settings.edit');
         });
 
 

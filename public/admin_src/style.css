@@ -14729,10 +14729,12 @@ td.image-preview-td {
     color: #495057;
 }
 
+.home-benefits-row a,
 .faq-car-row a,
 .subscribe-benefit-row a {
     color: #3c4858;
 }
+.home-benefits-row a i,
 .faq-car-row a i,
 .subscribe-benefit-row a i {
     color: red;
@@ -14764,4 +14766,8 @@ td.image-preview-td {
 .art-radio-line .form-check label span {
     position: relative;
     top: 2px;
+}
+
+.art-running-text textarea {
+    height: 200px;
 }
