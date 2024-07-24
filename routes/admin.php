@@ -3,11 +3,12 @@
 //use App\Http\Controllers\Admin\AdminAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\DashboardController;
 use Modules\Cars\Http\Controllers\Admin\CarsController;
 use App\Http\Controllers\Admin\CarCommonSettingsController;
+use Modules\Clients\Http\Controllers\Admin\ClientsController;
 use Modules\Articles\app\Http\Controllers\Admin\ArticlesController;
-use App\Http\Controllers\Admin\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,15 @@ Route::group([
             Route::get('/{article}/edit', [ArticlesController::class, 'edit'])->name('article.edit');
             Route::post('/{article}', [ArticlesController::class, 'update'])->name('article.update');
             Route::get('/{article}', [ArticlesController::class, 'destroy'])->name('article.destroy');
+        });
+        
+        Route::prefix('clients')->group(function () {
+            Route::get('/', [ClientsController::class, 'index'])->name('client.index');
+            Route::get('/create', [ClientsController::class, 'create'])->name('client.create');
+            Route::post('/store', [ClientsController::class, 'store'])->name('client.store');
+            Route::get('/{article}/edit', [ClientsController::class, 'edit'])->name('client.edit');
+            Route::post('/{article}', [ClientsController::class, 'update'])->name('client.update');
+            Route::get('/{article}', [ClientsController::class, 'destroy'])->name('client.destroy');
         });
 
         Route::prefix('cars')->group(function () {

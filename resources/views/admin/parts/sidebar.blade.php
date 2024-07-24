@@ -46,6 +46,12 @@
                             <span>{{ trans('admin.blog') }}</span>
                         </a>
                     </li>
+                    <li @if( $currentRoute === 'client.index' ) class="active"@endif>
+                        <a href="{{ route('client.index') }}">
+                            <i class='fa fa-user'></i>
+                            <span>{{ trans('admin.clients_history') }}</span>
+                        </a>
+                    </li>
 
                     <li @if( $currentRoute === 'car.index' ) class="active"@endif>
                         <a href="{{ route('car.index') }}">
