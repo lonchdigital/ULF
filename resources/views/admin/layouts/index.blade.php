@@ -23,6 +23,7 @@
 
     <link rel="stylesheet" href="{{ asset('admin_src/style.css') }}">
     <meta name="robots" content="noindex, nofollow">
+    @livewireStyles
 </head>
 
 <body>
@@ -68,7 +69,7 @@
 <script src="{{ asset('admin_src/js/settings/personal-consultations-common.js') }}"></script>
 
 @stack('scripts')
-
+@livewireScripts
 </body>
 
 </html>

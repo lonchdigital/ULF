@@ -29,4 +29,10 @@ class HomeController
         return view('web.home.show');
     }
 
+    public function faq()
+    {
+        $page = Page::where('action', 'faq')->firstOrFail();
+
+        return view('web.pages.faq');
+    }
 }

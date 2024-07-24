@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use Modules\Cars\Http\Controllers\Admin\CarsController;
 use App\Http\Controllers\Admin\CarCommonSettingsController;
 use Modules\Articles\app\Http\Controllers\Admin\ArticlesController;
+use App\Http\Controllers\Admin\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,14 @@ Route::group([
             Route::get('/{car}/edit', [CarsController::class, 'edit'])->name('car.edit');
             Route::post('/{car}', [CarsController::class, 'update'])->name('car.update');
             // Route::get('/{article}', [ArticlesController::class, 'destroy'])->name('article.destroy');
+        });
+
+        Route::prefix('/pages')->name('admin.pages.')->group(function() {
+            Route::get('/', [PageController::class, 'index'])->name('index');
+            Route::get('/{page}/edit', [PageController::class, 'edit'])->name('edit');
+
+            Route::get('/{page}/create-faq', [PageController::class, 'createFaq'])->name('create-faq');
+            Route::get('/{page}/edit-faq/{faq}', [PageController::class, 'editFaq'])->name('edit-faq');
         });
 
     });

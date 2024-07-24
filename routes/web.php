@@ -26,6 +26,7 @@ Route::group([
     Route::get('/catalog', [CarsController::class, 'index'])->name('catalog.page');
     Route::get('/product/{slug}', [CarsController::class, 'show'])->name('car.single.page');
 
+    Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 
 
     // TODO:: change routes to more flexible

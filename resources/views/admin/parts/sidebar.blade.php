@@ -39,7 +39,7 @@
                         </ul>
                     </li>
 
-                
+
                     <li @if( $currentRoute === 'article.index' ) class="active"@endif>
                         <a href="{{ route('article.index') }}">
                             <i class='fa fa-book'></i>
@@ -54,6 +54,12 @@
                         </a>
                     </li>
 
+                    <li @if(Route::is('admin.pages.*')) class="active"@endif>
+                        <a href="{{ route('admin.pages.index') }}">
+                            <i class="fa fa-file-powerpoint-o"></i>
+                            <span>Cторінки</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>

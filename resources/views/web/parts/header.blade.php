@@ -40,7 +40,7 @@
                                         <li class="list-inline-item list-inline-item--menu menu-for-you">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="asked-questions.html">Часті питання</a></span>
+                                                    <span><a href="{{ route('faq') }}">Часті питання</a></span>
                                                 </div>
                                             </div>
                                         </li>
