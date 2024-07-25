@@ -55,7 +55,8 @@ class ClientsService extends ClientBaseService
      */
     public function removeDocument(Client $client): void
     {
-        $this->deleteImage($client->image_path);
+        deleteImage($client->image_path);
+        deleteVideo($client->video);
 
         $client->deleteTranslations();
         $client->delete();

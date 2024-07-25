@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
@@ -10,8 +11,27 @@ function storeImage(string $path, UploadedFile $image, string $format, $quality 
     Storage::disk(config('app.images_disk_default'))->put($path . '.'.$format, $image);
 }
 
-function deleteImage(string $path): void
+function storeVideo(string $path, UploadedFile $video, string $filename): bool
 {
+    return Storage::disk(config('app.images_disk_default'))->putFileAs($path, $video, $filename);
+}
+function deleteVideo(string|null $path): void
+{
+    if(is_null($path)){
+        return;
+    }
+
+    if (Storage::disk(config('app.images_disk_default'))->exists($path)) {
+        Storage::disk(config('app.images_disk_default'))->delete($path);
+    }
+}
+
+function deleteImage(string|null $path): void
+{
+    if(is_null($path)){
+        return;
+    }
+
     // remove webp
     if (Storage::disk(config('app.images_disk_default'))->exists($path)) {
         Storage::disk(config('app.images_disk_default'))->delete($path);

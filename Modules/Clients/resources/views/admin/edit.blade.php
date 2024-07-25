@@ -6,6 +6,9 @@
             <div class="col-12 box-margin">
                 <div class="card">
                     <div class="card-body">
+                        <div class="card-head mb-20">
+                            <h4 class="card-head-title">{{ trans('admin.edit_history') }}</h4>
+                        </div>
 
                         @if(session('success'))
                             <div class="alert alert-success">
@@ -13,39 +16,39 @@
                             </div>
                         @endif
 
-                        <div class="card-head mb-20">
-                            <h4 class="card-head-title">{{ trans('admin.edit_article') }}</h4>
-                        </div>
-
-                        <form class="forms-sample" action="{{ route('article.update', $article) }}" method="POST" enctype="multipart/form-data">
+                        <form class="forms-sample" action="{{ route('client.update', ['client' => $client]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class=form-group">
-                                <x-admin.multilanguage-input :label="trans('admin.title')"
-                                    :is-required="true"
-                                    field-name="name"
-                                    field-display="name"
-                                    :values="$article->getTranslationsArray()"/>
+                                <x-admin.multilanguage-input :label="trans('admin.name')"
+                                     :is-required="false"
+                                     field-name="name"
+                                     field-display="name"
+                                     :values="$client->getTranslationsArray()"/>
+                            </div>
+
+                            <div class=form-group">
+                                <x-admin.multilanguage-input :label="trans('admin.history_title')"
+                                     :is-required="false"
+                                     field-name="history_title"
+                                     field-display="history_title"
+                                     :values="$client->getTranslationsArray()"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="slug">URL</label>
-                                <input type="text"
-                                    class="form-control"
-                                    id="slug"
-                                    name="slug"
-                                    value="{{ $article->page->slug }}"
-                                >
-                                @error('slug')
-                                <label id="firstname-error" class="error mt-2 text-danger" for="firstname">{{ $message }}</label>
-                                @enderror
+                                <x-admin.multilanguage-text-area
+                                    :is-required="false"
+                                    :label="trans('admin.desc')"
+                                    field-name="description"
+                                    field-display="description"
+                                    :values="$client->getTranslationsArray()"/>
                             </div>
 
                             <div class="form-group">
-                                <p style="margin-bottom: 8px">{{ trans('admin.preview') . ' (250px x 100px)' }}</p>
+                                <p style="margin-bottom: 8px">{{ trans('admin.preview') . ' (760px x 1084px)' }}</p>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <img @if(isset($article) && isset($article->image_url)) src="{{ $article->image_url }}" @else style="display: none;" @endif id="article_image" alt="">
+                                        <img @if(isset($client) && isset($client->image_url)) src="{{ $client->image_url }}" style="width: 300px" @else style="display: none;" @endif id="article_image" alt="">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -56,45 +59,21 @@
                                             <span>{{ trans('admin.choose_image') }}</span>
                                         </label>
                                         @error('preview_image')
-                                            <label id="preview_image-error" class="error mt-2 text-danger" for="preview_image">{{ $message }}</label>
+                                        <label id="preview_image-error" class="error mt-2 text-danger" for="preview_image">{{ $message }}</label>
                                         @enderror
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <x-admin.multilanguage-text-area
-                                    :is-required="true"
-                                    :label="trans('admin.desc')"
-                                    field-name="description"
-                                    field-display="description"
-                                    :values="$article->getTranslationsArray()"/>
-                            </div>
 
                             <div class="form-group">
-                                <x-admin.multilanguage-text-area
-                                    :is-required="true"
-                                    :label="trans('admin.text')"
-                                    field-name="text"
-                                    field-display="text"
-                                    :values="$article->getTranslationsArray()"/>
-                            </div>
+                                <label for="video">video (MP4)</label>
+                                <input type="file" class="form-control" name="video" accept="video/mp4">
+                                {{ $client->video }}
 
-
-                            <div class=form-group">
-                                <x-admin.multilanguage-input :label="trans('admin.meta_title')"
-                                    :is-required="true"
-                                    field-name="meta_title"
-                                    field-display="meta_title"
-                                    :values="$article->page->getTranslationsArray()"/>
-                            </div>
-                            <div class=form-group">
-                                <x-admin.multilanguage-text-area
-                                    :is-required="true"
-                                    :label="trans('admin.meta_description')"
-                                    field-name="meta_description"
-                                    field-display="meta_description"
-                                    :values="$article->page->getTranslationsArray()"/>
+                                @error('video')
+                                <label id="firstname-error" class="error mt-2 text-danger" for="firstname">{{ $message }}</label>
+                                @enderror
                             </div>
 
                             <button type="submit" class="btn btn-primary mr-2">{{ trans('admin.save') }}</button>

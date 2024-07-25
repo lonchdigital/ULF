@@ -54,14 +54,14 @@ Route::group([
             Route::post('/{article}', [ArticlesController::class, 'update'])->name('article.update');
             Route::get('/{article}', [ArticlesController::class, 'destroy'])->name('article.destroy');
         });
-        
+
         Route::prefix('clients')->group(function () {
             Route::get('/', [ClientsController::class, 'index'])->name('client.index');
             Route::get('/create', [ClientsController::class, 'create'])->name('client.create');
             Route::post('/store', [ClientsController::class, 'store'])->name('client.store');
-            Route::get('/{article}/edit', [ClientsController::class, 'edit'])->name('client.edit');
-            Route::post('/{article}', [ClientsController::class, 'update'])->name('client.update');
-            Route::get('/{article}', [ClientsController::class, 'destroy'])->name('client.destroy');
+            Route::get('/{client}/edit', [ClientsController::class, 'edit'])->name('client.edit');
+            Route::post('/{client}', [ClientsController::class, 'update'])->name('client.update');
+            Route::get('/{client}', [ClientsController::class, 'destroy'])->name('client.destroy');
         });
 
         Route::prefix('cars')->group(function () {

@@ -12,7 +12,7 @@
 
                         <form class="forms-sample" action="{{ route('client.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            
+
                             <div class=form-group">
                                 <x-admin.multilanguage-input :label="trans('admin.name')"
                                     :is-required="false"
@@ -29,7 +29,7 @@
 
                             <div class="form-group">
                                 <x-admin.multilanguage-text-area
-                                    :is-required="true"
+                                    :is-required="false"
                                     :label="trans('admin.desc')"
                                     field-name="description"
                                     :values="old('description') ? old('description'): []"/>
@@ -57,13 +57,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="video">video</label>
-                                <input type="text"
-                                    class="form-control"
-                                    id="video"
-                                    name="video"
-                                    value="{{ old('video') }}"
-                                >
+                                <label for="video">video (MP4)</label>
+                                <input type="file" class="form-control" name="video" accept="video/mp4">
+
                                 @error('video')
                                 <label id="firstname-error" class="error mt-2 text-danger" for="firstname">{{ $message }}</label>
                                 @enderror
