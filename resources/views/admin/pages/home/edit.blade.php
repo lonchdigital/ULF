@@ -24,7 +24,7 @@
                                 <div class="card-head mb-20">
                                     <h6 class="card-head-title">Hero header</h6>
                                 </div>
-    
+
                                 <div class="form-group">
                                     <p style="margin-bottom: 8px">{{ trans('admin.bg_image') . ' (250px x 100px)' }}</p>
                                     <div class="row">
@@ -45,20 +45,20 @@
                                         </div>
                                     </div>
                                 </div>
-    
+
                                 <div class="form-group">
                                     <label for="video">Video</label>
                                     <input type="text"
                                         class="form-control"
                                         id="video"
                                         name="hero[video]"
-                                        value="{{ (!is_null($homeMainBlock)) ? $homeMainBlock->video: [] }}"
+                                        value="{{ (!is_null($homeMainBlock)) ? $homeMainBlock->video: '' }}"
                                     >
                                     @error('video')
                                     <label id="firstname-error" class="error mt-2 text-danger" for="firstname">{{ $message }}</label>
                                     @enderror
                                 </div>
-    
+
                                 <div class="form-group">
                                     <x-admin.multilanguage-input :label="trans('admin.title')"
                                         :is-required="false"
@@ -66,7 +66,7 @@
                                         field-display="title"
                                         :values="(!is_null($homeMainBlock)) ? $homeMainBlock->getTranslationsArray(): []"/>
                                 </div>
-    
+
                                 <div class="form-group art-running-text">
                                     <x-admin.multilanguage-text-area
                                         :is-required="false"
@@ -75,7 +75,7 @@
                                         field-display="running_text"
                                         :values="(!is_null($homeMainBlock)) ? $homeMainBlock->getTranslationsArray(): []"/>
                                 </div>
-    
+
                                 <div class="form-group">
                                     <x-admin.multilanguage-input :label="trans('admin.description')"
                                         :is-required="false"
@@ -83,9 +83,9 @@
                                         field-display="description"
                                         :values="(!is_null($homeMainBlock)) ? $homeMainBlock->getTranslationsArray(): []"/>
                                 </div>
-    
+
                                 <div class="row">
-    
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <x-admin.multilanguage-input :label="trans('admin.button_one')"
@@ -95,7 +95,7 @@
                                                 :values="(!is_null($homeMainBlock)) ? $homeMainBlock->getTranslationsArray(): []"/>
                                         </div>
                                     </div>
-    
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <x-admin.multilanguage-input :label="trans('admin.button_two')"
@@ -105,10 +105,10 @@
                                                 :values="(!is_null($homeMainBlock)) ? $homeMainBlock->getTranslationsArray(): []"/>
                                         </div>
                                     </div>
-    
+
                                 </div>
                             </section>
-                            
+
                             <hr class="my-5">
 
                             <section class="mb-50">
@@ -216,7 +216,7 @@
                                 <div class="card-head mb-20">
                                     <h6 class="card-head-title">Ready to drive?</h6>
                                 </div>
-    
+
                                 <div class="form-group">
                                     <p style="margin-bottom: 8px">{{ trans('admin.image') . ' (250px x 100px)' }}</p>
                                     <div class="row">
@@ -237,7 +237,7 @@
                                         </div>
                                     </div>
                                 </div>
-        
+
                                 <div class="form-group">
                                     <x-admin.multilanguage-input :label="trans('admin.title')"
                                         :is-required="false"
@@ -245,7 +245,7 @@
                                         field-display="title"
                                         :values="(!is_null($homeDriveBlock)) ? $homeDriveBlock->getTranslationsArray(): []"/>
                                 </div>
-    
+
                                 <div class="form-group">
                                     <x-admin.multilanguage-text-area :label="trans('admin.description')"
                                         :is-required="false"
@@ -301,9 +301,9 @@
                                         </div>
                                     </div>
                                 </div>
-    
+
                                 <div class="row">
-    
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <x-admin.multilanguage-input :label="trans('admin.button_one')"
@@ -313,7 +313,7 @@
                                                 :values="(!is_null($homeDriveBlock)) ? $homeDriveBlock->getTranslationsArray(): []"/>
                                         </div>
                                     </div>
-    
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <x-admin.multilanguage-input :label="trans('admin.button_two')"
@@ -323,7 +323,7 @@
                                                 :values="(!is_null($homeDriveBlock)) ? $homeDriveBlock->getTranslationsArray(): []"/>
                                         </div>
                                     </div>
-    
+
                                 </div>
                             </section>
 

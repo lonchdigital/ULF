@@ -6,42 +6,55 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Modules\Articles\Models\Article;
 use Modules\Articles\Models\ArticlePage;
+use Modules\Clients\Models\Client;
 
 final class ClientCreateService extends ClientBaseService
 {
-    public function make(array $data): Article|null
+    public function make(array $data): Client|null
     {
-        $article = null;
+        $client = null;
 
-        DB::transaction(function () use ($data, &$article) {
-            $article = $this->createArticle($data, $page);
+        DB::transaction(function () use ($data, &$client) {
+            $client = $this->createClient($data);
         });
 
-        return $article;
+        return $client;
     }
 
-    private function createArticle(array $data, ArticlePage $page): Article
+    private function createClient(array $data): Client
     {
         $dataToUpdate = [];
 
-        $imagePath = self::ARTICLE_IMAGES_FOLDER . '/'  . sha1(time()) . '_' . Str::random(10);
-        $this->storeImage($imagePath, $data['preview_image'], 'webp');
-        $this->storeImage($imagePath, $data['preview_image'], 'jpg');
 
-        $dataToUpdate['article_page_id'] = $page->id;
-        $dataToUpdate['image_path'] = $imagePath . '.webp';
+        if(isset($data['preview_image'])) {
+            $imagePath = self::CLIENT_MEDIA_FOLDER . '/'  . sha1(time()) . '_' . Str::random(10);
+            storeImage($imagePath, $data['preview_image'], 'webp');
+            storeImage($imagePath, $data['preview_image'], 'jpg');
+            $dataToUpdate['image_path'] = $imagePath . '.webp';
+        }
+
+        if(isset($data['video'])) {
+            $imagePath = self::CLIENT_MEDIA_FOLDER;
+            $filename = sha1(time()) . '_' . Str::random(10) . '.' . $data['video']->getClientOriginalExtension();
+            if(storeVideo($imagePath, $data['video'], $filename)) {
+                $dataToUpdate['video'] = $imagePath .'/'. $filename;
+            }
+        }
 
         foreach ($data['name'] as $lang => $value) {
             $dataToUpdate[$lang]['name'] = $value;
         }
+        foreach ($data['history_title'] as $lang => $value) {
+            $dataToUpdate[$lang]['history_title'] = $value;
+        }
         foreach ($data['description'] as $lang => $value) {
             $dataToUpdate[$lang]['description'] = $value;
         }
-        foreach ($data['text'] as $lang => $value) {
-            $dataToUpdate[$lang]['text'] = $value;
-        }
 
-        return Article::create($dataToUpdate);
+
+//        dd('createArticle', $dataToUpdate);
+
+        return Client::create($dataToUpdate);
     }
 
 }

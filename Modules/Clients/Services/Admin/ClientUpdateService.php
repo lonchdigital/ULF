@@ -11,37 +11,46 @@ final class ClientUpdateService extends ClientBaseService
     public function make(Client $client, array $data)
     {
         DB::transaction(function () use (&$client, $data) {
-            $this->updateArticle($client, $data);
+            $this->updateClient($client, $data);
         });
 
         return $client;
     }
 
-    private function updateArticle(Client $client, array $data): bool
+    private function updateClient(Client $client, array $data): bool
     {
         $dataToUpdate = [];
 
         if (isset($data['preview_image'])) {
-            $imagePath = self::ARTICLE_IMAGES_FOLDER . '/'  . sha1(time()) . '_' . Str::random(10);
+            $imagePath = self::CLIENT_MEDIA_FOLDER . '/'  . sha1(time()) . '_' . Str::random(10);
 
-            $this->storeImage($imagePath, $data['preview_image'], 'webp');
-            $this->storeImage($imagePath, $data['preview_image'], 'jpg');
+            storeImage($imagePath, $data['preview_image'], 'webp');
+            storeImage($imagePath, $data['preview_image'], 'jpg');
 
             $dataToUpdate['image_path'] = $imagePath . '.webp';
-            $this->deleteImage($article->image_path);
+            deleteImage($client->image_path);
+        }
+
+        if(isset($data['video'])) {
+            $imagePath = self::CLIENT_MEDIA_FOLDER;
+            $filename = sha1(time()) . '_' . Str::random(10) . '.' . $data['video']->getClientOriginalExtension();
+            if(storeVideo($imagePath, $data['video'], $filename)) {
+                $dataToUpdate['video'] = $imagePath .'/'. $filename;
+            }
+            deleteVideo($client->video);
         }
 
         foreach ($data['name'] as $lang => $value) {
             $dataToUpdate[$lang]['name'] = $value;
         }
+        foreach ($data['history_title'] as $lang => $value) {
+            $dataToUpdate[$lang]['history_title'] = $value;
+        }
         foreach ($data['description'] as $lang => $value) {
             $dataToUpdate[$lang]['description'] = $value;
         }
-        foreach ($data['text'] as $lang => $value) {
-            $dataToUpdate[$lang]['text'] = $value;
-        }
 
-        return $article->update($dataToUpdate);
+        return $client->update($dataToUpdate);
     }
 
 }

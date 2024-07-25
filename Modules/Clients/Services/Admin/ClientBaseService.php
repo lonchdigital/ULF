@@ -5,6 +5,6 @@ namespace Modules\Clients\Services\Admin;
 
 class ClientBaseService
 {
-    protected const CLIENT_IMAGES_FOLDER = 'clients-images';
+    protected const CLIENT_MEDIA_FOLDER = 'clients-media';
 
 }
