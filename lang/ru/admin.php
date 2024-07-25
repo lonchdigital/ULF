@@ -53,6 +53,8 @@ return [
     'clients_history' => 'Истории клиентов',
     'add_client' => 'Добавить клиента',
     'add_history' => 'Добавить историю',
+    'edit_history' => 'Редактировать историю',
+    'history_title' => 'Заголовок истории',
     'client' => 'Клиент',
     'name' => 'Имя',
 ];
