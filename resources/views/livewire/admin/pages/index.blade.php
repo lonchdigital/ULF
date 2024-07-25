@@ -24,7 +24,7 @@
                         <tbody>
                         @foreach($this->pages as $page)
                             <tr>
-                                <td>{{ $page->title ?? $page->action }}</td>
+                                <td>{{ $page->title ?? __('page_name.' .$page->action) }}</td>
                                 <td style="text-align: right">
                                     {{-- @if($document->page)
                                     <a href="{{ route('slug.page', ['section' => $document->page->section, 'slug' => $document->page->slug]) }}" target="_blank" class="mr-2"><i class="fa fa-eye text-info font-18"></i></a>

@@ -33,6 +33,6 @@ class HomeController
     {
         $page = Page::where('action', 'faq')->firstOrFail();
 
-        return view('web.pages.faq');
+        return view('web.pages.faq', compact('page'));
     }
 }

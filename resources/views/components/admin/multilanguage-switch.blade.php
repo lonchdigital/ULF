@@ -20,6 +20,8 @@
                         $(this).addClass('active').addClass('show');
                     }
                 });
+
+                Livewire.dispatch('languageSwitched', { lang: languageCode });
             });
         });
     </script>

@@ -33,33 +33,28 @@
                     <div class="row">
                         <div class="col-12 col-lg-10 mx-auto">
                             <div class="row accordion" id="accordion-questions">
+                                @forelse($page->faqs as $faq)
                                 <div class="col-12 content">
                                     <div class="card">
-                                        <div class="card-header p-0" id="heading-accordion-question-1">
+                                        <div class="card-header p-0" id="heading-accordion-question-{{ $loop->iteration }}">
                                             <div class="h4 mb-0">
                                                 <div class="btn btn-link collapsed" data-toggle="collapse"
-                                                    data-target="#collapse-accordion-question-1" aria-expanded="false"
-                                                    aria-controls="collapse-accordion-question-1">Що таке підписка на
-                                                    автомобіль?</div>
+                                                    data-target="#collapse-accordion-question-{{ $loop->iteration }}" aria-expanded="false"
+                                                    aria-controls="collapse-accordion-question-{{ $loop->iteration }}">{{ $faq->question }}</div>
                                             </div>
                                         </div>
-                                        <div id="collapse-accordion-question-1" class="collapse"
-                                            aria-labelledby="heading-accordion-question-1"
+                                        <div id="collapse-accordion-question-{{ $loop->iteration }}" class="collapse"
+                                            aria-labelledby="heading-accordion-question-{{ $loop->iteration }}"
                                             data-parent="#accordion-questions">
-                                            <div class="card-body">Підписанням цієї згоди Я, власник персональних даних
-                                                (надалі – Клієнт), надаю свою згоду/дозвіл на:<br>
-                                                обробку ТОВ «УЛФ-ФІНАНС» Персональних даних (будь-якої інформації, що
-                                                стосується мене, в тому числі, однак не виключно інформації щодо прізвища,
-                                                власного імені, по батькові, паспортних даних, ідентифікаційного коду, дати
-                                                та місця народження, громадянства, адреси проживання та реєстрації,
-                                                сімейного, соціального, майнового становища, освіти, професії, доходів,
-                                                номерів контактних телефонів/факсів, адреси електронної пошти, тощо (надалі
-                                                – “Персональні дані”)) Власника персональних даних з метою:
+                                            <div class="card-body">
+                                                {{ $faq->answer }}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 content">
+                                @empty
+                                @endif
+                                {{-- <div class="col-12 content">
                                     <div class="card">
                                         <div class="card-header p-0" id="heading-accordion-question-2">
                                             <div class="h4 mb-0">
@@ -330,7 +325,7 @@
                                             <div class="card-body">Що таке підписка на автомобіль?</div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
