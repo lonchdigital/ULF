@@ -12,5 +12,6 @@ class ArticlesDatabaseSeeder extends Seeder
     public function run(): void
     {
          $this->call([ArticlesPageSeeder::class]);
+         $this->call([SeedMakeArticlesPostsSeeder::class]);
     }
 }
