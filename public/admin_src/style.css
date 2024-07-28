@@ -14643,6 +14643,9 @@ tbody tr.active {
 .bg-main {
     background: #fff;
 }
+.md-modal .bg-main {
+    background: #00afff;
+}
 .art-modal-buttons a {
     display: block;
     margin: 0 auto;

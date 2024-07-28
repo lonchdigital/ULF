@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Web\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\DynamicPageController;
-use Modules\Articles\app\Http\Controllers\Web\ArticlesController;
 use Modules\Cars\Http\Controllers\Web\CarsController;
+use Modules\Clients\Http\Controllers\Web\ClientsController;
+use Modules\Articles\app\Http\Controllers\Web\ArticlesController;
 
 
 require __DIR__.'/auth.php';
@@ -13,8 +14,6 @@ Route::group([
     'namespace' => 'Web',
 //    'middleware' => 'verified'
 ], function () {
-
-
 
     Route::get('/', [HomeController::class, 'index'])->name('main.page');
 
@@ -25,6 +24,9 @@ Route::group([
     // Cars
     Route::get('/catalog', [CarsController::class, 'index'])->name('catalog.page');
     Route::get('/product/{slug}', [CarsController::class, 'show'])->name('car.single.page');
+
+    // Customer stories
+    Route::get('/customer-stories', [ClientsController::class, 'index'])->name('clients.page');
 
     Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 
