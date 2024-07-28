@@ -12,28 +12,28 @@
                                         <li class="list-inline-item list-inline-item--menu menu-for-you">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="index.html">Головна</a></span>
+                                                    <span><a href="{{ route('main.page') }}">Головна</a></span>
                                                 </div>
                                             </div>
                                         </li>
                                         <li class="list-inline-item list-inline-item--menu menu-for-you">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="catalog.html">Автопарк</a></span>
+                                                    <span><a href="{{ route('catalog.page') }}">Автопарк</a></span>
                                                 </div>
                                             </div>
                                         </li>
                                         <li class="list-inline-item list-inline-item--menu menu-for-you">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="customer-stories.html">Історії клієнтів</a></span>
+                                                    <span><a href="{{ route('clients.page') }}">Історії клієнтів</a></span>
                                                 </div>
                                             </div>
                                         </li>
                                         <li class="list-inline-item list-inline-item--menu menu-for-you">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="4046666666666666.html">Блог</a></span>
+                                                    <span><a href="{{ route('blog.page') }}">Блог</a></span>
                                                 </div>
                                             </div>
                                         </li>
@@ -47,7 +47,7 @@
                                         <li class="list-inline-item list-inline-item--menu menu-for-you">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="404.html">Контакти</a></span>
+                                                    <span><a href="#">Контакти</a></span>
                                                 </div>
                                             </div>
                                         </li>

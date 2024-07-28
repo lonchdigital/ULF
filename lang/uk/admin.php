@@ -44,7 +44,6 @@ return [
     'choose_image' => 'Оберіть зображення…',
     'image' => 'Зображення',
     'year' => 'Рік',
-    'status' => 'Статус',
     'cars_title' => 'Авто',
     'action' => 'Дія',
     'blue' => 'Синій',
@@ -57,4 +56,5 @@ return [
     'history_title' => 'Заголовок історії',
     'client' => 'Клієнт',
     'name' => 'Ім\'я',
+    'pages_title' => 'Сторінки',
 ];
