@@ -63,7 +63,7 @@
                     <li @if(Route::is('admin.pages.*')) class="active"@endif>
                         <a href="{{ route('admin.pages.index') }}">
                             <i class="fa fa-file-powerpoint-o"></i>
-                            <span>Cторінки</span>
+                            <span>Список FAQs</span>
                         </a>
                     </li>
                 </ul>

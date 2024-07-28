@@ -1,6 +1,7 @@
 <?php
 
 //use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\PageFAQController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PageController;
@@ -73,12 +74,14 @@ Route::group([
             // Route::get('/{article}', [ArticlesController::class, 'destroy'])->name('article.destroy');
         });
 
-        Route::prefix('/pages')->name('admin.pages.')->group(function() {
-            Route::get('/', [PageController::class, 'index'])->name('index');
-            Route::get('/{page}/edit', [PageController::class, 'edit'])->name('edit');
 
-            Route::get('/{page}/create-faq', [PageController::class, 'createFaq'])->name('create-faq');
-            Route::get('/{page}/edit-faq/{faq}', [PageController::class, 'editFaq'])->name('edit-faq');
+
+        Route::prefix('/faqs/pages')->name('admin.pages.')->group(function() {
+            Route::get('/', [PageFAQController::class, 'index'])->name('index');
+            Route::get('/{page}/edit', [PageFAQController::class, 'edit'])->name('edit');
+
+            Route::get('/{page}/create-faq', [PageFAQController::class, 'createFaq'])->name('create-faq');
+            Route::get('/{page}/edit-faq/{faq}', [PageFAQController::class, 'editFaq'])->name('edit-faq');
         });
 
     });
