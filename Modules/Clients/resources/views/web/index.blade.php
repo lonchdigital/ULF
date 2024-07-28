@@ -54,9 +54,8 @@
                                             </video>
                                         </div>
                                         <div class="scroll-gallery--content">
-                                            <div class="scroll-gallery--head mb-2">Моє перше авто</div>
-                                            <p class="mb-0">Взяв авто в підписку на пів року для того щоб визначитись з
-                                                вподобаннями...</p>
+                                            <div class="scroll-gallery--head mb-2">{{ $client->history_title }}</div>
+                                            <p class="mb-0">{{ $client->description }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -71,15 +70,14 @@
                                             </div>
                                         </a>
                                         <div class="scroll-gallery--content">
-                                            <div class="scroll-gallery--head mb-2">Моє перше авто</div>
-                                            <p class="mb-0">Взяв авто в підписку на пів року для того щоб визначитись з
-                                                вподобаннями...</p>
+                                            <div class="scroll-gallery--head mb-2">{{ $client->history_title }}</div>
+                                            <p class="mb-0">{{ $client->description }}</p>
                                         </div>
                                     </div>
                                 </div>
                             @endif
                         @endforeach
-                        
+
                     </div>
                     <div class="row">
                         <div class="col col-sm-auto mx-auto">

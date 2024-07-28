@@ -51,9 +51,6 @@ final class ClientCreateService extends ClientBaseService
             $dataToUpdate[$lang]['description'] = $value;
         }
 
-
-//        dd('createArticle', $dataToUpdate);
-
         return Client::create($dataToUpdate);
     }
 
