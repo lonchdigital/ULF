@@ -5,7 +5,7 @@
                 <div class="col">
                     <nav class="navbar navbar-expand-lg flex-column p-0">
                         <div class="navbar-inner d-flex flex-wrap align-items-center justify-content-between w-100 p-3 px-lg-0">
-                            <a class="navbar-brand p-0" href="index.html"><img src="{{ asset('static_images/main-logo.png') }}" alt="logo"></a>
+                            <a class="navbar-brand p-0" href="{{ route('main.page') }}"><img src="{{ asset('static_images/main-logo.png') }}" alt="logo"></a>
                             <div class="collapse navbar-collapse justify-content-between order-last" id="navbarSupportedContent">
                                 <div class="header-main--desk d-none d-lg-flex align-items-center justify-content-between w-100">
                                     <ul class="navbar-nav list-inline w-100 justify-content-center">
