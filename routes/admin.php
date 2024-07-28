@@ -74,6 +74,11 @@ Route::group([
             // Route::get('/{article}', [ArticlesController::class, 'destroy'])->name('article.destroy');
         });
 
+        Route::prefix('pages')->group(function () {
+            Route::get('/', [PageController::class, 'index'])->name('page.index');
+            Route::get('/{page}/edit', [PageController::class, 'edit'])->name('page.edit');
+        });
+
 
 
         Route::prefix('/faqs/pages')->name('admin.pages.')->group(function() {

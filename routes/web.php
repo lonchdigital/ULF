@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\PageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\DynamicPageController;
@@ -27,6 +28,8 @@ Route::group([
 
     // Customer stories
     Route::get('/customer-stories', [ClientsController::class, 'index'])->name('clients.page');
+
+    Route::get('/{slug}', [PageController::class, 'show'])->name('page.single.page');
 
     Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 

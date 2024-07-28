@@ -21,7 +21,9 @@ class HomePageService
         // dd($request);
 
         $this->updateHomeMainBlock($request['hero']);
-        $this->syncBenefits($request['home-benefit']);
+        if(isset($request['home-benefit'])) {
+            $this->syncBenefits($request['home-benefit']);
+        }
         $this->updateHomeDriveBlock($request['drive']);
 
 
@@ -77,7 +79,7 @@ class HomePageService
     {
         $dataToUpdate = [];
         $existingBenefits = HomeBenefitBlock::all();
-        $benefitsToSync = []; 
+        $benefitsToSync = [];
 
         if ($benefitsRows) {
 
@@ -85,26 +87,26 @@ class HomePageService
 
                 foreach ($benefits as $benefit_id => $benefitLanguages) {
                     $benefitsToSync[$row][$benefit_id]['id'] = $benefit_id; // add id
-    
+
                     foreach ($benefitLanguages as $benefit) {
-    
+
                         foreach ($benefit as $lang => $value) {
                             $dataToUpdate[$lang] = ['title' => $value];
                         }
-    
+
                         $existingBenefit = $existingBenefits->where('row', $row)->where('id', $benefit_id)->first();
-    
+
                         $dataToUpdate['row'] = $row;
                         if( !is_null($existingBenefit) ) {
                             $existingBenefit->update($dataToUpdate);
                         } else {
                             HomeBenefitBlock::create($dataToUpdate);
                         }
-    
+
                     }
                 }
             }
-            
+
         }
 
         // dd('stop', $benefitsToSync);
@@ -114,9 +116,9 @@ class HomePageService
             $existingBenefitsInRequest = $benefitsToSyncItems ? array_filter(array_column($benefitsToSyncItems, 'id'), function ($item) {
                 return $item !== null;
             }): [];
-    
+
             $benefitsToDelete = $existingBenefits->where('row', $row)->whereNotIn('id', $existingBenefitsInRequest);
-    
+
             foreach ($benefitsToDelete as $benefitToDelete) {
                 $benefitToDelete->deleteTranslations();
                 $benefitToDelete->delete();

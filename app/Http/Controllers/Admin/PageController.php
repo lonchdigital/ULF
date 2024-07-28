@@ -11,21 +11,18 @@ class PageController extends Controller
 {
     public function index()
     {
-        return view('admin.pages.index');
+        $allPages = Page::all();
+
+        return view('admin.pages.index', [
+            'homePage' => $allPages->where('key', 'homepage')->first(),
+            'pages' => $allPages->where('key', null)
+        ]);
     }
 
     public function edit(Page $page)
     {
-        return view('admin.pages.edit', compact('page'));
+        dd('page edit', $page->name);
     }
 
-    public function createFaq(Page $page)
-    {
-        return view('admin.pages.faq.create', compact('page'));
-    }
 
-    public function editFaq(Page $page, Faq $faq)
-    {
-        return view('admin.pages.faq.edit', compact('page', 'faq'));
-    }
 }
