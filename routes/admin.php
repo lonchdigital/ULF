@@ -1,6 +1,7 @@
 <?php
 
 //use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AutomatchController;
 use App\Http\Controllers\Admin\PageFAQController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
@@ -79,7 +80,9 @@ Route::group([
             Route::get('/{page}/edit', [PageController::class, 'edit'])->name('page.edit');
         });
 
-
+        Route::prefix('/automatch')->name('admin.automatch.')->group(function() {
+            Route::get('/', [AutomatchController::class, 'index'])->name('index');
+        });
 
         Route::prefix('/faqs/pages')->name('admin.pages.')->group(function() {
             Route::get('/', [PageFAQController::class, 'index'])->name('index');

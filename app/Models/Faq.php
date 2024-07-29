@@ -11,6 +11,6 @@ class Faq extends Model implements TranslatableContract
     use Translatable;
 
     public $translatedAttributes = ['question', 'answer'];
-    protected $fillable = ['page_id'];
+    protected $fillable = ['page_id', 'sort'];
 
 }

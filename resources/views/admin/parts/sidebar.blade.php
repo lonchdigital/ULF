@@ -46,6 +46,12 @@
                             <span>{{ trans('admin.blog') }}</span>
                         </a>
                     </li>
+                    <li @if( $currentRoute === 'admin.automatch.index' ) class="active"@endif>
+                        <a href="{{ route('admin.automatch.index') }}">
+                            <i class="fa fa-heart"></i>
+                            <span>Automatch</span>
+                        </a>
+                    </li>
                     <li @if( $currentRoute === 'client.index' ) class="active"@endif>
                         <a href="{{ route('client.index') }}">
                             <i class='fa fa-user'></i>

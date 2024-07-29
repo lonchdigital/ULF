@@ -1,6 +1,8 @@
 const TinderCards = document.body.querySelector('.tinder-cards');
 
 if (TinderCards) {
+    let favorites = [];
+
 	// Get all the cards
 	const cards = TinderCards.querySelectorAll('.card');
 
@@ -19,11 +21,20 @@ if (TinderCards) {
 	let cardsEnded = false; // Variable to track if cards are ended
 	initCard(current)
 
-	let isAnimationInProgress = false; // Додана змінна для відстеження анімації
+	let isAnimationInProgress = false;
 
 	let lastZIndex = zIndexCounter;
 
 	document.querySelector('.tinder .i-like').onclick = () => {
+        const nameElement = current.querySelector('.name');
+        const nameValue = nameElement ? nameElement.textContent : null;
+
+        if (nameValue) {
+            favorites.push(nameValue);
+        }
+
+        console.log(favorites.join(', '));
+
 		if (!isAnimationInProgress) { // Перевіряємо, чи не триває анімація
 			isAnimationInProgress = true; // Позначаємо, що розпочата анімація
 			moveX = 1;
@@ -41,6 +52,13 @@ if (TinderCards) {
 	}
 
 	document.querySelector('.tinder .i-favorite').onclick = () => {
+        const nameElement = current.querySelector('.name');
+        const nameValue = nameElement ? nameElement.textContent : null;
+
+        if (nameValue) {
+            favorites.push(nameValue);
+        }
+
 		if (!isAnimationInProgress) {
 			isAnimationInProgress = true;
 			current.classList.add('favorite'); // Додати клас "favorite" поточній картці
@@ -139,6 +157,32 @@ if (TinderCards) {
 		setTimeout(() => current.style.transition = '', 100)
 	}
 
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("tinderForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('tinderForm');
+            const formData = new FormData(form);
+
+            formData.append('favorite_cars', favorites.join(', '));
+
+            console.log(formData);
+
+            fetch('/api/favorite-cars', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Form submitted successfully!');
+                } else {
+                    alert('There was an error submitting the form.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
 }
 // else {
 // 	// Якщо елемент не знайдено, виведіть повідомлення або виконайте альтернативні дії

@@ -47,7 +47,7 @@
                                         <li class="list-inline-item list-inline-item--menu menu-for-you">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="#">Контакти</a></span>
+                                                    <span><a href="{{ route('contacts') }}">Контакти</a></span>
                                                 </div>
                                             </div>
                                         </li>

@@ -16,11 +16,11 @@
                                 <div class="mb-2">
                                     <a href="{{ route('main.page') }}" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">Назад</a>
                                 </div>
-                                <div class="h3 font-m font-weight-bolder mb-2">{{ $page->name }}</div>
+                                <div class="h3 font-m font-weight-bolder mb-2">{{ $page->name ?? '' }}</div>
                                 <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
                                     <ol class="breadcrumb mb-0">
                                         <li class="breadcrumb-item"><a href="{{ route('main.page') }}">Головна</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">{{ $page->name }}</li>
+                                        <li class="breadcrumb-item active" aria-current="page">{{ $page->name ?? '' }}</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -32,7 +32,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-lg-10 mx-auto">
-                            {!! $page->text !!}
+                            {!! $page->text ?? '' !!}
                         </div>
                     </div>
                 </div>

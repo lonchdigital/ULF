@@ -10,8 +10,22 @@
 
                             @if($this->locale == 'uk')
                                 @forelse($this->faqs as $index => $faq)
-                                    <div class="col-12 faq-car-row pb-1 mb-4" id="faq-car-id-2">
-                                        <div class="border border-secondary rounded p-3">
+                                    <div class="col-12 faq-car-row pb-1 mb-4 d-flex justify-content-start" id="faq-car-id-2">
+                                        <div class="col-md-1">
+                                            @if ($loop->iteration !== 1)
+                                                <div style="cursor: pointer;" wire:click="newPosition(-1, {{ $index }})">
+                                                    <i class="fa fa-sort-up"></i>
+                                                </div>
+                                            @endif
+                                            {{ $faq['sort'] }}
+                                            @if (!$loop->last)
+                                                <div style="cursor: pointer;" wire:click="newPosition(+1, {{ $index }})">
+                                                    <i class="fa fa-sort-desc"></i>
+                                                </div>
+                                            @endif
+                                        </div>
+
+                                        <div class="border border-secondary rounded p-3 col-md-11">
                                             <div class="row justify-content-between align-items-center">
 
                                                 <div class="col-md-12">
@@ -80,8 +94,22 @@
 
                             @if($this->locale == 'ru')
                                 @forelse($this->faqs as $index => $faq)
-                                    <div class="col-12 faq-car-row pb-1 mb-4" id="faq-car-id-2">
-                                        <div class="border border-secondary rounded p-3">
+                                    <div class="col-12 faq-car-row pb-1 mb-4 d-flex justify-content-between" id="faq-car-id-2">
+                                        <div class="col-md-1">
+                                            @if ($loop->iteration !== 1)
+                                                <div style="cursor: pointer;" wire:click="newPosition(-1, {{ $index }})">
+                                                    <i class="fa fa-sort-up"></i>
+                                                </div>
+                                            @endif
+                                            {{ $faq['sort'] }}
+                                            @if (!$loop->last)
+                                                <div style="cursor: pointer;" wire:click="newPosition(1, {{ $index }})">
+                                                    <i class="fa fa-sort-desc"></i>
+                                                </div>
+                                            @endif
+                                        </div>
+
+                                        <div class="border border-secondary rounded p-3 col-md-11">
                                             <div class="row justify-content-between align-items-center">
 
                                                 <div class="col-md-12">

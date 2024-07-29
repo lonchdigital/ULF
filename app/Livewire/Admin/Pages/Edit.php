@@ -22,8 +22,17 @@ class Edit extends Component
         $this->locale = 'uk';
 
         $this->page = $page;
+        $i = 1;
 
-        foreach($this->page->faqs as $faq) {
+        foreach($this->page->faqs()->orderBy('sort', 'ASC')->get() as $faq) {
+            $faq->update([
+                'sort' => $i,
+            ]);
+
+            $i += 1;
+        }
+
+        foreach($this->page->faqs()->orderBy('sort', 'ASC')->get() as $faq) {
             $this->faqs[] = [
                 'uk' => [
                     'question' => $faq->translate('uk')->question ?? '',
@@ -34,8 +43,14 @@ class Edit extends Component
                     'question' => $faq->translate('ru')->question ?? '',
                     'answer' => $faq->translate('ru')->answer ?? '',
                 ],
+
+                'sort' => $faq->sort,
             ];
         }
+
+        usort($this->faqs, function ($a, $b) {
+            return $a['sort'] <=> $b['sort'];
+        });
 
         if(empty($this->faqs)) {
             $this->faqs = [
@@ -48,6 +63,8 @@ class Edit extends Component
                     'question' => '',
                     'answer' => ''
                 ],
+
+                'sort' => 1,
             ];
         }
     }
@@ -101,11 +118,19 @@ class Edit extends Component
                 'question' => '',
                 'answer' => ''
             ],
+
+            'sort' => count(($this->faqs + 1) ?? 1),
         ];
     }
 
     public function removeElement($index)
     {
+        foreach($this->faqs as $index2 => $faq) {
+            if($faq['sort'] > $this->faqs[$index]['sort']) {
+                $this->faqs[$index2]['sort'] = $faq['sort'] - 1;
+            }
+        }
+
         if (array_key_exists($index, $this->faqs)) {
             unset($this->faqs[$index]);
         }
@@ -122,6 +147,7 @@ class Edit extends Component
         foreach($this->faqs as $faq2) {
             Faq::create([
                 'page_id' => $this->page->id,
+                'sort' => $faq2['sort'],
                 'uk' => [
                     'question' => $faq2['uk']['question'],
                     'answer' => $faq2['uk']['answer'],
@@ -136,6 +162,17 @@ class Edit extends Component
         session()->flash('success', 'Дані успішно збережено');
 
         $this->redirectRoute('admin.pages.index');
+    }
+
+    public function newPosition($val, $index)
+    {
+        $this->faqs[$index + $val]['sort'] = $this->faqs[$index]['sort'];
+
+        $this->faqs[$index]['sort'] = $this->faqs[$index]['sort'] + $val;
+
+        usort($this->faqs, function ($a, $b) {
+            return $a['sort'] <=> $b['sort'];
+        });
     }
 
     public function render()

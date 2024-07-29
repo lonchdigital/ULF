@@ -34,6 +34,7 @@ Route::group([
 
     Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 
+    Route::get('/contacts', [HomeController::class, 'contacts'])->name('contacts');
 
     // TODO:: change routes to more flexible
 //    Route::get('/', [DynamicPageController::class, 'index'])->name('main.page');

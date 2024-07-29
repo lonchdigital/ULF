@@ -4,7 +4,7 @@
     "name": "jquery"
   },
   "resources/css/app.css": {
-    "file": "assets/app-C95XYyTd.css",
+    "file": "assets/app-CchQ_XbE.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -52,7 +52,7 @@
     ]
   },
   "resources/js/main.js": {
-    "file": "assets/main-ftc8WdHb.js",
+    "file": "assets/main-CYK-YKjJ.js",
     "name": "main",
     "src": "resources/js/main.js",
     "isEntry": true,

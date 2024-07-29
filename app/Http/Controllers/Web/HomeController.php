@@ -29,10 +29,23 @@ class HomeController
         return view('web.home.show');
     }
 
-    public function faq()
+    public function faq(Request $request)
     {
+        $utmParameters = $request->only([
+            'utm_source',
+            'utm_medium',
+            'utm_campaign',
+            'utm_term',
+            'utm_content'
+        ]);
+
         $page = Page::where('action', 'faq')->firstOrFail();
 
-        return view('web.pages.faq', compact('page'));
+        return view('web.pages.faq', compact('page', 'utmParameters'));
+    }
+
+    public function contacts()
+    {
+        return view('web.pages.contacts');
     }
 }

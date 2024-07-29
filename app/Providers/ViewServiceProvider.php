@@ -28,5 +28,9 @@ class ViewServiceProvider extends ServiceProvider
         View::composer([
             '*'
         ], \App\ViewComposers\BaseComposer::class);
+
+        View::composer([
+            'components.automatch',
+        ], \App\ViewComposers\AutomatchComposer::class);
     }
 }
