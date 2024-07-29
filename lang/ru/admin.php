@@ -44,7 +44,6 @@ return [
     'choose_image' => 'Выберите изображение…',
     'image' => 'Изображение',
     'year' => 'Год',
-    'status' => 'Статус',
     'cars_title' => 'Авто',
     'action' => 'Действие',
     'blue' => 'Синий',
@@ -53,6 +52,9 @@ return [
     'clients_history' => 'Истории клиентов',
     'add_client' => 'Добавить клиента',
     'add_history' => 'Добавить историю',
+    'edit_history' => 'Редактировать историю',
+    'history_title' => 'Заголовок истории',
     'client' => 'Клиент',
     'name' => 'Имя',
+    'pages_title' => 'Страницы',
 ];

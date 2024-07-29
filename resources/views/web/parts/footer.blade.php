@@ -170,18 +170,32 @@
     <div class="footer--bottom py-2 mb-3">
         <div class="container">
             <div class="row justify-content-between align-items-center">
-                <div class="col-12 col-lg-auto mb-3 mb-lg-0">
-                    <a href="privacy-policy.html">Політика конфіденційності</a>
-                </div>
-                <div class="col-12 col-lg-auto mb-3 mb-lg-0">
-                    <a href="privacy-policy.html">Правила використання</a>
-                </div>
-                <div class="col-12 col-lg-auto mb-3 mb-lg-0">
-                    <a href="privacy-policy.html">Договір прокату</a>
-                </div>
-                <div class="col-12 col-lg-auto mb-3 mb-lg-0">
-                    <a href="privacy-policy.html">Договір cтрахування</a>
-                </div>
+                @php
+                $policy = $footerPages->where('slug', 'policy')->first();
+                $terms = $footerPages->where('slug', 'terms')->first();
+                $rentalAgreement = $footerPages->where('slug', 'rental-agreement')->first();
+                $insuranceContract = $footerPages->where('slug', 'insurance-contract')->first();
+                @endphp
+                @if(!is_null($policy))
+                    <div class="col-12 col-lg-auto mb-3 mb-lg-0">
+                        <a href="{{ route('page.single.page', ['slug' => $policy->slug]) }}">{{ $policy->name }}</a>
+                    </div>
+                @endif
+                @if(!is_null($terms))
+                    <div class="col-12 col-lg-auto mb-3 mb-lg-0">
+                        <a href="{{ route('page.single.page', ['slug' => $terms->slug]) }}">{{ $terms->name }}</a>
+                    </div>
+                @endif
+                @if(!is_null($rentalAgreement))
+                    <div class="col-12 col-lg-auto mb-3 mb-lg-0">
+                        <a href="{{ route('page.single.page', ['slug' => $rentalAgreement->slug]) }}">{{ $rentalAgreement->name }}</a>
+                    </div>
+                @endif
+                @if(!is_null($insuranceContract))
+                    <div class="col-12 col-lg-auto mb-3 mb-lg-0">
+                        <a href="{{ route('page.single.page', ['slug' => $insuranceContract->slug]) }}">{{ $insuranceContract->name }}</a>
+                    </div>
+                @endif
                 <div class="col-12 col-lg-auto">
                     <div class="copyright">© ULF 2024</div>
                 </div>

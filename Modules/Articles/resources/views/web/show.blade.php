@@ -40,7 +40,7 @@
                 <div class="row">
                     <div class="col-12 col-lg-10 mx-auto">
                         <div class="h5 font-m mb-3">
-                            {{ $article->text }}
+                            {!! $article->text !!}
                         </div>
                     </div>
                 </div>

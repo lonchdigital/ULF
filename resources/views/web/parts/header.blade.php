@@ -5,35 +5,35 @@
                 <div class="col">
                     <nav class="navbar navbar-expand-lg flex-column p-0">
                         <div class="navbar-inner d-flex flex-wrap align-items-center justify-content-between w-100 p-3 px-lg-0">
-                            <a class="navbar-brand p-0" href="index.html"><img src="{{ asset('static_images/main-logo.png') }}" alt="logo"></a>
+                            <a class="navbar-brand p-0" href="{{ route('main.page') }}"><img src="{{ asset('static_images/main-logo.png') }}" alt="logo"></a>
                             <div class="collapse navbar-collapse justify-content-between order-last" id="navbarSupportedContent">
                                 <div class="header-main--desk d-none d-lg-flex align-items-center justify-content-between w-100">
                                     <ul class="navbar-nav list-inline w-100 justify-content-center">
                                         <li class="list-inline-item list-inline-item--menu menu-for-you">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="index.html">Головна</a></span>
+                                                    <span><a href="{{ route('main.page') }}">Головна</a></span>
                                                 </div>
                                             </div>
                                         </li>
                                         <li class="list-inline-item list-inline-item--menu menu-for-you">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="catalog.html">Автопарк</a></span>
+                                                    <span><a href="{{ route('catalog.page') }}">Автопарк</a></span>
                                                 </div>
                                             </div>
                                         </li>
                                         <li class="list-inline-item list-inline-item--menu menu-for-you">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="customer-stories.html">Історії клієнтів</a></span>
+                                                    <span><a href="{{ route('clients.page') }}">Історії клієнтів</a></span>
                                                 </div>
                                             </div>
                                         </li>
                                         <li class="list-inline-item list-inline-item--menu menu-for-you">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="4046666666666666.html">Блог</a></span>
+                                                    <span><a href="{{ route('blog.page') }}">Блог</a></span>
                                                 </div>
                                             </div>
                                         </li>
@@ -47,7 +47,7 @@
                                         <li class="list-inline-item list-inline-item--menu menu-for-you">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="404.html">Контакти</a></span>
+                                                    <span><a href="#">Контакти</a></span>
                                                 </div>
                                             </div>
                                         </li>
