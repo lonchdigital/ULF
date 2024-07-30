@@ -9,40 +9,33 @@
 
     <main class="main">
         <div class="content">
-            <section id="section-top" class="section-top">
-                <div class="mx-auto position-relative">
-                    <div class="row pt-18 pt-lg-16 pt-xl-26 pt-xxl-42 pb-8">
-                        <div class="col">
-                            <div class="section-top--item pb-10 pb-md-22 pb-lg-16 pb-xl-26">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-7 col-xl-5">
-                                            <div class="section-top--content">
-                                                <div class="section-top--info">
-                                                    <div class="head mb-1">Кермуй</div>
-                                                    <div class="animation-scroll-up">
-                                                        <div class="animation-scroll-up--outer">
-                                                            <div class="animation-scroll-up--inner">
-                                                                у справах<br>
-                                                                на побачення<br>
-                                                                до спортзалу<br>
-                                                                довго<br>
-                                                                тимчасово<br>
-                                                                зараз<br>
-                                                                за тиждень<br>
-                                                                не за всі гроші світу<br>
-                                                                авто, про яке давно мріяв<br>
-                                                                не думай про сервіс<br>
-                                                                та отримуй задоволення
+
+            @if($homeMainBlock)
+                <section id="section-top" class="section-top">
+                    <div class="mx-auto position-relative">
+                        <div class="row pt-18 pt-lg-16 pt-xl-26 pt-xxl-42 pb-8">
+                            <div class="col">
+                                <div class="section-top--item pb-10 pb-md-22 pb-lg-16 pb-xl-26">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12 col-lg-7 col-xl-5">
+                                                <div class="section-top--content">
+                                                    <div class="section-top--info">
+                                                        <div class="head mb-1">{{ $homeMainBlock->title }}</div>
+                                                        <div class="animation-scroll-up">
+                                                            <div class="animation-scroll-up--outer">
+                                                                <div class="animation-scroll-up--inner">
+                                                                    {!! $homeMainBlock->running_text !!}
+                                                                </div>
+                                                                <div class="animation-scroll-up--bg"></div>
                                                             </div>
-                                                            <div class="animation-scroll-up--bg"></div>
                                                         </div>
-                                                    </div>
-                                                    <p class="subhead mb-6">усю рутину <br>ми беремо на себе</p>
-                                                    <div class="button-wrap row pt-60 pt-sm-40 pt-lg-0">
-                                                        <div class="col d-flex flex-column flex-lg-row align-items-center">
-                                                            <a href="catalog.html" class="btn-default btn-default-orange btn btn-block btn-orange text-uppercase mb-4 mb-lg-0 mr-lg-4">Кермувати</a>
-                                                            <button type="button" class="btn-default btn-default-white btn btn-block btn-outline-white text-uppercase mt-0" data-toggle="modal" data-target="#popup-any-questions">Передзвоніть мені</button>
+                                                        <p class="subhead mb-6">{!! $homeMainBlock->description !!}</p>
+                                                        <div class="button-wrap row pt-60 pt-sm-40 pt-lg-0">
+                                                            <div class="col d-flex flex-column flex-lg-row align-items-center">
+                                                                <a href="{{ route('catalog.page') }}" class="btn-default btn-default-orange btn btn-block btn-orange text-uppercase mb-4 mb-lg-0 mr-lg-4">{{ $homeMainBlock->button_one }}</a>
+                                                                <button type="button" class="btn-default btn-default-white btn btn-block btn-outline-white text-uppercase mt-0" data-toggle="modal" data-target="#popup-any-questions">{{ $homeMainBlock->button_two }}</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -50,217 +43,97 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="section-top--swiper">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Вигідніше</span> за оренду та лізинг</div>
+                                @if($homeBenefitBlock)
+                                    <div class="section-top--swiper">
+                                        <div class="swiper-wrapper">
+                                            @foreach($homeBenefitBlock->where('row', 1) as $benefit)
+                                                <div class="swiper-slide">
+                                                    <div class="slider-content">
+                                                        <div class="slider-content--inner">{!! $benefit->title !!}</div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Швидкі</span> рішення</div>
+                                    <div dir="rtl" class="section-top--swiper">
+                                        <div class="swiper-wrapper">
+                                            @foreach($homeBenefitBlock->where('row', 2) as $benefitTwo)
+                                            <div class="swiper-slide">
+                                                <div class="slider-content">
+                                                    <div class="slider-content--inner">{!! $benefitTwo->title !!}</div>
+                                                </div>
+                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner">Підписка на <span>автопарк</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Комфортне</span> пересування</div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Безбар'єрний</span> вхід і вихід</div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Вигідніше</span> за оренду та лізинг</div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner">Цілодобова <span>підтримка</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Безбар'єрний</span> вхід і вихід</div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Швидкі</span> рішення</div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Вигідніше</span> за оренду та лізинг</div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner">Цілодобова <span>підтримка</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Комфортне</span> пересування</div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Комфортне</span> пересування</div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Комфортне</span> пересування</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div dir="rtl" class="section-top--swiper">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Вигідніше</span> за оренду та лізинг</div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Швидкі</span> рішення</div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner">Підписка на <span>автопарк</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Комфортне</span> пересування</div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Безбар'єрний</span> вхід і вихід</div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Вигідніше</span> за оренду та лізинг</div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner">Цілодобова <span>підтримка</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Безбар'єрний</span> вхід і вихід</div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Швидкі</span> рішення</div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Вигідніше</span> за оренду та лізинг</div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner">Цілодобова <span>підтримка</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Комфортне</span> пересування</div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Комфортне</span> пересування</div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="slider-content">
-                                            <div class="slider-content--inner"><span>Комфортне</span> пересування</div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endif
                             </div>
                         </div>
-                    </div>
-                    <div class="section-top--img">
-                        <div class="wrap-img">
-                            <img class="bg-down d-none d-sm-block" src="img/bg.jpeg" alt="img">
-                            <img class="bg-down d-sm-none" src="img/bg-mob.jpeg" alt="img">
-                            </img>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <div class="scroll-trigger">
-                <section id="ready-drive" class="ready-drive pt-7 pt-md-10 pt-lg-14 pb-7 pb-md-10 pb-lg-34">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-8">
-                                <div class="head font-weight-bolder mb-3 mb-md-6 text-center text-lg-left">Готовий кермувати?</div>
-                                <div class="h4 mb-3 mb-lg-7">Знайомся, це — <strong>ULFAUTO-підписка</strong>. Сервіс, з яким авто — це тільки про кайф під час поїздки. Вся інша відповідальність — на нашому боці. Так, ми не перебільшуємо: ТО, шиномонтаж, страхування, тюнінг, зберігання гуми, ремонт, заміна авто... Вигадав щось своє? Приймаємо і цей виклик.</div>
-                                <div class="video-wrap video-wrap--vissible w-100 d-lg-none d-flex justify-content-center mb-sm-3">
-                                    <a class="w-100" data-fancybox="specific-player-mob" data-src="#specific-player" data-thumb="img/AvnjahftKA.jpeg">
-                                        <video class="js-player specific-player" playsinline controls data-poster="img/AvnjahftKA.jpeg">
-                                            <source src="assets/video/example.mp4" type="video/mp4" />
-                                        </video>
-                                    </a>
-                                    <button type="button" class="btn btn-video-play-pause"></button>
-                                </div>
-                                <ul class="list-decimal mb-6">
-                                    <li>Обери авто та строк підписки</li>
-                                    <li>Забирай і одразу кермуй</li>
-                                    <li>Звертайся за сервісами</li>
-                                    <li>Змінюй авто на яке хочеш</li>
-                                    <li>Передумав? Не проблема, навіть повернемо залог!</li>
-                                </ul>
-                            </div>
-                            <div class="col-4 d-none d-lg-flex">
-                                <div class="video-wrap video-wrap--vissible">
-                                    <a data-fancybox="specific-player" data-src="#specific-player" data-thumb="img/AvnjahftKA.jpeg">
-                                        <video class="js-player specific-player" playsinline controls data-poster="img/AvnjahftKA.jpeg">
-                                            <source src="assets/video/example.mp4" type="video/mp4" />
-                                        </video>
-                                    </a>
-                                    <button type="button" class="btn btn-video-play-pause"></button>
-                                </div>
-                                <div id="specific-player" class="video-wrap hidden" style="display:none">
-                                    <video class="js-player specific-player" playsinline controls data-poster="img/AvnjahftKA.jpeg">
-                                        <source src="assets/video/example.mp4" type="video/mp4" />
-                                    </video>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 col-lg-8">
-                                <div class="row">
-                                    <div class="col-12 col-lg-7 d-flex flex-column flex-md-row align-items-center">
-                                        <button type="button" class="btn-default btn btn-block btn-main-blue text-uppercase mb-4 mb-md-0 mr-md-4" data-toggle="modal" data-target="#popup-any-questions">ЦІКАВО</button>
-                                        <a href="catalog.html" class="btn-default btn btn-block btn-outline-main-blue text-uppercase mt-0">ХОЧУ КЕРМУВАТИ</a>
-                                    </div>
-                                </div>
+                        <div class="section-top--img">
+                            <div class="wrap-img">
+                                <img class="bg-down d-none d-sm-block" src="{{ (!is_null($homeMainBlock->image)) ? '/storage/' . $homeMainBlock->image : '' }}" alt="img">
+                                <img class="bg-down d-sm-none" src="img/bg-mob.jpeg" alt="img">
                             </div>
                         </div>
                     </div>
                 </section>
+            @endif
+
+            <div class="scroll-trigger">
+
+                @if($homeDriveBlock)
+                    <section id="ready-drive" class="ready-drive pt-7 pt-md-10 pt-lg-14 pb-7 pb-md-10 pb-lg-34">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 col-lg-8">
+                                    <div class="head font-weight-bolder mb-3 mb-md-6 text-center text-lg-left">{{ $homeDriveBlock->title }}</div>
+                                    <div class="h4 mb-3 mb-lg-7">{!! $homeDriveBlock->description !!}</div>
+                                    <div class="video-wrap video-wrap--vissible w-100 d-lg-none d-flex justify-content-center mb-sm-3">
+                                        <a class="w-100" data-fancybox="specific-player-mob" data-src="#specific-player" data-thumb="{{ '/storage/' . $homeDriveBlock->image }}">
+                                            <video class="js-player specific-player" playsinline controls data-poster="{{ '/storage/' . $homeDriveBlock->image }}">
+                                                <source src="assets/video/example.mp4" type="video/mp4" />
+                                            </video>
+                                        </a>
+                                        <button type="button" class="btn btn-video-play-pause"></button>
+                                    </div>
+                                    <ul class="list-decimal mb-6">
+                                        <li>{{ $homeDriveBlock->step_one }}</li>
+                                        <li>{{ $homeDriveBlock->step_two }}</li>
+                                        <li>{{ $homeDriveBlock->step_three }}</li>
+                                        <li>{{ $homeDriveBlock->step_four }}</li>
+                                        <li>{{ $homeDriveBlock->step_five }}</li>
+                                    </ul>
+                                </div>
+                                <div class="col-4 d-none d-lg-flex">
+                                    <div class="video-wrap video-wrap--vissible">
+                                        <a data-fancybox="specific-player" data-src="#specific-player" data-thumb="{{ '/storage/' . $homeDriveBlock->image }}">
+                                            <video class="js-player specific-player" playsinline controls data-poster="{{ '/storage/' . $homeDriveBlock->image }}">
+                                                <source src="assets/video/example.mp4" type="video/mp4" />
+                                            </video>
+                                        </a>
+                                        <button type="button" class="btn btn-video-play-pause"></button>
+                                    </div>
+                                    <div id="specific-player" class="video-wrap hidden" style="display:none">
+                                        <video class="js-player specific-player" playsinline controls data-poster="{{ '/storage/' . $homeDriveBlock->image }}">
+                                            <source src="assets/video/example.mp4" type="video/mp4" />
+                                        </video>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-lg-8">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-7 d-flex flex-column flex-md-row align-items-center">
+                                            <button type="button" class="btn-default btn btn-block btn-main-blue text-uppercase mb-4 mb-md-0 mr-md-4" data-toggle="modal" data-target="#popup-any-questions">{{ $homeDriveBlock->button_one }}</button>
+                                            <a href="catalog.html" class="btn-default btn btn-block btn-outline-main-blue text-uppercase mt-0">{{ $homeDriveBlock->button_two }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                @endif
+
                 <section id="customer-stories" class="customer-stories bg-dark-black py-7 py-md-10 py-lg-13">
                     <div class="container-wrap">
                         <div class="container">

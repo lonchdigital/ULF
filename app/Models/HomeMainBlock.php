@@ -11,11 +11,11 @@ class HomeMainBlock extends Model implements TranslatableContract
     use Translatable;
 
     public $translatedAttributes = [
-        'title', 
+        'title',
         'running_text',
         'description',
         'button_one',
         'button_two'
     ];
-    protected $fillable = ['image', 'video'];
+    protected $fillable = ['image', 'image_mob', 'video'];
 }

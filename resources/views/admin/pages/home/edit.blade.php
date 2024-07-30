@@ -26,9 +26,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <p style="margin-bottom: 8px">{{ trans('admin.bg_image') . ' (250px x 100px)' }}</p>
+                                    <p style="margin-bottom: 8px">{{ trans('admin.main_image') . ' (250px x 100px)' }}</p>
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-3">
                                             <img @if(isset($homeMainBlock) && isset($homeMainBlock->image)) src="{{ '/storage/' . $homeMainBlock->image }}" @else style="display: none;" @endif id="home_hero_image" alt="">
                                         </div>
                                     </div>
@@ -47,6 +47,24 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <p style="margin-bottom: 8px">{{ trans('admin.main_image_mob') }}</p>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <img @if(isset($homeMainBlock) && isset($homeMainBlock->image_mob)) src="{{ '/storage/' . $homeMainBlock->image_mob }}" @else style="display: none;" @endif id="home_hero_image_mob" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <input type="file" name="hero[bg_image_mob]" id="bg_image_input_mob" class="custom-input-file">
+                                            <label for="bg_image_input_mob">
+                                                <i class="fa fa-upload"></i>
+                                                <span>{{ trans('admin.choose_image') }}</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {{--<div class="form-group">
                                     <label for="video">Video</label>
                                     <input type="text"
                                         class="form-control"
@@ -57,7 +75,7 @@
                                     @error('video')
                                     <label id="firstname-error" class="error mt-2 text-danger" for="firstname">{{ $message }}</label>
                                     @enderror
-                                </div>
+                                </div>--}}
 
                                 <div class="form-group">
                                     <x-admin.multilanguage-input :label="trans('admin.title')"
@@ -220,7 +238,7 @@
                                 <div class="form-group">
                                     <p style="margin-bottom: 8px">{{ trans('admin.image') . ' (250px x 100px)' }}</p>
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-2">
                                             <img @if(isset($homeDriveBlock) && isset($homeDriveBlock->image)) src="{{ '/storage/' . $homeDriveBlock->image }}" @else style="display: none;" @endif id="home_drive_image" alt="">
                                         </div>
                                     </div>
@@ -347,6 +365,12 @@
                 const [file] = $(this).prop('files');
                 if (file) {
                     $('#home_hero_image').attr('src', URL.createObjectURL(file)).attr('style', '');
+                }
+            });
+            $('#bg_image_input_mob').change(function () {
+                const [file] = $(this).prop('files');
+                if (file) {
+                    $('#home_hero_image_mob').attr('src', URL.createObjectURL(file)).attr('style', '');
                 }
             });
             $('#drive_image_input').change(function () {

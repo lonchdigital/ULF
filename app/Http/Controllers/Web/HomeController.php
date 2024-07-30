@@ -4,7 +4,11 @@
 namespace App\Http\Controllers\Web;
 
 
+use App\Models\HomeBenefitBlock;
+use App\Models\HomeDriveBlock;
+use App\Models\HomeMainBlock;
 use App\Models\Page;
+use App\Services\Web\HomePage\HomePageService;
 use Illuminate\Http\Request;
 
 class HomeController
@@ -13,20 +17,24 @@ class HomeController
     /**
 //     * @var HomePageService
      */
-//    private HomePageService $service;
+    private HomePageService $service;
 
     /**
      * HomeController constructor.
-//     * @param HomePageService $service
+     * @param HomePageService $service
      */
-    /*public function __construct(HomePageService $service)
+    public function __construct(HomePageService $service)
     {
         $this->service = $service;
-    }*/
+    }
 
-    public function index(Request $request, Page $page)
+    public function index()
     {
-        return view('web.home.show');
+        return view('web.home.show', [
+            'homeMainBlock' => HomeMainBlock::first(),
+            'homeBenefitBlock' => HomeBenefitBlock::all(),
+            'homeDriveBlock' => HomeDriveBlock::first()
+        ]);
     }
 
     public function faq(Request $request)

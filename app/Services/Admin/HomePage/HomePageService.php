@@ -18,7 +18,7 @@ class HomePageService
 
     public function updateSettings(array $request): void
     {
-        // dd($request);
+//         dd($request);
 
         $this->updateHomeMainBlock($request['hero']);
         if(isset($request['home-benefit'])) {
@@ -50,7 +50,19 @@ class HomePageService
             }
         }
 
-        $dataToUpdate['video'] = $data['video'];
+        if (isset($data['bg_image_mob'])) {
+            $imagePath = self::HOMEPAGE_IMAGES_FOLDER . '/'  . sha1(time()) . '_' . Str::random(10);
+
+            storeImage($imagePath, $data['bg_image_mob'], 'webp');
+            storeImage($imagePath, $data['bg_image_mob'], 'jpg');
+
+            $dataToUpdate['image_mob'] = $imagePath . '.webp';
+            if(!is_null($homeMainBlock) && !is_null($homeMainBlock->image_mob)){
+                deleteImage($homeMainBlock->image_mob);
+            }
+        }
+
+//        $dataToUpdate['video'] = $data['video'];
 
         foreach( $data['title'] as $lang => $value ){
             $dataToUpdate[$lang]['title'] = $value;
