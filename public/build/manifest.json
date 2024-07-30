@@ -4,7 +4,7 @@
     "name": "jquery"
   },
   "resources/css/app.css": {
-    "file": "assets/app-CchQ_XbE.css",
+    "file": "assets/app-DPdXZJD1.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -13,12 +13,12 @@
     "src": "resources/img/icons/icons.svg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-CcDMwM5M.js",
+    "file": "assets/app-dORkzGez.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-6NMcLX_L.css"
+      "assets/app-DJiaJ9OG.css"
     ],
     "assets": [
       "assets/Montserrat-Black-DHRMOOaf.woff2",

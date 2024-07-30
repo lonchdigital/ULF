@@ -12,7 +12,7 @@
         <section class="section-top pt-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-lg-10 mx-auto">
+                    <div class="col-12 mx-auto">
                         <div class="section-top--info nav-breadcrumb">
                             <div class="mb-2">
                                 <a href="/" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">Назад</a>
@@ -27,6 +27,45 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="contacts-wrapper">
+                    <div class="contacts-left">
+                        <div class="contacts-item">
+                            <div class="contacts-item-title">Ми працюємо</div>
+                            <p>Пн - Пт 9:00 - 18:00 <br>Сб - Нд Вихідний</p>
+                        </div>
+                        <div class="contacts-item">
+                            <div class="contacts-item-title">Адреса</div>
+                            <p>Україна, 03150<br>м. Київ, Оболонський проспект, 35-А, офіс 300</p>
+                        </div>
+                        <div class="contacts-item">
+                            <div class="contacts-item-title">
+                                Телефон
+                            </div>
+                            <p>0 800 331 001<br>+380 67 236 62 63</p>
+                        </div>
+                        <div class="contacts-item">
+                            <div class="contacts-item-title">
+                                Email
+                            </div>
+                            <p>
+                                <a href="mailto:auto.online@ulf.ua">auto.online@ulf.ua</a>
+                            </p>
+                        </div>
+                        <div class="contacts-social">
+                            <a target="_blank" href="https://www.instagram.com/ulfauto_subscribe/">
+                                <img src="img/icon-instagram.svg" alt="icon instagram">
+                            </a>
+                            <a target="_blank" href="https://www.facebook.com/ulfauto.subscribe">
+                                <img src="img/icon-fb.svg" alt="icon facebook">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contacts-right">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d858.8882288707084!2d30.497098789744708!3d50.51822599590291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4d24028a08079%3A0xbe266778ebbad3e6!2z0J7QsdC-0LvQvtC90YHQutC40Lkg0L_RgNC-0YHQvy4sIDM1LCDQmtC40LXQsiwgMDIwMDA!5e0!3m2!1sru!2sua!4v1686135052692!5m2!1sru!2sua" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
             </div>
         </section>
     </div>
