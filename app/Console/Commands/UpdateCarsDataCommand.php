@@ -35,7 +35,7 @@ class UpdateCarsDataCommand extends Command
         CarApiService $carApiService,
         carTypesService $carTypesService,
         CarUpdateService $carUpdateService,
-        )
+    )
     {
         parent::__construct();
         $this->authService = $authService;
@@ -76,7 +76,7 @@ class UpdateCarsDataCommand extends Command
         $this->carTypesService->updateAllVehicleModels(
             $this->carApiService->getDictionaryByName('VehicleModel', $this->authService->accessToken)
         );
-        
+
 
         // Not implemented
         // $this->info('Updating vehicleDriverTypes...');
@@ -91,7 +91,7 @@ class UpdateCarsDataCommand extends Command
         $this->carUpdateService->updateCars(
             $this->carApiService->getLotInfo($this->authService->accessToken, $carLotsInfo['lotIds'])['value']
         );
-        
+
 
         $this->info('All done!');
     }

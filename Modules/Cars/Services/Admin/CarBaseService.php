@@ -25,9 +25,18 @@ class CarBaseService
         $this->carVehicleService = $carVehicleService;
     }
 
-    
+
     public function updateCarImagesApi(array $images, Car $car)
     {
+        // remove all OLD images
+        if(count($car->images) > 0) {
+            foreach ($car->images as $image) {
+                deleteImage($image->Url);
+                $image->delete();
+            }
+        }
+
+        // download and set new images
         foreach($images as $image) {
             $response = Http::get($image['url']);
 
@@ -37,11 +46,10 @@ class CarBaseService
                 file_put_contents($tempFilePath, $response->getBody());
 
                 $imagePath = self::CAR_IMAGES_FOLDER . '/'  . sha1(time()) . '_' . Str::random(10);
-                $this->storeImage($imagePath, new UploadedFile($tempFilePath, 'image'), 'webp');
-                $this->storeImage($imagePath, new UploadedFile($tempFilePath, 'image'), 'jpg');
+                storeImage($imagePath, new UploadedFile($tempFilePath, 'image'), 'webp');
+                storeImage($imagePath, new UploadedFile($tempFilePath, 'image'), 'jpg');
                 unlink($tempFilePath);
 
-                // $this->deleteImage($article->image_path);
                 CarImage::create([
                     'car_id' => $car->id,
                     'Url' => $imagePath . '.webp',
@@ -52,29 +60,4 @@ class CarBaseService
 
     }
 
-    protected function storeImage(string $path, UploadedFile $image, string $format, $quality = 70): void
-    {
-        $image = Image::make($image)->encode($format, $quality);
-        Storage::disk(config('app.images_disk_default'))->put($path . '.'.$format, $image);
-    }
-
-    protected function deleteImage(string $path): void
-    {
-        // remove webp
-        if (Storage::disk(config('app.images_disk_default'))->exists($path)) {
-            Storage::disk(config('app.images_disk_default'))->delete($path);
-        }
-
-        // remove jpg
-        $jpgPath = pathinfo($path, PATHINFO_DIRNAME) . '/' . pathinfo($path, PATHINFO_FILENAME)  . '.jpg';
-        if (Storage::disk(config('app.images_disk_default'))->exists($jpgPath)) {
-            Storage::disk(config('app.images_disk_default'))->delete($jpgPath);
-        }
-
-        // remove png
-        $jpgPath = pathinfo($path, PATHINFO_DIRNAME) . '/' . pathinfo($path, PATHINFO_FILENAME)  . '.png';
-        if (Storage::disk(config('app.images_disk_default'))->exists($jpgPath)) {
-            Storage::disk(config('app.images_disk_default'))->delete($jpgPath);
-        }
-    }
 }

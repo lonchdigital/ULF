@@ -5,37 +5,63 @@ namespace Modules\Cars\Services\Admin;
 use Modules\Cars\Models\Car;
 use Modules\Cars\Models\SubscribePrice;
 use Modules\Cars\Models\CarFaq;
+use Modules\Cars\Models\Vehicle;
 
 class CarUpdateService extends CarBaseService
 {
 
-    // Update cars that we got by API
+    // Create/Update cars that we got by API
     public function updateCars($allLots)
     {
         foreach($allLots as $lot){
-            $page = $this->pageService->updateFromApi([]);
-            $vehicle = $this->carVehicleService->updateFromApi($lot['vehicle']);
 
-            $dataToUpdate = [];
-            $dataToUpdate['vehicle_id'] = $vehicle->id;
-            $dataToUpdate['car_page_id'] = $page->id;
-            $dataToUpdate['lot_id'] = $lot['id'];
-            $dataToUpdate['subscription_category'] = $lot['SubscriptionCategory'];
-            // TODO:: get more about these fields
-            // $dataToUpdate['subscription_period_id'] = null;
-            // $dataToUpdate['subscription_extentional_id'] = null;
-            // $dataToUpdate['advertisement_city_id'] = null;
-            $dataToUpdate['uk']['description'] = $lot['description_ua'];
-            $dataToUpdate['ru']['description'] = $lot['description_ru'];
+            $existingItem = Car::where('lot_id', $lot['id'])->first();
+            if($existingItem) {
 
-            $car = Car::create($dataToUpdate);
+                $vehicle = $this->carVehicleService->updateFromApi($lot['vehicle'], $existingItem);
+                $dataToUpdate = $this->setCarData($vehicle, $lot);
 
-            if(!is_null($lot['images'])){
-                $this->updateCarImagesApi($lot['images'], $car);
+                $vehicle->car->update($dataToUpdate);
+
+                if(!is_null($lot['images'])){
+                    $this->updateCarImagesApi($lot['images'], $vehicle->car);
+                }
+
+            } else {
+
+                $vehicle = $this->carVehicleService->createFromApi($lot['vehicle']);
+                $dataToUpdate = $this->setCarData($vehicle, $lot);
+
+                $car = Car::create($dataToUpdate);
+
+                if(!is_null($lot['images'])){
+                    $this->updateCarImagesApi($lot['images'], $car);
+                }
+
             }
+
         }
 
     }
+    private function setCarData(Vehicle $vehicle, $lot): array
+    {
+        $page = $this->pageService->updateFromApi([], $vehicle, $lot['id']);
+
+        $dataToUpdate = [];
+        $dataToUpdate['vehicle_id'] = $vehicle->id;
+        $dataToUpdate['car_page_id'] = $page->id;
+        $dataToUpdate['lot_id'] = $lot['id'];
+        $dataToUpdate['subscription_category'] = $lot['SubscriptionCategory'];
+        // TODO:: get more about these fields
+        // $dataToUpdate['subscription_period_id'] = null;
+        // $dataToUpdate['subscription_extentional_id'] = null;
+        // $dataToUpdate['advertisement_city_id'] = null;
+        $dataToUpdate['uk']['description'] = $lot['description_ua'];
+        $dataToUpdate['ru']['description'] = $lot['description_ru'];
+
+        return $dataToUpdate;
+    }
+
 
 
     // Update one car from dashboard
@@ -112,7 +138,7 @@ class CarUpdateService extends CarBaseService
                 }
 
                 $existingFaq = $existingFaqs->where('car_id', $car->id)->where('id', $faq_id)->first();
-                
+
                 if( !is_null($existingFaq) ) {
                     $existingFaq->update($dataToUpdate);
                 } else {

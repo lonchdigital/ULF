@@ -35,4 +35,8 @@ class Vehicle extends EloquentModel
     {
         return $this->hasOne(Car::class);
     }
+    public function equipment()
+    {
+        return $this->hasOne(Equipment::class);
+    }
 }

@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CarUpdateRequest extends FormRequest
 {
-    
+
     /**
      * Get the validation rules that apply to the request.
      */
@@ -91,7 +91,7 @@ class CarUpdateRequest extends FormRequest
 
             $messages['description.' . $lang . '.required'] = trans('rules.field') .' "'. trans('admin.desc') .' (' . $lang . ')" '. trans('rules.required');
             $messages['description.' . $lang . '.string'] = trans('rules.field') .' "'. trans('admin.desc') .' (' . $lang . ')" '. trans('rules.string');
-            
+
             $messages['text.' . $lang . '.required'] = trans('rules.field') .' "'. trans('admin.content') .' (' . $lang . ')" '. trans('rules.required');
             $messages['text.' . $lang . '.string'] = trans('rules.field') .' "'. trans('admin.content') .' (' . $lang . ')" '. trans('rules.string');
         }

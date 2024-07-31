@@ -5,6 +5,9 @@ namespace Modules\Cars\Services\Admin;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Modules\Cars\Models\Car;
 use Illuminate\Support\Facades\DB;
+use Modules\Cars\Models\CarImage;
+use Modules\Cars\Models\CarPage;
+use Modules\Cars\Models\CarPageTranslation;
 use Modules\Cars\Models\Vehicle;
 
 class CarsService extends CarBaseService
@@ -38,16 +41,18 @@ class CarsService extends CarBaseService
 
     public function removeAllDocuments()
     {
-
         DB::transaction(function () {
-
             Vehicle::chunkById(20, function ($vehicles){
                 foreach ($vehicles as $vehicle) {
 
                     if(!is_null($vehicle->car)) {
+
+                        $vehicle->car->page->delete();
+
                         if(count($vehicle->car->images) > 0) {
                             foreach ($vehicle->car->images as $image) {
                                 deleteImage($image->Url);
+                                $image->delete();
                             }
                         }
                     }
@@ -55,21 +60,9 @@ class CarsService extends CarBaseService
 
                 }
             });
-
-            /*Car::chunkById(20, function ($cars) {
-                foreach ($cars as $car) {
-                    if(count($car->images) > 0) {
-                        foreach ($car->images as $image) {
-                            deleteImage($image->Url);
-                        }
-                    }
-                    $car->delete();
-                }
-            });*/
-
-
         });
 
+        CarImage::truncate();
     }
 
     public function updateDocument(Car $car, array $data): Car

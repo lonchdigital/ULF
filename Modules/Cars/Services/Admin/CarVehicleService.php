@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Http;
 class CarVehicleService
 {
 
-    public function updateFromApi(array $data): Vehicle
+    public function createFromApi(array $data): Vehicle
     {
         $dataToUpdate = [];
 
@@ -28,6 +28,51 @@ class CarVehicleService
         $dataToUpdate['engineVolume'] = $data['engineVolume'];
         $dataToUpdate['mileage'] = $data['mileage'];
 
+        $dataToUpdate = array_merge($dataToUpdate, $this->updateVehicleTypes($data));
+
+        $vehicle = Vehicle::create($dataToUpdate);
+
+        if(!is_null($data['equipment'])){
+            $equipmentData = [];
+            foreach($data['equipment'] as $key => $value){
+                $equipmentData[$key] = $value;
+            }
+            $equipmentData['vehicle_id'] = $vehicle->id;
+            Equipment::create($equipmentData);
+        }
+
+        return $vehicle;
+    }
+
+    public function updateFromApi(array $data, $car): Vehicle
+    {
+        $dataToUpdate = [];
+
+        $dataToUpdate['vin'] = $data['vin'];
+        $dataToUpdate['manufacturedYear'] = $data['manufacturedYear'];
+        $dataToUpdate['engineVolume'] = $data['engineVolume'];
+        $dataToUpdate['mileage'] = $data['mileage'];
+
+        $dataToUpdate = array_merge($dataToUpdate, $this->updateVehicleTypes($data));
+
+        $car->vehicle->update($dataToUpdate);
+
+        if(!is_null($data['equipment'])){
+            $equipmentData = [];
+            foreach($data['equipment'] as $key => $value){
+                $equipmentData[$key] = $value;
+            }
+//            $equipmentData['vehicle_id'] = $vehicle->id;
+
+            $car->vehicle->equipment->update($equipmentData);
+        }
+
+        return $car->vehicle;
+    }
+
+
+    private function updateVehicleTypes(array $data) : array
+    {
         $model = Model::where('model_id', $data['model']['id'])->first();
         $dataToUpdate['model_id'] = ($model) ? $model->id : null;
 
@@ -48,19 +93,8 @@ class CarVehicleService
             $dataToUpdate['type_id'] = ($type) ? $type->id : null;
         }
 
-        $vehicle = Vehicle::create($dataToUpdate);
-
-        if(!is_null($data['equipment'])){
-            $equipmentData = [];
-            foreach($data['equipment'] as $key => $value){
-                $equipmentData[$key] = $value;
-            }
-            $equipmentData['vehicle_id'] = $vehicle->id;
-            Equipment::create($equipmentData);
-        }
-
-        return $vehicle;
+        return $dataToUpdate;
     }
-    
+
 
 }
