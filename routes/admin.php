@@ -73,6 +73,8 @@ Route::group([
             Route::get('/{car}/edit', [CarsController::class, 'edit'])->name('car.edit');
             Route::post('/{car}', [CarsController::class, 'update'])->name('car.update');
             // Route::get('/{article}', [ArticlesController::class, 'destroy'])->name('article.destroy');
+
+             Route::get('/cars-delete-all', [CarsController::class, 'deleteAllCars'])->name('car.destroy.all');
         });
 
         Route::prefix('pages')->group(function () {

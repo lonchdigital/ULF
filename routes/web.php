@@ -30,13 +30,14 @@ Route::group([
     Route::get('/customer-stories', [ClientsController::class, 'index'])->name('clients.page');
 
     // pages
+    // TODO:: change HomeController to PageController for contacts page
     Route::get('/contacts', [HomeController::class, 'contacts'])->name('contacts');
     Route::get('/{slug}', [PageController::class, 'show'])->name('page.single.page');
 
     Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 
 
-    // TODO:: change routes to more flexible
+    // TODO:: remove DynamicPageController
 //    Route::get('/', [DynamicPageController::class, 'index'])->name('main.page');
 //    Route::get('/{section}', [DynamicPageController::class, 'section'])->name('section.page');
 //    Route::get('/{section}/{slug}', [DynamicPageController::class, 'slug'])->name('slug.page');

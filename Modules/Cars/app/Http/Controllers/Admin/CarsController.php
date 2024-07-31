@@ -43,5 +43,13 @@ class CarsController extends Controller
         ])->with('success', trans('admin.document_updated'));
     }
 
+    public function deleteAllCars()
+    {
+        $this->service->removeAllDocuments();
+
+        return redirect()->route('car.index', [
+            'cars' => []
+        ])->with('success', trans('admin.all_cars_has_been_deleted'));
+    }
 
 }
