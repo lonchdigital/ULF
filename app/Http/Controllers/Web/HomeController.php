@@ -47,13 +47,20 @@ class HomeController
             'utm_content'
         ]);
 
-        $page = Page::where('action', 'faq')->firstOrFail();
+        $page = Page::where('key', 'faq')->firstOrFail();
 
         return view('web.pages.faq', compact('page', 'utmParameters'));
     }
 
     public function contacts()
     {
-        return view('web.pages.contacts');
+        $page = Page::where('slug', 'contacts')->firstOrFail();
+
+        return view('web.pages.contacts', compact('page'));
+    }
+
+    public function thanks()
+    {
+        return view('web.pages.thanks');
     }
 }

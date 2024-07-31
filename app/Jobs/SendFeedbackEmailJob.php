@@ -24,7 +24,7 @@ class SendFeedbackEmailJob implements ShouldQueue
      */
     public function __construct(array $data)
     {
-        $this->email = 'alwayswannatofly@gmail.com';
+        $this->email = 'test@mail.com';
 
         $this->data = $data;
     }

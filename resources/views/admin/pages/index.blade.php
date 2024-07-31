@@ -52,7 +52,11 @@
                                             {{-- @if($document->page)
                                             <a href="{{ route('slug.page', ['section' => $document->page->section, 'slug' => $document->page->slug]) }}" target="_blank" class="mr-2"><i class="fa fa-eye text-info font-18"></i></a>
                                             @endif --}}
-                                            <a href="{{ route('page.edit', $page) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                            @if($page->slug == 'contacts')
+                                                <a href="{{ route('page.edit-contacts') }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                            @else
+                                                <a href="{{ route('page.edit', $page) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                            @endif
                                             {{--<a href="#" class="md-trigger" data-modal="modal-{{ $article->getAttribute('id') }}">
                                                 <i class="fa fa-trash text-danger font-18"></i>
                                             </a>

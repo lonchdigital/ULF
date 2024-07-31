@@ -175,12 +175,27 @@ if (TinderCards) {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert('Form submitted successfully!');
+                    window.location.href = '/thanks';
                 } else {
-                    alert('There was an error submitting the form.');
+
+                    var errors = data.errors;
+
+                    for (var field in errors) {
+                        var fieldElement = $('#' + field + '_error');
+
+                        var existingError = fieldElement.next('.field--help-info');
+
+                        if (existingError.length) {
+                            existingError.text(errors[field][0]);
+                        } else {
+                            fieldElement.after('<div class="field--help-info small-txt text-red mb-2">' +
+                                errors[field][0] + '</div>');
+                        }
+                    }
                 }
             })
-            .catch(error => console.error('Error:', error));
+            .catch(response => {
+            });
         });
     });
 }

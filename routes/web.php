@@ -4,6 +4,7 @@ use App\Http\Controllers\Web\PageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\DynamicPageController;
+use App\Http\Controllers\Web\FeedbackController;
 use Modules\Cars\Http\Controllers\Web\CarsController;
 use Modules\Clients\Http\Controllers\Web\ClientsController;
 use Modules\Articles\app\Http\Controllers\Web\ArticlesController;
@@ -11,12 +12,16 @@ use Modules\Articles\app\Http\Controllers\Web\ArticlesController;
 
 require __DIR__.'/auth.php';
 
+Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store');
+
 Route::group([
     'namespace' => 'Web',
 //    'middleware' => 'verified'
 ], function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('main.page');
+
+    Route::get('/thanks', [HomeController::class, 'thanks'])->name('thanks');
 
     // Blog
     Route::get('/blog', [ArticlesController::class, 'index'])->name('blog.page');
@@ -28,6 +33,8 @@ Route::group([
 
     // Customer stories
     Route::get('/customer-stories', [ClientsController::class, 'index'])->name('clients.page');
+
+    Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 
     // pages
     // TODO:: change HomeController to PageController for contacts page

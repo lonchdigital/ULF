@@ -79,6 +79,7 @@ Route::group([
 
         Route::prefix('pages')->group(function () {
             Route::get('/', [PageController::class, 'index'])->name('page.index');
+            Route::get('/edit-contacts', [PageController::class, 'editContacts'])->name('page.edit-contacts');
             Route::get('/{page}/edit', [PageController::class, 'edit'])->name('page.edit');
         });
 

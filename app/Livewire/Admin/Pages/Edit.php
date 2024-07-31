@@ -53,7 +53,7 @@ class Edit extends Component
         });
 
         if(empty($this->faqs)) {
-            $this->faqs = [
+            $this->faqs[] = [
                 'uk' => [
                     'question' => '',
                     'answer' => '',
@@ -119,7 +119,7 @@ class Edit extends Component
                 'answer' => ''
             ],
 
-            'sort' => count(($this->faqs + 1) ?? 1),
+            'sort' => count($this->faqs) + 1,
         ];
     }
 

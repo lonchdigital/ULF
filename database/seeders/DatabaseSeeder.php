@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TermsPageSeeder::class);
         $this->call(RentalAgreementPageSeeder::class);
         $this->call(InsuranceContractPageSeeder::class);
-//        $this->call(PagesSeeder::class);
+       $this->call(PagesSeeder::class);
 
         /*User::factory()->create([
             'name' => 'Test User',

@@ -1,0 +1,446 @@
+<?php
+
+namespace App\Livewire\Admin\Pages;
+
+use App\Models\Faq;
+use App\Models\FaqTranslation;
+use App\Models\Page;
+use Livewire\Component;
+
+class EditContacts extends Component
+{
+    public Page $page;
+
+    public string $locale = '';
+
+    public string $ukTitle;
+
+    public string $ruTitle;
+
+    public string $ukFirstDay;
+
+    public string $ukFirstHours;
+
+    public string $ruFirstDay;
+
+    public string $ruFirstHours;
+
+    public string $ukSecondDay;
+
+    public string $ruSecondDay;
+
+    public string $ukSecondHours;
+
+    public string $ruSecondHours;
+
+    public string $ukFirstAddress;
+
+    public string $ruFirstAddress;
+
+    public string $ukSecondAddress;
+
+    public string $ruSecondAddress;
+
+    public string $ukFirstPhone;
+
+    public string $ruFirstPhone;
+
+    public string $ukSecondPhone;
+
+    public string $ruSecondPhone;
+
+    public string $ukEmail;
+
+    public string $ruEmail;
+
+    public string $ukInstagram;
+
+    public string $ruInstagram;
+
+    public string $ukFacebook;
+
+    public string $ruFacebook;
+
+    protected $listeners = [
+        'languageSwitched' => 'languageSwitched'
+    ];
+
+    public function mount(Page $page)
+    {
+        $this->locale = 'uk';
+
+        $this->page = $page;
+
+        $this->ukTitle = $page->translate('uk')->h1 ?? '';
+
+        $this->ruTitle = $page->translate('ru')->h1 ?? '';
+
+        $this->ukFirstDay = $this->page->pageBlocks->where('block', 'days')->where('key', 'first')->first()->translate('uk')->title ?? '';
+
+        $this->ruFirstDay = $this->page->pageBlocks->where('block', 'days')->where('key', 'first')->first()->translate('ru')->title ?? '';
+
+        $this->ukSecondDay = $this->page->pageBlocks->where('block', 'days')->where('key', 'second')->first()->translate('uk')->title ?? '';
+
+        $this->ruSecondDay = $this->page->pageBlocks->where('block', 'days')->where('key', 'second')->first()->translate('ru')->title ?? '';
+
+        $this->ukFirstHours = $this->page->pageBlocks->where('block', 'days')->where('key', 'first')->first()->translate('uk')->description ?? '';
+
+        $this->ruFirstHours = $this->page->pageBlocks->where('block', 'days')->where('key', 'first')->first()->translate('ru')->description ?? '';
+
+        $this->ukSecondHours = $this->page->pageBlocks->where('block', 'days')->where('key', 'second')->first()->translate('uk')->description ?? '';
+
+        $this->ruSecondHours = $this->page->pageBlocks->where('block', 'days')->where('key', 'second')->first()->translate('ru')->description ?? '';
+
+        $this->ukFirstAddress = $this->page->pageBlocks->where('block', 'address')->where('key', 'text')->first()->translate('uk')->title ?? '';
+
+        $this->ruFirstAddress = $this->page->pageBlocks->where('block', 'address')->where('key', 'text')->first()->translate('ru')->title ?? '';
+
+        $this->ukSecondAddress  = $this->page->pageBlocks->where('block', 'address')->where('key', 'text')->first()->translate('uk')->description ?? '';
+
+        $this->ruSecondAddress = $this->page->pageBlocks->where('block', 'address')->where('key', 'text')->first()->translate('ru')->title ?? '';
+
+        $this->ukFirstPhone = $this->page->pageBlocks->where('block', 'phone')->where('key', 'text')->first()->translate('uk')->title ?? '';
+
+        $this->ruFirstPhone = $this->page->pageBlocks->where('block', 'phone')->where('key', 'text')->first()->translate('ru')->title ?? '';
+
+        $this->ukSecondPhone  = $this->page->pageBlocks->where('block', 'phone')->where('key', 'text')->first()->translate('uk')->description ?? '';
+
+        $this->ruSecondPhone  = $this->page->pageBlocks->where('block', 'phone')->where('key', 'text')->first()->translate('ru')->title ?? '';
+
+        $this->ukEmail  = $this->page->pageBlocks->where('block', 'email')->where('key', 'text')->first()->translate('uk')->title ?? '';
+
+        $this->ruEmail = $this->page->pageBlocks->where('block', 'email')->where('key', 'text')->first()->translate('ru')->title ?? '';
+
+        $this->ukInstagram = $this->page->pageBlocks->where('block', 'instagram')->where('key', 'text')->first()->translate('uk')->title ?? '';
+
+        $this->ruInstagram = $this->page->pageBlocks->where('block', 'instagram')->where('key', 'text')->first()->translate('ru')->title ?? '';
+
+        $this->ukFacebook = $this->page->pageBlocks->where('block', 'facebook')->where('key', 'text')->first()->translate('uk')->title ?? '';
+
+        $this->ruFacebook = $this->page->pageBlocks->where('block', 'facebook')->where('key', 'text')->first()->translate('ru')->title ?? '';
+    }
+
+    protected function rules()
+    {
+        return [
+            'ukTitle' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruTitle' => [
+                'nullable',
+                'string',
+            ],
+
+            'ukFirstDay' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruFirstDay' => [
+                'nullable',
+                'string',
+            ],
+
+            'ukSecondDay' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruSecondDay' => [
+                'nullable',
+                'string',
+            ],
+
+            'ukFirstHours' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruFirstHours' => [
+                'nullable',
+                'string',
+            ],
+
+            'ukSecondHours' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruSecondHours' => [
+                'nullable',
+                'string',
+            ],
+
+            'ukFirstAddress' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruFirstAddress' => [
+                'nullable',
+                'string',
+            ],
+
+            'ukSecondAddress' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruSecondAddress' => [
+                'nullable',
+                'string',
+            ],
+
+            'ukFirstPhone' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruFirstPhone' => [
+                'nullable',
+                'string',
+            ],
+
+            'ukSecondPhone' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruSecondPhone' => [
+                'nullable',
+                'string',
+            ],
+
+            'ukEmail' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruEmail' => [
+                'nullable',
+                'string',
+            ],
+
+            'ukInstagram' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruInstagram' => [
+                'nullable',
+                'string',
+            ],
+
+            'ukFacebook' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruFacebook' => [
+                'nullable',
+                'string',
+            ],
+        ];
+    }
+
+    public function languageSwitched($lang)
+    {
+        $this->locale = $lang;
+    }
+
+    public function save()
+    {
+        $this->validate();
+
+        $this->page->translateOrNew('uk')->h1 = $this->ukTitle;
+        $this->page->translateOrNew('ru')->h1 = $this->ruTitle;
+
+        $this->page->save();
+
+        $this->page->pageBlocks->where('block', 'days')
+            ->where('key', 'first')
+            ->first()
+            ->translate('uk')
+            ->update([
+                'title' => $this->ukFirstDay,
+            ]);
+
+        $this->page->pageBlocks->where('block', 'days')
+            ->where('key', 'first')
+            ->first()
+            ->translate('ru')
+            ->update([
+                'title' => $this->ruFirstDay,
+            ]);
+
+        $this->page->pageBlocks->where('block', 'days')
+            ->where('key', 'second')
+            ->first()
+            ->translate('uk')->update([
+                'title' => $this->ukSecondDay,
+            ]);
+
+        $this->page->pageBlocks->where('block', 'days')
+            ->where('key', 'second')
+            ->first()
+            ->translate('ru')
+            ->update([
+                'title' => $this->ruSecondDay,
+            ]);
+
+        $this->page->pageBlocks->where('block', 'days')
+            ->where('key', 'first')
+            ->first()
+            ->translate('uk')
+            ->update([
+                'description' => $this->ukFirstHours,
+            ]);
+
+        $this->page->pageBlocks->where('block', 'days')
+            ->where('key', 'first')
+            ->first()
+            ->translate('ru')
+            ->update([
+                'description' => $this->ruFirstHours,
+            ]);
+
+        $this->page->pageBlocks->where('block', 'days')
+            ->where('key', 'second')
+            ->first()
+            ->translate('uk')
+            ->update([
+                'description' => $this->ukSecondHours,
+            ]);
+
+        $this->page->pageBlocks->where('block', 'days')
+            ->where('key', 'second')
+            ->first()
+            ->translate('ru')
+            ->update([
+                'description' => $this->ruSecondHours
+            ]);
+
+        $this->page->pageBlocks->where('block', 'address')
+            ->where('key', 'text')
+            ->first()
+            ->translate('uk')
+            ->update([
+                'title' => $this->ukFirstAddress
+            ]);
+
+        $this->page->pageBlocks->where('block', 'address')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ru')
+            ->update([
+                'tite' => $this->ruFirstAddress
+            ]);
+
+        $this->page->pageBlocks->where('block', 'address')
+            ->where('key', 'text')
+            ->first()
+            ->translate('uk')
+            ->update([
+                'description' => $this->ukSecondAddress
+            ]);
+
+        $this->page->pageBlocks->where('block', 'address')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ru')
+            ->update([
+                'title' => $this->ruSecondAddress
+            ]);
+
+        $this->page->pageBlocks->where('block', 'phone')
+            ->where('key', 'text')
+            ->first()
+            ->translate('uk')
+            ->update([
+                'title' => $this->ukFirstPhone
+            ]);
+
+        $this->page->pageBlocks->where('block', 'phone')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ru')
+            ->update([
+                'title' => $this->ruFirstPhone,
+            ]);
+
+        $this->page->pageBlocks->where('block', 'phone')
+            ->where('key', 'text')
+            ->first()
+            ->translate('uk')
+            ->update([
+                'description' => $this->ukSecondPhone
+            ]);
+
+        $this->page->pageBlocks->where('block', 'phone')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ru')
+            ->update([
+                'title' => $this->ruSecondPhone
+            ]);
+
+        $this->page->pageBlocks->where('block', 'email')
+            ->where('key', 'text')
+            ->first()
+            ->translate('uk')
+            ->update([
+                'title' => $this->ukEmail
+            ]);
+
+        $this->page->pageBlocks->where('block', 'email')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ru')
+            ->update([
+                'title' => $this->ruEmail
+            ]);
+
+        $this->page->pageBlocks->where('block', 'instagram')
+            ->where('key', 'text')
+            ->first()
+            ->translate('uk')
+            ->update([
+                'title' => $this->ukInstagram
+            ]);
+
+        $this->page->pageBlocks->where('block', 'instagram')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ru')
+            ->update([
+                'title' => $this->ruInstagram
+            ]);
+
+        $this->page->pageBlocks->where('block', 'facebook')
+            ->where('key', 'text')
+            ->first()
+            ->translate('uk')
+            ->update([
+                'title' => $this->ukFacebook
+            ]);
+
+        $this->page->pageBlocks->where('block', 'facebook')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ru')
+            ->update([
+                'title' => $this->ruFacebook
+            ]);
+
+        session()->flash('success', 'Дані успішно збережено');
+
+        $this->redirectRoute('admin.pages.index');
+    }
+
+    public function render()
+    {
+        return view('livewire.admin.pages.edit-contacts');
+    }
+}

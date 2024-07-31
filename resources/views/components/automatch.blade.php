@@ -160,23 +160,26 @@
                                 <div class="field mb-3">
                                     <label class="control-label" for="popup-tinder--name">Ваше ім’я</label>
                                     <input type="text" id="popup-tinder---name" name="name" class="form-control mb-3" placeholder="Введіть ім’я" autocomplete="no-autofill-please">
-                                    <div class="field--help-info small-txt text-red mb-2">Введіть Ваше ім’я українськими літерами (кирилицею)</div>
+                                    {{-- <div class="field--help-info small-txt text-red mb-2" id="name-error">Введіть Ваше ім’я українськими літерами (кирилицею)</div> --}}
                                 </div>
+                                <div class="field--help-info small-txt text-red mb-2" id="name_error"></div>
                             </div>
                             <div class="col-12">
                                 <div class="field mb-3">
                                     <label class="control-label" for="popup-tinder--phone">Номер телефону</label>
                                     <input type="tel" id="popup-tinder--phone" name="phone" class="form-control mb-3" placeholder="+38 000 0000000" autocomplete="no-autofill-please">
-                                    <div class="field--help-info small-txt text-red mb-2">Введіть Ваш номер телефону</div>
+                                    <div class="field--help-info small-txt text-red mb-2" id="phone-error">Введіть Ваш номер телефону</div>
                                 </div>
+                                <div class="field--help-info small-txt text-red mb-2" id="phone_error"></div>
                             </div>
                             <div class="col-12">
                                 <div class="custom-control custom-checkbox position-relative mb-5">
-                                    <input type="checkbox" class="custom-control-input" id="check-form-popup-tinder">
+                                    <input type="checkbox" class="custom-control-input" id="check-form-popup-tinder" name="approve">
                                     <label class="custom-control-label" for="check-form-popup-tinder">
                                         <span class="custom-checkbox--info">Я даю згоду на збір, обробку, зберігання та використання своїх <a href="##">персональних даних</a>.</span>
                                     </label>
                                 </div>
+                                <div class="field--help-info small-txt text-red mb-2" id="approve_error"></div>
                             </div>
                             <input type="hidden" name="page" value="Головна сторінка">
                             <div class="col-12 col-md-auto">
@@ -188,4 +191,5 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </section>

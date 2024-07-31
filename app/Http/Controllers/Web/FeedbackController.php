@@ -22,5 +22,7 @@ class FeedbackController extends Controller
         $data = $request->validated();
 
         dispatch(new SendFeedbackEmailJob($data));
+
+        return response()->json(['success' => true]);
     }
 }

@@ -44,6 +44,11 @@ class Page extends Model implements TranslatableContract
         return $this->hasMany(Faq::class);
     }
 
+    public function pageBlocks():HasMany
+    {
+        return $this->hasMany(PageBlock::class);
+    }
+
     public function scopeSearch($query, $val)
     {
         return $query->when($val, function ($q) use ($val) {

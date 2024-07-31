@@ -24,5 +24,10 @@ class PageController extends Controller
         dd('page edit', $page->name);
     }
 
+    public function editContacts()
+    {
+        $page = Page::where('slug', 'contacts')->firstOrFail();
 
+        return view('admin.pages.edit-contacts', compact('page'));
+    }
 }
