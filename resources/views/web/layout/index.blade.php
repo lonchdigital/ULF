@@ -8,6 +8,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Автопарк')</title>
     <meta name="robots" content="noindex, nofollow">
+    <meta property="og:image" content="{{ asset('static_images/favicon-32x32.png') }}">
+    <link rel="apple-touch-icon" sizes="32x32" href="{{ asset('static_images/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('static_images/favicon-32x32.png') }}">
 
     @yield('head')
 
