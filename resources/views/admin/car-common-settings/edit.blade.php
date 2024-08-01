@@ -233,6 +233,7 @@
 
                 highestSubscribeBenefitId++;
                 addSubscribeBenefit(highestSubscribeBenefitId);
+                $('#lang-fields-witcher a.lang-uk[href="#uk"]').click();
             });
 
 
@@ -248,9 +249,10 @@
                         highestSettingID = id;
                     }
                 });
-                highestSettingID++;
 
+                highestSettingID++;
                 addSubscribeMonthSetting(tabID, highestSettingID);
+                $('#lang-fields-witcher a.lang-uk[href="#uk"]').click();
             });
 
 
@@ -264,10 +266,10 @@
                         highestFAQsId = id;
                     }
                 });
+
                 highestFAQsId++;
-
-
                 addFaqsCarsRow(highestFAQsId);
+                $('#lang-fields-witcher a.lang-uk[href="#uk"]').click();
             });
 
         });

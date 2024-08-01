@@ -46,15 +46,14 @@ class CarsService extends CarBaseService
                 foreach ($vehicles as $vehicle) {
 
                     if(!is_null($vehicle->car)) {
-
-                        $vehicle->car->page->delete();
-
                         if(count($vehicle->car->images) > 0) {
                             foreach ($vehicle->car->images as $image) {
                                 deleteImage($image->Url);
                                 $image->delete();
                             }
                         }
+
+                        $vehicle->car->page->delete();
                     }
                     $vehicle->delete();
 

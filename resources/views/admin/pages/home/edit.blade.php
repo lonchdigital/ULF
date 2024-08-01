@@ -393,6 +393,7 @@
 
                 highestBenefitRowOneId++;
                 addHomeBenefitRowOne(highestBenefitRowOneId);
+                $('#lang-fields-witcher a.lang-uk[href="#uk"]').click();
             });
             $('#add-subscribe-benefit-row-two').click(function (event) {
                 event.preventDefault();
@@ -406,25 +407,9 @@
 
                 highestBenefitRowTwoId++;
                 addHomeBenefitRowTwo(highestBenefitRowTwoId);
+                $('#lang-fields-witcher a.lang-uk[href="#uk"]').click();
             });
 
-
-
-            /* add FAQs */
-            $('#add-faqs-cars').click(function (event) {
-                event.preventDefault();
-                let highestFAQsId = 0;
-                $('.faq-car-row').each(function () {
-                    const id = parseInt($(this).attr('id').replace('faq-car-id-', ''));
-                    if (id >= highestFAQsId) {
-                        highestFAQsId = id;
-                    }
-                });
-                highestFAQsId++;
-
-
-                addFaqsCarsRow(highestFAQsId);
-            });
 
         });
 
@@ -469,7 +454,6 @@
             $(`#home-benefits-row-one #home-benefit-id-${id}`).remove();
         }
 
-
         function addHomeBenefitRowTwo(id) {
             $('#home-benefits-row-two').append(`
                 <div class="col-md-4 home-benefit-row-two pb-1 mb-4" id="home-benefit-id-${id}">
@@ -508,56 +492,6 @@
             event.preventDefault();
 
             $(`#home-benefits-row-two #home-benefit-id-${id}`).remove();
-        }
-
-
-
-        function addFaqsCarsRow($id) {
-            $('#faqs-cars').append(`
-                <div class="col-12 faq-car-row pb-1 mb-4" id="faq-car-id-${$id}">
-                    <div class="border border-secondary rounded p-3">
-                        <div class="row justify-content-between align-items-center">
-
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <x-admin.multilanguage-input
-                                            :is-required="false"
-                                            :label="trans('admin.question')"
-                                            field-name="faqs[${$id}][question]"
-                                            :values="[]"/>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <x-admin.multilanguage-text-area
-                                            :is-required="false"
-                                            :label="trans('admin.answer')"
-                                            field-name="faqs[${$id}][answer]"
-                                            :values="[]"/>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-5">
-                                <a href="#" onclick="artRemoveFaqsCarsRow(event, ${$id})">
-                                    <i class="ti-close font-weight-bold mr-2"></i>
-                                    {{ trans('admin.delete') }}
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            `);
-        }
-        function artRemoveFaqsCarsRow(event, id) {
-            event.preventDefault();
-
-            $(`#faq-car-id-${id}`).remove();
         }
 
     </script>

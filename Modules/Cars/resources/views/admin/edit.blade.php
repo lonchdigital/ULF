@@ -81,11 +81,11 @@
                                                 @foreach (App\DataClasses\CarLabelColorClass::get() as $color)
                                                     <div class="form-check pl-0 mr-3">
                                                         <label class="form-check-label">
-                                                            <input 
-                                                            type="radio" 
-                                                            class="form-check-input mr-2" 
-                                                            name="label_color_id" 
-                                                            value="{{ $color['id'] }}" {{ ($color['id'] === $car->label_color_id) ? 'checked=""' : '' }} 
+                                                            <input
+                                                            type="radio"
+                                                            class="form-check-input mr-2"
+                                                            name="label_color_id"
+                                                            value="{{ $color['id'] }}" {{ ($color['id'] === $car->label_color_id) ? 'checked=""' : '' }}
                                                             >
                                                             <span class="ml-3">{{ $color['name'] }}</span>
                                                         </label>
@@ -293,9 +293,10 @@
                         highestFAQsId = id;
                     }
                 });
-                highestFAQsId++;
 
+                highestFAQsId++;
                 addFaqsCarsRow(highestFAQsId);
+                $('#lang-fields-witcher a.lang-uk[href="#uk"]').click();
             });
 
         });
