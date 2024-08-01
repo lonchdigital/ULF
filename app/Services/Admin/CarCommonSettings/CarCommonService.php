@@ -3,6 +3,7 @@
 
 namespace App\Services\Admin\CarCommonSettings;
 
+use App\Models\CommonCarSetting;
 use App\Models\Faq;
 use App\Models\Page;
 use App\Models\SubscribeBenefit;
@@ -34,6 +35,20 @@ class CarCommonService
 
     public function updatePage(array $request): void
     {
+        // car common settings
+        $commonCarSettings = $this->getAllCommonCarSettings();
+        $data = [];
+        foreach ($request['first_payment_note'] as $lang => $value) {
+            $data[$lang]['first_payment_note'] = $value;
+        }
+
+        if(!is_null($commonCarSettings)) {
+            $commonCarSettings->update($data);
+        } else {
+            CommonCarSetting::create($data);
+        }
+
+
        (isset($request['subscribe-benefit'])) ? $this->syncBenefits($request['subscribe-benefit']) : $this->syncBenefits([]);
        (isset($request['subscribe-settings'])) ? $this->syncSubscribeSettings($request['subscribe-settings']) : $this->syncSubscribeSettings([]);
        (isset($request['faqs'])) ? $this->syncFaqs($request['faqs']) : $this->syncFaqs([]);
@@ -78,6 +93,10 @@ class CarCommonService
         }
     }
 
+    public function getAllCommonCarSettings()
+    {
+        return CommonCarSetting::first();
+    }
     public function getAllSubscribeBenefits()
     {
         return SubscribeBenefit::all();
@@ -188,59 +207,5 @@ class CarCommonService
     {
         return SubscribeSetting::all();
     }
-
-
-    // TODO:: remove later
-    /*public function getAllSubscribeBenefitsAdmin(): array
-    {
-        $allSubscribeBenefits = [];
-
-        foreach ( SubscribeBenefit::all() as $key => $benefit ) {
-            foreach ( $this->availableLanguages as $language) {
-//                $allSubscribeBenefits[$key]['id'] = $key;
-                $allSubscribeBenefits[$key]['title'][$language] = $benefit->translate($language)->title;
-            }
-        }
-
-        return $allSubscribeBenefits;
-    }*/
-/*    private function syncFaqs(int $infoSectionId, array $faqs): void
-    {
-        $existingFaqs = InfoFaq::where('info_section_id', $infoSectionId)->get();
-
-        if ($faqs) {
-            foreach ($faqs as $faq) {
-                $dataToUpdate = [
-                    'info_section_id' => $infoSectionId,
-                    'question' => $faq['question'],
-                    'answer' => $faq['answer'],
-                    'url' => $faq['url'],
-                    'icon_id' => (isset($faq['icon_id'])) ? $faq['icon_id'] : 1,
-                ];
-
-                if (isset($faq['id']) && $faq['id']) {
-                    $existingFaq = $existingFaqs->where('id', $faq['id'])->first();
-                    if (!$existingFaq) {
-                        throw new \Exception('Incorrect faq id: ' . $faq['id']);
-                    }
-
-                    $existingFaq->update($dataToUpdate);
-                } else {
-                    InfoFaq::create($dataToUpdate);
-                }
-            }
-        }
-
-        $existingFaqsInRequest = $faqs ? array_filter(array_column($faqs, 'id'), function ($item) {
-            return $item !== null;
-        }): [];
-
-        $faqsToDelete = $existingFaqs->whereNotIn('id', $existingFaqsInRequest);
-
-        foreach ($faqsToDelete as $faqToDelete) {
-            $faqToDelete->delete();
-        }
-
-    }*/
 
 }

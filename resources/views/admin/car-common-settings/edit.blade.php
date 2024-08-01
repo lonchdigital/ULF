@@ -24,7 +24,8 @@
                                 <x-admin.multilanguage-input :label="trans('admin.first_payment_note')"
                                     :is-required="false"
                                     field-name="first_payment_note"
-                                    :values="[]"/>
+                                    field-display="first_payment_note"
+                                    :values="(!is_null($commonCarSettings)) ? $commonCarSettings->getTranslationsArray(): []"/>
                             </section>
 
                             <section class="mb-50">
