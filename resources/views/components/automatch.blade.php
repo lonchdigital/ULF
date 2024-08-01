@@ -5,8 +5,8 @@
                 <div class="inner p-3 p-sm-0">
                     <div class="row">
                         <div class="col">
-                            <div class="head font-weight-bolder mb-3 mb-md-6 text-center text-white">Твій AUTOMATCH</div>
-                            <div class="h5 font-m font-weight-bold mb-6 mb-md-9 text-center text-white">Свайпай ліворуч, якщо не твоє, праворуч — якщо побачив авто мрії</div>
+                            <div class="head font-weight-bolder mb-3 mb-md-6 text-center text-white">{{ $block->title }}</div>
+                            <div class="h5 font-m font-weight-bold mb-6 mb-md-9 text-center text-white">{{ $block->description }}</div>
                         </div>
                     </div>
                     <div class="row">
@@ -19,13 +19,14 @@
                                             <div class="name">{{ $match->title ?? '' }}</div>
                                             <div class="w-100">
                                                 <div class="price mb-1"><span class="currency">$</span> <span class="value">{{ $match->price ?? '' }}</span> / міс.</div>
+                                                <a href="{{ $match->link }}">
                                                 <div class="btn-arrow btn btn-block">
                                                     <span class="car-properties-preview">{{ $match->description ?? '' }}</span>
                                                 </div>
+                                                </a>
                                             </div>
                                         </div>
                                         <div class="wrap-img">
-                                            {{-- <img class="bg-down" src="img/scroll-gallery-car-1.jpeg" alt="img"> --}}
                                             @if($match->image)
                                                 <img class="bg-down" src="{{ $match->imageUrl }}" alt="{{ $match->title ?? 'automatch_' . $loop->iteration }}">
                                             @endif

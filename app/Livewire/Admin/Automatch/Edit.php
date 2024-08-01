@@ -14,15 +14,35 @@ class Edit extends Component
 {
     use WithFileUploads;
 
+    public Page $page;
+
     public string $locale;
 
     public array $automatches = [];
+
+    public string $ukTitle;
+
+    public string $ruTitle;
+
+    public string $ukDescription;
+
+    public string $ruDescription;
 
     protected $listeners = ['languageSwitched' => 'languageSwitched'];
 
     public function mount(Page $page)
     {
         $this->locale = 'uk';
+
+        $this->page = Page::where('key', 'homepage')->first();
+
+        $this->ukTitle = $this->page->pageBlocks->where('block', 'automatch')->first()->translate('uk')->title ?? '';
+
+        $this->ruTitle = $this->page->pageBlocks->where('block', 'automatch')->first()->translate('ru')->title ?? '';
+
+        $this->ukDescription = $this->page->pageBlocks->where('block', 'automatch')->first()->translate('uk')->description ?? '';
+
+        $this->ruDescription = $this->page->pageBlocks->where('block', 'automatch')->first()->translate('ru')->description ?? '';
 
         $automatches = Automatch::get();
 
@@ -124,6 +144,26 @@ class Edit extends Component
             ],
 
             'automatches.*.ru.description' => [
+                'nullable',
+                'string',
+            ],
+
+            'ukTitle' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruTitle' => [
+                'nullable',
+                'string',
+            ],
+
+            'ukDescription' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruDescription' => [
                 'nullable',
                 'string',
             ],
@@ -260,6 +300,33 @@ class Edit extends Component
                 ],
             ]);
         }
+
+        $this->page->pageBlocks->where('block', 'automatch')
+            ->first()
+            ->translate('uk')
+            ->update([
+                'title' => $this->ukTitle,
+            ]);
+
+        $this->page->pageBlocks->where('block', 'automatch')
+            ->first()
+            ->translate('ru')
+            ->update([
+                'title' => $this->ruTitle,
+            ]);
+
+        $this->page->pageBlocks->where('block', 'automatch')
+            ->first()
+            ->translate('uk')->update([
+                'description' => $this->ukDescription,
+            ]);
+
+        $this->page->pageBlocks->where('block', 'automatch')
+            ->first()
+            ->translate('ru')
+            ->update([
+                'title' => $this->ruDescription,
+            ]);
 
         session()->flash('success', 'Дані успішно збережено');
 

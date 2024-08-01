@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Http\Controllers\Web\HomeController;
 use App\Models\Page;
+use App\Models\PageBlock;
 use App\Models\PageTranslation;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -35,5 +36,18 @@ class HomePageSeeder extends Seeder
             'h1' => 'Главная страница',
             'locale' => 'ru',
         ]);
+
+        $block = PageBlock::firstOrCreate([
+            'page_id' => $page->id,
+            'block' => 'automatch',
+            'key' => 'text',
+        ]);
+
+        $block->translateOrNew('uk')->title = 'Твій AUTOMATCH';
+        $block->translateOrNew('uk')->description = 'Свайпай ліворуч, якщо не твоє, праворуч — якщо побачив авто мрії';
+        $block->translateOrNew('ru')->title = 'Твой AUTOMATCH';
+        $block->translateOrNew('ru')->description = 'Свайпай влево, если не твое, вправо - если увидел авто мечты';
+
+        $block->save();
     }
 }
