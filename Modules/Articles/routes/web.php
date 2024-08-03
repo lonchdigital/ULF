@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Articles\Http\Controllers\ArticlesController;
+use Modules\Articles\app\Http\Controllers\Web\ArticlesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,4 @@ use Modules\Articles\Http\Controllers\ArticlesController;
 |
 */
 
-Route::group([], function () {
-    Route::resource('articles', ArticlesController::class)->names('articles');
-});
+Route::post('/articles', [ArticlesController::class, 'filter'])->name('article.filter');

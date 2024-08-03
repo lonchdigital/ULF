@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <meta name="viewport" content="width=400, initial-scale=1"> -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="app-url" content="{{ env('APP_URL') }}">
+
     <title>@yield('title', 'Автопарк')</title>
     <meta name="robots" content="noindex, nofollow">
     <meta property="og:image" content="{{ asset('static_images/favicon-32x32.png') }}">

@@ -14,10 +14,12 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
 
-
                 'resources/js/app.js',
                 'resources/js/libs.js',
-                'resources/js/main.js'
+                'resources/js/main.js',
+
+                // Modules
+                'Modules/Articles/resources/js/articles-catalog.js'
             ],
             refresh: true,
         }),

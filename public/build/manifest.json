@@ -1,10 +1,19 @@
 {
-  "_jquery-vEc8DvAz.js": {
-    "file": "assets/jquery-vEc8DvAz.js",
+  "Modules/Articles/resources/js/articles-catalog.js": {
+    "file": "assets/articles-catalog-CBp6wAgt.js",
+    "name": "articles-catalog",
+    "src": "Modules/Articles/resources/js/articles-catalog.js",
+    "isEntry": true,
+    "imports": [
+      "_jquery-CqDs7TUd.js"
+    ]
+  },
+  "_jquery-CqDs7TUd.js": {
+    "file": "assets/jquery-CqDs7TUd.js",
     "name": "jquery"
   },
   "resources/css/app.css": {
-    "file": "assets/app-KayM-vRj.css",
+    "file": "assets/app-DEXewjFJ.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -13,12 +22,12 @@
     "src": "resources/img/icons/icons.svg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-dORkzGez.js",
+    "file": "assets/app-Cz9RXGPv.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-DJiaJ9OG.css"
+      "assets/app-BvDetDAe.css"
     ],
     "assets": [
       "assets/Montserrat-Black-DHRMOOaf.woff2",
@@ -43,21 +52,21 @@
     ]
   },
   "resources/js/libs.js": {
-    "file": "assets/libs-DQtJ-TGY.js",
+    "file": "assets/libs-Cclc0eUR.js",
     "name": "libs",
     "src": "resources/js/libs.js",
     "isEntry": true,
     "imports": [
-      "_jquery-vEc8DvAz.js"
+      "_jquery-CqDs7TUd.js"
     ]
   },
   "resources/js/main.js": {
-    "file": "assets/main-Bz6rHYxJ.js",
+    "file": "assets/main-DCbqSQN_.js",
     "name": "main",
     "src": "resources/js/main.js",
     "isEntry": true,
     "imports": [
-      "_jquery-vEc8DvAz.js"
+      "_jquery-CqDs7TUd.js"
     ]
   },
   "resources/scss/fonts/Montserrat-Black.woff": {

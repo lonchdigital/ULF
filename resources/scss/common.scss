@@ -1145,6 +1145,15 @@ p {
 	gap: 24px;
 }
 //pagination
+
+.pagination-ajax {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .5rem;
+}
+
+.pagination-ajax,
 .pagination {
 	position: relative;
 	padding: 10px 0;

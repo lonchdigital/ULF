@@ -14,7 +14,6 @@ class ArticlesController extends Controller
     * @var WebService
      */
    private WebService $service;
-   const PER_PAGE = 9;
 
     /**
      * ProfessionogramsController constructor.
@@ -29,10 +28,6 @@ class ArticlesController extends Controller
     {
         return view('articles::web.index', [
             'page' => $page,
-            'articles' => $this->service->getLatestArticles(self::PER_PAGE)
-            // 'page' => $page,
-            // 'documents' => $documents,
-//            'variations' => ProfessionogramVariety::all(),
         ]);
     }
 
@@ -44,6 +39,14 @@ class ArticlesController extends Controller
             'page' => $articlePage,
             'article' => $articlePage->article
         ]);
+    }
+
+
+    public function filter(Request $request): array
+    {
+        $request->validate([]);
+
+        return $this->service->getFilteredPosts($request);
     }
 
 }

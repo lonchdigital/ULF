@@ -3,6 +3,7 @@
 @section('title', 'Single Car!!!')
 
 @section('head')
+    @vite(['Modules/Articles/resources/js/articles-catalog.js'])
 @endsection
 
 @section('content')
@@ -48,34 +49,20 @@
             <div class="container">
                 <div class="row">
                     <div class="col mx-auto">
-                        <div class="our-fleet-preview row">
-                            @foreach ($articles as $article)
-                                <div class="content col-12 col-md-6 col-lg-4">
-                                    <div class="our-fleet-preview--item">
-                                        <div class="wrap-img">
-                                            <a href="{{ route('blog.single.page', ['slug' => $article->page->slug]) }}">
-                                                <img src="{{ $article->image_url }}" alt="Image">
-                                                {{-- <span class="item-img-date">07 Травня 2024</span> --}}
-                                            </a>
-                                        </div>
-                                        <div class="name">
-                                            <a href="{{ route('blog.single.page', ['slug' => $article->page->slug]) }}">
-                                                {{ $article->name }}
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
+                        <div id="articles-list" class="our-fleet-preview row">
+                            {{-- Got from AJAX --}}
                         </div>
                     </div>
                 </div>
                 <div class="row mt-5 mb-5 mb-lg-0">
-                    {{-- <div class="col-auto mx-auto ">
-                        <button type="button" class="btn-show-more btn btn-main-blue btn-default text-uppercase">Показати більше</button>
-                    </div> --}}
+                    <div class="col-auto mx-auto ">
+                        <button id="show-more" type="button" class="btn-show-more btn btn-main-blue btn-default text-uppercase">Показати більше</button>
+                    </div>
                     <div class="col-12">
                         <nav class="bg-white mt-5 mt-md-2">
-                            <ul class="pagination justify-content-center mb-0"></ul>
+                            <ul id="pagination-wrapper" class="pagination-ajax justify-content-center mb-0">
+                                {{-- Got from AJAX --}}
+                            </ul>
                         </nav>
                     </div>
                 </div>
