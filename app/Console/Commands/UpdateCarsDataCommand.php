@@ -85,7 +85,7 @@ class UpdateCarsDataCommand extends Command
         // );
 
         $this->info('Getting lotsList...');
-        $carLotsInfo = $this->carApiService->getLotsList($this->authService->accessToken, 5);
+        $carLotsInfo = $this->carApiService->getLotsList($this->authService->accessToken, 10, 1);
 
         $this->info('Updating Cars...');
         $this->carUpdateService->updateCars(

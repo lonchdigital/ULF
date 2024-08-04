@@ -16,7 +16,7 @@
                     <div class="col mx-auto">
                         <div class="section-top--info nav-breadcrumb">
                             <div class="mb-2">
-                                <a href="index.html" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">Назад</a>
+                                <a href="{{ route('main.page') }}" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">Назад</a>
                             </div>
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <div class="h3 font-m font-weight-bolder d-none d-lg-block">Блог</div>

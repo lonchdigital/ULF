@@ -34,4 +34,11 @@ class CarsController extends Controller
             'car' => $carPage->car
         ]);
     }
+
+    public function filter(Request $request): array
+    {
+        $request->validate([]);
+
+        return $this->service->getFilteredPosts($request);
+    }
 }

@@ -3,6 +3,7 @@
 @section('title', 'Catalog')
 
 @section('head')
+    @vite(['Modules/Cars/resources/js/cars-catalog.js'])
 @endsection
 
 @section('content')
@@ -52,16 +53,20 @@
                 <div class="container">
                     <div class="row">
                         <div class="col mx-auto">
-                            <div class="our-fleet-preview row">
+                            <div id="cars-list" class="our-fleet-preview row">
+                                {{-- Got from AJAX --}}
 
-                                @foreach ($cars as $car)
+
+
+
+                                {{--@foreach ($cars as $car)
                                     <div class="content col-12 col-md-6 col-lg-4">
                                         <div class="our-fleet-preview--item">
                                             <div class="name">{{ $car->getFullName() }}</div>
                                             <div class="wrap-img">
                                                 <img src="{{ $car->getMainImageUrl() }}" alt="Car image">
                                             </div>
-                                            @if(count($car->subscribePrices) > 0)
+                                            @if(count($car->subscribePrices) > 0 && !is_null($car->subscribePrices->where('section_id', 1)->first()->monthly_payment))
                                                 <div class="price mb-1">
                                                     <span class="currency">$</span>
                                                     <span class="value">{{ $car->subscribePrices->where('section_id', 1)->first()->monthly_payment }}</span> / міс.
@@ -69,26 +74,27 @@
                                             @endif
                                             <a href="{{ route('car.single.page', ['slug' => $car->page->slug]) }}" class="btn-arrow btn btn-block">
                                                 <span>{{ $car->getShortDesc() }}</span>
-                                                {{-- <span>Бензин, 2.0, Автомат, Повний привод</span> --}}
+                                                <span>Бензин, 2.0, Автомат, Повний привод</span>
                                             </a>
                                             @if($car->label)
-                                                <div class="discount">{!! $car->label !!}</div>
+                                                <div class="discount {{ ($car->label_color_id === 2) ? 'label-red': '' }}">{!! $car->label !!}</div>
                                             @endif
                                         </div>
                                     </div>
-                                @endforeach
+                                @endforeach--}}
 
                             </div>
                         </div>
                     </div>
                     <div class="row mt-5 mb-5 mb-lg-0">
                         <div class="col-auto mx-auto ">
-                            <button type="button"
-                                class="btn-show-more btn btn-main-blue btn-default text-uppercase">Показати більше</button>
+                            <button id="show-more" type="button" class="btn-show-more btn btn-main-blue btn-default text-uppercase">Показати більше</button>
                         </div>
                         <div class="col-12">
                             <nav class="bg-white mt-5 mt-md-2">
-                                <ul class="pagination justify-content-center mb-0"></ul>
+                                <ul id="pagination-wrapper" class="pagination-ajax justify-content-center mb-0">
+                                    {{-- Got from AJAX --}}
+                                </ul>
                             </nav>
                         </div>
                     </div>

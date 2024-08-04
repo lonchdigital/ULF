@@ -15,4 +15,4 @@ use Modules\Articles\app\Http\Controllers\Web\ArticlesController;
 |
 */
 
-Route::post('/articles', [ArticlesController::class, 'filter'])->name('article.filter');
+Route::post('/articles', [ArticlesController::class, 'filter'])->name('articles.filter');

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Cars\Http\Controllers\CarsController;
+use Modules\Cars\Http\Controllers\Web\CarsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +14,4 @@ use Modules\Cars\Http\Controllers\CarsController;
 |
 */
 
-Route::group([], function () {
-    Route::resource('cars', CarsController::class)->names('cars');
-});
+Route::post('/cars', [CarsController::class, 'filter'])->name('cars.filter');

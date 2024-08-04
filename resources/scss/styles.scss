@@ -669,6 +669,10 @@
 	}
 	.discount {
 		background: $main-blue;
+
+        &.label-red {
+            background: #ff2a2a;
+        }
 	}
 	.in-subscription {
 		background: $light-grey;

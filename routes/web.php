@@ -34,6 +34,7 @@ Route::group([
     // Customer stories
     Route::get('/customer-stories', [ClientsController::class, 'index'])->name('clients.page');
 
+    // TODO:: change HomeController to PageController for faq
     Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 
     // pages

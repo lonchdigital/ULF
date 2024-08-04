@@ -40,5 +40,5 @@ class CarApiService extends AuthService
 
         return $response->json();
     }
-    
+
 }

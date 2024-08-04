@@ -19,7 +19,8 @@ export default defineConfig({
                 'resources/js/main.js',
 
                 // Modules
-                'Modules/Articles/resources/js/articles-catalog.js'
+                'Modules/Articles/resources/js/articles-catalog.js',
+                'Modules/Cars/resources/js/cars-catalog.js'
             ],
             refresh: true,
         }),
