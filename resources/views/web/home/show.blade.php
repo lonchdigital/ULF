@@ -139,148 +139,98 @@
                         <div class="container">
                             <div class="row mb-6">
                                 <div class="col">
-                                    <div class="head font-weight-bolder mb-3 mb-md-6 text-center text-white">Історії клієнтів</div>
+                                    <div class="head font-weight-bolder mb-3 mb-md-6 text-center text-white">{{ trans('page_name.client_history') }}</div>
                                     <div class="horizontal-scoll-wrapper d-none d-md-block">
                                         <div class="scroll-gallery horizontal row flex-nowrap">
-                                            <div class="scroll-gallery--item col-12 col-sm-6 col-xl-4">
-                                                <div class="inner h-100 position-relative">
-                                                    <div class="video-wrap video-wrap--vissible h-100">
-                                                        <a data-fancybox="scroll-gallery" data-src="#scroll-gallery-player-1" data-thumb="img/customer-stories-1.jpeg">
-                                                            <video class=" js-player specific-player" muted playsinline controls data-poster="img/customer-stories-1.jpeg">
-                                                                <source src="assets/video/example.mp4" type="video/mp4" />
-                                                            </video>
-                                                        </a>
-                                                        <button type="button" class="btn btn-video-play-pause"></button>
-                                                    </div>
-                                                    <div id="scroll-gallery-player-1" class="video-wrap hidden" style="display:none">
-                                                        <video class="js-player specific-player" playsinline controls data-poster="img/customer-stories-1.jpeg">
-                                                            <source src="assets/video/example.mp4" type="video/mp4" />
-                                                        </video>
-                                                    </div>
-                                                    <div class="scroll-gallery--content">
-                                                        <div class="scroll-gallery--head mb-2">Моє перше авто</div>
-                                                        <p class="mb-0">Взяв авто в підписку на пів року для того щоб визначитись з вподобаннями...</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="scroll-gallery--item col-12 col-sm-6 col-xl-4">
-                                                <div class="inner h-100 position-relative">
-                                                    <a data-fancybox="scroll-gallery" href="img/customer-stories-2.jpeg">
-                                                        <div class="scroll-gallery--img">
-                                                            <div class="wrap-img">
-                                                                <img class="bg-down" src="img/customer-stories-2.jpeg" alt="img">
+
+                                            @foreach ($clients as $client)
+                                                @if(!is_null($client->video))
+                                                    <div class="scroll-gallery--item col-12 col-sm-6 col-xl-4">
+                                                        <div class="inner h-100 position-relative">
+                                                            <div class="video-wrap video-wrap--vissible h-100">
+                                                                <a data-fancybox="scroll-gallery" data-src="#scroll-gallery-player-{{ $client->id }}" data-thumb="{{ $client->image_url }}">
+                                                                    <video class=" js-player specific-player" muted playsinline controls data-poster="{{ $client->image_url }}">
+                                                                        <source src="{{ '/storage/' . $client->video }}" type="video/mp4" />
+                                                                    </video>
+                                                                </a>
+                                                                <button type="button" class="btn btn-video-play-pause"></button>
+                                                            </div>
+                                                            <div id="scroll-gallery-player-{{ $client->id }}" class="video-wrap hidden" style="display:none">
+                                                                <video class="js-player specific-player" playsinline controls data-poster="{{ $client->image_url }}">
+                                                                    <source src="{{ '/storage/' . $client->video }}" type="video/mp4" />
+                                                                </video>
+                                                            </div>
+                                                            <div class="scroll-gallery--content">
+                                                                <div class="scroll-gallery--head mb-2">{{ $client->history_title }}</div>
+                                                                <p class="mb-0">{{ $client->description }}</p>
                                                             </div>
                                                         </div>
-                                                    </a>
-                                                    <div class="scroll-gallery--content">
-                                                        <div class="scroll-gallery--head mb-2">Моє перше авто</div>
-                                                        <p class="mb-0">Взяв авто в підписку на пів року для того щоб визначитись з вподобаннями...</p>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="scroll-gallery--item col-12 col-sm-6 col-xl-4">
-                                                <div class="inner h-100 position-relative">
-                                                    <div class="video-wrap video-wrap--vissible h-100">
-                                                        <a data-fancybox="scroll-gallery" data-src="#scroll-gallery-player-3" data-thumb="img/customer-stories-3.jpeg">
-                                                            <video class="js-player specific-player" muted playsinline controls data-poster="img/customer-stories-3.jpeg">
-                                                                <source src="assets/video/example-vertical.mp4" type="video/mp4" />
-                                                            </video>
-                                                        </a>
-                                                        <button type="button" class="btn btn-video-play-pause"></button>
-                                                    </div>
-                                                    <div id="scroll-gallery-player-3" class="video-wrap hidden" style="display:none">
-                                                        <video class="js-player specific-player" playsinline controls data-poster="img/customer-stories-3.jpeg">
-                                                            <source src="assets/video/example-vertical.mp4" type="video/mp4" />
-                                                        </video>
-                                                    </div>
-                                                    <div class="scroll-gallery--content">
-                                                        <div class="scroll-gallery--head mb-2">Моє перше авто</div>
-                                                        <p class="mb-0">Взяв авто в підписку на пів року для того щоб визначитись з вподобаннями...</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="scroll-gallery--item col-12 col-sm-6 col-xl-4">
-                                                <div class="inner h-100 position-relative">
-                                                    <a data-fancybox="scroll-gallery" href="img/customer-stories-4.jpeg">
-                                                        <div class="scroll-gallery--img">
-                                                            <div class="wrap-img">
-                                                                <img class="bg-down" src="img/customer-stories-4.jpeg" alt="img">
+                                                @else
+                                                    <div class="scroll-gallery--item col-12 col-sm-6 col-xl-4">
+                                                        <div class="inner h-100 position-relative">
+                                                            <a data-fancybox="scroll-gallery" href="{{ $client->image_url }}">
+                                                                <div class="scroll-gallery--img">
+                                                                    <div class="wrap-img">
+                                                                        <img class="bg-down" src="{{ $client->image_url }}" alt="img">
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                            <div class="scroll-gallery--content">
+                                                                <div class="scroll-gallery--head mb-2">{{ $client->history_title }}</div>
+                                                                <p class="mb-0">{{ $client->description }}</p>
                                                             </div>
                                                         </div>
-                                                    </a>
-                                                    <div class="scroll-gallery--content">
-                                                        <div class="scroll-gallery--head mb-2">Моє перше авто</div>
-                                                        <p class="mb-0">Взяв авто в підписку на пів року для того щоб визначитись з вподобаннями...</p>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="scroll-gallery--item col-12 col-sm-6 col-xl-4">
-                                                <div class="inner h-100 position-relative">
-                                                    <a data-fancybox="scroll-gallery" href="img/scroll-gallery-car-1.jpeg">
-                                                        <div class="scroll-gallery--img">
-                                                            <div class="wrap-img">
-                                                                <img class="bg-down" src="img/scroll-gallery-car-1.jpeg" alt="img">
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <div class="scroll-gallery--content">
-                                                        <div class="scroll-gallery--head mb-2">Моє перше авто</div>
-                                                        <p class="mb-0">Взяв авто в підписку на пів року для того щоб визначитись з вподобаннями...</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                @endif
+                                            @endforeach
+
                                         </div>
                                     </div>
+
                                     <div class="story-cube position-relative d-md-none">
                                         <div class="story-cube--swiper">
                                             <div class="story-cube--wrapper swiper-wrapper">
-                                                <div class="story-cube--slide swiper-slide" slot="slide-0">
-                                                    <div class="inner h-100 position-relative">
-                                                        <div class="video-wrap video-wrap--vissible h-100">
-                                                            <a data-fancybox="story-cube-gallery" data-src="#story-cube-gallery-player-1" data-thumb="img/customer-stories-1.jpeg">
-                                                                <video class="js-player specific-player" playsinline controls data-poster="img/customer-stories-1.jpeg">
-                                                                    <source src="assets/video/example.mp4" type="video/mp4" />
-                                                                </video>
+
+                                                @foreach ($clients as $client)
+                                                    @if(!is_null($client->video))
+                                                        <div class="story-cube--slide swiper-slide" slot="slide-{{ $client->id }}">
+                                                            <div class="inner h-100 position-relative">
+                                                                <div class="video-wrap video-wrap--vissible h-100">
+                                                                    <a data-fancybox="story-cube-gallery" data-src="#story-cube-gallery-player-{{ $client->id }}" data-thumb="{{ $client->image_url }}">
+                                                                        <video class="js-player specific-player" playsinline controls data-poster="{{ $client->image_url }}">
+                                                                            <source src="{{ '/storage/' . $client->video }}" type="video/mp4" />
+                                                                        </video>
+                                                                    </a>
+                                                                    <button type="button" class="btn btn-video-play-pause"></button>
+                                                                </div>
+                                                                <div id="story-cube-gallery-player-{{ $client->id }}" class="video-wrap hidden" style="display:none">
+                                                                    <video class="js-player specific-player" playsinline controls data-poster="{{ $client->image_url }}">
+                                                                        <source src="{{ '/storage/' . $client->video }}" type="video/mp4" />
+                                                                    </video>
+                                                                </div>
+                                                            </div>
+                                                            <div class="scroll-gallery--content">
+                                                                <div class="scroll-gallery--head mb-2">{{ $client->history_title }}</div>
+                                                                <p class="mb-0">{{ $client->description }}</p>
+                                                            </div>
+                                                        </div>
+                                                    @else
+                                                        <div class="story-cube--slide swiper-slide" slot="slide-{{ $client->id }}">
+                                                            <a data-fancybox="story-cube-gallery" href="{{ $client->image_url }}">
+                                                                <div class="scroll-gallery--img">
+                                                                    <div class="wrap-img">
+                                                                        <img class="bg-down" src="{{ $client->image_url }}" alt="img">
+                                                                    </div>
+                                                                </div>
                                                             </a>
-                                                            <button type="button" class="btn btn-video-play-pause"></button>
-                                                        </div>
-                                                        <div id="story-cube-gallery-player-1" class="video-wrap hidden" style="display:none">
-                                                            <video class="js-player specific-player" playsinline controls data-poster="img/customer-stories-1.jpeg">
-                                                                <source src="assets/video/example.mp4" type="video/mp4" />
-                                                            </video>
-                                                        </div>
-                                                    </div>
-                                                    <div class="scroll-gallery--content">
-                                                        <div class="scroll-gallery--head mb-2">Моє перше авто</div>
-                                                        <p class="mb-0">Взяв авто в підписку на пів року для того щоб визначитись з вподобаннями...</p>
-                                                    </div>
-                                                </div>
-                                                <div class="story-cube--slide swiper-slide" slot="slide-1">
-                                                    <a data-fancybox="story-cube-gallery" href="img/customer-stories-2.jpeg">
-                                                        <div class="scroll-gallery--img">
-                                                            <div class="wrap-img">
-                                                                <img class="bg-down" src="img/customer-stories-2.jpeg" alt="img">
+                                                            <div class="scroll-gallery--content">
+                                                                <div class="scroll-gallery--head mb-2">{{ $client->history_title }}</div>
+                                                                <p class="mb-0">{{ $client->description }}</p>
                                                             </div>
                                                         </div>
-                                                    </a>
-                                                    <div class="scroll-gallery--content">
-                                                        <div class="scroll-gallery--head mb-2">Моє перше авто</div>
-                                                        <p class="mb-0">Взяв авто в підписку на пів року для того щоб визначитись з вподобаннями...</p>
-                                                    </div>
-                                                </div>
-                                                <div class="story-cube--slide swiper-slide" slot="slide-2">
-                                                    <a data-fancybox="story-cube-gallery" href="img/customer-stories-3.jpeg">
-                                                        <div class="scroll-gallery--img">
-                                                            <div class="wrap-img">
-                                                                <img class="bg-down" src="img/customer-stories-3.jpeg" alt="img">
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                    <div class="scroll-gallery--content">
-                                                        <div class="scroll-gallery--head mb-2">Моє перше авто</div>
-                                                        <p class="mb-0">Взяв авто в підписку на пів року для того щоб визначитись з вподобаннями...</p>
-                                                    </div>
-                                                </div>
+                                                    @endif
+                                                @endforeach
                                             </div>
 
                                             <div class="story-cube--next swiper-button-next"></div>
@@ -289,11 +239,12 @@
                                             <div class="story-cube--pagination swiper-pagination"></div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-auto mx-auto">
-                                    <a href="customer-stories.html" class="btn-default btn-transparent btn btn-block btn-outline-main-blue text-uppercase mt-0">Більше історій</a>
+                                    <a href="{{ route('clients.page') }}" class="btn-default btn-transparent btn btn-block btn-outline-main-blue text-uppercase mt-0">{{ trans('web.show_more_histories') }}</a>
                                 </div>
                             </div>
                         </div>

@@ -8,8 +8,9 @@ use App\Models\HomeBenefitBlock;
 use App\Models\HomeDriveBlock;
 use App\Models\HomeMainBlock;
 use App\Models\Page;
-use App\Services\Web\HomePage\HomePageService;
+//use App\Services\Web\HomePage\HomePageService;
 use Illuminate\Http\Request;
+use Modules\Clients\Services\Web\WebService as ClientHistoriesService;
 
 class HomeController
 {
@@ -17,15 +18,16 @@ class HomeController
     /**
 //     * @var HomePageService
      */
-    private HomePageService $service;
+//    private HomePageService $service;
+    private ClientHistoriesService $clientService;
 
-    /**
-     * HomeController constructor.
-     * @param HomePageService $service
-     */
-    public function __construct(HomePageService $service)
+    public function __construct(
+//        HomePageService $service,
+        ClientHistoriesService $clientService,
+    )
     {
-        $this->service = $service;
+//        $this->service = $service;
+        $this->clientService = $clientService;
     }
 
     public function index()
@@ -33,7 +35,8 @@ class HomeController
         return view('web.home.show', [
             'homeMainBlock' => HomeMainBlock::first(),
             'homeBenefitBlock' => HomeBenefitBlock::all(),
-            'homeDriveBlock' => HomeDriveBlock::first()
+            'homeDriveBlock' => HomeDriveBlock::first(),
+            'clients' => $this->clientService->getAllClientHistories()
         ]);
     }
 
