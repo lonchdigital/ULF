@@ -86,7 +86,10 @@
                     </div>
                 </div>
             </section>
-            <section class="seo pb-7 pb-md-10 pb-lg-13">
+
+
+            {{-- TODO:: SEO section for pages --}}
+            {{--<section class="seo pb-7 pb-md-10 pb-lg-13">
                 <div class="container">
                     <div class="row">
                         <div class="col">
@@ -141,7 +144,8 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section>--}}
+
         </div>
     </main>
 @endsection
