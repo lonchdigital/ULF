@@ -15,13 +15,13 @@
                         <div class="col mx-auto">
                             <div class="section-top--info nav-breadcrumb">
                                 <div class="mb-2">
-                                    <a href="index.html" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">Назад</a>
+                                    <a href="{{ route('main.page') }}" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">{{ trans('web.back') }}</a>
                                 </div>
-                                <div class="h3 font-m font-weight-bolder mb-2">Історії клієнтів</div>
+                                <div class="h3 font-m font-weight-bolder mb-2">{{ trans('page_name.client_history') }}</div>
                                 <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
                                     <ol class="breadcrumb mb-0">
-                                        <li class="breadcrumb-item"><a href="index.html">Головна</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Історії клієнтів</li>
+                                        <li class="breadcrumb-item"><a href="{{ route('main.page') }}">{{ trans('page_name.index') }}</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">{{ trans('page_name.client_history') }}</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -32,7 +32,6 @@
             <section class="customer-stories-main pb-7 pb-md-10 pb-lg-13">
                 <div class="container">
                     <div class="scroll-gallery row">
-
 
                         @foreach ($clients as $client)
                             @if(!is_null($client->video))
@@ -81,9 +80,7 @@
                     </div>
                     <div class="row">
                         <div class="col col-sm-auto mx-auto">
-                            <button type="button"
-                                class="btn-show-more btn btn-main-blue btn-default text-uppercase w-100 mt-3">Показати
-                                більше</button>
+                            <button type="button" class="btn-show-more btn btn-main-blue btn-default text-uppercase w-100 mt-3">{{ trans('web.show_more') }}</button>
                         </div>
                     </div>
                 </div>

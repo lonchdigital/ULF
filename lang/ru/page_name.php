@@ -1,6 +1,7 @@
 <?php
 
 return [
-    'index' => 'Головна',
+    'index' => 'Главная',
     'faq' => 'FAQ',
+    'client_history' => 'Истории клиентов',
 ];

@@ -1,5 +1,7 @@
 @if ($paginator->hasPages())
 
+{{-- TODO:: remove arrows if we do not need them --}}
+
     {{-- Previous Page Link --}}
     {{--@if ($paginator->onFirstPage())
         <li class="disabled page-item" aria-disabled="true" aria-label="@lang('pagination.previous')">

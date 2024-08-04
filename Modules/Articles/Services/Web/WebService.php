@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class WebService
 {
 
-    const PER_PAGE = 2;
+    const PER_PAGE = 10;
 
     /**
      * @param array $data
