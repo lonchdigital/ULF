@@ -15,13 +15,13 @@
                         <div class="col mx-auto">
                             <div class="section-top--info nav-breadcrumb">
                                 <div class="mb-2">
-                                    <a href="index.html" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">Назад</a>
+                                    <a href="{{ route('main.page') }}" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">{{ trans('web.back') }}</a>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <div class="h3 font-m font-weight-bolder d-none d-lg-block">Наш автопарк <br
+                                    <div class="h3 font-m font-weight-bolder d-none d-lg-block">{{ trans('web.our_car_park') }} <br
                                             class="d-sm-none"><span class="text-main-blue">=</span><br class="d-sm-none">
-                                        Твій автопарк</div>
-                                    <div class="h3 font-m font-weight-bolder d-lg-none">Автопарк</div>
+                                        {{ trans('web.your_car_park') }}</div>
+                                    <div class="h3 font-m font-weight-bolder d-lg-none">{{ trans('page_name.car_park') }}</div>
                                     <div class="filters-button ml-4">
                                         <button type="button" class="btn btn-reset">
                                             <svg class="i-sorting">
@@ -40,8 +40,8 @@
                                 </div>
                                 <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
                                     <ol class="breadcrumb mb-0">
-                                        <li class="breadcrumb-item"><a href="index.html">Головна</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Автопарк</li>
+                                        <li class="breadcrumb-item"><a href="{{ route('main.page') }}">{{ trans('page_name.index') }}</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">{{ trans('page_name.car_park') }}</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -57,8 +57,7 @@
                                 {{-- Got from AJAX --}}
 
 
-
-
+                                {{-- TODO:: use this code to display cars on homepage --}}
                                 {{--@foreach ($cars as $car)
                                     <div class="content col-12 col-md-6 col-lg-4">
                                         <div class="our-fleet-preview--item">
@@ -82,7 +81,6 @@
                                         </div>
                                     </div>
                                 @endforeach--}}
-
                             </div>
                         </div>
                     </div>
