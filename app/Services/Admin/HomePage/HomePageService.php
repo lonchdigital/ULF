@@ -3,6 +3,7 @@
 namespace App\Services\Admin\HomePage;
 
 use App\Models\Faq;
+use App\Models\Page;
 use Illuminate\Support\Str;
 use App\Models\HomeMainBlock;
 use App\Models\HomeDriveBlock;
@@ -27,10 +28,22 @@ class HomePageService
         $this->updateHomeDriveBlock($request['drive']);
 
 
-
-    //    (isset($request['subscribe-benefit'])) ? $this->syncBenefits($request['subscribe-benefit']) : $this->syncBenefits([]);
-    //    (isset($request['subscribe-settings'])) ? $this->syncSubscribeSettings($request['subscribe-settings']) : $this->syncSubscribeSettings([]);
-    //    (isset($request['faqs'])) ? $this->syncFaqs($request['faqs']) : $this->syncFaqs([]);
+        // update car page data
+        $page = Page::where('key', 'homepage')->first();
+        $dataPageToUpdate = [];
+        foreach ($request['seo_data'] as $lang => $value) {
+            $dataPageToUpdate[$lang]['seo_text'] = $value;
+        }
+        foreach ($request['meta_title'] as $lang => $value) {
+            $dataPageToUpdate[$lang]['meta_title'] = $value;
+        }
+        foreach ($request['meta_description'] as $lang => $value) {
+            $dataPageToUpdate[$lang]['meta_description'] = $value;
+        }
+        foreach ($request['meta_keywords'] as $lang => $value) {
+            $dataPageToUpdate[$lang]['meta_keywords'] = $value;
+        }
+        $page->update($dataPageToUpdate);
     }
 
     private function updateHomeMainBlock(array $data)
@@ -192,44 +205,6 @@ class HomePageService
         }
     }
 
-
-    private function syncFaqs(array $faqs): void
-    {
-        $dataToUpdate = [];
-        $existingFaqs = $this->getAllCommonFaqs();
-
-        if ($faqs) {
-            foreach ($faqs as $faq_id => $faqLanguages) {
-                $faqs[$faq_id]['id'] = $faq_id; // add id
-
-                foreach ($faqLanguages as $fieldName => $faq) {
-                    foreach ($faq as $lang => $value) {
-                        $dataToUpdate[$lang][$fieldName] = $value;
-                    }
-                }
-
-                $existingFaq = $existingFaqs->where('id', $faq_id)->first();
-
-                if( !is_null($existingFaq) ) {
-                    $existingFaq->update($dataToUpdate);
-                } else {
-                    Faq::create($dataToUpdate);
-                }
-
-            }
-        }
-
-        $existingFaqsInRequest = $faqs ? array_filter(array_column($faqs, 'id'), function ($item) {
-            return $item !== null;
-        }): [];
-
-        $faqsToDelete = $existingFaqs->whereNotIn('id', $existingFaqsInRequest);
-
-        foreach ($faqsToDelete as $faqToDelete) {
-            $faqToDelete->deleteTranslations();
-            $faqToDelete->delete();
-        }
-    }
 
     public function getAllCommonFaqs()
     {

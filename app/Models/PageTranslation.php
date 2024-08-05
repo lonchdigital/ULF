@@ -11,13 +11,12 @@ class PageTranslation extends Model
     protected $fillable = [
         'locale',
         'name',
-        'description',
         'text',
         'h1',
         'meta_title',
         'meta_description',
         'meta_keywords',
-        'breadcrumbs',
+        'seo_text',
         'anchor',
     ];
 

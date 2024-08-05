@@ -27,9 +27,10 @@ class HomeController
         $this->service = $service;
     }
 
-    public function edit(Request $request, Page $page)
+    public function edit()
     {
         return view('admin.pages.home.edit', [
+            'page' => Page::where('key', 'homepage')->first(),
             'homeMainBlock' => HomeMainBlock::first(),
             'homeBenefitBlock' => HomeBenefitBlock::all(),
             'homeDriveBlock' => HomeDriveBlock::first()

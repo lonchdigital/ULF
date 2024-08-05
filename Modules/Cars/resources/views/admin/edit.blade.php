@@ -233,6 +233,7 @@
                                 </div>
                             </section>
 
+
                             <div class="form-group">
                                 <x-admin.multilanguage-text-area-rich
                                     :is-required="false"

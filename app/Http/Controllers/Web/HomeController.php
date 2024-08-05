@@ -33,6 +33,7 @@ class HomeController
     public function index()
     {
         return view('web.home.show', [
+            'page' => Page::where('key', 'homepage')->first(),
             'homeMainBlock' => HomeMainBlock::first(),
             'homeBenefitBlock' => HomeBenefitBlock::all(),
             'homeDriveBlock' => HomeDriveBlock::first(),

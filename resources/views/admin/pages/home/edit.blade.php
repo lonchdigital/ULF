@@ -26,7 +26,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <p style="margin-bottom: 8px">{{ trans('admin.main_image') . ' (250px x 100px)' }}</p>
+                                    <p style="margin-bottom: 8px">{{ trans('admin.main_image') . ' (4008px x 1932px)' }}</p>
                                     <div class="row">
                                         <div class="col-md-3">
                                             <img @if(isset($homeMainBlock) && isset($homeMainBlock->image)) src="{{ '/storage/' . $homeMainBlock->image }}" @else style="display: none;" @endif id="home_hero_image" alt="">
@@ -344,6 +344,50 @@
 
                                 </div>
                             </section>
+
+                            <hr class="my-5">
+
+                            <section>
+                                <div class="card-head mb-20">
+                                    <h6 class="card-head-title">SEO</h6>
+                                </div>
+
+                                <div class="form-group">
+                                    <x-admin.multilanguage-text-area
+                                        :is-required="false"
+                                        :label="'SEO блок'"
+                                        field-name="seo_data"
+                                        field-display="seo_text"
+                                        :values="$page->getTranslationsArray()"/>
+                                </div>
+
+                                <div class=form-group">
+                                    <x-admin.multilanguage-input
+                                        :label="trans('admin.meta_title')"
+                                        :is-required="false"
+                                        field-name="meta_title"
+                                        field-display="meta_title"
+                                        :values="$page->getTranslationsArray()"/>
+                                </div>
+                                <div class=form-group">
+                                    <x-admin.multilanguage-text-area
+                                        :is-required="false"
+                                        :label="trans('admin.meta_description')"
+                                        field-name="meta_description"
+                                        field-display="meta_description"
+                                        :values="$page->getTranslationsArray()"/>
+                                </div>
+                                <div class=form-group">
+                                    <x-admin.multilanguage-text-area
+                                        :is-required="false"
+                                        :label="trans('admin.meta_keywords')"
+                                        field-name="meta_keywords"
+                                        field-display="meta_keywords"
+                                        :values="$page->getTranslationsArray()"/>
+                                </div>
+
+                            </section>
+
 
                             <button type="submit" class="btn btn-primary mr-2">{{ trans('admin.save') }}</button>
                         </form>
