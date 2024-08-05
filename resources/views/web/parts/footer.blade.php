@@ -6,7 +6,7 @@
                     <div class="row">
                         <div class="col-12 col-lg-6 mb-5 mb-lg-0">
                             <div class="footer-logo mb-5">
-                                <img src="img/logo-4.svg" alt="logo">
+{{--                                <img src="img/logo-4.svg" alt="logo">--}}
                             </div>
                             <div class="row">
                                 <div class="col col-lg-10 col-xl-8">
@@ -39,14 +39,14 @@
                                                         <li class="list-inline-item">
                                                             <a href="##" target="_blank">
                                                                 <svg class="i-telegram">
-                                                                    <use xlink:href="img/icons/icons.svg#i-telegram"></use>
+                                                                    <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-telegram' }}"></use>
                                                                 </svg>
                                                             </a>
                                                         </li>
                                                         <li class="list-inline-item">
                                                             <a href="##" target="_blank">
                                                                 <svg class="i-viber">
-                                                                    <use xlink:href="img/icons/icons.svg#i-viber"></use>
+                                                                    <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-viber' }}"></use>
                                                                 </svg>
                                                             </a>
                                                         </li>
@@ -60,14 +60,14 @@
                                                         <li class="list-inline-item">
                                                             <a href="##" target="_blank">
                                                                 <svg class="i-telegram">
-                                                                    <use xlink:href="img/icons/icons.svg#i-telegram"></use>
+                                                                    <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-telegram' }}"></use>
                                                                 </svg>
                                                             </a>
                                                         </li>
                                                         <li class="list-inline-item">
                                                             <a href="##" target="_blank">
                                                                 <svg class="i-viber">
-                                                                    <use xlink:href="img/icons/icons.svg#i-viber"></use>
+                                                                    <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-viber' }}"></use>
                                                                 </svg>
                                                             </a>
                                                         </li>
@@ -96,13 +96,13 @@
                                     <ul class="list-phones list-unstyled mb-0">
                                         <li class="d-flex align-items-center">
                                             <svg class="i-phone mr-2">
-                                                <use xlink:href="img/icons/icons.svg#i-phone"></use>
+                                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-phone' }}"></use>
                                             </svg>
                                             <a href="tel:0 800 331 001">0 800 331 001</a>
                                         </li>
                                         <li class="d-flex align-items-center">
                                             <svg class="i-phone mr-2">
-                                                <use xlink:href="img/icons/icons.svg#i-phone"></use>
+                                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-phone' }}"></use>
                                             </svg>
                                             <div class="d-flex flex-column">
                                                 <a href="tel:+380 67 236 62 63">+380 67 236 62 63</a>
@@ -119,7 +119,7 @@
                     <div class="footer--socials socials mob-line pb-3 mb-3 pb-md-0 mb-md-0">
                         <li class="d-flex align-items-center mb-3">
                             <svg class="i-mail mr-2">
-                                <use xlink:href="img/icons/icons.svg#i-mail"></use>
+                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-mail' }}"></use>
                             </svg>
                             <div class="footer--email">
                                 <a href="mailto:auto.online@ulf.ua">auto.online@ulf.ua</a>
@@ -129,35 +129,35 @@
                             <li class="list-inline-item">
                                 <a href="##" target="_blank">
                                     <svg class="i-instagram">
-                                        <use xlink:href="img/icons/icons.svg#i-instagram"></use>
+                                        <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-instagram' }}"></use>
                                     </svg>
                                 </a>
                             </li>
                             <li class="list-inline-item">
                                 <a href="##" target="_blank">
                                     <svg class="i-tiktok">
-                                        <use xlink:href="img/icons/icons.svg#i-tiktok"></use>
+                                        <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-tiktok' }}"></use>
                                     </svg>
                                 </a>
                             </li>
                             <li class="list-inline-item">
                                 <a href="##" target="_blank">
                                     <svg class="i-facebook">
-                                        <use xlink:href="img/icons/icons.svg#i-facebook"></use>
+                                        <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-facebook' }}"></use>
                                     </svg>
                                 </a>
                             </li>
                             <li class="list-inline-item">
                                 <a href="##" target="_blank">
                                     <svg class="i-youtube">
-                                        <use xlink:href="img/icons/icons.svg#i-youtube"></use>
+                                        <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-youtube' }}"></use>
                                     </svg>
                                 </a>
                             </li>
                             <li class="list-inline-item">
                                 <a href="##" target="_blank">
                                     <svg class="i-linkedin">
-                                        <use xlink:href="img/icons/icons.svg#i-linkedin"></use>
+                                        <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-linkedin' }}"></use>
                                     </svg>
                                 </a>
                             </li>
@@ -206,7 +206,7 @@
 
 <div id="btnTop" class="btn btn-arrow-up">
     <svg>
-        <use xlink:href="img/icons/icons.svg#i-arrow-up"></use>
+        <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-arrow-up' }}"></use>
     </svg>
 </div>
 <div class="toolbar-test-drive-request py-3 d-md-none">
@@ -233,7 +233,7 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">
 										<svg>
-											<use xlink:href="img/icons/icons.svg#i-close"></use>
+											<use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-close' }}"></use>
 										</svg>
 									</span>
                                 </button>
@@ -292,7 +292,7 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">
 										<svg>
-											<use xlink:href="img/icons/icons.svg#i-close"></use>
+											<use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-close' }}"></use>
 										</svg>
 									</span>
                                 </button>

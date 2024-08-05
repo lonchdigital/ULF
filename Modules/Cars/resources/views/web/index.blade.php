@@ -7,6 +7,9 @@
 @endsection
 
 @section('content')
+
+{{--    @dd(Vite::asset('resources/img/icons/icons.svg') . '#i-arrow-right')--}}
+
     <main class="main">
         <div class="content">
             <section class="section-top pt-5">
@@ -25,7 +28,8 @@
                                     <div class="filters-button ml-4">
                                         <button type="button" class="btn btn-reset">
                                             <svg class="i-sorting">
-                                                <use xlink:href="img/icons/icons.svg#i-sorting"></use>
+                                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-sorting' }}"></use>
+{{--                                                <use xlink:href="img/icons/icons.svg#i-sorting"></use>--}}
                                             </svg>
                                         </button>
                                         <button type="button" class="btn btn-reset btn-filter collapsed"
@@ -33,7 +37,7 @@
                                             aria-controls="navbarFilters" aria-expanded="false"
                                             aria-label="Toggle navigation" id="toggleFilter">
                                             <svg class="i-filters-menu">
-                                                <use xlink:href="img/icons/icons.svg#i-filters-menu"></use>
+                                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-filters-menu' }}"></use>
                                             </svg>
                                         </button>
                                     </div>
@@ -287,7 +291,7 @@
                     <button type="button" class="btn-close btn btn-reset" data-toggle="collapse" href="#navbarFilters"
                         role="button" aria-expanded="false" aria-controls="navbarFilters">
                         <svg class="i-close">
-                            <use xlink:href="img/icons/icons.svg#i-close"></use>
+                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-close' }}"></use>
                         </svg>
                     </button>
                 </div>

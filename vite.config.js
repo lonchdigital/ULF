@@ -5,8 +5,7 @@ import laravel from 'laravel-vite-plugin';
 export default defineConfig({
     resolve: {
         alias: {
-            // $fonts: resolve('./resources/fonts'),
-            $img: resolve('./resources/img')
+            $img: resolve('./resources/img'),
         }
     },
     plugins: [

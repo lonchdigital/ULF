@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger.js";
 import Swiper from 'swiper/bundle';
 import { Fancybox } from "@fancyapps/ui";
+import iconUrl from '$img/icons/icons.svg';
 
 //? Plyr
 // Перевірка наявності аудіоплеєрів
@@ -322,8 +323,8 @@ Fancybox.bind('[data-fancybox="scroll-gallery"]', {
 	},
 	Carousel: {
 		Navigation: {
-			nextTpl: `<svg><use xlink:href="img/icons/icons.svg#i-arrow-right"></use></svg>`,
-			prevTpl: `<svg><use xlink:href="img/icons/icons.svg#i-arrow-right"></use></svg>`,
+			nextTpl: `<svg><use xlink:href="${iconUrl}#i-arrow-right"></use></svg>`,
+			prevTpl: `<svg><use xlink:href="${iconUrl}#i-arrow-right"></use></svg>`,
 		},
 	},
 	contentClick: "iterateZoom",
@@ -382,8 +383,8 @@ Fancybox.bind('[data-fancybox="gallery"]', {
 	},
 	Carousel: {
 		Navigation: {
-			nextTpl: `<svg><use xlink:href="img/icons/icons.svg#i-arrow-right"></use></svg>`,
-			prevTpl: `<svg><use xlink:href="img/icons/icons.svg#i-arrow-right"></use></svg>`,
+			nextTpl: `<svg><use xlink:href="${iconUrl}#i-arrow-right"></use></svg>`,
+			prevTpl: `<svg><use xlink:href="${iconUrl}#i-arrow-right"></use></svg>`,
 		},
 	},
 	contentClick: "iterateZoom",
@@ -436,8 +437,8 @@ Fancybox.bind('[data-fancybox="gallery-scroll"]', {
 	},
 	Carousel: {
 		Navigation: {
-			nextTpl: `<svg><use xlink:href="img/icons/icons.svg#i-arrow-right"></use></svg>`,
-			prevTpl: `<svg><use xlink:href="img/icons/icons.svg#i-arrow-right"></use></svg>`,
+			nextTpl: `<svg><use xlink:href="${iconUrl}#i-arrow-right"></use></svg>`,
+			prevTpl: `<svg><use xlink:href="${iconUrl}#i-arrow-right"></use></svg>`,
 		},
 	},
 	contentClick: "iterateZoom",
@@ -565,8 +566,8 @@ Fancybox.bind('[data-fancybox="story-cube-gallery"]', {
 	},
 	Carousel: {
 		Navigation: {
-			nextTpl: `<svg><use xlink:href="img/icons/icons.svg#i-arrow-right"></use></svg>`,
-			prevTpl: `<svg><use xlink:href="img/icons/icons.svg#i-arrow-right"></use></svg>`,
+			nextTpl: `<svg><use xlink:href="${iconUrl}#i-arrow-right"></use></svg>`,
+			prevTpl: `<svg><use xlink:href="${iconUrl}#i-arrow-right"></use></svg>`,
 		},
 	},
 	contentClick: "iterateZoom",

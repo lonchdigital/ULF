@@ -262,7 +262,7 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">
                                             <svg>
-                                                <use xlink:href="img/icons/icons.svg#i-close"></use>
+                                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-close' }}"></use>
                                             </svg>
                                         </span>
                                     </button>
@@ -321,7 +321,7 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">
                                             <svg>
-                                                <use xlink:href="img/icons/icons.svg#i-close"></use>
+                                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-close' }}"></use>
                                             </svg>
                                         </span>
                                     </button>

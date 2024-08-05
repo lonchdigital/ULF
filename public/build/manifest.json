@@ -17,6 +17,13 @@
       "_jquery-CqDs7TUd.js"
     ]
   },
+  "_icons-DEock0q4.js": {
+    "file": "assets/icons-DEock0q4.js",
+    "name": "icons",
+    "assets": [
+      "assets/icons-CH-K8qS0.svg"
+    ]
+  },
   "_jquery-CqDs7TUd.js": {
     "file": "assets/jquery-CqDs7TUd.js",
     "name": "jquery"
@@ -61,21 +68,23 @@
     ]
   },
   "resources/js/libs.js": {
-    "file": "assets/libs-BtCwTzM0.js",
+    "file": "assets/libs-C6mgpYIV.js",
     "name": "libs",
     "src": "resources/js/libs.js",
     "isEntry": true,
     "imports": [
-      "_jquery-CqDs7TUd.js"
+      "_jquery-CqDs7TUd.js",
+      "_icons-DEock0q4.js"
     ]
   },
   "resources/js/main.js": {
-    "file": "assets/main-DCbqSQN_.js",
+    "file": "assets/main-Nq5-Rhg9.js",
     "name": "main",
     "src": "resources/js/main.js",
     "isEntry": true,
     "imports": [
-      "_jquery-CqDs7TUd.js"
+      "_jquery-CqDs7TUd.js",
+      "_icons-DEock0q4.js"
     ]
   },
   "resources/scss/fonts/Montserrat-Black.woff": {

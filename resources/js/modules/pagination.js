@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import iconUrl from '$img/icons/icons.svg';
 
 // Функція для плавної прокрутки до елемента
 function scrollToElement(element) {
@@ -109,7 +110,7 @@ $(function () {
 	// Include the prev/next buttons:
 	$("#questions .pagination").append(
 		$("<li>").addClass("page-item button-slider-prev").attr({ id: "previous-page" }).append(
-			$(`<a><svg><use xlink:href="img/icons/icons.svg#i-arrow-right">`)
+			$(`<a><svg><use xlink:href="${iconUrl}#i-arrow-right">`)
 				.addClass("page-link")
 				.attr({
 					href: "javascript:void(0)"
@@ -117,7 +118,7 @@ $(function () {
 			// .text("Prev")
 		),
 		$("<li>").addClass("page-item button-slider-next").attr({ id: "next-page" }).append(
-			$(`<a><svg><use xlink:href="img/icons/icons.svg#i-arrow-right">`)
+			$(`<a><svg><use xlink:href="${iconUrl}#i-arrow-right">`)
 				.addClass("page-link")
 				.attr({
 					href: "javascript:void(0)"
@@ -180,7 +181,7 @@ $(function () {
 	// Include the prev/next buttons:
 	$(".our-fleet .pagination").append(
 		$("<li>").addClass("page-item button-slider-prev").attr({ id: "previous-page" }).append(
-			$(`<a><svg><use xlink:href="img/icons/icons.svg#i-arrow-right">`)
+			$(`<a><svg><use xlink:href="${iconUrl}#i-arrow-right">`)
 				.addClass("page-link")
 				.attr({
 					href: "javascript:void(0)"
@@ -188,7 +189,7 @@ $(function () {
 			// .text("Prev")
 		),
 		$("<li>").addClass("page-item button-slider-next").attr({ id: "next-page" }).append(
-			$(`<a><svg><use xlink:href="img/icons/icons.svg#i-arrow-right">`)
+			$(`<a><svg><use xlink:href="${iconUrl}#i-arrow-right">`)
 				.addClass("page-link")
 				.attr({
 					href: "javascript:void(0)"

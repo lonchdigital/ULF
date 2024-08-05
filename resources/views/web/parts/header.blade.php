@@ -59,7 +59,7 @@
                                                     <span>Ua</span>
                                                 </div>
                                                 <svg class="i-arrow-down">
-                                                    <use xlink:href="img/icons/icons.svg#i-triangle"></use>
+                                                    <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-triangle' }}"></use>
                                                 </svg>
                                             </div>
                                             <ul class="submenu list-unstyled mb-0 position-absolute py-2 px-3">
@@ -104,35 +104,35 @@
                                                                     <li class="list-inline-item">
                                                                         <a href="##" target="_blank">
                                                                             <svg class="i-instagram">
-                                                                                <use xlink:href="img/icons/icons.svg#i-instagram"></use>
+                                                                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-instagram' }}"></use>
                                                                             </svg>
                                                                         </a>
                                                                     </li>
                                                                     <li class="list-inline-item">
                                                                         <a href="##" target="_blank">
                                                                             <svg class="i-tiktok">
-                                                                                <use xlink:href="img/icons/icons.svg#i-tiktok"></use>
+                                                                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-tiktok' }}"></use>
                                                                             </svg>
                                                                         </a>
                                                                     </li>
                                                                     <li class="list-inline-item">
                                                                         <a href="##" target="_blank">
                                                                             <svg class="i-facebook">
-                                                                                <use xlink:href="img/icons/icons.svg#i-facebook"></use>
+                                                                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-facebook' }}"></use>
                                                                             </svg>
                                                                         </a>
                                                                     </li>
                                                                     <li class="list-inline-item">
                                                                         <a href="##" target="_blank">
                                                                             <svg class="i-youtube">
-                                                                                <use xlink:href="img/icons/icons.svg#i-youtube"></use>
+                                                                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-youtube' }}"></use>
                                                                             </svg>
                                                                         </a>
                                                                     </li>
                                                                     <li class="list-inline-item">
                                                                         <a href="##" target="_blank">
                                                                             <svg class="i-linkedin">
-                                                                                <use xlink:href="img/icons/icons.svg#i-linkedin"></use>
+                                                                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-linkedin' }}"></use>
                                                                             </svg>
                                                                         </a>
                                                                     </li>
@@ -154,14 +154,14 @@
                                                                                 <li class="list-inline-item">
                                                                                     <a href="##" target="_blank">
                                                                                         <svg class="i-telegram">
-                                                                                            <use xlink:href="img/icons/icons.svg#i-telegram"></use>
+                                                                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-telegram' }}"></use>
                                                                                         </svg>
                                                                                     </a>
                                                                                 </li>
                                                                                 <li class="list-inline-item">
                                                                                     <a href="##" target="_blank">
                                                                                         <svg class="i-viber">
-                                                                                            <use xlink:href="img/icons/icons.svg#i-viber"></use>
+                                                                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-viber' }}"></use>
                                                                                         </svg>
                                                                                     </a>
                                                                                 </li>
@@ -175,14 +175,14 @@
                                                                                 <li class="list-inline-item">
                                                                                     <a href="##" target="_blank">
                                                                                         <svg class="i-telegram">
-                                                                                            <use xlink:href="img/icons/icons.svg#i-telegram"></use>
+                                                                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-telegram' }}"></use>
                                                                                         </svg>
                                                                                     </a>
                                                                                 </li>
                                                                                 <li class="list-inline-item">
                                                                                     <a href="##" target="_blank">
                                                                                         <svg class="i-viber">
-                                                                                            <use xlink:href="img/icons/icons.svg#i-viber"></use>
+                                                                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-viber' }}"></use>
                                                                                         </svg>
                                                                                     </a>
                                                                                 </li>
@@ -205,7 +205,7 @@
                                                                             <span>Українська</span>
                                                                         </div>
                                                                         <svg class="i-arrow-down">
-                                                                            <use xlink:href="img/icons/icons.svg#i-triangle"></use>
+                                                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-triangle' }}"></use>
                                                                         </svg>
                                                                     </div>
                                                                     <ul class="submenu list-unstyled mb-0">
@@ -237,7 +237,7 @@
                             <div class="d-flex align-items-center">
                                 <button type="button" class="btn btn-block btn-call-me d-lg-none mr-6 p-0" data-toggle="modal" data-target="#popup-any-questions">
                                     <svg class="i-call">
-                                        <use xlink:href="img/icons/icons.svg#i-call"></use>
+                                        <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-call' }}"></use>
                                     </svg>
                                 </button>
                                 <button class="navbar-toggler h-100 collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="toggleMenu">
