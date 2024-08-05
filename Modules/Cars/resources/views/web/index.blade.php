@@ -4,6 +4,7 @@
 
 @section('head')
     @vite(['Modules/Cars/resources/js/cars-catalog.js'])
+    @vite(['front/src/js/modules/filter.js'])
 @endsection
 
 @section('content')
@@ -29,7 +30,6 @@
                                         <button type="button" class="btn btn-reset">
                                             <svg class="i-sorting">
                                                 <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-sorting' }}"></use>
-{{--                                                <use xlink:href="img/icons/icons.svg#i-sorting"></use>--}}
                                             </svg>
                                         </button>
                                         <button type="button" class="btn btn-reset btn-filter collapsed"
@@ -285,6 +285,7 @@
                     </div>
                 </div>
             </section>
+
             <div class="sidebar collapse" id="navbarFilters">
                 <div class="d-flex justify-content-between mb-3">
                     <div class="filter-title mr-4">Фільтри</div>

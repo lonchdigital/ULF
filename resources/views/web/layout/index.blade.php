@@ -22,6 +22,7 @@
 </head>
 <body>
     <div class="wrapper">
+        <div class="popup-bg-body-filter collapsed" data-toggle="collapse" data-target="#navbarFilters" aria-controls="navbarFilters" aria-expanded="false" aria-label="Toggle navigation"></div>
         <div class="popup-bg-body collapsed" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></div>
 
         @include('web.parts.header')

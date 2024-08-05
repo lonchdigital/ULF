@@ -28,6 +28,15 @@
     "file": "assets/jquery-CqDs7TUd.js",
     "name": "jquery"
   },
+  "front/src/js/modules/filter.js": {
+    "file": "assets/filter-BaRajZN6.js",
+    "name": "filter",
+    "src": "front/src/js/modules/filter.js",
+    "isEntry": true,
+    "imports": [
+      "_jquery-CqDs7TUd.js"
+    ]
+  },
   "resources/css/app.css": {
     "file": "assets/app-DEXewjFJ.css",
     "src": "resources/css/app.css",
@@ -68,7 +77,7 @@
     ]
   },
   "resources/js/libs.js": {
-    "file": "assets/libs-C6mgpYIV.js",
+    "file": "assets/libs-Bw_6N05k.js",
     "name": "libs",
     "src": "resources/js/libs.js",
     "isEntry": true,
