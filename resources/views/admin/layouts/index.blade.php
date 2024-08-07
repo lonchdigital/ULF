@@ -66,7 +66,7 @@
 <script src="{{ asset('admin_src/js/default-assets/active.js') }}"></script>
 
 <!-- custom JS -->
-<script src="{{ asset('admin_src/js/settings/personal-consultations-common.js') }}"></script>
+
 
 @stack('scripts')
 @livewireScripts

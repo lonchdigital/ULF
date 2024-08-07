@@ -115,10 +115,4 @@
 
     <script src="{{ asset('admin_src/js/default-assets/modal-classes.js') }}"></script>
     <script src="{{ asset('admin_src/js/default-assets/modaleffects.js') }}"></script>
-
-    <script>
-        document.getElementById('document_type').addEventListener('change', function () {
-            document.getElementById('filterForm').submit();
-        });
-    </script>
 @endpush
