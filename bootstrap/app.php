@@ -11,7 +11,7 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
         using: function () {
-            Route::middleware('admin')
+            Route::middleware('admin', 'auth')
                 ->group(base_path('routes/admin.php'));
 
             Route::middleware('api')
@@ -47,6 +47,10 @@ return Application::configure(basePath: dirname(__DIR__))
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             // 'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ]);
+
+        $middleware->group('auth', [
+            App\Http\Middleware\CheckAuthMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

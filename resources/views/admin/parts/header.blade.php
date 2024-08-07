@@ -68,9 +68,13 @@
 {{--                        <a href="#" class="dropdown-item"><i class="bx bx-user font-15" aria-hidden="true"></i> My profile</a>--}}
 {{--                        <a href="#" class="dropdown-item"><i class="bx bx-wallet font-15" aria-hidden="true"></i> My wallet</a>--}}
 {{--                        <a href="#" class="dropdown-item"><i class="bx bx-wrench font-15" aria-hidden="true"></i> settings</a>--}}
+<form action="{{ route('logout') }}" method="POST">
+    @csrf
+    @method('POST')
 
-                        <a href="#" class="dropdown-item"><i class="bx bx-power-off font-15" aria-hidden="true"></i>Вийти з системи</a>
+                        <button type="submit" class="dropdown-item"><i class="bx bx-power-off font-15" aria-hidden="true"></i>Вийти з системи</button>
 {{--                        <a href="{{ route('adminLogout') }}" class="dropdown-item"><i class="bx bx-power-off font-15" aria-hidden="true"></i>Вийти з системи</a>--}}
+</form>
                     </div>
                 </div>
             </li>
