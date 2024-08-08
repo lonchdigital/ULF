@@ -17,24 +17,24 @@
                         <div class="col-12 col-lg-6">
                             <div class="row">
                                 <div class="col-12 col-md-6">
-                                    <div class="h5 mb-3">Навігація</div>
+                                    <div class="h5 mb-3">{{ trans('web.navigation') }}</div>
                                     <ul class="footer--nav-list mob-line list-unstyled pb-3 mb-3 pb-md-0 mb-md-0">
-                                        <li><a href="index.html">Головна</a></li>
-                                        <li><a href="catalog.html">Каталог</a></li>
-                                        <li><a href="customer-stories.html">Історії клієнтів</a></li>
-                                        <li><a href="404.html">Блог</a></li>
-                                        <li><a href="asked-questions.html">Часті питання</a></li>
-                                        <li><a href="404.html">Контакти</a></li>
-                                        <li><a href="404.html">Договори</a></li>
+                                        <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">{{ trans('page_name.index') }}</a></li>
+                                        <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">{{ trans('page_name.car_park') }}</a></li>
+                                        <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('clients.page') }}">{{ trans('page_name.client_history') }}</a></li>
+                                        <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('blog.page') }}">{{ trans('page_name.blog') }}</a></li>
+                                        <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('faq') }}">{{ trans('page_name.faqs') }}</a></li>
+                                        <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('contacts') }}">{{ trans('page_name.contacts') }}</a></li>
+                                        <li><a href="#">{{ trans('page_name.agreements') }}</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="footer--socials mob-line socials pb-1 mb-3 pb-md-0 mb-md-0">
-                                        <div class="h5">Підтримка</div>
+                                        <div class="h5">{{ trans('web.help') }}</div>
                                         <div class="row flex-md-column mt-3">
                                             <div class="col-6 col-md">
                                                 <div class="d-flex flex-column h-100 justify-content-between">
-                                                    <p class="font-weight-bold mb-0">Спілкуємося в зручних для вас месенджерах</p>
+                                                    <p class="font-weight-bold mb-0">{{ trans('web.talk_in_messengers') }}</p>
                                                     <ul class="list-inline mb-0 py-2">
                                                         <li class="list-inline-item">
                                                             <a href="##" target="_blank">
@@ -55,7 +55,7 @@
                                             </div>
                                             <div class="col-6 col-md">
                                                 <div class="d-flex flex-column h-100 justify-content-between">
-                                                    <p class="font-weight-bold mb-0">Більше інформації у чат-ботах</p>
+                                                    <p class="font-weight-bold mb-0">{{ trans('web.more_info_chat_bots') }}</p>
                                                     <ul class="list-inline mb-0 py-2">
                                                         <li class="list-inline-item">
                                                             <a href="##" target="_blank">
@@ -89,7 +89,7 @@
             <div class="row">
                 <div class="col-12 col-md-6 pb-3 pb-md-0">
                     <div class="footer-contacts">
-                        <div class="h5 mb-3">Контакти</div>
+                        <div class="h5 mb-3">{{ trans('page_name.contacts') }}</div>
                         <ul class="list-unstyled mb-0">
                             <li class="d-flex flex-column flex-md-row">
                                 <div class="footer-contacts--info">

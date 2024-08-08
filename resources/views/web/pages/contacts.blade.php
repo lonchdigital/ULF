@@ -15,12 +15,12 @@
                     <div class="col-12 mx-auto">
                         <div class="section-top--info nav-breadcrumb">
                             <div class="mb-2">
-                                <a href="/" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">Назад</a>
+                                <a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">{{ trans('web.back') }}</a>
                             </div>
                             <div class="h3 font-m font-weight-bolder mb-2">{{ $page->h1 ?? '' }}</div>
                             <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
                                 <ol class="breadcrumb mb-0">
-                                    <li class="breadcrumb-item"><a href="/">Головна</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">{{ trans('page_name.index') }}</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">{{ $page->h1 ?? '' }}</li>
                                 </ol>
                             </nav>
@@ -31,19 +31,17 @@
                 <div class="contacts-wrapper">
                     <div class="contacts-left">
                         <div class="contacts-item">
-                            <div class="contacts-item-title">Ми працюємо</div>
+                            <div class="contacts-item-title">{{ trans('web.we_are_working') }}</div>
                             <p>{{ $page->pageBlocks()->where('block', 'days')->where('key', 'first')->first()->title . ' ' ?? '' }} {{ $page->pageBlocks()->where('block', 'days')->where('key', 'first')->first()->description ?? '' }} <br>
                                 {{ $page->pageBlocks()->where('block', 'days')->where('key', 'second')->first()->title . ' ' ?? '' }} {{ $page->pageBlocks()->where('block', 'days')->where('key', 'second')->first()->description ?? '' }}</p>
                         </div>
                         <div class="contacts-item">
-                            <div class="contacts-item-title">Адреса</div>
+                            <div class="contacts-item-title">{{ trans('web.address') }}</div>
                             <p>{{ $page->pageBlocks()->where('block', 'address')->first()->title }}<br>
                                 {{ $page->pageBlocks()->where('block', 'address')->first()->description }}</p>
                         </div>
                         <div class="contacts-item">
-                            <div class="contacts-item-title">
-                                Телефон
-                            </div>
+                            <div class="contacts-item-title">{{ trans('web.phone') }}</div>
                             <p>{{ $page->pageBlocks()->where('block', 'phone')->first()->title }}<br>
                                 {{ $page->pageBlocks()->where('block', 'phone')->first()->description }}</p>
                         </div>

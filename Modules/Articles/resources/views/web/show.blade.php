@@ -15,13 +15,13 @@
                     <div class="col-12 col-lg-10 mx-auto">
                         <div class="section-top--info nav-breadcrumb">
                             <div class="mb-2">
-                                <a href="index.html" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">Назад</a>
+                                <a href="index.html" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">{{ trans('web.back') }}</a>
                             </div>
                             <div class="h3 font-m font-weight-bolder mb-2">{{ $article->name }}</div>
                             <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
                                 <ol class="breadcrumb mb-0">
-                                    <li class="breadcrumb-item"><a href="{{ route('main.page') }}">Головна</a></li>
-                                    <li class="breadcrumb-item"><a href="{{ route('blog.page') }}">Блог</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">{{ trans('page_name.index') }}</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('blog.page') }}">{{ trans('page_name.blog') }}</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">{{ $article->name }}</li>
                                 </ol>
                             </nav>

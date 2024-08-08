@@ -12,42 +12,42 @@
                                         <li class="list-inline-item list-inline-item--menu menu-for-you">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">Головна</a></span>
+                                                    <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">{{ trans('page_name.index') }}</a></span>
                                                 </div>
                                             </div>
                                         </li>
                                         <li class="list-inline-item list-inline-item--menu menu-for-you">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">Автопарк</a></span>
+                                                    <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">{{ trans('page_name.car_park') }}</a></span>
                                                 </div>
                                             </div>
                                         </li>
                                         <li class="list-inline-item list-inline-item--menu menu-for-you">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('clients.page') }}">Історії клієнтів</a></span>
+                                                    <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('clients.page') }}">{{ trans('page_name.client_history') }}</a></span>
                                                 </div>
                                             </div>
                                         </li>
                                         <li class="list-inline-item list-inline-item--menu menu-for-you">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('blog.page') }}">Блог</a></span>
+                                                    <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('blog.page') }}">{{ trans('page_name.blog') }}</a></span>
                                                 </div>
                                             </div>
                                         </li>
                                         <li class="list-inline-item list-inline-item--menu menu-for-you">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('faq') }}">Часті питання</a></span>
+                                                    <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('faq') }}">{{ trans('page_name.faqs') }}</a></span>
                                                 </div>
                                             </div>
                                         </li>
                                         <li class="list-inline-item list-inline-item--menu menu-for-you">
                                             <div class="nav-link">
                                                 <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('contacts') }}">Контакти</a></span>
+                                                    <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('contacts') }}">{{ trans('page_name.contacts') }}</a></span>
                                                 </div>
                                             </div>
                                         </li>
@@ -88,13 +88,13 @@
                                     <div class="navbar-nav-wrapper">
                                         <div class="navbar-nav">
                                             <ul class="pt-3">
-                                                <li><a href="index.html">Головна</a></li>
-                                                <li><a href="catalog.html">Автопарк</a></li>
-                                                <li><a href="customer-stories.html">Історії клієнтів</a></li>
-                                                <li><a href="404.html">Блог</a></li>
-                                                <li><a href="asked-questions.html">Часті питання</a></li>
-                                                <li><a href="404.html">Контакти</a></li>
-                                                <li><a href="404.html">Договори</a></li>
+                                                <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">{{ trans('page_name.index') }}</a></li>
+                                                <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">{{ trans('page_name.car_park') }}</a></li>
+                                                <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('clients.page') }}">{{ trans('page_name.client_history') }}</a></li>
+                                                <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('blog.page') }}">{{ trans('page_name.blog') }}</a></li>
+                                                <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('faq') }}">{{ trans('page_name.faqs') }}</a></li>
+                                                <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('contacts') }}">{{ trans('page_name.contacts') }}</a></li>
+                                                <li><a href="#">{{ trans('page_name.agreements') }}</a></li>
                                                 <li>
                                                     <ul class="navbar-nav--other list-inline mb-0">
                                                         <li class="list-inline-item">

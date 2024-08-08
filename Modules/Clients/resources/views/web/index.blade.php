@@ -15,12 +15,12 @@
                         <div class="col mx-auto">
                             <div class="section-top--info nav-breadcrumb">
                                 <div class="mb-2">
-                                    <a href="{{ route('main.page') }}" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">{{ trans('web.back') }}</a>
+                                    <a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">{{ trans('web.back') }}</a>
                                 </div>
                                 <div class="h3 font-m font-weight-bolder mb-2">{{ trans('page_name.client_history') }}</div>
                                 <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
                                     <ol class="breadcrumb mb-0">
-                                        <li class="breadcrumb-item"><a href="{{ route('main.page') }}">{{ trans('page_name.index') }}</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">{{ trans('page_name.index') }}</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">{{ trans('page_name.client_history') }}</li>
                                     </ol>
                                 </nav>

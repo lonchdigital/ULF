@@ -15,14 +15,14 @@
                         <div class="col mx-auto">
                             <div class="section-top--info nav-breadcrumb">
                                 <div class="mb-2">
-                                    <a href="{{ route('catalog.page') }}" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">Назад</a>
+                                    <a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">{{ trans('web.back') }}</a>
                                 </div>
                                 <div class="h3 font-m font-weight-bolder mb-2">{{ $car->getName() }}</div>
                                 <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between mb-3">
                                     <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3 mb-lg-0">
                                         <ol class="breadcrumb mb-0">
-                                            <li class="breadcrumb-item"><a href="index.html">Головна</a></li>
-                                            <li class="breadcrumb-item"><a href="{{ route('catalog.page') }}">Автопарк</a></li>
+                                            <li class="breadcrumb-item"><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">{{ trans('page_name.index') }}</a></li>
+                                            <li class="breadcrumb-item"><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">{{ trans('page_name.car_park') }}</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">{{ $car->getName() }}</li>
                                         </ol>
                                     </nav>
