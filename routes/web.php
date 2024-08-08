@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\PageController;
+use App\Services\Locale\LocaleService;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Web\DynamicPageController;
@@ -20,41 +21,53 @@ Route::name('auth.')->prefix('/admin')->group(function () {
 
 Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store');
 
-Route::group([
-    'namespace' => 'Web',
+
+$optionalLanguageRoutes = function () {
+
+    Route::group([
+        'namespace' => 'Web',
 //    'middleware' => 'verified'
-], function () {
+    ], function () {
 
-    Route::get('/', [HomeController::class, 'index'])->name('main.page');
+        Route::get('/', [HomeController::class, 'index'])->name('main.page');
 
-    Route::get('/thanks', [HomeController::class, 'thanks'])->name('thanks');
+        Route::get('/thanks', [HomeController::class, 'thanks'])->name('thanks');
 
-    // Blog
-    Route::get('/blog', [ArticlesController::class, 'index'])->name('blog.page');
-    Route::get('/post/{slug}', [ArticlesController::class, 'show'])->name('blog.single.page');
+        // Blog
+        Route::get('/blog', [ArticlesController::class, 'index'])->name('blog.page');
+        Route::get('/post/{slug}', [ArticlesController::class, 'show'])->name('blog.single.page');
 
-    // Cars
-    Route::get('/catalog', [CarsController::class, 'index'])->name('catalog.page');
-    Route::get('/product/{slug}', [CarsController::class, 'show'])->name('car.single.page');
+        // Cars
+        Route::get('/catalog', [CarsController::class, 'index'])->name('catalog.page');
+        Route::get('/product/{slug}', [CarsController::class, 'show'])->name('car.single.page');
 
-    // Customer stories
-    Route::get('/customer-stories', [ClientsController::class, 'index'])->name('clients.page');
+        // Customer stories
+        Route::get('/customer-stories', [ClientsController::class, 'index'])->name('clients.page');
 
-    // TODO:: change HomeController to PageController for faq
-    Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+        // TODO:: change HomeController to PageController for faq
+        Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 
-    // pages
-    // TODO:: change HomeController to PageController for contacts page
-    Route::get('/contacts', [HomeController::class, 'contacts'])->name('contacts');
-    Route::get('/{slug}', [PageController::class, 'show'])->name('page.single.page');
+        // pages
+        // TODO:: change HomeController to PageController for contacts page
+        Route::get('/contacts', [HomeController::class, 'contacts'])->name('contacts');
+        Route::get('/{slug}', [PageController::class, 'show'])->name('page.single.page');
 
-    Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+        Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 
 
-    // TODO:: remove DynamicPageController
+        // TODO:: remove DynamicPageController
 //    Route::get('/', [DynamicPageController::class, 'index'])->name('main.page');
 //    Route::get('/{section}', [DynamicPageController::class, 'section'])->name('section.page');
 //    Route::get('/{section}/{slug}', [DynamicPageController::class, 'slug'])->name('slug.page');
-});
+    });
+
+};
+
+Route::prefix('/{lang}/')
+    ->whereIn('lang', app()->make(LocaleService::class)->getAvailableLanguages())
+    ->middleware(['set.locale', 'check.locale'])
+    ->group($optionalLanguageRoutes);
+
+Route::middleware(['check.locale'])->group($optionalLanguageRoutes);
 
 Route::view('404', 'errors.404');

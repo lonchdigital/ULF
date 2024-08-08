@@ -52,6 +52,13 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->group('auth', [
             App\Http\Middleware\CheckAuthMiddleware::class,
         ]);
+
+        // locale
+        $middleware->alias([
+            'set.locale' => \App\Http\Middleware\SetLocale::class,
+            'check.locale' => \App\Http\Middleware\CheckLocale::class,
+//            'redirect.lowercase' => \App\Http\Middleware\RedirectToLowercase::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
