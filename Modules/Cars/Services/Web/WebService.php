@@ -2,6 +2,7 @@
 
 namespace Modules\Cars\Services\Web;
 
+use App\Helpers\MultiLangRoute;
 use Modules\Cars\Models\Car;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
@@ -60,7 +61,7 @@ class WebService
 
             $car['car_additional'] = [
                 'car_name' => $car->getFullName(),
-                'car_url' => route('car.single.page', ['slug' => $car->page->slug]),
+                'car_url' => MultiLangRoute::getMultiLangRoute('car.single.page', ['slug' => $car->page->slug]),
                 'car_short_desc' => $car->getShortDesc(),
                 'car_image_url' => $car->getMainImageUrl(),
                 'car_label' => $car->label,
