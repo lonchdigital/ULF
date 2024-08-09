@@ -57,13 +57,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <nav class="bg-white mt-6 mt-md-2">
-                                <ul class="pagination justify-content-center mb-0"></ul>
-                            </nav>
+                    @if($page->faqs()->count() > 10)
+                        <div class="row">
+                            <div class="col">
+                                <nav class="bg-white mt-6 mt-md-2">
+                                    <ul class="pagination justify-content-center mb-0"></ul>
+                                </nav>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </section>
             <section class="any-questions pb-7 pb-md-10 pb-lg-13">
