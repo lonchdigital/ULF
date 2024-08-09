@@ -10,7 +10,6 @@ class SetLocale
 {
     public function handle(Request $request, Closure $next): Response
     {
-//        dd('hello?? 2');
         app()->setLocale($request->segment(1));
 
         \URL::defaults(['lang' => $request->segment(1)]);

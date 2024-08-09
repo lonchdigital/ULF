@@ -25,6 +25,9 @@ class WebService
 
     public function getFilteredPosts(Request $request): array
     {
+        $currentLocale = session()->get('language', 'uk');
+        app()->setLocale($currentLocale);
+
         $query = Car::query()->latest();
 
         // pagination
