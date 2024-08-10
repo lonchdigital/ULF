@@ -12,7 +12,7 @@ class ServiceSteps extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public readonly CarDriveBlock $carDriveBlock)
+    public function __construct(public readonly CarDriveBlock|null $carDriveBlock)
     {
         //
     }
