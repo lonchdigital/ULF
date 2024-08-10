@@ -5,13 +5,14 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Illuminate\Database\Eloquent\Collection;
 
 class SubscriptionBenefits extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(public readonly Collection $subscribeBenefits,)
     {
         //
     }
@@ -21,6 +22,8 @@ class SubscriptionBenefits extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.subscription-benefits');
+        return view('components.subscription-benefits', [
+            'subscribeBenefits' => $this->subscribeBenefits
+        ]);
     }
 }

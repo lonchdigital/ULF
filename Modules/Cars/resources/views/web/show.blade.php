@@ -27,11 +27,11 @@
                                         </ol>
                                     </nav>
                                     <ul class="list-unstyled mb-0 car-properties-preview">
-                                        <li>2023</li>
-                                        <li>Бензин, 2.0</li>
-                                        <li>Автомат</li>
-                                        <li>Повний привод</li>
-                                        <li>Київ</li>
+                                        <li>{{ $car->vehicle->manufacturedYear }}</li>
+                                        <li>{{ $car->vehicle->fuelType->name }}</li> {{-- Бензин, 2.0 --}}
+{{--                                        <li>Автомат</li>--}}
+{{--                                        <li>Повний привод</li>--}}
+{{--                                        <li>Київ</li>--}}
                                     </ul>
                                 </div>
                             </div>
@@ -40,25 +40,24 @@
                 </div>
             </section>
 
-
-            <x-car.gallery :gallery="$car->images" :test="'test-string'" />
+            <x-car.gallery :car="$car" />
 
             <section class="car-content pb-4 pb-md-7 pb-lg-9">
                 <div class="container">
                     <div class="row flex-column-reverse flex-lg-row">
                         <div class="col-12 col-lg-6">
-                            <x-car.info />
+                            <x-car.info :car="$car" />
                         </div>
                         <div class="col-12 col-lg-6 mb-7 mb-lg-0">
-                            <x-car.subscription-period />
+                            <x-car.subscription-period :car="$car" :subscribeMonthSettings="$subscribeMonthSettings" />
                         </div>
                     </div>
                 </div>
             </section>
 
-            <x-subscription-benefits />
+            <x-subscription-benefits :subscribeBenefits="$subscribeBenefits" />
 
-            <x-gallery-cars />
+            <x-gallery-cars :car="$car" />
 
             <x-service-steps />
 
@@ -118,7 +117,6 @@
                 </div>
             </section>
 
-
             <section class="seo pb-7 pb-md-10 pb-lg-13">
                 <div class="container">
                     <div class="row">
@@ -175,6 +173,7 @@
                     </div>
                 </div>
             </section>
+
         </div>
     </main>
 

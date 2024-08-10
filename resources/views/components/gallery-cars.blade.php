@@ -5,84 +5,25 @@
                 <div class="col">
                     <div class="horizontal-scoll-wrapper scroll-gallery-cars--swiper">
                         <div class="scroll-gallery-cars row flex-nowrap swiper-wrapper">
-                            <div class="scroll-gallery-cars--item swiper-slide col-10 col-sm-6">
-                                <div class="row combine flex-column">
-                                    <div class="col">
-                                        <div class="inner h-100 position-relative">
-                                            <div class="scroll-gallery-cars--img">
-                                                <a data-fancybox="gallery-scroll" href="img/scroll-gallery-car-1.jpeg">
-                                                    <div class="wrap-img">
-                                                        <img class="bg-down" src="img/scroll-gallery-car-1.jpeg" alt="img">
+                            @foreach($car->images->chunk(2) as $imagePair)
+                                <div class="scroll-gallery-cars--item swiper-slide col-10 col-sm-6">
+                                    <div class="row combine flex-column">
+                                        @foreach($imagePair as $image)
+                                            <div class="col">
+                                                <div class="inner h-100 position-relative">
+                                                    <div class="scroll-gallery-cars--img">
+                                                        <a data-fancybox="gallery-scroll" href="{{ '/storage/' . $image->Url }}">
+                                                            <div class="wrap-img">
+                                                                <img class="bg-down" src="{{ '/storage/' . $image->Url }}" alt="img">
+                                                            </div>
+                                                        </a>
                                                     </div>
-                                                </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="inner h-100 position-relative">
-                                            <div class="scroll-gallery-cars--img">
-                                                <a data-fancybox="gallery-scroll" href="img/scroll-gallery-car-2.jpeg">
-                                                    <div class="wrap-img">
-                                                        <img class="bg-down" src="img/scroll-gallery-car-2.jpeg" alt="img">
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
-                            </div>
-                            <div class="scroll-gallery-cars--item swiper-slide col-10 col-sm-6">
-                                <div class="row combine flex-column">
-                                    <div class="col">
-                                        <div class="inner h-100 position-relative">
-                                            <div class="scroll-gallery-cars--img">
-                                                <a data-fancybox="gallery-scroll" href="img/scroll-gallery-car-3.jpeg">
-                                                    <div class="wrap-img">
-                                                        <img class="bg-down" src="img/scroll-gallery-car-3.jpeg" alt="img">
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="inner h-100 position-relative">
-                                            <div class="scroll-gallery-cars--img">
-                                                <a data-fancybox="gallery-scroll" href="img/scroll-gallery-car-4.jpeg">
-                                                    <div class="wrap-img">
-                                                        <img class="bg-down" src="img/scroll-gallery-car-4.jpeg" alt="img">
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="scroll-gallery-cars--item swiper-slide col-10 col-sm-6">
-                                <div class="row combine flex-column">
-                                    <div class="col">
-                                        <div class="inner h-100 position-relative">
-                                            <div class="scroll-gallery-cars--img">
-                                                <a data-fancybox="gallery-scroll" href="img/scroll-gallery-car-5.jpeg">
-                                                    <div class="wrap-img">
-                                                        <img class="bg-down" src="img/scroll-gallery-car-5.jpeg" alt="img">
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="inner h-100 position-relative">
-                                            <div class="scroll-gallery-cars--img">
-                                                <a data-fancybox="gallery-scroll" href="img/scroll-gallery-car-6.jpeg">
-                                                    <div class="wrap-img">
-                                                        <img class="bg-down" src="img/scroll-gallery-car-6.jpeg" alt="img">
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
