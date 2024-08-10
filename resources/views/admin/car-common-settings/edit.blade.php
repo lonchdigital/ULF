@@ -28,6 +28,8 @@
                                     :values="(!is_null($commonCarSettings)) ? $commonCarSettings->getTranslationsArray(): []"/>
                             </section>
 
+                            <hr class="my-5">
+
                             <section class="mb-50">
                                 <h6 class="card-title">{{ trans('admin.subscribe_benefits') }}</h6>
 
@@ -76,6 +78,8 @@
                                     </div>
                                 </div>
                             </section>
+
+                            <hr class="my-5">
 
                             <section class="mb-50">
                                 <h6 class="card-title">{{ trans('admin.subscribes_month_settings') }}</h6>
@@ -143,6 +147,71 @@
                                 </div>
 
                             </section>
+
+                            <hr class="my-5">
+
+                            <section>
+                                <h6 class="card-title">Ready to drive?</h6>
+
+                                <div class="form-group">
+                                    <x-admin.multilanguage-input :label="trans('admin.title')"
+                                                                 :is-required="false"
+                                                                 field-name="drive[title]"
+                                                                 field-display="title"
+                                                                 :values="(!is_null($carDriveBlock)) ? $carDriveBlock->getTranslationsArray(): []"/>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <x-admin.multilanguage-input :label="trans('admin.step_one')"
+                                                                         :is-required="false"
+                                                                         field-name="drive[step_one]"
+                                                                         field-display="step_one"
+                                                                         :values="(!is_null($carDriveBlock)) ? $carDriveBlock->getTranslationsArray(): []"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <x-admin.multilanguage-input :label="trans('admin.step_two')"
+                                                                         :is-required="false"
+                                                                         field-name="drive[step_two]"
+                                                                         field-display="step_two"
+                                                                         :values="(!is_null($carDriveBlock)) ? $carDriveBlock->getTranslationsArray(): []"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <x-admin.multilanguage-input :label="trans('admin.step_three')"
+                                                                         :is-required="false"
+                                                                         field-name="drive[step_three]"
+                                                                         field-display="step_three"
+                                                                         :values="(!is_null($carDriveBlock)) ? $carDriveBlock->getTranslationsArray(): []"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <x-admin.multilanguage-input :label="trans('admin.step_four')"
+                                                                         :is-required="false"
+                                                                         field-name="drive[step_four]"
+                                                                         field-display="step_four"
+                                                                         :values="(!is_null($carDriveBlock)) ? $carDriveBlock->getTranslationsArray(): []"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <x-admin.multilanguage-input :label="trans('admin.step_five')"
+                                                                         :is-required="false"
+                                                                         field-name="drive[step_five]"
+                                                                         field-display="step_five"
+                                                                         :values="(!is_null($carDriveBlock)) ? $carDriveBlock->getTranslationsArray(): []"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </section>
+
+                            <hr class="my-5">
 
                             <section class="mb-50">
                                 <h6 class="card-title">{{ trans('admin.faqs_cars') }}</h6>

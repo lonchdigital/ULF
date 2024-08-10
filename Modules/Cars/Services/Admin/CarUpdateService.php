@@ -67,7 +67,7 @@ class CarUpdateService extends CarBaseService
     // Update one car from dashboard
     public function updateCarFromDashboard(Car $car, array $data)
     {
-        // dd($data);
+//         dd($data);
 
         $this->syncSubscribePrices($car, $data['month_settings']);
         (isset($data['faqs'])) ? $this->syncFaqs($car, $data['faqs']) : $car->faqs()->delete();
@@ -91,6 +91,12 @@ class CarUpdateService extends CarBaseService
         }
         foreach ($data['meta_description'] as $lang => $value) {
             $dataPageToUpdate[$lang]['meta_description'] = $value;
+        }
+        foreach ($data['meta_keywords'] as $lang => $value) {
+            $dataPageToUpdate[$lang]['meta_keywords'] = $value;
+        }
+        foreach ($data['seo_data'] as $lang => $value) {
+            $dataPageToUpdate[$lang]['seo_text'] = $value;
         }
 
         $car->page->update($dataPageToUpdate);

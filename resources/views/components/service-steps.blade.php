@@ -2,13 +2,25 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="head font-weight-bolder mb-3 mb-md-6 text-center">Готовий кермувати?</div>
+                @if($carDriveBlock->title)
+                    <div class="head font-weight-bolder mb-3 mb-md-6 text-center">{{ $carDriveBlock->title }}</div>
+                @endif
                 <ul class="list-decimal mb-6">
-                    <li>Обери авто та строк підписки</li>
-                    <li>Забирай і одразу кермуй</li>
-                    <li>Звертайся за сервісами</li>
-                    <li>Змінюй авто на яке хочеш</li>
-                    <li>Передумав? Не проблема, навіть повернемо залог!</li>
+                    @if($carDriveBlock->step_one)
+                        <li>{{ $carDriveBlock->step_one }}</li>
+                    @endif
+                    @if($carDriveBlock->step_two)
+                        <li>{{ $carDriveBlock->step_two }}</li>
+                    @endif
+                    @if($carDriveBlock->step_three)
+                        <li>{{ $carDriveBlock->step_three }}</li>
+                    @endif
+                    @if($carDriveBlock->step_four)
+                        <li>{{ $carDriveBlock->step_four }}</li>
+                    @endif
+                    @if($carDriveBlock->step_five)
+                        <li>{{ $carDriveBlock->step_five }}</li>
+                    @endif
                 </ul>
             </div>
         </div>

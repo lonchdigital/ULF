@@ -235,11 +235,12 @@
 
 
                             <div class="form-group">
-                                <x-admin.multilanguage-text-area-rich
+                                <x-admin.multilanguage-text-area
                                     :is-required="false"
                                     :label="'SEO блок'"
                                     field-name="seo_data"
-                                    :values="[]"/>
+                                    field-display="seo_text"
+                                    :values="$car->page->getTranslationsArray()"/>
                             </div>
 
                             <div class=form-group">
@@ -255,6 +256,14 @@
                                     :label="trans('admin.meta_description')"
                                     field-name="meta_description"
                                     field-display="meta_description"
+                                    :values="$car->page->getTranslationsArray()"/>
+                            </div>
+                            <div class=form-group">
+                                <x-admin.multilanguage-text-area
+                                    :is-required="false"
+                                    :label="trans('admin.meta_keywords')"
+                                    field-name="meta_keywords"
+                                    field-display="meta_keywords"
                                     :values="$car->page->getTranslationsArray()"/>
                             </div>
 

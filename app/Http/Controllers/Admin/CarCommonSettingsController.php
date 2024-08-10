@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Models\CarDriveBlock;
 use App\Models\Page;
 use App\Services\Admin\CarCommonSettings\CarCommonService;
 use App\Http\Requests\Admin\CarCommonSettings\CarCommonSettingsUpdateRequest;
@@ -30,6 +31,7 @@ class CarCommonSettingsController extends Controller
         return view('admin.car-common-settings.edit', [
             'commonCarSettings' => $this->service->getAllCommonCarSettings(),
             'subscribeBenefits' => $this->service->getAllSubscribeBenefits(),
+            'carDriveBlock' => CarDriveBlock::first(),
             'faqsCars' => $this->service->getAllCommonFaqs(),
             'subscribeMonthSettings' => $this->service->getAllSubscribeSettings()
         ]);

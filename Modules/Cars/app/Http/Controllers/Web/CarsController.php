@@ -2,6 +2,7 @@
 
 namespace Modules\Cars\Http\Controllers\Web;
 
+use App\Models\CarDriveBlock;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Cars\Models\CarPage;
@@ -38,7 +39,9 @@ class CarsController extends Controller
             'page' => $carPage,
             'car' => $carPage->car,
             'subscribeMonthSettings' => $this->commonService->getAllSubscribeSettings(),
-            'subscribeBenefits' => $this->commonService->getAllSubscribeBenefits()
+            'subscribeBenefits' => $this->commonService->getAllSubscribeBenefits(),
+            'carDriveBlock' => CarDriveBlock::first(),
+            'commonFaqs' => $this->commonService->getAllCommonFaqs()
         ]);
     }
 

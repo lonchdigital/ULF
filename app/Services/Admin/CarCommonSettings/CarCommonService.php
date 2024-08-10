@@ -3,6 +3,7 @@
 
 namespace App\Services\Admin\CarCommonSettings;
 
+use App\Models\CarDriveBlock;
 use App\Models\CommonCarSetting;
 use App\Models\Faq;
 use App\Models\Page;
@@ -41,6 +42,8 @@ class CarCommonService
         foreach ($request['first_payment_note'] as $lang => $value) {
             $data[$lang]['first_payment_note'] = $value;
         }
+
+        $this->updateDriveBlock($request['drive']);
 
         if(!is_null($commonCarSettings)) {
             $commonCarSettings->update($data);
@@ -102,6 +105,37 @@ class CarCommonService
         return SubscribeBenefit::all();
     }
 
+    private function updateDriveBlock(array $data)
+    {
+        $homeDriveBlock = CarDriveBlock::first();
+        $dataToUpdate = [];
+
+        foreach( $data['title'] as $lang => $value ){
+            $dataToUpdate[$lang]['title'] = $value;
+        }
+
+        foreach( $data['step_one'] as $lang => $value ){
+            $dataToUpdate[$lang]['step_one'] = $value;
+        }
+        foreach( $data['step_two'] as $lang => $value ){
+            $dataToUpdate[$lang]['step_two'] = $value;
+        }
+        foreach( $data['step_three'] as $lang => $value ){
+            $dataToUpdate[$lang]['step_three'] = $value;
+        }
+        foreach( $data['step_four'] as $lang => $value ){
+            $dataToUpdate[$lang]['step_four'] = $value;
+        }
+        foreach( $data['step_five'] as $lang => $value ){
+            $dataToUpdate[$lang]['step_five'] = $value;
+        }
+
+        if( !is_null($homeDriveBlock) ) {
+            $homeDriveBlock->update($dataToUpdate);
+        } else {
+            CarDriveBlock::create($dataToUpdate);
+        }
+    }
 
     private function syncFaqs(array $faqs): void
     {

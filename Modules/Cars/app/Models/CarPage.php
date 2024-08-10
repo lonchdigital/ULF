@@ -11,11 +11,12 @@ class CarPage extends Model implements TranslatableContract
     use Translatable;
 
     public $translatedAttributes = [
-        'name', 
+        'name',
         'seo_text',
         'meta_title',
         'meta_description',
         'meta_keywords',
+        'seo_text',
     ];
 
     protected $fillable = [

@@ -37,4 +37,5 @@ return [
     'you_will_get' => 'Вы получите',
     'all_benefits' => 'Все Фишки',
     'subscribe_benefits' => 'Фишки Подпистки',
+    'faqs' => 'Частые вопросы',
 ];

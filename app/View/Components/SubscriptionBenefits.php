@@ -12,7 +12,7 @@ class SubscriptionBenefits extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public readonly Collection $subscribeBenefits,)
+    public function __construct(public readonly Collection $subscribeBenefits)
     {
         //
     }
