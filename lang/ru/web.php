@@ -38,4 +38,6 @@ return [
     'all_benefits' => 'Все Фишки',
     'subscribe_benefits' => 'Фишки Подпистки',
     'faqs' => 'Частые вопросы',
+    'page_not_found' => 'Страницу, которую Вы ищите, не существует',
+    'return_to_homepage' => 'Вернуться на главную',
 ];

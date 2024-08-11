@@ -11,8 +11,14 @@ class PageController
 {
     public function show($slug)
     {
-        return view('web.pages.page',[
-            'page' => Page::where('slug', $slug)->first()
+        $page = Page::where('slug', $slug)->first();
+
+        if (!$page) {
+            abort(404);
+        }
+
+        return view('web.pages.page', [
+            'page' => $page
         ]);
     }
 
