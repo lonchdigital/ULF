@@ -27,7 +27,7 @@ class CarsController extends Controller
     public function index(Request $request, CarPage $page)
     {
         return view('cars::web.index', [
-            'cars' => $this->service->getCarsCatalog(10)
+            'page' => CarPage::where('slug', 'cars')->first()
         ]);
     }
 

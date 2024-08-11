@@ -38,9 +38,36 @@
                                 @if(!is_null($homePage))
                                     <tr>
                                         <td>{{ $homePage->getAttribute('id') }}</td>
-                                        <td>{{ $homePage->name }}</td>
+                                        <td>{{ $homePage->getAttribute('name') }}</td>
                                         <td>
                                             <a href="{{ route('admin.home-page-settings.edit.page') }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                        </td>
+                                    </tr>
+                                @endif
+                                @if(!is_null($articlesPage))
+                                    <tr>
+                                        <td>{{ $articlesPage->getAttribute('id') }}</td>
+                                        <td>{{ $articlesPage->getAttribute('name') }}</td>
+                                        <td>
+                                            <a href="{{ route('article.index.page') }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                        </td>
+                                    </tr>
+                                @endif
+                                @if(!is_null($carsPage))
+                                    <tr>
+                                        <td>{{ $carsPage->getAttribute('id') }}</td>
+                                        <td>{{ $carsPage->getAttribute('name') }}</td>
+                                        <td>
+                                            <a href="{{ route('car.index.page') }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
+                                        </td>
+                                    </tr>
+                                @endif
+                                @if(!is_null($customerStories))
+                                    <tr>
+                                        <td>{{ $customerStories->getAttribute('id') }}</td>
+                                        <td>{{ $customerStories->getAttribute('name') }}</td>
+                                        <td>
+                                            <a href="{{ route('page.edit', $customerStories) }}" class="mr-2"><i class="fa fa-edit text-info font-18"></i></a>
                                         </td>
                                     </tr>
                                 @endif

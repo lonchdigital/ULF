@@ -14,6 +14,7 @@ class ArticlePageTranslation extends Model
         'description',
         'text',
         'h1',
+        'seo_text',
         'meta_title',
         'meta_description',
         'meta_keywords',

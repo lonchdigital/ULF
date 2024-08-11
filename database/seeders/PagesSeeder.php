@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\Page;
 use App\Models\PageBlock;
+use App\Models\PageTranslation;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Modules\Clients\Http\Controllers\Web\ClientsController;
 
 class PagesSeeder extends Seeder
 {
@@ -14,6 +16,25 @@ class PagesSeeder extends Seeder
      */
     public function run(): void
     {
+        $customerStoriesPage = Page::firstOrCreate([
+            'controller' => ClientsController::class,
+            'slug' => 'customer-stories',
+            'key' => 'customer-stories',
+            'active' => 1,
+        ]);
+        PageTranslation::firstOrCreate([
+            'page_id' => $customerStoriesPage->id,
+            'name' => 'Історії клієнтів',
+            'h1' => 'Історії клієнтів',
+            'locale' => 'uk',
+        ]);
+        PageTranslation::firstOrCreate([
+            'page_id' => $customerStoriesPage->id,
+            'name' => 'Истории клиентов',
+            'h1' => 'Истории клиентов',
+            'locale' => 'ru',
+        ]);
+
         $page = Page::firstOrCreate([
             'controller' => 'App\Http\Controllers\Web\HomeController',
             'key' => 'faq',

@@ -5,6 +5,7 @@ namespace Modules\Articles\Services\Admin;
 use Modules\Articles\Models\Article;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Modules\Articles\Models\ArticlePage;
 
 class ArticlesService extends ArticleBaseService
 {
@@ -65,5 +66,25 @@ class ArticlesService extends ArticleBaseService
 
         $article->deleteTranslations();
         $article->delete();
+    }
+
+    public function updateArticleIndex(ArticlePage $page, array $request): ArticlePage
+    {
+        $dataPageToUpdate = [];
+        foreach ($request['seo_data'] as $lang => $value) {
+            $dataPageToUpdate[$lang]['seo_text'] = $value;
+        }
+        foreach ($request['meta_title'] as $lang => $value) {
+            $dataPageToUpdate[$lang]['meta_title'] = $value;
+        }
+        foreach ($request['meta_description'] as $lang => $value) {
+            $dataPageToUpdate[$lang]['meta_description'] = $value;
+        }
+        foreach ($request['meta_keywords'] as $lang => $value) {
+            $dataPageToUpdate[$lang]['meta_keywords'] = $value;
+        }
+        $page->update($dataPageToUpdate);
+
+        return $page;
     }
 }

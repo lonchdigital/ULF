@@ -49,6 +49,9 @@ Route::group([
 
 
         Route::prefix('articles')->group(function () {
+            Route::get('index-page', [ArticlesController::class, 'editIndexPage'])->name('article.index.page');
+            Route::post('update-index-page/{page}/edit', [ArticlesController::class, 'updateIndexPage'])->name('article.index.page.update');
+
             Route::get('/', [ArticlesController::class, 'index'])->name('article.index');
             Route::get('/create', [ArticlesController::class, 'create'])->name('article.create');
             Route::post('/store', [ArticlesController::class, 'store'])->name('article.store');
@@ -67,6 +70,9 @@ Route::group([
         });
 
         Route::prefix('cars')->group(function () {
+            Route::get('index-page', [CarsController::class, 'editIndexPage'])->name('car.index.page');
+            Route::post('update-index-page/{page}/edit', [CarsController::class, 'updateIndexPage'])->name('car.index.page.update');
+
             Route::get('/', [CarsController::class, 'index'])->name('car.index');
             // Route::get('/create', [ArticlesController::class, 'create'])->name('article.create');
             // Route::post('/store', [ArticlesController::class, 'store'])->name('article.store');

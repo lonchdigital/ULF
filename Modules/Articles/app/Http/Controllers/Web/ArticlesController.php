@@ -27,7 +27,7 @@ class ArticlesController extends Controller
     public function index(Request $request, ArticlePage $page)
     {
         return view('articles::web.index', [
-            'page' => $page,
+            'page' => ArticlePage::where('slug', 'articles')->first(),
         ]);
     }
 

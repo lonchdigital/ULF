@@ -69,4 +69,24 @@ class CarsService extends CarBaseService
         return $this->updateService->updateCarFromDashboard($car, $data);
     }
 
+    public function updateCarIndex(CarPage $page, array $request): CarPage
+    {
+        $dataPageToUpdate = [];
+        foreach ($request['seo_data'] as $lang => $value) {
+            $dataPageToUpdate[$lang]['seo_text'] = $value;
+        }
+        foreach ($request['meta_title'] as $lang => $value) {
+            $dataPageToUpdate[$lang]['meta_title'] = $value;
+        }
+        foreach ($request['meta_description'] as $lang => $value) {
+            $dataPageToUpdate[$lang]['meta_description'] = $value;
+        }
+        foreach ($request['meta_keywords'] as $lang => $value) {
+            $dataPageToUpdate[$lang]['meta_keywords'] = $value;
+        }
+        $page->update($dataPageToUpdate);
+
+        return $page;
+    }
+
 }

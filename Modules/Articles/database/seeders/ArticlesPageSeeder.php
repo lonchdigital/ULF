@@ -25,7 +25,7 @@ class ArticlesPageSeeder extends Seeder
             'article_page_id' => $page->id,
             'name' => 'Блог',
             'h1' => 'Блог',
-            'locale' => 'ua',
+            'locale' => 'uk',
         ]);
 
         ArticlePageTranslation::firstOrCreate([
@@ -34,7 +34,6 @@ class ArticlesPageSeeder extends Seeder
             'h1' => 'Блог',
             'locale' => 'ru',
         ]);
-
     }
 
 }

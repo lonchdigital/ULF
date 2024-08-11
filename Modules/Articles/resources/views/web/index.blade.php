@@ -3,6 +3,18 @@
 @section('title', 'Single Car!!!')
 
 @section('head')
+    @if($page->meta_title)
+        <title>{{ $page->meta_title }}</title>
+        <meta name="title" content="{{ $page->meta_title }}">
+    @endif
+
+    @if($page->meta_description)
+        <meta name="description" content="{{ $page->meta_description }}">
+    @endif
+    @if($page->meta_keywords)
+        <meta name="keywords" content="{{ $page->meta_keywords }}">
+    @endif
+
     @vite(['Modules/Articles/resources/js/articles-catalog.js'])
 @endsection
 
@@ -69,7 +81,18 @@
 
             </div>
         </section>
-
+        <section class="seo pb-7 pb-md-10 pb-lg-22">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="spoiler">
+                            {!! $page->seo_text !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </main>
 
 @endsection

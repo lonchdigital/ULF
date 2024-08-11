@@ -17,8 +17,11 @@ class ArticlePage extends Model implements TranslatableContract
         'name',
         'description',
         'text',
+        'h1',
+        'seo_text',
         'meta_title',
         'meta_description',
+        'meta_keywords',
     ];
 
     protected $fillable = [

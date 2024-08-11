@@ -7,6 +7,8 @@ use App\Models\Faq;
 use App\Models\Page;
 use App\Services\Admin\Page\PageService;
 use Illuminate\Http\Request;
+use Modules\Articles\Models\ArticlePage;
+use Modules\Cars\Models\CarPage;
 
 class PageController extends Controller
 {
@@ -23,7 +25,10 @@ class PageController extends Controller
 
         return view('admin.pages.index', [
             'homePage' => $allPages->where('key', 'homepage')->first(),
-            'pages' => $allPages->where('key', null)
+            'pages' => $allPages->where('key', null),
+            'articlesPage' => ArticlePage::where('slug', 'articles')->first(),
+            'carsPage' => CarPage::where('slug', 'cars')->first(),
+            'customerStories' => $allPages->where('key', 'customer-stories')->first()
         ]);
     }
 

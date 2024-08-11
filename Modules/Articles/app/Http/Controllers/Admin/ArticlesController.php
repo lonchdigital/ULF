@@ -8,6 +8,7 @@ use Illuminate\Routing\Controller;
 use Modules\Articles\app\Http\Requests\Admin\ArticleCreateRequest;
 use Modules\Articles\app\Http\Requests\Admin\ArticleUpdateRequest;
 use Modules\Articles\Models\Article;
+use Modules\Articles\Models\ArticlePage;
 use Modules\Articles\Services\Admin\ArticlesService;
 
 
@@ -70,4 +71,18 @@ class ArticlesController extends Controller
         ])->with('success', trans('admin.document_deleted'));
     }
 
+
+    public function editIndexPage()
+    {
+        return view('articles::admin.edit-index', [
+            'articlesPage' => ArticlePage::where('slug', 'articles')->first()
+        ]);
+    }
+
+    public function updateIndexPage(ArticlePage $page, Request $request)
+    {
+        return redirect()->route('article.index.page', [
+            'articlesPage' => $this->service->updateArticleIndex($page, $request->all())
+        ])->with('success', trans('admin.document_updated'));
+    }
 }

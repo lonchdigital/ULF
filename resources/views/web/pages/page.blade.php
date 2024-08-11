@@ -3,6 +3,17 @@
 @section('title', 'Home page!!!')
 
 @section('head')
+    @if($page->meta_title)
+        <title>{{ $page->meta_title }}</title>
+        <meta name="title" content="{{ $page->meta_title }}">
+    @endif
+
+    @if($page->meta_description)
+        <meta name="description" content="{{ $page->meta_description }}">
+    @endif
+    @if($page->meta_keywords)
+        <meta name="keywords" content="{{ $page->meta_keywords }}">
+    @endif
 @endsection
 
 @section('content')

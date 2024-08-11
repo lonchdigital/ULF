@@ -25,7 +25,7 @@ class CarsPageSeeder extends Seeder
             'car_page_id' => $page->id,
             'name' => 'Авто',
             'h1' => 'Авто',
-            'locale' => 'ua',
+            'locale' => 'uk',
         ]);
 
         CarPageTranslation::firstOrCreate([
