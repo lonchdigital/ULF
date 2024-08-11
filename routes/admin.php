@@ -81,6 +81,7 @@ Route::group([
             Route::get('/', [PageController::class, 'index'])->name('page.index');
             Route::get('/edit-contacts', [PageController::class, 'editContacts'])->name('page.edit-contacts');
             Route::get('/{page}/edit', [PageController::class, 'edit'])->name('page.edit');
+            Route::post('/{page}', [PageController::class, 'update'])->name('page.update');
         });
 
         Route::prefix('/automatch')->name('admin.automatch.')->group(function() {
