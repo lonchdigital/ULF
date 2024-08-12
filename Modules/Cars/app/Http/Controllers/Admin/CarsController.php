@@ -54,18 +54,25 @@ class CarsController extends Controller
     }
 
 
+    // Index CAR page edit and update
     public function editIndexPage()
     {
         return view('cars::admin.edit-index', [
             'carsPage' => CarPage::where('slug', 'cars')->first()
         ]);
     }
-
     public function updateIndexPage(CarPage $page, Request $request)
     {
         return redirect()->route('car.index.page', [
             'carsPage' => $this->service->updateCarIndex($page, $request->all())
         ])->with('success', trans('admin.document_updated'));
+    }
+
+
+    //
+    public function getAllCars()
+    {
+        return response()->json(Car::all());
     }
 
 }
