@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Clients\Http\Controllers\ClientsController;
 
 /*
  *--------------------------------------------------------------------------
@@ -13,7 +12,3 @@ use Modules\Clients\Http\Controllers\ClientsController;
  * is assigned the "api" middleware group. Enjoy building your API!
  *
 */
-
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('clients', ClientsController::class)->names('clients');
-});

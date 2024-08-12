@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Modules\Articles\Http\Controllers\ArticlesController;
 
 /*
  *--------------------------------------------------------------------------
@@ -13,7 +12,3 @@ use Modules\Articles\Http\Controllers\ArticlesController;
  * is assigned the "api" middleware group. Enjoy building your API!
  *
 */
-
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('articles', ArticlesController::class)->names('articles');
-});
