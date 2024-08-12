@@ -69,10 +69,14 @@ class CarsController extends Controller
     }
 
 
-    //
+    // API
     public function getAllCars()
     {
         return response()->json(Car::all());
+    }
+    public function addCar(Request $request)
+    {
+        $this->service->addCarFromApi($request->all());
     }
 
 }

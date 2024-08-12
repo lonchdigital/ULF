@@ -6,6 +6,7 @@ use Modules\Cars\Models\Car;
 use Modules\Cars\Models\SubscribePrice;
 use Modules\Cars\Models\CarFaq;
 use Modules\Cars\Models\Vehicle;
+use Illuminate\Support\Facades\DB;
 
 class CarUpdateService extends CarBaseService
 {
@@ -61,6 +62,30 @@ class CarUpdateService extends CarBaseService
 
         return $dataToUpdate;
     }
+
+    // Create/Update ONE car that we got by API
+    public function addOneCar($data)
+    {
+        $existingItem = Car::where('lot_id', $data['id'])->first();
+        if($existingItem) {
+
+        } else {
+
+            DB::transaction(function () use ($data) {
+                $vehicle = $this->carVehicleService->createFromApi($data['vehicle']);
+                $dataToUpdate = $this->setCarData($vehicle, $data);
+
+                $car = Car::create($dataToUpdate);
+            });
+
+
+
+            /*if(!is_null($lot['images'])){
+                $this->updateCarImagesApi($lot['images'], $car);
+            }*/
+        }
+    }
+
 
 
 

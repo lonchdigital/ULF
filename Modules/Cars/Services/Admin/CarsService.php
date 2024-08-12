@@ -68,6 +68,10 @@ class CarsService extends CarBaseService
     {
         return $this->updateService->updateCarFromDashboard($car, $data);
     }
+    public function addCarFromApi(array $data)
+    {
+        $this->updateService->addOneCar($data);
+    }
 
     public function updateCarIndex(CarPage $page, array $request): CarPage
     {
