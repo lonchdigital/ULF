@@ -74,6 +74,10 @@ class CarUpdateService extends CarBaseService
                 $dataToUpdate = $this->setCarData($vehicle, $data);
 
                 $vehicle->car->update($dataToUpdate);
+
+                if(!is_null($data['images'])){
+                    $this->updateCarImagesApi($data['images'], $vehicle->car);
+                }
             });
 
         } else {
@@ -83,13 +87,12 @@ class CarUpdateService extends CarBaseService
                 $dataToUpdate = $this->setCarData($vehicle, $data);
 
                 $car = Car::create($dataToUpdate);
+
+                if(!is_null($data['images'])){
+                    $this->updateCarImagesApi($data['images'], $car);
+                }
             });
 
-
-
-            /*if(!is_null($lot['images'])){
-                $this->updateCarImagesApi($lot['images'], $car);
-            }*/
         }
     }
 
