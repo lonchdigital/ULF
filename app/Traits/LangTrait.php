@@ -5,7 +5,7 @@ trait LangTrait {
 
     public function getAvailableLanguages(): array
     {
-        return ['uk', 'ru'];
+        return ['ua', 'ru'];
     }
-    
+
 }

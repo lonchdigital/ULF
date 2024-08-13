@@ -48,6 +48,6 @@ class LocaleService extends BaseService
 
     public function getAvailableLanguages(): array
     {
-        return ['uk', 'ru'];
+        return ['ua', 'ru'];
     }
 }

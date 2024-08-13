@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'uk'),
+    'locale' => env('APP_LOCALE', 'ua'),
 
     'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
 
@@ -136,5 +136,5 @@ return [
     |
     */
 
-    'fallback_locale' => 'uk',
+    'fallback_locale' => 'ua',
 ];

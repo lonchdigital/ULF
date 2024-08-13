@@ -55,6 +55,8 @@ $optionalLanguageRoutes = function () {
         Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 
 
+
+
         // TODO:: remove DynamicPageController
 //    Route::get('/', [DynamicPageController::class, 'index'])->name('main.page');
 //    Route::get('/{section}', [DynamicPageController::class, 'section'])->name('section.page');

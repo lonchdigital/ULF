@@ -40,7 +40,7 @@ class CarUpdateRequest extends FormRequest
             ],
         ];
 
-        foreach(['uk', 'ru'] as $lang){
+        foreach(['ua', 'ru'] as $lang){
             $rules['description.' . $lang] = [
                 'nullable',
                 'string',
@@ -85,7 +85,7 @@ class CarUpdateRequest extends FormRequest
         $messages['preview_image.required'] = trans('rules.field') .' "'. trans('admin.preview') .'" '. trans('rules.required');
         $messages['preview_image.image'] = trans('rules.field') .' "'. trans('admin.preview') .'" '. trans('rules.image');
 
-        foreach(['uk', 'ru'] as $lang){
+        foreach(['ua', 'ru'] as $lang){
             $messages['name.' . $lang . '.required'] = trans('rules.field') .' "'. trans('admin.title')  .' (' . $lang . ')" '. trans('rules.required');
             $messages['name.' . $lang . '.string'] = trans('rules.field') .' "'. trans('admin.title') .' (' . $lang . ')" '. trans('rules.string');
 

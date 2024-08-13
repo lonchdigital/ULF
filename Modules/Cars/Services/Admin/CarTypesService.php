@@ -12,7 +12,7 @@ use Modules\Cars\Models\ModelManufacturer;
 
 class CarTypesService
 {
-    private $langs = ['uk', 'ru'];
+    private $langs = ['ua', 'ru'];
 
 
     public function updateAllVehicleTypes(array $data)
@@ -77,7 +77,7 @@ class CarTypesService
             }
         }
     }
-    
+
     public function updateAllVehicleDriverTypes($data)
     {
 
@@ -106,7 +106,7 @@ class CarTypesService
     {
         foreach($data as $item) {
             $dataToUpdate = [];
-            
+
             $dataToUpdate['color_type_id'] = $item['id'];
             $dataToUpdate['autoria_id'] = $item['autoRiaId'];
 
@@ -127,7 +127,7 @@ class CarTypesService
     {
         foreach($data as $item) {
             $dataToUpdate = [];
-            
+
             $dataToUpdate['model_manufacturer_id'] = $item['id'];
             $dataToUpdate['autoria_id'] = $item['autoRiaId'];
             $dataToUpdate['name'] = $item['name'];
@@ -145,7 +145,7 @@ class CarTypesService
     {
         foreach($data as $item) {
             $dataToUpdate = [];
-            
+
             $dataToUpdate['model_id'] = $item['id'];
             $dataToUpdate['autoria_id'] = $item['autoRiaId'];
             $dataToUpdate['name'] = $item['name'];
