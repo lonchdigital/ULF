@@ -10,7 +10,7 @@
                             </div>
                             <div class="row">
                                 <div class="col col-lg-10 col-xl-8">
-                                    <p class="mob-line font-weight-bold mb-0 text-white pb-3 mb-3 pb-md-0 mb-md-0">Новий гнучкий спосіб володіти автомобілем. За фіксовану місячну плату ви отримуєте автомобіль з повним технічним забезпеченням, страхуванням і цілодобовою підтримкою.</p>
+                                    <p class="mob-line font-weight-bold mb-0 text-white pb-3 mb-3 pb-md-0 mb-md-0">{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'description')->first()->description }}</p>
                                 </div>
                             </div>
                         </div>
@@ -19,12 +19,30 @@
                                 <div class="col-12 col-md-6">
                                     <div class="h5 mb-3">{{ trans('web.navigation') }}</div>
                                     <ul class="footer--nav-list mob-line list-unstyled pb-3 mb-3 pb-md-0 mb-md-0">
-                                        <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">{{ trans('page_name.index') }}</a></li>
-                                        <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">{{ trans('page_name.car_park') }}</a></li>
-                                        <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('clients.page') }}">{{ trans('page_name.client_history') }}</a></li>
-                                        <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('blog.page') }}">{{ trans('page_name.blog') }}</a></li>
-                                        <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('faq') }}">{{ trans('page_name.faqs') }}</a></li>
-                                        <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('contacts') }}">{{ trans('page_name.contacts') }}</a></li>
+                                        @if($pages->where('key', 'homepage')->first()->is_show_in_footer)
+                                            <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">{{ trans('page_name.index') }}</a></li>
+                                        @endif
+
+                                        @if($pages->where('slug', 'catalog')->first()->is_show_in_footer)
+                                            <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">{{ trans('page_name.car_park') }}</a></li>
+                                        @endif
+
+                                        @if($pages->where('slug', 'customer-stories')->first()->is_show_in_footer)
+                                            <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('clients.page') }}">{{ trans('page_name.client_history') }}</a></li>
+                                        @endif
+
+                                        @if($pages->where('slug', 'blog')->first()->is_show_in_footer)
+                                            <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('blog.page') }}">{{ trans('page_name.blog') }}</a></li>
+                                        @endif
+
+                                        @if($pages->where('slug', 'faq')->first()->is_show_in_footer)
+                                            <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('faq') }}">{{ trans('page_name.faqs') }}</a></li>
+                                        @endif
+
+                                        @if($pages->where('slug', 'contacts')->first()->is_show_in_footer)
+                                            <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('contacts') }}">{{ trans('page_name.contacts') }}</a></li>
+                                        @endif
+
                                         <li><a href="#">{{ trans('page_name.agreements') }}</a></li>
                                     </ul>
                                 </div>
@@ -37,14 +55,14 @@
                                                     <p class="font-weight-bold mb-0">{{ trans('web.talk_in_messengers') }}</p>
                                                     <ul class="list-inline mb-0 py-2">
                                                         <li class="list-inline-item">
-                                                            <a href="##" target="_blank">
+                                                            <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'communicate_telegram')->first()->description }}" target="_blank">
                                                                 <svg class="i-telegram">
                                                                     <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-telegram' }}"></use>
                                                                 </svg>
                                                             </a>
                                                         </li>
                                                         <li class="list-inline-item">
-                                                            <a href="##" target="_blank">
+                                                            <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'communicate_viber')->first()->description }}" target="_blank">
                                                                 <svg class="i-viber">
                                                                     <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-viber' }}"></use>
                                                                 </svg>
@@ -58,14 +76,14 @@
                                                     <p class="font-weight-bold mb-0">{{ trans('web.more_info_chat_bots') }}</p>
                                                     <ul class="list-inline mb-0 py-2">
                                                         <li class="list-inline-item">
-                                                            <a href="##" target="_blank">
+                                                            <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'bot_telegram')->first()->description }}" target="_blank">
                                                                 <svg class="i-telegram">
                                                                     <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-telegram' }}"></use>
                                                                 </svg>
                                                             </a>
                                                         </li>
                                                         <li class="list-inline-item">
-                                                            <a href="##" target="_blank">
+                                                            <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'bot_viber')->first()->description }}" target="_blank">
                                                                 <svg class="i-viber">
                                                                     <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-viber' }}"></use>
                                                                 </svg>
@@ -94,21 +112,26 @@
                             <li class="d-flex flex-column flex-md-row">
                                 <div class="footer-contacts--info">
                                     <ul class="list-phones list-unstyled mb-0">
-                                        <li class="d-flex align-items-center">
+                                        {{-- <li class="d-flex align-items-center">
                                             <svg class="i-phone mr-2">
                                                 <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-phone' }}"></use>
                                             </svg>
                                             <a href="tel:0 800 331 001">0 800 331 001</a>
-                                        </li>
+                                        </li> --}}
+                                        @forelse($page->pageBlocks()->where('block', 'phone')->get() as $phone)
                                         <li class="d-flex align-items-center">
                                             <svg class="i-phone mr-2">
                                                 <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-phone' }}"></use>
                                             </svg>
                                             <div class="d-flex flex-column">
-                                                <a href="tel:+380 67 236 62 63">+380 67 236 62 63</a>
-                                                <span class="small-txt text-light-grey">для дзвінків з-за кордону</span>
+                                                <a href="tel:+380 67 236 62 63">{{ $phone->title }}</a>
+                                                @if($phone->description)
+                                                <span class="small-txt text-light-grey">{{ $phone->description }}</span>
+                                                @endif
                                             </div>
                                         </li>
+                                        @empty
+                                        @endforelse
                                     </ul>
                                 </div>
                             </li>
@@ -122,40 +145,40 @@
                                 <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-mail' }}"></use>
                             </svg>
                             <div class="footer--email">
-                                <a href="mailto:auto.online@ulf.ua">auto.online@ulf.ua</a>
+                                <a href="mailto:auto.online@ulf.ua">{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'email')->first()->description }}</a>
                             </div>
                         </li>
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item">
-                                <a href="##" target="_blank">
+                                <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->description }}" target="_blank">
                                     <svg class="i-instagram">
                                         <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-instagram' }}"></use>
                                     </svg>
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="##" target="_blank">
+                                <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'tik_tok')->first()->description }}" target="_blank">
                                     <svg class="i-tiktok">
                                         <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-tiktok' }}"></use>
                                     </svg>
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="##" target="_blank">
+                                <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'facebook')->first()->description }}" target="_blank">
                                     <svg class="i-facebook">
                                         <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-facebook' }}"></use>
                                     </svg>
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="##" target="_blank">
+                                <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'youtube')->first()->description }}" target="_blank">
                                     <svg class="i-youtube">
                                         <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-youtube' }}"></use>
                                     </svg>
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="##" target="_blank">
+                                <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'linkedin')->first()->description }}" target="_blank">
                                     <svg class="i-linkedin">
                                         <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-linkedin' }}"></use>
                                     </svg>
@@ -197,7 +220,7 @@
                     </div>
                 @endif
                 <div class="col-12 col-lg-auto">
-                    <div class="copyright">© ULF 2024</div>
+                    <div class="copyright">© ULF {{ now()->year }}</div>
                 </div>
             </div>
         </div>

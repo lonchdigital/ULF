@@ -16,7 +16,7 @@ require __DIR__.'/auth.php';
 Route::redirect('/dashboard', '/admin');
 
 Route::name('auth.')->prefix('/admin')->group(function () {
-    Auth::routes(['register' => false]);
+    Auth::routes(['register' => false, 'reset' => false]);
 });
 
 Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store');

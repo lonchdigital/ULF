@@ -9,48 +9,65 @@
                             <div class="collapse navbar-collapse justify-content-between order-last" id="navbarSupportedContent">
                                 <div class="header-main--desk d-none d-lg-flex align-items-center justify-content-between w-100">
                                     <ul class="navbar-nav list-inline w-100 justify-content-center">
-                                        <li class="list-inline-item list-inline-item--menu menu-for-you">
-                                            <div class="nav-link">
-                                                <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">{{ trans('page_name.index') }}</a></span>
+                                        @if($pages->where('key', 'homepage')->first()->is_show_in_header)
+                                            <li class="list-inline-item list-inline-item--menu menu-for-you">
+                                                <div class="nav-link">
+                                                    <div class="nav-link--inner d-flex align-items-center">
+                                                        <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">{{ trans('page_name.index') }}</a></span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-inline-item list-inline-item--menu menu-for-you">
-                                            <div class="nav-link">
-                                                <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">{{ trans('page_name.car_park') }}</a></span>
+                                            </li>
+                                        @endif
+
+                                        @if($pages->where('slug', 'catalog')->first()->is_show_in_header)
+                                            <li class="list-inline-item list-inline-item--menu menu-for-you">
+                                                <div class="nav-link">
+                                                    <div class="nav-link--inner d-flex align-items-center">
+                                                        <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">{{ trans('page_name.car_park') }}</a></span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-inline-item list-inline-item--menu menu-for-you">
-                                            <div class="nav-link">
-                                                <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('clients.page') }}">{{ trans('page_name.client_history') }}</a></span>
+                                            </li>
+                                        @endif
+
+                                        @if($pages->where('slug', 'customer-stories')->first()->is_show_in_header)
+                                            <li class="list-inline-item list-inline-item--menu menu-for-you">
+                                                <div class="nav-link">
+                                                    <div class="nav-link--inner d-flex align-items-center">
+                                                        <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('clients.page') }}">{{ trans('page_name.client_history') }}</a></span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-inline-item list-inline-item--menu menu-for-you">
-                                            <div class="nav-link">
-                                                <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('blog.page') }}">{{ trans('page_name.blog') }}</a></span>
+                                            </li>
+                                        @endif
+
+                                        @if($pages->where('slug', 'blog')->first()->is_show_in_header)
+                                            <li class="list-inline-item list-inline-item--menu menu-for-you">
+                                                <div class="nav-link">
+                                                    <div class="nav-link--inner d-flex align-items-center">
+                                                        <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('blog.page') }}">{{ trans('page_name.blog') }}</a></span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-inline-item list-inline-item--menu menu-for-you">
-                                            <div class="nav-link">
-                                                <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('faq') }}">{{ trans('page_name.faqs') }}</a></span>
+                                            </li>
+                                        @endif
+
+                                        @if($pages->where('slug', 'faq')->first()->is_show_in_header)
+                                            <li class="list-inline-item list-inline-item--menu menu-for-you">
+                                                <div class="nav-link">
+                                                    <div class="nav-link--inner d-flex align-items-center">
+                                                        <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('faq') }}">{{ trans('page_name.faqs') }}</a></span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-inline-item list-inline-item--menu menu-for-you">
-                                            <div class="nav-link">
-                                                <div class="nav-link--inner d-flex align-items-center">
-                                                    <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('contacts') }}">{{ trans('page_name.contacts') }}</a></span>
+                                            </li>
+                                        @endif
+
+                                        @if($pages->where('slug', 'contacts')->first()->is_show_in_header)
+                                            <li class="list-inline-item list-inline-item--menu menu-for-you">
+                                                <div class="nav-link">
+                                                    <div class="nav-link--inner d-flex align-items-center">
+                                                        <span><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('contacts') }}">{{ trans('page_name.contacts') }}</a></span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        @endif
                                     </ul>
                                     <div class="languages list-inline-item">
 
@@ -88,12 +105,29 @@
                                     <div class="navbar-nav-wrapper">
                                         <div class="navbar-nav">
                                             <ul class="pt-3">
-                                                <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">{{ trans('page_name.index') }}</a></li>
-                                                <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">{{ trans('page_name.car_park') }}</a></li>
-                                                <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('clients.page') }}">{{ trans('page_name.client_history') }}</a></li>
-                                                <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('blog.page') }}">{{ trans('page_name.blog') }}</a></li>
-                                                <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('faq') }}">{{ trans('page_name.faqs') }}</a></li>
-                                                <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('contacts') }}">{{ trans('page_name.contacts') }}</a></li>
+                                                @if($pages->where('key', 'homepage')->first()->is_show_in_header)
+                                                    <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">{{ trans('page_name.index') }}</a></li>
+                                                @endif
+
+                                                @if($pages->where('slug', 'catalog')->first()->is_show_in_header)
+                                                    <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">{{ trans('page_name.car_park') }}</a></li>
+                                                @endif
+
+                                                @if($pages->where('slug', 'customer-stories')->first()->is_show_in_header)
+                                                    <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('clients.page') }}">{{ trans('page_name.client_history') }}</a></li>
+                                                @endif
+
+                                                @if($pages->where('slug', 'blog')->first()->is_show_in_header)
+                                                    <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('blog.page') }}">{{ trans('page_name.blog') }}</a></li>
+                                                @endif
+
+                                                @if($pages->where('slug', 'faq')->first()->is_show_in_header)
+                                                    <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('faq') }}">{{ trans('page_name.faqs') }}</a></li>
+                                                @endif
+
+                                                @if($pages->where('slug', 'contacts')->first()->is_show_in_header)
+                                                    <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('contacts') }}">{{ trans('page_name.contacts') }}</a></li>
+                                                @endif
                                                 <li><a href="#">{{ trans('page_name.agreements') }}</a></li>
                                                 <li>
                                                     <ul class="navbar-nav--other list-inline mb-0">
@@ -102,35 +136,35 @@
                                                                 <div class="header--head mt-5">Ми у соціальних мережах</div>
                                                                 <ul class="list-inline mb-0">
                                                                     <li class="list-inline-item">
-                                                                        <a href="##" target="_blank">
+                                                                        <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->description }}" target="_blank">
                                                                             <svg class="i-instagram">
                                                                                 <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-instagram' }}"></use>
                                                                             </svg>
                                                                         </a>
                                                                     </li>
                                                                     <li class="list-inline-item">
-                                                                        <a href="##" target="_blank">
+                                                                        <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'tik_tok')->first()->description }}" target="_blank">
                                                                             <svg class="i-tiktok">
                                                                                 <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-tiktok' }}"></use>
                                                                             </svg>
                                                                         </a>
                                                                     </li>
                                                                     <li class="list-inline-item">
-                                                                        <a href="##" target="_blank">
+                                                                        <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'facebook')->first()->description }}" target="_blank">
                                                                             <svg class="i-facebook">
                                                                                 <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-facebook' }}"></use>
                                                                             </svg>
                                                                         </a>
                                                                     </li>
                                                                     <li class="list-inline-item">
-                                                                        <a href="##" target="_blank">
+                                                                        <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'youtube')->first()->description }}" target="_blank">
                                                                             <svg class="i-youtube">
                                                                                 <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-youtube' }}"></use>
                                                                             </svg>
                                                                         </a>
                                                                     </li>
                                                                     <li class="list-inline-item">
-                                                                        <a href="##" target="_blank">
+                                                                        <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'linkedin')->first()->description }}" target="_blank">
                                                                             <svg class="i-linkedin">
                                                                                 <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-linkedin' }}"></use>
                                                                             </svg>
@@ -152,14 +186,14 @@
                                                                             <p class="font-weight-bold mb-0">Спілкуємося в зручних для вас месенджерах</p>
                                                                             <ul class="list-inline mb-0 py-2">
                                                                                 <li class="list-inline-item">
-                                                                                    <a href="##" target="_blank">
+                                                                                    <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'communicate_telegram')->first()->description }}" target="_blank">
                                                                                         <svg class="i-telegram">
                                                                                             <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-telegram' }}"></use>
                                                                                         </svg>
                                                                                     </a>
                                                                                 </li>
                                                                                 <li class="list-inline-item">
-                                                                                    <a href="##" target="_blank">
+                                                                                    <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'communicate_viber')->first()->description }}" target="_blank">
                                                                                         <svg class="i-viber">
                                                                                             <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-viber' }}"></use>
                                                                                         </svg>
@@ -173,14 +207,14 @@
                                                                             <p class="font-weight-bold mb-0">Більше інформації у чат-ботах</p>
                                                                             <ul class="list-inline mb-0 py-2">
                                                                                 <li class="list-inline-item">
-                                                                                    <a href="##" target="_blank">
+                                                                                    <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'bot_telegram')->first()->description }}" target="_blank">
                                                                                         <svg class="i-telegram">
                                                                                             <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-telegram' }}"></use>
                                                                                         </svg>
                                                                                     </a>
                                                                                 </li>
                                                                                 <li class="list-inline-item">
-                                                                                    <a href="##" target="_blank">
+                                                                                    <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'bot_viber')->first()->description }}" target="_blank">
                                                                                         <svg class="i-viber">
                                                                                             <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-viber' }}"></use>
                                                                                         </svg>

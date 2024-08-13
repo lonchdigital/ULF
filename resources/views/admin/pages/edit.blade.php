@@ -21,6 +21,50 @@
                             @csrf
 
                             <section>
+                                <div class="form-group">
+                                    <div class="row mb-3">
+                                        <div class="col-md-12">
+                                            <div class="tab-content">
+                                                <div class="checkbox d-inline">
+                                                    <input type="checkbox"
+                                                        @if($page->is_show_in_header) checked @endif
+                                                        id="checkbox-1"
+                                                        name="is_show_in_header">
+                                                        <label for="checkbox-1" class="cr">Чи показувати в меню</label>
+                                                </div>
+                                            </div>
+                                            <div class="mt-1 text-danger ajaxError" id="error-field-is-show-in-header"></div>
+                                            @error('is-show-in-header')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section>
+                                <div class="form-group">
+                                    <div class="row mb-3">
+                                        <div class="col-md-12">
+                                            <div class="tab-content">
+                                                <div class="checkbox d-inline">
+                                                    <input type="checkbox"
+                                                    @if($page->is_show_in_footer) checked @endif
+                                                        id="checkbox-2"
+                                                        name="is_show_in_footer">
+                                                    <label for="checkbox-2" class="cr">Чи показувати в футері</label>
+                                                </div>
+                                            </div>
+                                            <div class="mt-1 text-danger ajaxError" id="error-field-is-show-in-footer"></div>
+                                            @error('is-show-in-footer')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section>
                                 <div class="card-head mb-20">
                                     <h6 class="card-head-title">Text</h6>
                                 </div>

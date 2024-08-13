@@ -29,6 +29,8 @@ class Page extends Model implements TranslatableContract
         'slug',
         'key',
         'active',
+        'is_show_in_header',
+        'is_show_in_footer'
     ];
 
 

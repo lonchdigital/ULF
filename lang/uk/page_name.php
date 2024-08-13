@@ -9,4 +9,8 @@ return [
     'faqs' => 'Часті питання',
     'contacts' => 'Контакти',
     'agreements' => 'Договори',
+    'header' => 'Хедер',
+    'footer' => 'Футер',
+    'catalog' => 'Автопарк',
+    'customer-stories' => 'Історії клієнтів',
 ];

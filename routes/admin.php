@@ -84,6 +84,8 @@ Route::group([
              Route::get('/cars-delete-all', [CarsController::class, 'deleteAllCars'])->name('car.destroy.all');
         });
 
+        Route::get('/edit-footer', [PageController::class, 'editFooter'])->name('page.edit-footer');
+
         Route::prefix('pages')->group(function () {
             Route::get('/', [PageController::class, 'index'])->name('page.index');
             Route::get('/edit-contacts', [PageController::class, 'editContacts'])->name('page.edit-contacts');

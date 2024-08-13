@@ -41,8 +41,22 @@ class PageController extends Controller
 
     public function update(Page $page, Request $request)
     {
+        $data = $request->all();
+
+        if(isset($data['is_show_in_header'])) {
+            $data['is_show_in_header'] = true;
+        } else {
+            $data['is_show_in_header'] = false;
+        }
+
+        if(isset($data['is_show_in_footer'])) {
+            $data['is_show_in_footer'] = true;
+        } else {
+            $data['is_show_in_footer'] = false;
+        }
+
         return redirect()->route('page.edit', [
-            'page' => $this->service->updateDocument($page, $request->all())
+            'page' => $this->service->updateDocument($page, $data)
         ])->with('success', trans('admin.document_updated'));
     }
 
@@ -52,5 +66,12 @@ class PageController extends Controller
         $page = Page::where('slug', 'contacts')->firstOrFail();
 
         return view('admin.pages.edit-contacts', compact('page'));
+    }
+
+    public function editFooter()
+    {
+        $page = Page::where('slug', 'footer')->firstOrFail();
+
+        return view('admin.pages.edit-footer', compact('page'));
     }
 }

@@ -14,7 +14,9 @@ class HeaderComposer
     public function compose(View $view)
     {
         $view->with([
-            'locationService' =>app()->make(LocaleService::class)
+            'locationService' =>app()->make(LocaleService::class),
+            'pages' => Page::whereNotIn('slug', ['footer', 'header'])->get(),
+            'page' => Page::where('slug', 'footer')->with('pageBlocks')->first(),
         ]);
     }
 }

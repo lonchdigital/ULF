@@ -436,7 +436,7 @@ class EditContacts extends Component
 
         session()->flash('success', 'Дані успішно збережено');
 
-        $this->redirectRoute('admin.pages.index');
+        $this->redirectRoute('page.index');
     }
 
     public function render()
