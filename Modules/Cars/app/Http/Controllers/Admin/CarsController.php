@@ -76,6 +76,9 @@ class CarsController extends Controller
     }
     public function addCar(Request $request)
     {
+//        $jsonString = '';
+//        $array = json_decode($jsonString, true);
+//        $this->service->addCarFromApi($array);
         $this->service->addCarFromApi($request->all());
     }
 

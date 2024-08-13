@@ -36,6 +36,7 @@ Route::group([
     ], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('adminDashboard');
 //        Route::get('/test', [DashboardController::class, 'test'])->name('test');
+        Route::get('/add-car', [CarsController::class, 'addCar'])->name('add.car.test');
 
         Route::prefix('car-common-settings')->group(function () {
             Route::get('edit', [CarCommonSettingsController::class, 'edit'])->name('admin.car-common-settings.edit.page');

@@ -66,34 +66,43 @@ class CarUpdateService extends CarBaseService
     // Create/Update ONE car that we got by API
     public function addOneCar($data)
     {
-        $existingItem = Car::where('lot_id', $data['id'])->first();
-        if($existingItem) {
+        try {
 
-            DB::transaction(function () use ($data, $existingItem) {
-                $vehicle = $this->carVehicleService->updateFromApi($data['vehicle'], $existingItem);
-                $dataToUpdate = $this->setCarData($vehicle, $data);
+            $existingItem = Car::where('lot_id', $data['id'])->first();
+            if($existingItem) {
 
-                $vehicle->car->update($dataToUpdate);
+                DB::transaction(function () use ($data, $existingItem) {
+                    $vehicle = $this->carVehicleService->updateFromApi($data['vehicle'], $existingItem);
+                    $dataToUpdate = $this->setCarData($vehicle, $data);
 
-                if(!is_null($data['images'])){
-                    $this->updateCarImagesApi($data['images'], $vehicle->car);
-                }
-            });
+                    $vehicle->car->update($dataToUpdate);
 
-        } else {
+                    if(!is_null($data['images'])){
+                        $this->updateCarImagesApi($data['images'], $vehicle->car);
+                    }
+                });
 
-            DB::transaction(function () use ($data) {
-                $vehicle = $this->carVehicleService->createFromApi($data['vehicle']);
-                $dataToUpdate = $this->setCarData($vehicle, $data);
+            } else {
 
-                $car = Car::create($dataToUpdate);
+                DB::transaction(function () use ($data) {
+                    $vehicle = $this->carVehicleService->createFromApi($data['vehicle']);
+                    $dataToUpdate = $this->setCarData($vehicle, $data);
 
-                if(!is_null($data['images'])){
-                    $this->updateCarImagesApi($data['images'], $car);
-                }
-            });
+                    $car = Car::create($dataToUpdate);
 
+                    if(!is_null($data['images'])){
+                        $this->updateCarImagesApi($data['images'], $car);
+                    }
+                });
+
+            }
+
+            return response()->json(['message' => 'Car added/updated successfully'], 200);
+
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to add/update car', 'details' => $e->getMessage()], 500);
         }
+
     }
 
 
