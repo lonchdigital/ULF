@@ -10,9 +10,13 @@ import{$ as i}from"./jquery-CqDs7TUd.js";i(document).ready(function(){const r=i(
                 `),`
             <div class="content1 col-12 col-md-6 col-lg-4">
                 <div class="our-fleet-preview--item">
-                    <div class="name">${a.car_additional.car_name}</div>
+                    <a href="${a.car_additional.car_url}">
+                        <div class="name">${a.car_additional.car_name}</div>
+                    </a>
                     <div class="wrap-img">
-                        <img src="${a.car_additional.car_image_url}" alt="Car image">
+                        <a href="${a.car_additional.car_url}">
+                            <img src="${a.car_additional.car_image_url}" alt="Car image">
+                        </a>
                     </div>
                     ${e}
                     <a href="${a.car_additional.car_url}" class="btn-arrow btn btn-block">

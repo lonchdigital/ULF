@@ -141,9 +141,13 @@ $(document).ready(function() {
         return `
             <div class="content1 col-12 col-md-6 col-lg-4">
                 <div class="our-fleet-preview--item">
-                    <div class="name">${document['car_additional']['car_name']}</div>
+                    <a href="${document['car_additional']['car_url']}">
+                        <div class="name">${document['car_additional']['car_name']}</div>
+                    </a>
                     <div class="wrap-img">
-                        <img src="${document['car_additional']['car_image_url']}" alt="Car image">
+                        <a href="${document['car_additional']['car_url']}">
+                            <img src="${document['car_additional']['car_image_url']}" alt="Car image">
+                        </a>
                     </div>
                     ${monthlyPayment}
                     <a href="${document['car_additional']['car_url']}" class="btn-arrow btn btn-block">
