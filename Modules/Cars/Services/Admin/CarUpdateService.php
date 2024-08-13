@@ -69,6 +69,13 @@ class CarUpdateService extends CarBaseService
         $existingItem = Car::where('lot_id', $data['id'])->first();
         if($existingItem) {
 
+            DB::transaction(function () use ($data, $existingItem) {
+                $vehicle = $this->carVehicleService->updateFromApi($data['vehicle'], $existingItem);
+                $dataToUpdate = $this->setCarData($vehicle, $data);
+
+                $vehicle->car->update($dataToUpdate);
+            });
+
         } else {
 
             DB::transaction(function () use ($data) {
