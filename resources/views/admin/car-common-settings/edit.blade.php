@@ -25,7 +25,7 @@
                                     :is-required="false"
                                     field-name="first_payment_note"
                                     field-display="first_payment_note"
-                                    :values="(!is_null($commonCarSettings)) ? $commonCarSettings->getTranslationsArray(): []"/>
+                                    :values="(!is_null($commonCarSettings->where('key', 'note')->first())) ? $commonCarSettings->where('key', 'note')->first()->getTranslationsArray(): []"/>
                             </section>
 
                             <hr class="my-5">

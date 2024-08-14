@@ -16,6 +16,7 @@ class SubscriptionPeriod extends Component
     public function __construct(
         public readonly Car $car,
         public readonly Collection $subscribeMonthSettings,
+        public readonly Collection $commonCarSettings,
     )
     {
         //
@@ -28,7 +29,8 @@ class SubscriptionPeriod extends Component
     {
         return view('components.car.subscription-period', [
             'car' => $this->car,
-            'subscribeMonthSettings' => $this->subscribeMonthSettings
+            'subscribeMonthSettings' => $this->subscribeMonthSettings,
+            'commonCarSettings' => $this->commonCarSettings
         ]);
     }
 }

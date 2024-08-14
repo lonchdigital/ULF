@@ -41,7 +41,8 @@ class CarsController extends Controller
             'subscribeMonthSettings' => $this->commonService->getAllSubscribeSettings(),
             'subscribeBenefits' => $this->commonService->getAllSubscribeBenefits(),
             'carDriveBlock' => CarDriveBlock::first(),
-            'commonFaqs' => $this->commonService->getAllCommonFaqs()
+            'commonFaqs' => $this->commonService->getAllCommonFaqs(),
+            'commonCarSettings' => $this->commonService->getAllCommonCarSettings(),
         ]);
     }
 

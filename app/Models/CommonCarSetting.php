@@ -11,5 +11,5 @@ class CommonCarSetting extends Model implements TranslatableContract
     use Translatable;
 
     public $translatedAttributes = ['first_payment_note'];
-    protected $fillable = [0];
+    protected $fillable = ['key'];
 }

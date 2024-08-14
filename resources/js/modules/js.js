@@ -1,6 +1,21 @@
 import $ from 'jquery';
 
 
+$(function () {
+    var tooltipInfo = ['<div class="tooltip tooltip-help-info" role="tooltip">',
+        '<div class="arrow"></div>',
+        '<div class="tooltip-inner">',
+        '</div>',
+        '</div>'].join('');
+
+    $('.i-info').tooltip({
+        trigger: "hover",
+        html: true,
+        placement: "top",
+        template: tooltipInfo,
+    });
+});
+
 $(document).on('click', 'a.anchor[href^="#"]', function (e) {
 	var anchor = $(this);
 	$('html, body').stop().animate({

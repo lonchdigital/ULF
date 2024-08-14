@@ -60,7 +60,7 @@
                             <x-car.info :car="$car" />
                         </div>
                         <div class="col-12 col-lg-6 mb-7 mb-lg-0">
-                            <x-car.subscription-period :car="$car" :subscribeMonthSettings="$subscribeMonthSettings" />
+                            <x-car.subscription-period :car="$car" :subscribeMonthSettings="$subscribeMonthSettings" :commonCarSettings="$commonCarSettings" />
                         </div>
                     </div>
                 </div>

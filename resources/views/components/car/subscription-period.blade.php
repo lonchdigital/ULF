@@ -13,7 +13,6 @@
                 </ul>
             </div>
             <div class="tab-content" id="subscription-period--pills-tabContent">
-
                 @foreach(App\DataClasses\SubscribeMonthSectionsClass::get() as $subscribeMonthSection)
                     <div class="tab-pane @if( $loop->first ) show active @endif" id="subscription-period--pills-{{ $subscribeMonthSection['id'] }}" role="tabpanel" aria-labelledby="subscription-period--pills-{{ $subscribeMonthSection['id'] }}-tab">
                         <div class="row mb-5">
@@ -30,12 +29,13 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-6 col-sm-auto">
                                         <div class="first-payment">
                                             <div class="d-flex mb-1">
                                                 <div class="name">{{ trans('admin.first_payment') }}</div>
-                                                <svg class="i-info" data-toggle="tooltip" title="Включає оплату першого місяця та гарантійний платіж. Гарантійний платіж повертається після закінчення підписки.">
-                                                    <use xlink:href="img/icons/icons.svg#i-info"></use>
+                                                <svg class="i-info" data-toggle="tooltip" title="{{ !is_null($commonCarSettings->where('key', 'note')->first()) ? $commonCarSettings->where('key', 'note')->first()->first_payment_note : '' }}">
+                                                    <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-info' }}"></use>
                                                 </svg>
                                             </div>
                                             <div class="price mb-1">

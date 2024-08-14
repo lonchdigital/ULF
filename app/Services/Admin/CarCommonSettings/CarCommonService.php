@@ -38,15 +38,16 @@ class CarCommonService
     {
         // car common settings
         $commonCarSettings = $this->getAllCommonCarSettings();
-        $data = [];
+        $data = ['key' => 'note'];
         foreach ($request['first_payment_note'] as $lang => $value) {
             $data[$lang]['first_payment_note'] = $value;
         }
 
         $this->updateDriveBlock($request['drive']);
+        $commonNote = $commonCarSettings->where('key', 'note')->first();
 
-        if(!is_null($commonCarSettings)) {
-            $commonCarSettings->update($data);
+        if(!is_null($commonNote)) {
+            $commonNote->update($data);
         } else {
             CommonCarSetting::create($data);
         }
@@ -98,7 +99,7 @@ class CarCommonService
 
     public function getAllCommonCarSettings()
     {
-        return CommonCarSetting::first();
+        return CommonCarSetting::all();
     }
     public function getAllSubscribeBenefits()
     {
