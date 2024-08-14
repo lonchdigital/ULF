@@ -116,17 +116,17 @@
                                 <div class="tinder-buttons d-flex flex-md-column flex-lg-row align-items-center">
                                     <button type="button" class="i-dislike">
                                         <svg>
-                                            <use xlink:href="img/icons/icons.svg#i-dislike"></use>
+                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-dislike' }}"></use>
                                         </svg>
                                     </button>
                                     <button type="button" class="i-favorite" data-toggle="modal" data-target="#popup-tinder">
                                         <svg>
-                                            <use xlink:href="img/icons/icons.svg#i-favorite"></use>
+                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-favorite' }}"></use>
                                         </svg>
                                     </button>
                                     <button type="button" class="i-like">
                                         <svg>
-                                            <use xlink:href="img/icons/icons.svg#i-like"></use>
+                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-like' }}"></use>
                                         </svg>
                                     </button>
                                 </div>
