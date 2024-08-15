@@ -21,6 +21,19 @@
                             @csrf
 
                             <div class="form-group">
+                                <label for="slug">URL</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="slug"
+                                       name="slug"
+                                       value="{{ $car->page->slug }}"
+                                >
+                                @error('slug')
+                                <label id="firstname-error" class="error mt-2 text-danger" for="firstname">{{ $message }}</label>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
                                 <div class="row">
 
                                     <div class="col-md-4">
@@ -50,19 +63,6 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="slug">URL</label>
-                                <input type="text"
-                                    class="form-control"
-                                    id="slug"
-                                    name="slug"
-                                    value="{{ $car->page->slug }}"
-                                >
-                                @error('slug')
-                                <label id="firstname-error" class="error mt-2 text-danger" for="firstname">{{ $message }}</label>
-                                @enderror
                             </div>
 
                             <div class="form-group" id="label-line" {{ ($car->status_id === 2) ? 'style=display:none' : '' }}>
