@@ -71,7 +71,7 @@
                                 <div class="form-group">
                                     <x-admin.multilanguage-text-area
                                         :is-required="false"
-                                        :label="'Content'"
+                                        :label="trans('admin.text')"
                                         field-name="text"
                                         field-display="text"
                                         :values="$page->getTranslationsArray()"/>

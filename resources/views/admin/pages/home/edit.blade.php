@@ -14,7 +14,7 @@
                         @endif
 
                         <div class="card-head mb-20">
-                            <h4 class="card-head-title">Home Page</h4>
+                            <h4 class="card-head-title">{{ $page->name }}</h4>
                         </div>
 
                         <form class="forms-sample" action="{{ route('admin.home-page-settings.edit') }}" method="POST" enctype="multipart/form-data">
@@ -22,7 +22,7 @@
 
                             <section>
                                 <div class="card-head mb-20">
-                                    <h6 class="card-head-title">Hero header</h6>
+                                    <h6 class="card-head-title">{{ trans('admin.hero_header') }}</h6>
                                 </div>
 
                                 <div class="form-group">
@@ -134,7 +134,7 @@
                                     <h6 class="card-head-title">{{ trans('admin.benefits') }}</h6>
                                 </div>
 
-                                <p><b>Row one</b></p>
+                                <p><b>{{ trans('admin.row_one') }}</b></p>
                                 <div class="row home-benefits-row" id="home-benefits-row-one">
                                     @if(count($homeBenefitBlock) > 0)
                                         @foreach($homeBenefitBlock->where('row', 1) as $benefit)
@@ -180,7 +180,7 @@
                                 </div>
 
 
-                                <p><b>Row two</b></p>
+                                <p><b>{{ trans('admin.row_two') }}</b></p>
                                 <div class="row home-benefits-row" id="home-benefits-row-two">
                                     @if(count($homeBenefitBlock) > 0)
                                         @foreach($homeBenefitBlock->where('row', 2) as $benefit)
@@ -232,7 +232,7 @@
 
                             <section>
                                 <div class="card-head mb-20">
-                                    <h6 class="card-head-title">Ready to drive?</h6>
+                                    <h6 class="card-head-title">{{ trans('admin.ready_to_drive') }}</h6>
                                 </div>
 
                                 <div class="form-group">

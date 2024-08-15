@@ -151,7 +151,7 @@
                             <hr class="my-5">
 
                             <section>
-                                <h6 class="card-title">Ready to drive?</h6>
+                                <h6 class="card-title">{{ trans('admin.ready_to_drive') }}</h6>
 
                                 <div class="form-group">
                                     <x-admin.multilanguage-input :label="trans('admin.title')"
