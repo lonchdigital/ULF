@@ -47,12 +47,12 @@
     "src": "resources/img/icons/icons.svg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-B_es1oc7.js",
+    "file": "assets/app-4JaqBo0U.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-BDE8m_hw.css"
+      "assets/app-DTDjm4mn.css"
     ],
     "assets": [
       "assets/Montserrat-Black-DHRMOOaf.woff2",

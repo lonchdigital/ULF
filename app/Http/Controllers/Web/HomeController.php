@@ -10,6 +10,7 @@ use App\Models\HomeMainBlock;
 use App\Models\Page;
 //use App\Services\Web\HomePage\HomePageService;
 use Illuminate\Http\Request;
+use Modules\Cars\Models\Car;
 use Modules\Clients\Services\Web\WebService as ClientHistoriesService;
 
 class HomeController
@@ -37,7 +38,8 @@ class HomeController
             'homeMainBlock' => HomeMainBlock::first(),
             'homeBenefitBlock' => HomeBenefitBlock::all(),
             'homeDriveBlock' => HomeDriveBlock::first(),
-            'clients' => $this->clientService->getAllClientHistories()
+            'clients' => $this->clientService->getAllClientHistories(),
+            'cars' => Car::latest()->limit(5)->get()
         ]);
     }
 

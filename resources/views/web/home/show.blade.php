@@ -261,82 +261,49 @@
                         </div>
                     </div>
                 </section>
+
                 <section id="our-fleet" class="our-fleet pt-7 pt-md-10 pt-lg-35 pb-7 pb-md-10 pb-lg-13">
                     <div class="container">
                         <div class="row mb-6">
                             <div class="col">
-                                <div class="head font-weight-bolder mb-3 mb-md-6 text-center">Наш автопарк <br class="d-sm-none"><span class="text-main-blue">=</span><br class="d-sm-none"> Твій автопарк</div>
+                                <div class="head font-weight-bolder mb-3 mb-md-6 text-center">{{ trans('web.our_car_park') }} <br class="d-sm-none"><span class="text-main-blue">=</span><br class="d-sm-none"> {{ trans('web.your_car_park') }}</div>
                                 <div class="our-fleet-preview row">
-                                    <div class="col-12 col-md-6 col-lg-4">
-                                        <div class="our-fleet-preview--item">
-                                            <div class="name">Hyundai Tucson</div>
-                                            <div class="wrap-img">
-                                                <img src="img/car-1.png" alt="Image">
+
+                                    @foreach ($cars as $car)
+                                        <div class="content col-12 col-md-6 col-lg-4">
+                                            <div class="our-fleet-preview--item">
+                                                <a href="{{ route('car.single.page', ['slug' => $car->page->slug]) }}">
+                                                    <div class="name">{{ $car->getFullName() }}</div>
+                                                </a>
+                                                <div class="wrap-img">
+                                                    <a href="{{ route('car.single.page', ['slug' => $car->page->slug]) }}">
+                                                        <img src="{{ $car->getMainImageUrl() }}" alt="Car image">
+                                                    </a>
+                                                </div>
+                                                @if(count($car->subscribePrices) > 0 && !is_null($car->subscribePrices->where('section_id', 1)->first()->monthly_payment))
+                                                    <div class="price mb-1">
+                                                        <span class="currency">$</span>
+                                                        <span class="value">{{ $car->subscribePrices->where('section_id', 1)->first()->monthly_payment }}</span> / {{ trans('web.month') }}
+                                                    </div>
+                                                @endif
+                                                <a href="{{ route('car.single.page', ['slug' => $car->page->slug]) }}" class="btn-arrow btn btn-block">
+                                                    <span>{{ $car->getShortDesc() }}</span>
+                                                </a>
+                                                @if($car->label)
+                                                    <div class="discount {{ ($car->label_color_id === 2) ? 'label-red': '' }}">{!! $car->label !!}</div>
+                                                @endif
                                             </div>
-                                            <div class="price mb-1"><span class="currency">$</span> <span class="value">1 080</span> / міс.</div>
-                                            <a href="##" class="btn-arrow btn btn-block">
-                                                <span>Бензин, 2.0, Автомат, Повний привод</span>
-                                            </a>
-                                            <div class="discount">&#128293; -20% &#128293;</div>
                                         </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4">
-                                        <div class="our-fleet-preview--item">
-                                            <div class="name">Toyota Camry</div>
-                                            <div class="wrap-img">
-                                                <img src="img/car-2.png" alt="Image">
-                                            </div>
-                                            <div class="price mb-1"><span class="currency">$</span> <span class="value">1 080</span> / міс.</div>
-                                            <a href="##" class="btn-arrow btn btn-block">
-                                                <span>Бензин, 2.0, Автомат, Передній привод</span>
-                                            </a>
-                                            <div class="in-subscription">у підписці</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4">
-                                        <div class="our-fleet-preview--item">
-                                            <div class="name">Toyota RAV4</div>
-                                            <div class="wrap-img">
-                                                <img src="img/car-3.png" alt="Image">
-                                            </div>
-                                            <div class="price mb-1"><span class="currency">$</span> <span class="value">1 080</span> / міс.</div>
-                                            <a href="##" class="btn-arrow btn btn-block">
-                                                <span>Гібрид, Автомат, Повний привод</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 d-none d-md-flex">
-                                        <div class="our-fleet-preview--item">
-                                            <div class="name">Toyota RAV4</div>
-                                            <div class="wrap-img">
-                                                <img src="img/car-4.png" alt="Image">
-                                            </div>
-                                            <div class="price mb-1"><span class="currency">$</span> <span class="value">1 080</span> / міс.</div>
-                                            <a href="##" class="btn-arrow btn btn-block">
-                                                <span>Бензин, 2.0, Автомат, Повний привод</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 col-lg-4 d-none d-md-flex">
-                                        <div class="our-fleet-preview--item">
-                                            <div class="name">Hyundai Tucson</div>
-                                            <div class="wrap-img">
-                                                <img src="img/car-5.png" alt="Image">
-                                            </div>
-                                            <div class="price mb-1"><span class="currency">$</span> <span class="value">1 080</span> / міс.</div>
-                                            <a href="##" class="btn-arrow btn btn-block">
-                                                <span>Бензин, 2.0, Автомат, Повний привод</span>
-                                            </a>
-                                        </div>
-                                    </div>
+                                    @endforeach
+
                                     <div class="col-12 col-md-6 col-lg-4 d-none d-md-flex our-fleet-search">
                                         <div class="our-fleet-preview--item bg-main-blue our-fleet-preview--search">
-                                            <div class="name text-white">Не знайшов авто мрії в нашому автопарку?</div>
+                                            <div class="name text-white">{{ trans('web.did_not_found_dream_car') }}</div>
                                             <div class="wrap-img">
-                                                <img src="img/car-6.png" alt="Image">
+                                                <img src="{{ asset('static_images/car-6.png') }}" alt="Image">
                                             </div>
                                             <div class="price mb-1"><span class="currency">$</span> <span class="value">1 080</span> / міс.</div>
-                                            <button type="button" class="btn-default btn-default-white btn btn-block btn-white text-uppercase font-weight-bold mb-4 mb-lg-0 mr-lg-4" data-toggle="modal" data-target="#popup-сar-selection">НА ПОШУКИ АВТО</іге>
+                                            <button type="button" class="btn-default btn-default-white btn btn-block btn-white text-uppercase font-weight-bold mb-4 mb-lg-0 mr-lg-4" data-toggle="modal" data-target="#popup-сar-selection">{{ trans('web.go_find_the_car') }}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -344,11 +311,12 @@
                         </div>
                         <div class="row">
                             <div class="col-12 col-md-6 col-lg-4 mx-auto">
-                                <a href="catalog.html" class="btn-default btn btn-block btn-outline-main-blue text-uppercase mt-0">ОБИРАЙ ТА КЕРМУЙ</a>
+                                <a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}" class="btn-default btn btn-block btn-outline-main-blue text-uppercase mt-0">{{ trans('web.choose_and_drive') }}</a>
                             </div>
                         </div>
                     </div>
                 </section>
+
             </div>
             <div class="section-order d-flex flex-column">
                 <section class="test-drive pb-md-10 pb-lg-35 order-last order-md-first">

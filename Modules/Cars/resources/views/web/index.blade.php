@@ -20,9 +20,6 @@
 @endsection
 
 @section('content')
-
-{{--    @dd(Vite::asset('resources/img/icons/icons.svg') . '#i-arrow-right')--}}
-
     <main class="main">
         <div class="content">
             <section class="section-top pt-5">
@@ -71,32 +68,6 @@
                         <div class="col mx-auto">
                             <div id="cars-list" class="our-fleet-preview row">
                                 {{-- Got from AJAX --}}
-
-
-                                {{-- TODO:: use this code to display cars on homepage --}}
-                                {{--@foreach ($cars as $car)
-                                    <div class="content col-12 col-md-6 col-lg-4">
-                                        <div class="our-fleet-preview--item">
-                                            <div class="name">{{ $car->getFullName() }}</div>
-                                            <div class="wrap-img">
-                                                <img src="{{ $car->getMainImageUrl() }}" alt="Car image">
-                                            </div>
-                                            @if(count($car->subscribePrices) > 0 && !is_null($car->subscribePrices->where('section_id', 1)->first()->monthly_payment))
-                                                <div class="price mb-1">
-                                                    <span class="currency">$</span>
-                                                    <span class="value">{{ $car->subscribePrices->where('section_id', 1)->first()->monthly_payment }}</span> / міс.
-                                                </div>
-                                            @endif
-                                            <a href="{{ route('car.single.page', ['slug' => $car->page->slug]) }}" class="btn-arrow btn btn-block">
-                                                <span>{{ $car->getShortDesc() }}</span>
-                                                <span>Бензин, 2.0, Автомат, Повний привод</span>
-                                            </a>
-                                            @if($car->label)
-                                                <div class="discount {{ ($car->label_color_id === 2) ? 'label-red': '' }}">{!! $car->label !!}</div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                @endforeach--}}
                             </div>
                         </div>
                     </div>
