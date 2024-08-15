@@ -43,8 +43,10 @@ videoWraps.forEach((videoWrap) => {
 		const plyrVideoPlayer = videoPlayer.plyr;
 
 		playPauseButton.addEventListener('click', () => {
-			if (plyrVideoPlayer.paused) {
+
+            if (plyrVideoPlayer.paused) {
 				plyrVideoPlayer.play();
+				plyrVideoPlayer.muted = false;
 				playPauseButton.classList.add('active');
 			} else {
 				plyrVideoPlayer.pause();
@@ -69,8 +71,12 @@ videoWraps.forEach((videoWrap) => {
 });
 
 
+console.log('111111111111111111111111111');
+
 // Функція для зупинки всіх відео
 function pauseAllVideos() {
+
+    console.log('2222222222222222222222222');
 	if (players) { // Перевірка на наявність players
 		// Зупиняємо всі аудіоплеєри
 		players.forEach(player => {
@@ -86,6 +92,8 @@ function pauseAllVideos() {
 			videoPlayer.querySelector('.btn-video-play-pause').classList.remove('active');
 		}
 	});
+
+    console.log('3333333333333333333333333333');
 }
 
 // Функція для зупинки всіх відео у історіях користувача
