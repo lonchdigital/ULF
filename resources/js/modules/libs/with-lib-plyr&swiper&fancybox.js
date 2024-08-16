@@ -71,12 +71,9 @@ videoWraps.forEach((videoWrap) => {
 });
 
 
-console.log('111111111111111111111111111');
-
 // Функція для зупинки всіх відео
 function pauseAllVideos() {
 
-    console.log('2222222222222222222222222');
 	if (players) { // Перевірка на наявність players
 		// Зупиняємо всі аудіоплеєри
 		players.forEach(player => {
@@ -93,7 +90,6 @@ function pauseAllVideos() {
 		}
 	});
 
-    console.log('3333333333333333333333333333');
 }
 
 // Функція для зупинки всіх відео у історіях користувача
@@ -410,6 +406,16 @@ Fancybox.bind('[data-fancybox="gallery"]', {
 	},
 });
 
+//? [data-fancybox="video"]
+/*Fancybox.bind('[data-fancybox="video"]', {
+    // Настройка Fancybox для открытия видео
+    on: {
+        reveal: function () {
+            console.log("Видео запущено");
+        }
+    }
+});*/
+
 //? [data-fancybox="gallery-scroll"]
 Fancybox.bind('[data-fancybox="gallery-scroll"]', {
 	on: {
@@ -607,7 +613,8 @@ function initScrollTrigger() {
 	function simulatePlayPauseClick() {
 		const playPauseButton = document.querySelector('.customer-stories .horizontal-scoll-wrapper .video-wrap--vissible .btn-video-play-pause');
 		if (playPauseButton) {
-			playPauseButton.click();
+            // TODO:: I have to comment these because of double click on homepage
+			// playPauseButton.click();
 		}
 	}
 

@@ -428,6 +428,25 @@
 		}
 		.video-wrap {
 			margin-left: -1px;
+
+            &.you-tube-video-wrapper {
+
+                .you-tube-video {
+                    display: block;
+                    position: static;
+                    width: 100%;
+                    height: 100%;
+
+                    img {
+                        border-radius: 10px;
+                    }
+
+                    &:after {
+                        display: none;
+                    }
+
+                }
+            }
 		}
 		.inner {
 			display: flex;
@@ -901,7 +920,7 @@
 	.gallery-car--inner {
 		@include xl-min {
 			overflow: hidden;
-			postion: relative;
+            position: relative;
 		}
 		//main slider
 		.gallery-car--swiper {

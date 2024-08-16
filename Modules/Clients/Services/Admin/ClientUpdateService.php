@@ -21,6 +21,8 @@ final class ClientUpdateService extends ClientBaseService
     {
         $dataToUpdate = [];
 
+        $dataToUpdate['youtube'] = $data['youtube'];
+
         if (isset($data['preview_image'])) {
             $imagePath = self::CLIENT_MEDIA_FOLDER . '/'  . sha1(time()) . '_' . Str::random(10);
 

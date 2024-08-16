@@ -42,53 +42,50 @@
             </section>
             <section class="customer-stories-main pb-7 pb-md-10 pb-lg-13">
                 <div class="container">
-                    <div class="scroll-gallery row">
 
+                    <div class="scroll-gallery row">
                         @foreach ($clients as $client)
-                            @if(!is_null($client->video))
-                                <div class="scroll-gallery--item col-12 col-md-6 col-xl-4">
-                                    <div class="inner h-100 position-relative">
-                                        <div class="video-wrap video-wrap--vissible h-100">
-                                            <a data-src="#scroll-gallery-player-1" data-thumb="{{ $client->image_url }}">
-                                                <video class=" js-player specific-player" playsinline controls
-                                                    data-poster="{{ $client->image_url }}">
+                            @if(!is_null($client->video) || $client->youtube)
+                                @if($client->youtube)
+                                    <div class="scroll-gallery--item col-12 col-md-6 col-xl-4">
+                                        <div class="inner h-100 position-relative">
+                                            <div class="video-wrap you-tube-video-wrapper video-wrap--vissible h-100">
+                                                <a data-fancybox="scroll-gallery" href="{{ $client->youtube }}" class="btn you-tube-video btn-video-play-pause">
+                                                    <img src="{{ $client->image_url }}" alt="Client history image">
+                                                    <button type="button" class="btn btn-video-play-pause"></button>
+                                                </a>
+                                            </div>
+                                            <div class="scroll-gallery--content">
+                                                <div class="scroll-gallery--head mb-2">{{ $client->history_title }}</div>
+                                                <p class="mb-0">{{ $client->description }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="scroll-gallery--item col-12 col-md-6 col-xl-4">
+                                        <div class="inner h-100 position-relative">
+                                            <div class="video-wrap video-wrap--vissible h-100">
+                                                <a data-src="#scroll-gallery-player-1" data-thumb="{{ $client->image_url }}">
+                                                    <video class=" js-player specific-player" playsinline controls
+                                                           data-poster="{{ $client->image_url }}">
+                                                        <source src="{{ '/storage/' . $client->video }}" type="video/mp4" />
+                                                    </video>
+                                                </a>
+                                                <button type="button" class="btn btn-video-play-pause"></button>
+                                            </div>
+                                            <div id="scroll-gallery-player-1" class="video-wrap hidden" style="display:none">
+                                                <video class="js-player specific-player" playsinline controls
+                                                       data-poster="{{ $client->image_url }}">
                                                     <source src="{{ '/storage/' . $client->video }}" type="video/mp4" />
                                                 </video>
-                                            </a>
-                                            <button type="button" class="btn btn-video-play-pause"></button>
-                                        </div>
-                                        <div id="scroll-gallery-player-1" class="video-wrap hidden" style="display:none">
-                                            <video class="js-player specific-player" playsinline controls
-                                                data-poster="{{ $client->image_url }}">
-                                                <source src="{{ '/storage/' . $client->video }}" type="video/mp4" />
-                                            </video>
-                                        </div>
-                                        <div class="scroll-gallery--content">
-                                            <div class="scroll-gallery--head mb-2">{{ $client->history_title }}</div>
-                                            <p class="mb-0">{{ $client->description }}</p>
+                                            </div>
+                                            <div class="scroll-gallery--content">
+                                                <div class="scroll-gallery--head mb-2">{{ $client->history_title }}</div>
+                                                <p class="mb-0">{{ $client->description }}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                {{--<div class="scroll-gallery--item col-12 col-md-6 col-xl-4">
-                                    <div class="inner h-100 position-relative">
-                                        <div class="video-wrap video-wrap--vissible h-100">
-                                            <a data-src="#scroll-gallery-player-{{ $loop->index }}" data-thumb="{{ $client->image_url }}">
-                                                <div class="youtube-player-wrapper">
-                                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/u3ZRn_zdkr0?si=ITT3RJr_jQMGu4Vp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                                </div>
-                                            </a>
-                                            <button type="button" class="btn btn-video-play-pause"></button>
-                                        </div>
-                                        <div id="scroll-gallery-player-{{ $loop->index }}" class="video-wrap hidden" style="display:none">
-                                            <iframe width="560" height="315" src="https://www.youtube.com/embed/u3ZRn_zdkr0?si=ITT3RJr_jQMGu4Vp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                        </div>
-                                        <div class="scroll-gallery--content">
-                                            <div class="scroll-gallery--head mb-2">{{ $client->history_title }}</div>
-                                            <p class="mb-0">{{ $client->description }}</p>
-                                        </div>
-                                    </div>
-                                </div>--}}
+                                @endif
                             @else
                                 <div class="scroll-gallery--item col-12 col-md-6 col-xl-4">
                                     <div class="inner h-100 position-relative">

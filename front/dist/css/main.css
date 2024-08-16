@@ -3274,7 +3274,7 @@ p {
 @media (min-width: 1200px) {
   .gallery-car .gallery-car--inner {
     overflow: hidden;
-    postion: relative;
+    position: relative;
   }
 }
 .gallery-car .gallery-car--inner .gallery-car--swiper {

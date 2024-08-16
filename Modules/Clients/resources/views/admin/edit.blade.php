@@ -76,6 +76,11 @@
                                 @enderror
                             </div>
 
+                            <div class="form-group">
+                                <label for="video">YouTube</label>
+                                <input type="text" class="form-control" name="youtube" value="{{ $client->youtube }}">
+                            </div>
+
                             <button type="submit" class="btn btn-primary mr-2">{{ trans('admin.save') }}</button>
                         </form>
 

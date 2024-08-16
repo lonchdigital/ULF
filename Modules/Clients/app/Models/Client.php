@@ -13,7 +13,7 @@ class Client extends Model implements TranslatableContract
     use Translatable;
 
     public $translatedAttributes = ['name', 'history_title', 'description'];
-    protected $fillable = ['image_path', 'video'];
+    protected $fillable = ['image_path', 'video', 'youtube'];
 
 
     public function imageUrl(): Attribute
