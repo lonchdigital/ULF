@@ -9,7 +9,7 @@
     ]
   },
   "Modules/Cars/resources/js/cars-catalog.js": {
-    "file": "assets/cars-catalog-D5RB5erV.js",
+    "file": "assets/cars-catalog-BHAQj5yU.js",
     "name": "cars-catalog",
     "src": "Modules/Cars/resources/js/cars-catalog.js",
     "isEntry": true,
@@ -47,12 +47,12 @@
     "src": "resources/img/icons/icons.svg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-CvmZrGiW.js",
+    "file": "assets/app-BKJ5kqP2.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-DONy6u_w.css"
+      "assets/app-Bj6qcleG.css"
     ],
     "assets": [
       "assets/Montserrat-Black-DHRMOOaf.woff2",
@@ -77,7 +77,7 @@
     ]
   },
   "resources/js/libs.js": {
-    "file": "assets/libs-C9_YTdQG.js",
+    "file": "assets/libs-CksnGj_u.js",
     "name": "libs",
     "src": "resources/js/libs.js",
     "isEntry": true,

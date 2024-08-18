@@ -860,6 +860,43 @@
 				contrast(105%);
 		}
 	}
+
+    .art-order {
+        position: relative;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &.active {
+            .art-select-options {
+                display: block;
+            }
+        }
+
+        .art-select-options {
+            display: none;
+            position: absolute;
+            box-shadow: 0 0 8px #0000001a;
+            border-radius: 10px;
+            //width: 100%;
+            right: 0;
+            top: 100%;
+            padding: 13px 20px;
+            max-height: 500px;
+            min-width: 260px;
+            overflow-y: auto;
+            background-color: #fff;
+            z-index: 4;
+
+            .filter-option {
+                padding: 5px 0;
+                display: block;
+                color: #000;
+            }
+        }
+
+    }
 }
 .sidebar {
 	display: block;

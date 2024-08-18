@@ -24,7 +24,7 @@ class WebService
 
     public function getFilteredPosts(Request $request): array
     {
-        $currentLocale = session()->get('language', 'uk');
+        $currentLocale = session()->get('language', 'ua');
         app()->setLocale($currentLocale);
 
         $query = Article::query()->with('page')->latest();

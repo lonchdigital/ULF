@@ -26,10 +26,30 @@ class WebService
 
     public function getFilteredPosts(Request $request): array
     {
-        $currentLocale = session()->get('language', 'uk');
+        $currentLocale = session()->get('language', 'ua');
         app()->setLocale($currentLocale);
 
-        $query = Car::query()->latest();
+        $query = Car::query();
+
+        if ($request['catalogOrder'] !== null) {
+            if ($request['catalogOrder'] === 'price_up') {
+                $query->select('cars.*')
+                    ->join('subscribe_prices', function($join) {
+                        $join->on('cars.id', '=', 'subscribe_prices.car_id')
+                            ->where('subscribe_prices.section_id', '=', 1);
+                    })
+                    ->orderBy('subscribe_prices.monthly_payment', 'asc');
+            } elseif ($request['catalogOrder'] === 'price_down') {
+                $query->select('cars.*')
+                    ->join('subscribe_prices', function($join) {
+                        $join->on('cars.id', '=', 'subscribe_prices.car_id')
+                            ->where('subscribe_prices.section_id', '=', 1);
+                    })
+                    ->orderBy('subscribe_prices.monthly_payment', 'desc');
+            }
+        } else {
+            $query->latest();
+        }
 
         // pagination
         $requestPage = $request['pageNumber'] !== null ? (int) $request['pageNumber'] : 1;

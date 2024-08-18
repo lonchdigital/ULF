@@ -17,7 +17,7 @@ class CarsController extends Controller
     * @var CarsService
      */
    private CarsService $service;
-   private const PER_PAGE = 10;
+   private const PER_PAGE = 20;
 
     public function __construct(CarsService $service)
     {

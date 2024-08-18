@@ -36,11 +36,19 @@
                                         {{ trans('web.your_car_park') }}</div>
                                     <div class="h3 font-m font-weight-bolder d-lg-none">{{ trans('page_name.car_park') }}</div>
                                     <div class="filters-button ml-4">
-                                        <button type="button" class="btn btn-reset">
-                                            <svg class="i-sorting">
-                                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-sorting' }}"></use>
-                                            </svg>
-                                        </button>
+                                        <div class="art-order">
+                                            <button type="button" class="btn btn-reset">
+                                                <svg class="i-sorting">
+                                                    <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-sorting' }}"></use>
+                                                </svg>
+                                            </button>
+
+                                            <div class="art-select-options">
+                                                <a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}" class="filter-option">{{ trans('web.sort_by_default') }}</a>
+                                                <a href="?order=price_up" class="filter-option">{{ trans('web.price_up') }}</a>
+                                                <a href="?order=price_down" class="filter-option">{{ trans('web.price_down') }}</a>
+                                            </div>
+                                        </div>
                                         <button type="button" class="btn btn-reset btn-filter collapsed"
                                             data-toggle="collapse" data-target="#navbarFilters"
                                             aria-controls="navbarFilters" aria-expanded="false"

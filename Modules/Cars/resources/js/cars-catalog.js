@@ -33,6 +33,8 @@ $(document).ready(function() {
         // $postFilterResult.html('<div class="art-loader-post-wrapper"><div class="loader">Шукаю, зачекайте...</div></div>');
         // $postPaginationWrapper.html('');
 
+        let orderValue = getParameterByName('order');
+
         ajaxThematicFilter(
             function (data) {
                 if( data['documents'].length > 0 ) {
@@ -67,11 +69,12 @@ $(document).ready(function() {
             function () {
                 console.error('init: error during Filter.');
             },
-            pageNumber
+            pageNumber,
+            orderValue
         );
     }
 
-    function ajaxThematicFilter(success, fail, pageNumber = null)
+    function ajaxThematicFilter(success, fail, pageNumber = null, catalogOrder = null)
     {
         const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
         const appUrl = document.head.querySelector('meta[name="app-url"]').content;
@@ -81,7 +84,8 @@ $(document).ready(function() {
             type: 'post',
             data: {
                 _token: csrfToken,
-                pageNumber: pageNumber
+                pageNumber: pageNumber,
+                catalogOrder: catalogOrder
             },
             dataType: 'json'
         }).done(function(data) {
@@ -173,5 +177,35 @@ $(document).ready(function() {
 
         $postFilterResult.html(nothingFound);
     }
+
+    function getParameterByName(name) {
+        const url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+        const results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+
+    // select button
+    let filtersButton = $('.filters-button .art-order');
+    filtersButton.on('click', function(event) {
+        // event.preventDefault();
+        let artThis = $(this);
+
+        if(artThis.hasClass('active')) {
+            artThis.removeClass('active');
+        } else {
+            artThis.addClass('active');
+        }
+    });
+
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest(filtersButton).length) {
+            filtersButton.removeClass('active');
+        }
+    });
 
 });

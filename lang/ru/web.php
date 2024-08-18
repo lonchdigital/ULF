@@ -43,4 +43,7 @@ return [
     'did_not_found_dream_car' => 'Не нашел авто мечты в нашем автопарке?',
     'go_find_the_car' => 'Найти авто',
     'choose_and_drive' => 'Выбирай и води',
+    'price_up' => 'От дешевых до дорогих',
+    'price_down' => 'От дорогих до дешевих',
+    'sort_by_default' => 'По умолчанию',
 ];
