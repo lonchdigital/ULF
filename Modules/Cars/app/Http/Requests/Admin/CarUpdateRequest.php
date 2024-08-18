@@ -3,6 +3,8 @@
 namespace Modules\Cars\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use Modules\Cars\Models\Car;
 
 class CarUpdateRequest extends FormRequest
 {
@@ -26,6 +28,25 @@ class CarUpdateRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            /*'sort_by_popularity' => [
+                'nullable',
+                'integer',
+            ],*/
+            /*'sort_by_popularity_id' => [
+                'nullable',
+                'integer',
+                'in:1,2,3,4,5',
+                Rule::unique(Car::class, 'sort_by_popularity_id')
+                    ->ignore($this->id)
+                    ->whereNotNull('sort_by_popularity_id')
+            ],*/
+            /*'sort_by_popularity_id' => [
+                'nullable',
+                'integer',
+                Rule::unique('cars', 'sort_by_popularity_id')
+                    ->ignore($this->route('car'))
+                    ->whereNotNull('sort_by_popularity_id'),
+            ],*/
             'month_settings.*.monthly_payment' => [
                 'nullable',
                 'integer',

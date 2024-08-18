@@ -46,10 +46,40 @@ class WebService
                             ->where('subscribe_prices.section_id', '=', 1);
                     })
                     ->orderBy('subscribe_prices.monthly_payment', 'desc');
+            } elseif ($request['catalogOrder'] === 'popularity_up') {
+                $query->orderByRaw('COALESCE(sort_by_popularity_id, 999999) ASC');
+            } elseif ($request['catalogOrder'] === 'popularity_down') {
+                $query->orderByRaw('COALESCE(sort_by_popularity_id, 0) DESC');
+            }
+        }
+        $query->orderByRaw("CASE WHEN status_id = 2 THEN 1 ELSE 0 END")
+            ->orderBy('id', 'asc');
+
+
+        // TODO:: use it if you need to display cars with status_id = 2 at the and of list even while sorting by price
+        /*if ($request['catalogOrder'] !== null) {
+            if ($request['catalogOrder'] === 'price_up') {
+                $query->select('cars.*')
+                    ->join('subscribe_prices', function($join) {
+                        $join->on('cars.id', '=', 'subscribe_prices.car_id')
+                            ->where('subscribe_prices.section_id', '=', 1);
+                    })
+                    ->orderByRaw("CASE WHEN cars.status_id = 2 THEN 1 ELSE 0 END")
+                    ->orderBy('subscribe_prices.monthly_payment', 'asc');
+            } elseif ($request['catalogOrder'] === 'price_down') {
+                $query->select('cars.*')
+                    ->join('subscribe_prices', function($join) {
+                        $join->on('cars.id', '=', 'subscribe_prices.car_id')
+                            ->where('subscribe_prices.section_id', '=', 1);
+                    })
+                    ->orderByRaw("CASE WHEN cars.status_id = 2 THEN 1 ELSE 0 END")
+                    ->orderBy('subscribe_prices.monthly_payment', 'desc');
             }
         } else {
-            $query->latest();
-        }
+            $query->orderByRaw("CASE WHEN cars.status_id = 2 THEN 1 ELSE 0 END")
+                ->orderBy('id', 'asc');
+        }*/
+
 
         // pagination
         $requestPage = $request['pageNumber'] !== null ? (int) $request['pageNumber'] : 1;

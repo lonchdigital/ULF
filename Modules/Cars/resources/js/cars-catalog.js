@@ -118,6 +118,8 @@ $(document).ready(function() {
 
     function getDocumentHTML(document)
     {
+        // console.log(document);
+
         let monthlyPayment = ``;
         let carLabel = ``;
 
@@ -130,15 +132,21 @@ $(document).ready(function() {
             `;
         }
 
-        if(document['car_additional']['car_label']) {
-            if(document['car_additional']['car_label_color_id'] === 2) {
-                carLabel = `
+        if( document['status_id'] === 2 ) {
+            carLabel = `
+                    <div class="in-subscription">у підписці</div>
+                `;
+        } else {
+            if(document['car_additional']['car_label']) {
+                if(document['car_additional']['car_label_color_id'] === 2) {
+                    carLabel = `
                     <div class="discount label-red">${document['car_additional']['car_label']}</div>
                 `;
-            } else {
-                carLabel = `
+                } else {
+                    carLabel = `
                     <div class="discount">${document['car_additional']['car_label']}</div>
                 `;
+                }
             }
         }
 

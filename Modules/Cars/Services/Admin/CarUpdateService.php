@@ -118,6 +118,7 @@ class CarUpdateService extends CarBaseService
 
         $dataToUpdate = [];
         $dataToUpdate['status_id'] = $data['status_id'];
+        $dataToUpdate['sort_by_popularity_id'] = $data['sort_by_popularity'];
         $dataToUpdate['label_color_id'] = $data['label_color_id'];
         $dataToUpdate['popularity_id'] = $data['popularity_id'];
         foreach ($data['label'] as $lang => $value) {

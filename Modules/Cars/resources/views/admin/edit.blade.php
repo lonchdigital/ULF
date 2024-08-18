@@ -57,8 +57,9 @@
                                     <div class="col-md-4">
                                         <label for="exampleSelectGender">{{ trans('admin.sort_by_popularity') }}</label>
                                         <select class="form-control" id="exampleSelectGender" name="sort_by_popularity">
+                                            <option value="">none</option>
                                             @foreach(App\DataClasses\CarSortByPopularityClass::get() as $popularitySort)
-                                                <option value="{{ $popularitySort['id'] }}">{{ $popularitySort['name'] ?? '' }}</option>
+                                                <option value="{{ $popularitySort['id'] }}" {{ ($car->sort_by_popularity_id === $popularitySort['id']) ? 'selected' : '' }}>{{ $popularitySort['name'] ?? '' }}</option>
                                             @endforeach
                                         </select>
                                     </div>

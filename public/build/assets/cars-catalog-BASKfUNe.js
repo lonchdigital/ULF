@@ -3,7 +3,9 @@ import{$ as r}from"./jquery-CqDs7TUd.js";r(document).ready(function(){const i=r(
                 <span class="currency">$</span>
                 <span class="value">${e.car_additional.monthly_payment}</span> / міс.
             </div>
-            `),e.car_additional.car_label&&(e.car_additional.car_label_color_id===2?t=`
+            `),e.status_id===2?t=`
+                    <div class="in-subscription">у підписці</div>
+                `:e.car_additional.car_label&&(e.car_additional.car_label_color_id===2?t=`
                     <div class="discount label-red">${e.car_additional.car_label}</div>
                 `:t=`
                     <div class="discount">${e.car_additional.car_label}</div>
