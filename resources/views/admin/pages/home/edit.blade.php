@@ -257,6 +257,28 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="video">video (MP4)</label>
+                                    <input type="file" class="form-control" name="drive[video]" accept="video/mp4">
+
+                                    <div class="mt-2">
+                                        <span class="video-string">{{ $homeDriveBlock->video }}</span>
+                                        @if($homeDriveBlock->video)
+                                            <button type="button" class="btn btn-danger ml-5" id="delete-video-button">{{ trans('admin.delete_video') }}</button>
+                                        @endif
+                                        <input type="hidden" name="drive[delete_video]" id="delete-video-input" value="0">
+                                    </div>
+
+                                    @error('video')
+                                    <label id="firstname-error" class="error mt-2 text-danger" for="firstname">{{ $message }}</label>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="video">YouTube</label>
+                                    <input type="text" class="form-control" name="drive[youtube]" value="{{ $homeDriveBlock->youtube }}">
+                                </div>
+
+                                <div class="form-group">
                                     <x-admin.multilanguage-input :label="trans('admin.title')"
                                         :is-required="false"
                                         field-name="drive[title]"
@@ -454,6 +476,13 @@
                 $('#lang-fields-witcher a.lang-uk[href="#uk"]').click();
             });
 
+
+            $('#delete-video-button').on('click', function() {
+                $('#delete-video-input').val('1');
+
+                $('.video-string').empty();
+                $(this).hide();
+            });
 
         });
 

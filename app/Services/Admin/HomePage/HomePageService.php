@@ -158,6 +158,8 @@ class HomePageService
         $homeDriveBlock = HomeDriveBlock::first();
         $dataToUpdate = [];
 
+        $dataToUpdate['youtube'] = $data['youtube'];
+
         if (isset($data['image'])) {
             $imagePath = self::HOMEPAGE_IMAGES_FOLDER . '/'  . sha1(time()) . '_' . Str::random(10);
 
@@ -168,6 +170,19 @@ class HomePageService
             if(!is_null($homeDriveBlock) && !is_null($homeDriveBlock->image)){
                 deleteImage($homeDriveBlock->image);
             }
+        }
+
+        if($data['delete_video']) {
+            deleteVideo($homeDriveBlock->video);
+            $dataToUpdate['video'] = null;
+        }
+        if(isset($data['video'])) {
+            $imagePath = self::HOMEPAGE_IMAGES_FOLDER;
+            $filename = sha1(time()) . '_' . Str::random(10) . '.' . $data['video']->getClientOriginalExtension();
+            if(storeVideo($imagePath, $data['video'], $filename)) {
+                $dataToUpdate['video'] = $imagePath .'/'. $filename;
+            }
+            deleteVideo($homeDriveBlock->video);
         }
 
         foreach( $data['title'] as $lang => $value ){

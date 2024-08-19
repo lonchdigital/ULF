@@ -115,21 +115,50 @@
                                         <li>{{ $homeDriveBlock->step_five }}</li>
                                     </ul>
                                 </div>
-                                <div class="col-4 d-none d-lg-flex">
-                                    <div class="video-wrap video-wrap--vissible">
-                                        <a data-fancybox="specific-player" data-src="#specific-player" data-thumb="{{ '/storage/' . $homeDriveBlock->image }}">
-                                            <video class="js-player specific-player" playsinline controls data-poster="{{ '/storage/' . $homeDriveBlock->image }}">
-                                                <source src="assets/video/example.mp4" type="video/mp4" />
-                                            </video>
-                                        </a>
-                                        <button type="button" class="btn btn-video-play-pause"></button>
-                                    </div>
-                                    <div id="specific-player" class="video-wrap hidden" style="display:none">
-                                        <video class="js-player specific-player" playsinline controls data-poster="{{ '/storage/' . $homeDriveBlock->image }}">
-                                            <source src="assets/video/example.mp4" type="video/mp4" />
-                                        </video>
-                                    </div>
-                                </div>
+                                @if(!is_null($homeDriveBlock->video) || $homeDriveBlock->youtube)
+                                    @if($homeDriveBlock->youtube)
+
+                                        {{--<div class="scroll-gallery--item col-12 col-md-6 col-xl-4">
+                                            <div class="inner h-100 position-relative">
+                                                <div class="video-wrap you-tube-video-wrapper video-wrap--vissible h-100">
+                                                    <a data-fancybox="scroll-gallery" href="{{ $client->youtube }}" class="btn you-tube-video btn-video-play-pause">
+                                                        <img src="{{ $client->image_url }}" alt="Client history image">
+                                                        <button type="button" class="btn btn-video-play-pause"></button>
+                                                    </a>
+                                                </div>
+                                                <div class="scroll-gallery--content">
+                                                    <div class="scroll-gallery--head mb-2">{{ $client->history_title }}</div>
+                                                    <p class="mb-0">{{ $client->description }}</p>
+                                                </div>
+                                            </div>
+                                        </div>--}}
+
+                                        <div class="col-4 d-none d-lg-flex ready-to-drive-block">
+                                            <div class="video-wrap you-tube-video-wrapper video-wrap--vissible">
+                                                <a data-fancybox="specific-player" href="{{ $homeDriveBlock->youtube }}" class="btn you-tube-video btn-video-play-pause">
+                                                    <img src="{{ '/storage/' . $homeDriveBlock->image }}" alt="Client history image">
+                                                    <button type="button" class="btn btn-video-play-pause"></button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="col-4 d-none d-lg-flex">
+                                            <div class="video-wrap video-wrap--vissible">
+                                                <a data-fancybox="specific-player" data-src="#specific-player" data-thumb="{{ '/storage/' . $homeDriveBlock->image }}">
+                                                    <video class="js-player specific-player" playsinline controls data-poster="{{ '/storage/' . $homeDriveBlock->image }}">
+                                                        <source src="{{ '/storage/' . $homeDriveBlock->video }}" type="video/mp4" />
+                                                    </video>
+                                                </a>
+                                                <button type="button" class="btn btn-video-play-pause"></button>
+                                            </div>
+                                            <div id="specific-player" class="video-wrap hidden" style="display:none">
+                                                <video class="js-player specific-player" playsinline controls data-poster="{{ '/storage/' . $homeDriveBlock->image }}">
+                                                    <source src="{{ '/storage/' . $homeDriveBlock->video }}" type="video/mp4" />
+                                                </video>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endif
                             </div>
                             <div class="row">
                                 <div class="col-12 col-lg-8">
