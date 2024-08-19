@@ -69,7 +69,14 @@
                             <div class="form-group">
                                 <label for="video">video (MP4)</label>
                                 <input type="file" class="form-control" name="video" accept="video/mp4">
-                                {{ $client->video }}
+
+                                <div class="mt-2">
+                                    <span class="video-string">{{ $client->video }}</span>
+                                    @if($client->video)
+                                        <button type="button" class="btn btn-danger ml-5" id="delete-video-button">{{ trans('admin.delete_video') }}</button>
+                                    @endif
+                                    <input type="hidden" name="delete_video" id="delete-video-input" value="0">
+                                </div>
 
                                 @error('video')
                                 <label id="firstname-error" class="error mt-2 text-danger" for="firstname">{{ $message }}</label>
@@ -104,6 +111,14 @@
                 if (file) {
                     $('#article_image').attr('src', URL.createObjectURL(file)).attr('style', '');
                 }
+            });
+
+
+            $('#delete-video-button').on('click', function() {
+                $('#delete-video-input').val('1');
+
+                $('.video-string').empty();
+                $(this).hide();
             });
 
         });

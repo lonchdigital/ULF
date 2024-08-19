@@ -33,6 +33,11 @@ final class ClientUpdateService extends ClientBaseService
             deleteImage($client->image_path);
         }
 
+
+        if($data['delete_video']) {
+            deleteVideo($client->video);
+            $dataToUpdate['video'] = null;
+        }
         if(isset($data['video'])) {
             $imagePath = self::CLIENT_MEDIA_FOLDER;
             $filename = sha1(time()) . '_' . Str::random(10) . '.' . $data['video']->getClientOriginalExtension();
