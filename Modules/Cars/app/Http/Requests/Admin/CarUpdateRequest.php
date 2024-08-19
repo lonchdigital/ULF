@@ -28,25 +28,11 @@ class CarUpdateRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            /*'sort_by_popularity' => [
+            'sort_by_popularity' => [
                 'nullable',
                 'integer',
-            ],*/
-            /*'sort_by_popularity_id' => [
-                'nullable',
-                'integer',
-                'in:1,2,3,4,5',
-                Rule::unique(Car::class, 'sort_by_popularity_id')
-                    ->ignore($this->id)
-                    ->whereNotNull('sort_by_popularity_id')
-            ],*/
-            /*'sort_by_popularity_id' => [
-                'nullable',
-                'integer',
-                Rule::unique('cars', 'sort_by_popularity_id')
-                    ->ignore($this->route('car'))
-                    ->whereNotNull('sort_by_popularity_id'),
-            ],*/
+                'unique:cars,sort_by_popularity_id,' . $this->route('car')->id,
+            ],
             'month_settings.*.monthly_payment' => [
                 'nullable',
                 'integer',
@@ -102,6 +88,7 @@ class CarUpdateRequest extends FormRequest
 
         $messages['slug.required'] = trans('rules.field') .' "URL" '. trans('rules.required');
         $messages['slug.unique'] = trans('rules.unique_url');
+        $messages['sort_by_popularity.unique'] = trans('rules.unique_sort_by_popularity');
 
         $messages['preview_image.required'] = trans('rules.field') .' "'. trans('admin.preview') .'" '. trans('rules.required');
         $messages['preview_image.image'] = trans('rules.field') .' "'. trans('admin.preview') .'" '. trans('rules.image');

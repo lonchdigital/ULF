@@ -62,6 +62,9 @@
                                                 <option value="{{ $popularitySort['id'] }}" {{ ($car->sort_by_popularity_id === $popularitySort['id']) ? 'selected' : '' }}>{{ $popularitySort['name'] ?? '' }}</option>
                                             @endforeach
                                         </select>
+                                        @error('sort_by_popularity')
+                                        <label id="firstname-error" class="error mt-2 text-danger" for="firstname">{{ $message }}</label>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
