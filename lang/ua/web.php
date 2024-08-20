@@ -46,4 +46,7 @@ return [
     'price_up' => 'Від дешевих до дорогих',
     'price_down' => 'Від дорогих до дешевих',
     'sort_by_default' => 'За замовчуванням',
+    'in_subscription' => 'У підписці',
+    'more_popular' => 'Більш популярні',
+    'less_popular' => 'Менш популярні',
 ];

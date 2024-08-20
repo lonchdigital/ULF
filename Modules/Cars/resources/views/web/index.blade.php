@@ -15,6 +15,7 @@
         <meta name="keywords" content="{{ $page->meta_keywords }}">
     @endif
 
+    @include('web.parts.static-data')
     @vite(['Modules/Cars/resources/js/cars-catalog.js'])
     @vite(['front/src/js/modules/filter.js'])
 @endsection
@@ -47,8 +48,8 @@
                                                 <a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}" class="filter-option">{{ trans('web.sort_by_default') }}</a>
                                                 <a href="?order=price_up" class="filter-option">{{ trans('web.price_up') }}</a>
                                                 <a href="?order=price_down" class="filter-option">{{ trans('web.price_down') }}</a>
-                                                <a href="?order=popularity_up" class="filter-option">Більш популярні</a>
-                                                <a href="?order=popularity_down" class="filter-option">Менш популярні</a>
+                                                <a href="?order=popularity_up" class="filter-option">{{ trans('web.more_popular') }}</a>
+                                                <a href="?order=popularity_down" class="filter-option">{{ trans('web.less_popular') }}</a>
                                             </div>
                                         </div>
                                         <button type="button" class="btn btn-reset btn-filter collapsed"

@@ -127,14 +127,14 @@ $(document).ready(function() {
             monthlyPayment = `
             <div class="price mb-1">
                 <span class="currency">$</span>
-                <span class="value">${document['car_additional']['monthly_payment']}</span> / міс.
+                <span class="value">${document['car_additional']['monthly_payment']}</span> / ${translations.month}
             </div>
             `;
         }
 
         if( document['status_id'] === 2 ) {
             carLabel = `
-                    <div class="in-subscription">у підписці</div>
+                    <div class="in-subscription">${translations.in_subscription}</div>
                 `;
         } else {
             if(document['car_additional']['car_label']) {

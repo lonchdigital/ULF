@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\PageController;
+use App\Http\Controllers\Web\StaticScriptController;
 use App\Services\Locale\LocaleService;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\HomeController;
