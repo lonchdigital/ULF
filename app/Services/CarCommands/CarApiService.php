@@ -41,4 +41,31 @@ class CarApiService extends AuthService
         return $response->json();
     }
 
+    public function createRetailLead(array $data, $accessToken)
+    {
+        $response = Http::withOptions(['verify' => false])
+            ->withToken($accessToken)
+            ->post($this->baseUrl . '/command/CreateRetailLead', [
+                "vehicle" => [
+                    "manufacturerId" => null,
+                    "modelId" => null,
+                    "manufacturedYear" => null,
+                    "bodyId" => null,
+                    "fuelTypeId" => null,
+                    "transmissionTypeId" => null,
+                    "engineVolume" => null,
+                    "mileage" => null
+                ],
+                "autoRiaAdUrl" => null,
+                "contact" => [
+                    "name" => $data['name'],
+                    "surname" => null,
+                    "inn" => null,
+                    "phoneNumber" => $data['phone']
+                ]
+            ]);
+
+        return $response->json();
+    }
+
 }

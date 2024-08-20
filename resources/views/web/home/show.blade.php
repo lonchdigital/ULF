@@ -117,22 +117,6 @@
                                 </div>
                                 @if(!is_null($homeDriveBlock->video) || $homeDriveBlock->youtube)
                                     @if($homeDriveBlock->youtube)
-
-                                        {{--<div class="scroll-gallery--item col-12 col-md-6 col-xl-4">
-                                            <div class="inner h-100 position-relative">
-                                                <div class="video-wrap you-tube-video-wrapper video-wrap--vissible h-100">
-                                                    <a data-fancybox="scroll-gallery" href="{{ $client->youtube }}" class="btn you-tube-video btn-video-play-pause">
-                                                        <img src="{{ $client->image_url }}" alt="Client history image">
-                                                        <button type="button" class="btn btn-video-play-pause"></button>
-                                                    </a>
-                                                </div>
-                                                <div class="scroll-gallery--content">
-                                                    <div class="scroll-gallery--head mb-2">{{ $client->history_title }}</div>
-                                                    <p class="mb-0">{{ $client->description }}</p>
-                                                </div>
-                                            </div>
-                                        </div>--}}
-
                                         <div class="col-4 d-none d-lg-flex ready-to-drive-block">
                                             <div class="video-wrap you-tube-video-wrapper video-wrap--vissible">
                                                 <a data-fancybox="specific-player" href="{{ $homeDriveBlock->youtube }}" class="btn you-tube-video btn-video-play-pause">
@@ -165,7 +149,7 @@
                                     <div class="row">
                                         <div class="col-12 col-lg-7 d-flex flex-column flex-md-row align-items-center">
                                             <button type="button" class="btn-default btn btn-block btn-main-blue text-uppercase mb-4 mb-md-0 mr-md-4" data-toggle="modal" data-target="#popup-any-questions">{{ $homeDriveBlock->button_one }}</button>
-                                            <a href="catalog.html" class="btn-default btn btn-block btn-outline-main-blue text-uppercase mt-0">{{ $homeDriveBlock->button_two }}</a>
+                                            <a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}" class="btn-default btn btn-block btn-outline-main-blue text-uppercase mt-0">{{ $homeDriveBlock->button_two }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -382,55 +366,9 @@
 
             </div>
             <div class="section-order d-flex flex-column">
-                <section class="test-drive pb-md-10 pb-lg-35 order-last order-md-first">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="inner px-4 px-md-0 py-7">
-                                    <div class="row">
-                                        <div class="col-12 col-md-10 col-lg-8 col-xl-6 mx-auto">
-                                            <div class="h3 font-m mb-2 font-weight-bolder text-md-center">Завітай на тест-драйв</div>
-                                            <div class="h4 font-m font-weight-bolder mb-3 mb-md-9 text-md-center">Можеш спробувати, а потім підписатись</div>
-                                            <form id="form-test-drive">
-                                                <div class="row field-wrap">
-                                                    <div class="col-12 col-md-6">
-                                                        <div class="field mb-2 mb-md-8">
-                                                            <label class="control-label" for="name">Ваше ім’я</label>
-                                                            <input type="text" id="name" class="form-control mb-2" placeholder="Введіть ім’я">
-                                                            <div class="field--help-info small-txt text-red mb-2">Введіть Ваше ім’я українськими літерами (кирилицею)</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 col-md-6">
-                                                        <div class="field mb-2 mb-md-8">
-                                                            <label class="control-label" for="phone">Номер телефону</label>
-                                                            <input type="tel" id="phone" class="form-control mb-2" placeholder="+38 000 0000000">
-                                                            <div class="field--help-info small-txt text-red mb-2">Введіть Ваш номер телефону</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <div class="custom-control custom-checkbox position-relative mb-5">
-                                                            <input type="checkbox" class="custom-control-input" id="form-test-drive-check">
-                                                            <label class="custom-control-label" for="form-test-drive-check">
-                                                                <span class="custom-checkbox--info">Я даю згоду на збір, обробку, зберігання та використання своїх <span class="link-underline"><a href="##">персональних даних</a></span>.</span>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col col-md-auto mx-auto">
-                                                        <a href="##" class="btn-default btn-default-orange btn btn-block btn-orange text-uppercase">ХОЧУ ЗАТЕСТИТИ</a>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+
+                @include('components.test-drive-lead-form', ['page' => 'home page'])
+
                 @include('components.automatch')
                 <section class="our-fleet our-fleet--mob pb-7 pb-md-10 pb-lg-13 d-md-none">
                     <div class="container">

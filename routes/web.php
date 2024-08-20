@@ -21,6 +21,7 @@ Route::name('auth.')->prefix('/admin')->group(function () {
 });
 
 Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store');
+Route::post('/feedback/test-drive-store', [FeedbackController::class, 'testDriveStore'])->name('test.drive.feedback.store');
 
 
 $optionalLanguageRoutes = function () {
