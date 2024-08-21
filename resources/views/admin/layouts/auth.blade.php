@@ -11,7 +11,7 @@
     <link rel="icon" href="{{ asset('img/favicon.png') }}" type="image/png">
 
     <!-- Title -->
-    <title>КАДРИ.UA</title>
+    <title>ULF</title>
 
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('img/favicon.svg') }}" type="image/svg+xml">

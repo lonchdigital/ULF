@@ -11,7 +11,7 @@
     <link rel="icon" href="{{ asset('img/favicon.svg') }}" type="image/svg+xml">
     <link rel="icon" href="{{ asset('img/favicon.png') }}" type="image/png">
 
-    <title>@yield('title', 'КАДРИ.UA')</title>
+    <title>@yield('title', 'ULF')</title>
 
     @yield('head')
 
