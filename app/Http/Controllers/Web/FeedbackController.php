@@ -17,6 +17,8 @@ class FeedbackController extends Controller
         $data = $request->validated();
 
         dispatch(new SendFeedbackEmailJob($data));
+
+        return redirect()->route('thanks');
     }
 
     public function testDriveStore(TestDriveFeedbackRequest $request)

@@ -37,17 +37,22 @@ class SendTestDriveFeedbackEmailJob implements ShouldQueue
      */
     public function handle(): void
     {
-        $message = 'Ім\'я клієнта: ' . $this->data['name'] . '<br>' .
-                    'Телефон клієнта: ' . $this->data['phone'] . '<br>';
+        $message = 'Ім\'я клієнта: ' . $this->data['name_drive'] . '<br>' .
+                    'Телефон клієнта: ' . $this->data['phone_drive'] . '<br>';
 
         Notification::route('mail', $this->email)->notify(new SendFeedback($this->email, $message));
 
 
-        // send data to ULF system vue API
-        $authService = new AuthService;
-        $carApiService = new CarApiService;
+        $dataForRetailLead = [
+            'name' => $this->data['name_drive'],
+            'phone' => $this->data['phone_drive'],
+        ];
 
-        $authService->getToken();
-        $carApiService->createRetailLead($this->data, $authService->accessToken);
+        // send data to ULF system vue API
+//        $authService = new AuthService;
+//        $carApiService = new CarApiService;
+
+//        $authService->getToken();
+//        $carApiService->createRetailLead($dataForRetailLead, $authService->accessToken);
     }
 }

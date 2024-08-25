@@ -14,27 +14,23 @@
                                     <div class="col-12 col-md-6">
                                         <div class="field mb-2 mb-md-8">
                                             <label class="control-label" for="name">Ваше ім’я</label>
-                                            <input type="text" name="name" id="name" class="form-control mb-2" placeholder="Введіть ім’я">
-                                            @error('name')
-                                            <div class="field--help-info small-txt text-red mb-2">Введіть Ваше
-                                                ім’я українськими літерами (кирилицею)</div>
+                                            <input type="text" name="name_drive" id="name" class="form-control mb-2" placeholder="Введіть ім’я" value="{{ old('name_drive') }}">
+                                            @error('name_drive')
+                                                <div class="field--help-info small-txt text-red mb-2">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        @error('name')
-                                        <div class="field--help-info small-txt text-red mb-2">Введіть Ваше
-                                            ім’я українськими літерами (кирилицею)</div>
-                                        @enderror
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="field mb-2 mb-md-8">
                                             <label class="control-label" for="phone">Номер телефону</label>
-                                            <input type="tel" name="phone" id="phone" class="form-control phone-field mb-2" value="{{ old('phone') ?? '+380' }}">
-                                            <div class="field--help-info small-txt text-red mb-2">Введіть Ваш номер телефону</div>
+                                            <input type="tel" name="phone_drive" id="phone" class="form-control phone-field mb-2" placeholder="+380" value="{{ old('phone_drive') }}">
+                                            @error('phone_drive')
+                                                <div class="field--help-info small-txt text-red mb-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
 
-                                    <input type="hidden" name="page"
-                                           value="{{ $page }}">
+                                    <input type="hidden" name="page" value="{{ $page }}">
 
                                     @foreach(['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'] as $utm)
                                         <input type="hidden" name="{{ $utm }}" value="{{ request($utm) }}">
@@ -44,10 +40,13 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="custom-control custom-checkbox position-relative mb-5">
-                                            <input type="checkbox" class="custom-control-input" id="form-test-drive-check">
+                                            <input type="checkbox" class="custom-control-input" id="form-test-drive-check" name="agree_drive" value="1">
                                             <label class="custom-control-label" for="form-test-drive-check">
                                                 <span class="custom-checkbox--info">Я даю згоду на збір, обробку, зберігання та використання своїх <span class="link-underline"><a href="##">персональних даних</a></span>.</span>
                                             </label>
+                                            @error('agree_drive')
+                                            <div class="field--help-info small-txt text-red mb-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>

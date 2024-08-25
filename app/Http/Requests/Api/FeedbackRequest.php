@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Api;
 
 use App\Http\Requests\BaseRequest;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class FeedbackRequest extends BaseRequest
@@ -23,29 +24,33 @@ class FeedbackRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'name' => [
+            'name_lead' => [
                 'required',
                 'string',
                 function ($attribute, $value, $fail) {
                     if (preg_match('/^[ЫЪЭЁыъэё@%&$^#]/u', $value)) {
-                        return $fail('Поле ' . $attribute . ' не може починатися з ЫЪЭЁыъэё@%&$^#.');
+                        return $fail(trans('rules.name_rule_one'));
                     }
 
                     if (!preg_match('/^[А-ЯҐЇІЄа-яґїіє\'\-\s]+$/u', $value)) {
-                        return $fail('Поле ' . $attribute . ' може містити лише літери, апострофи, дефіси та пробіли.');
+                        return $fail(trans('rules.name_rule_two'));
                     }
 
                     if (preg_match('/\d/', $value)) {
-                        return $fail('Поле ' . $attribute . ' не може містити числові вирази.');
+                        return $fail(trans('rules.name_rule_three'));
                     }
                 },
             ],
 
-            'phone' => [
+            'phone_lead' => [
                 'required',
-                'min:10',
-                'max:20',
-                'regex:/^(\+?380)[\d\s-]{9,}$/i',
+                'string',
+                'regex:/^[^_]*$/',
+                'min:16'
+            ],
+
+            'agree_lead' => [
+                'accepted'
             ],
 
             'page' => [
@@ -78,5 +83,32 @@ class FeedbackRequest extends BaseRequest
                 'string'
             ],
         ];
+    }
+
+    public function attributes(): array
+    {
+        $attributes = [
+            'name_lead' => mb_strtolower(trans('rules.name')),
+            'phone_lead' => mb_strtolower(trans('rules.phone'))
+        ];
+
+        return $attributes;
+    }
+
+    public function messages()
+    {
+        return [
+            'agree_lead' => trans('rules.agree')
+        ];
+    }
+
+
+    protected function failedValidation(Validator $validator)
+    {
+        $redirectUrl = url()->previous() . '#feedBackForm';
+
+        throw new \Illuminate\Validation\ValidationException($validator, redirect($redirectUrl)
+            ->withInput()
+            ->withErrors($validator));
     }
 }

@@ -24,29 +24,33 @@ class TestDriveFeedbackRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            'name' => [
+            'name_drive' => [
                 'required',
                 'string',
                 function ($attribute, $value, $fail) {
                     if (preg_match('/^[ЫЪЭЁыъэё@%&$^#]/u', $value)) {
-                        return $fail('Поле ' . $attribute . ' не може починатися з ЫЪЭЁыъэё@%&$^#.');
+                        return $fail(trans('rules.name_rule_one'));
                     }
 
                     if (!preg_match('/^[А-ЯҐЇІЄа-яґїіє\'\-\s]+$/u', $value)) {
-                        return $fail('Поле ' . $attribute . ' може містити лише літери, апострофи, дефіси та пробіли.');
+                        return $fail(trans('rules.name_rule_two'));
                     }
 
                     if (preg_match('/\d/', $value)) {
-                        return $fail('Поле ' . $attribute . ' не може містити числові вирази.');
+                        return $fail(trans('rules.name_rule_three'));
                     }
                 },
             ],
 
-            'phone' => [
+            'phone_drive' => [
                 'required',
-                'min:10',
-                'max:20',
-                'regex:/^(\+?380)[\d\s-]{9,}$/i',
+                'string',
+                'regex:/^[^_]*$/',
+                'min:16'
+            ],
+
+            'agree_drive' => [
+                'accepted'
             ],
 
             'page' => [
@@ -78,6 +82,24 @@ class TestDriveFeedbackRequest extends BaseRequest
                 'nullable',
                 'string'
             ],
+        ];
+    }
+
+
+    public function attributes(): array
+    {
+        $attributes = [
+            'name_drive' => mb_strtolower(trans('rules.name')),
+            'phone_drive' => mb_strtolower(trans('rules.phone'))
+        ];
+
+        return $attributes;
+    }
+
+    public function messages()
+    {
+        return [
+            'agree_drive' => trans('rules.agree')
         ];
     }
 

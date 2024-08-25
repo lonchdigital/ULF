@@ -54,10 +54,6 @@ $optionalLanguageRoutes = function () {
         Route::get('/contacts', [HomeController::class, 'contacts'])->name('contacts');
         Route::get('/{slug}', [PageController::class, 'show'])->name('page.single.page');
 
-        Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
-
-
-
 
         // TODO:: remove DynamicPageController
 //    Route::get('/', [DynamicPageController::class, 'index'])->name('main.page');

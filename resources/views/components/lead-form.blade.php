@@ -1,4 +1,4 @@
-<section class="any-questions pb-7 pb-md-10 pb-lg-{{ $pbLg }}">
+<section id="feedBackForm" class="any-questions pb-7 pb-md-10 pb-lg-{{ $pbLg }}">
     <div class="container">
         <div class="row">
             <div class="col">
@@ -14,48 +14,37 @@
                                     <div class="col-12 col-md-6">
                                         <div class="field mb-2 mb-md-8">
                                             <label class="control-label" for="any-questions-name">Ваше ім’я</label>
-                                            <input type="text" id="any-questions-name" name="name"
-                                                   class="form-control mb-2" placeholder="Введіть ім’я" value="{{ old('name') }}">
-                                            @error('name')
-                                            <div class="field--help-info small-txt text-red mb-2">Введіть Ваше ім’я українськими літерами (кирилицею)</div>
+                                            <input type="text" id="any-questions-name" name="name_lead" class="form-control mb-2" placeholder="Введіть ім’я" value="{{ old('name_lead') }}">
+                                            @error('name_lead')
+                                                <div class="field--help-info small-txt text-red mb-2">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        @error('name')
-                                        <div class="field--help-info small-txt text-red mb-2">Введіть Ваше ім’я українськими літерами (кирилицею)</div>
-                                        @enderror
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <div class="field mb-2 mb-md-8">
                                             <label class="control-label" for="any-questions-phone">Номер телефону</label>
-                                            <input type="tel" id="any-questions-phone" name="phone"
-                                                   class="form-control phone-field mb-2" value="{{ old('phone') ?? '+380' }}">
-                                            @error('phone')
-                                            <div class="field--help-info small-txt text-red mb-2">Введіть Ваш номер телефону</div>
+                                            <input type="tel" id="any-questions-phone" name="phone_lead" class="form-control phone-field mb-2" placeholder="+380" value="{{ old('phone_lead') }}">
+                                            @error('phone_lead')
+                                            <div class="field--help-info small-txt text-red mb-2">{{ $message }}</div>
                                             @enderror
 
                                             <input type="hidden" name="page" value="{{ $page }}">
-
                                             @foreach(['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'] as $utm)
                                                 <input type="hidden" name="{{ $utm }}" value="{{ request($utm) }}">
                                             @endforeach
                                         </div>
-                                        @error('phone')
-                                        <div class="field--help-info small-txt text-red mb-2">Введіть Ваш номер телефону</div>
-                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <div class="custom-control custom-checkbox position-relative mb-5">
-                                            <input type="checkbox" class="custom-control-input"
-                                                   id="form-any-questions-check">
-                                            <label class="custom-control-label"
-                                                   for="form-any-questions-check">
-                                                            <span class="custom-checkbox--info">Я даю згоду на збір,
-                                                                обробку, зберігання та використання своїх <span
-                                                                    class="link-underline"><a href="##">персональних
-                                                                        даних</a></span>.</span>
+                                            <input type="checkbox" class="custom-control-input" id="form-any-questions-check" name="agree_lead" value="1">
+                                            <label class="custom-control-label" for="form-any-questions-check">
+                                                <span class="custom-checkbox--info">Я даю згоду на збір,обробку, зберігання та використання своїх <span class="link-underline"><a href="##">персональни даних</a></span>.</span>
                                             </label>
+                                            @error('agree_lead')
+                                            <div class="field--help-info small-txt text-red mb-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
