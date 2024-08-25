@@ -1,4 +1,4 @@
-<section class="test-drive pb-md-10 pb-lg-35 order-last order-md-first">
+<section id="testDriveForm" class="test-drive pb-md-10 pb-lg-{{ $pbLg }} order-last order-md-first">
     <div class="container">
         <div class="row">
             <div class="col">
@@ -28,7 +28,7 @@
                                     <div class="col-12 col-md-6">
                                         <div class="field mb-2 mb-md-8">
                                             <label class="control-label" for="phone">Номер телефону</label>
-                                            <input type="tel" name="phone" id="phone" class="form-control mb-2" placeholder="+38 000 0000000">
+                                            <input type="tel" name="phone" id="phone" class="form-control phone-field mb-2" value="{{ old('phone') ?? '+380' }}">
                                             <div class="field--help-info small-txt text-red mb-2">Введіть Ваш номер телефону</div>
                                         </div>
                                     </div>

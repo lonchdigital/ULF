@@ -367,7 +367,7 @@
             </div>
             <div class="section-order d-flex flex-column">
 
-                @include('components.test-drive-lead-form', ['page' => 'home page'])
+                @include('components.test-drive-lead-form', ['page' => 'home page', 'pbLg' => 35])
 
                 @include('components.automatch')
                 <section class="our-fleet our-fleet--mob pb-7 pb-md-10 pb-lg-13 d-md-none">
@@ -458,7 +458,7 @@
                 </div>
             </section>
 
-            @include('components.lead-form')
+            @include('components.lead-form', ['page' => 'home page', 'pbLg' => 35])
 
             @if($page->seo_text)
                 <section class="seo pb-7 pb-md-10 pb-lg-35">

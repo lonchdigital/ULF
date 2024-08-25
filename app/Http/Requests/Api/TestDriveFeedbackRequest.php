@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Api;
 
 use App\Http\Requests\BaseRequest;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class TestDriveFeedbackRequest extends BaseRequest
@@ -79,4 +80,15 @@ class TestDriveFeedbackRequest extends BaseRequest
             ],
         ];
     }
+
+
+    protected function failedValidation(Validator $validator)
+    {
+        $redirectUrl = url()->previous() . '#testDriveForm';
+
+        throw new \Illuminate\Validation\ValidationException($validator, redirect($redirectUrl)
+            ->withInput()
+            ->withErrors($validator));
+    }
+
 }

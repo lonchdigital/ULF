@@ -1,7 +1,9 @@
 import $ from 'jquery';
+import Inputmask from "inputmask";
 
 
 $(function () {
+
     var tooltipInfo = ['<div class="tooltip tooltip-help-info" role="tooltip">',
         '<div class="arrow"></div>',
         '<div class="tooltip-inner">',
@@ -14,6 +16,9 @@ $(function () {
         placement: "top",
         template: tooltipInfo,
     });
+
+
+    Inputmask({mask:"+38(099)999-99-99"}).mask($(".phone-field"));
 });
 
 $(document).on('click', 'a.anchor[href^="#"]', function (e) {
