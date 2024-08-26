@@ -167,6 +167,8 @@ if (TinderCards) {
             formData.append('favorite_cars', favorites.join(', '));
 
             console.log(formData);
+            console.log('testttt');
+            console.log(favorites.join(', '));
 
             fetch('/api/favorite-cars', {
                 method: 'POST',

@@ -18,9 +18,8 @@ class SendTestDriveFeedbackEmailJob implements ShouldQueue
     use Queueable;
 
     protected $email;
-    protected array $data;
 
-    protected $carApiService;
+    protected array $data;
 
     /**
      * Create a new job instance.
@@ -49,10 +48,10 @@ class SendTestDriveFeedbackEmailJob implements ShouldQueue
         ];
 
         // send data to ULF system vue API
-//        $authService = new AuthService;
-//        $carApiService = new CarApiService;
+        $authService = new AuthService;
+        $carApiService = new CarApiService;
 
-//        $authService->getToken();
-//        $carApiService->createRetailLead($dataForRetailLead, $authService->accessToken);
+        $authService->getToken();
+        $carApiService->createRetailLead($dataForRetailLead, $authService->accessToken);
     }
 }

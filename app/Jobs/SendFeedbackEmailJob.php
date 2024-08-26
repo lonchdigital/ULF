@@ -10,6 +10,8 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
+use App\Services\CarCommands\AuthService;
+use App\Services\CarCommands\CarApiService;
 
 class SendFeedbackEmailJob implements ShouldQueue
 {
@@ -49,11 +51,10 @@ class SendFeedbackEmailJob implements ShouldQueue
         ];
 
         // send data to ULF system vue API
-//        $authService = new AuthService;
-//        $carApiService = new CarApiService;
+        $authService = new AuthService;
+        $carApiService = new CarApiService;
 
-//        $authService->getToken();
-//        $carApiService->createRetailLead($dataForRetailLead, $authService->accessToken);
-
+        $authService->getToken();
+        $carApiService->createRetailLead($dataForRetailLead, $authService->accessToken);
     }
 }
