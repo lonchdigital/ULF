@@ -18,6 +18,20 @@
 
     <link rel="shortcut icon" href="##" type="image/x-icon" />
 
+    @section('SEO')
+        <meta name="description" content="{{ config('app.name') }}">
+    @show
+
+    @section('OG')
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="{{ config('app.name') }}" />
+        <meta name="twitter:creator" content="{{ config('app.name') }}" />
+
+        <meta property="og:title" content="{{ config('app.name') }}" />
+        <meta property="og:description" content="{{ config('app.name') }}" />
+        <meta property="og:image" content="{{ asset('/images/logos/logo-gold.svg') }}" />
+    @show
+
     @vite(['resources/js/app.js'])
 
     <!-- Google Tag Manager -->

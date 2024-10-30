@@ -28,9 +28,13 @@ class ClientsController extends Controller
      */
     public function index()
     {
+        $url['ua'] = url('/') . '/customer-stories';
+        $url['ru'] = url('/') . '/ru/customer-stories';
+
         return view('clients::web.index', [
             'clients' => $this->service->getAllClientHistories(),
-            'page' => Page::where('key', 'customer-stories')->first()
+            'page' => Page::where('key', 'customer-stories')->first(),
+            'url' => $url,
         ]);
     }
 

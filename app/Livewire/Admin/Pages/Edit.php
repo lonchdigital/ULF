@@ -19,7 +19,7 @@ class Edit extends Component
 
     public function mount(Page $page)
     {
-        $this->locale = 'uk';
+        $this->locale = 'ua';
 
         $this->page = $page;
         $i = 1;
@@ -34,9 +34,9 @@ class Edit extends Component
 
         foreach($this->page->faqs()->orderBy('sort', 'ASC')->get() as $faq) {
             $this->faqs[] = [
-                'uk' => [
-                    'question' => $faq->translate('uk')->question ?? '',
-                    'answer' => $faq->translate('uk')->answer ?? '',
+                'ua' => [
+                    'question' => $faq->translate('ua')->question ?? '',
+                    'answer' => $faq->translate('ua')->answer ?? '',
                 ],
 
                 'ru' => [
@@ -54,7 +54,7 @@ class Edit extends Component
 
         if(empty($this->faqs)) {
             $this->faqs[] = [
-                'uk' => [
+                'ua' => [
                     'question' => '',
                     'answer' => '',
                 ],
@@ -72,12 +72,12 @@ class Edit extends Component
     protected function rules()
     {
         return [
-            'faqs.*.uk.question' => [
+            'faqs.*.ua.question' => [
                 'nullable',
                 'string',
             ],
 
-            'faqs.*.uk.answer' => [
+            'faqs.*.ua.answer' => [
                 'nullable',
                 'string',
             ],
@@ -109,7 +109,7 @@ class Edit extends Component
     public function addFaq()
     {
         $this->faqs[] = [
-            'uk' => [
+            'ua' => [
                 'question' => '',
                 'answer' => '',
             ],
@@ -148,9 +148,9 @@ class Edit extends Component
             Faq::create([
                 'page_id' => $this->page->id,
                 'sort' => $faq2['sort'],
-                'uk' => [
-                    'question' => $faq2['uk']['question'],
-                    'answer' => $faq2['uk']['answer'],
+                'ua' => [
+                    'question' => $faq2['ua']['question'],
+                    'answer' => $faq2['ua']['answer'],
                 ],
                 'ru' => [
                     'question' => $faq2['ru']['question'],

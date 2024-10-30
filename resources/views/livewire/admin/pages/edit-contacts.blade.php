@@ -8,7 +8,7 @@
 
                         <div class="row" id="faqs-cars">
 
-                            @if($this->locale == 'uk')
+                            @if($this->locale == 'ua')
                                 <div class="col-12 faq-car-row pb-1 mb-4 d-flex justify-content-start" id="faq-car-id-2">
                                     <div class="border border-secondary rounded p-3 col-md-11">
                                         <div class="row justify-content-between align-items-center">
@@ -371,6 +371,61 @@
                                                 </div>
                                             </div>
 
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div language="uk"
+                                                                        class="multilang-content tab-pane fade active show "
+                                                                        id="faqs[2][question]-uk">
+                                                                        <div class="form-group mb-1">
+                                                                            <label for="faqs[2][question]_uk">Довгота
+                                                                            </label>
+                                                                            <input type="text" wire:model="longitude"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('longitude')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div language="uk"
+                                                                        class="multilang-content tab-pane fade active show "
+                                                                        id="faqs[2][question]-uk">
+                                                                        <div class="form-group mb-1">
+                                                                            <label for="faqs[2][question]_uk">Широта
+                                                                            </label>
+                                                                            <input type="text" wire:model="latitude"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('latitude')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -729,6 +784,62 @@
                                                                     </div>
                                                                 </div>
                                                                 @error('ruFacebook')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div language="uk"
+                                                                        class="multilang-content tab-pane fade active show "
+                                                                        id="faqs[2][question]-uk">
+                                                                        <div class="form-group mb-1">
+                                                                            <label for="faqs[2][question]_uk">Довгота
+                                                                            </label>
+                                                                            <input type="text" wire:model="longitude"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('longitude')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div language="uk"
+                                                                        class="multilang-content tab-pane fade active show "
+                                                                        id="faqs[2][question]-uk">
+                                                                        <div class="form-group mb-1">
+                                                                            <label for="faqs[2][question]_uk">Широта
+                                                                            </label>
+                                                                            <input type="text" wire:model="latitude"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('latitude')
                                                                     <div class="mt-1 text-danger ajaxError">
                                                                         {{ $message }}
                                                                     </div>
