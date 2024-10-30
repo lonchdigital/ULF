@@ -4,8 +4,8 @@ namespace Modules\Clients\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Modules\Clients\Providers\EventServiceProvider;
-use Modules\Clients\Providers\RouteServiceProvider;
+// use Modules\Clients\Providers\EventServiceProvider;
+// use Modules\Clients\Providers\RouteServiceProvider;
 
 class ClientsServiceProvider extends ServiceProvider
 {
@@ -31,8 +31,8 @@ class ClientsServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // $this->app->register(EventServiceProvider::class);
-        // $this->app->register(RouteServiceProvider::class);
+        $this->app->register(EventServiceProvider::class);
+        $this->app->register(RouteServiceProvider::class);
     }
 
     /**
