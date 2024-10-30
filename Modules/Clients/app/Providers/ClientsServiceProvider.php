@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Clients\App\Providers;
+namespace Modules\Clients\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
