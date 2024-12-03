@@ -13,12 +13,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Title -->
-    <title>ULF</title>
+    {{-- <title>ULF</title> --}}
+    <title>@yield('title')</title>
 
-    <!-- Favicon -->
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
 
-<!-- Master Stylesheet [If you remove this CSS file, your file will be broken undoubtedly.] -->
     @stack('head')
 
     <link rel="stylesheet" href="{{ asset('admin_src/style.css') }}">
@@ -27,49 +26,49 @@
 </head>
 
 <body>
-<!-- Preloader Start -->
-<div id="preloader">
-    <div class="preload-content">
-        <div id="hasro-load"></div>
-    </div>
-</div>
-<!-- Preloader End -->
-
-<!-- ======================================
-******* Page Wrapper Area Start **********
-======================================= -->
-<div class="ecaps-page-wrapper">
-    @include('admin.parts.sidebar')
-
-    <div class="ecaps-page-content">
-        @include('admin.parts.header')
-
-        <div class="main-content">
-            @yield('content')
+    <!-- Preloader Start -->
+    <div id="preloader">
+        <div class="preload-content">
+            <div id="hasro-load"></div>
         </div>
     </div>
-</div>
+    <!-- Preloader End -->
 
-<!-- ======================================
+    <!-- ======================================
+******* Page Wrapper Area Start **********
+======================================= -->
+    <div class="ecaps-page-wrapper">
+        @include('admin.parts.sidebar')
+
+        <div class="ecaps-page-content">
+            @include('admin.parts.header')
+
+            <div class="main-content">
+                @yield('content')
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================
 ********* Page Wrapper Area End ***********
 ======================================= -->
 
-<!-- Must needed plugins to the run this Template -->
-<script src="{{ asset('admin_src/js/jquery.min.js') }}"></script>
-<script src="{{ asset('admin_src/js/popper.min.js') }}"></script>
-<script src="{{ asset('admin_src/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('admin_src/js/bundle.js') }}"></script>
-<script src="{{ asset('admin_src/js/default-assets/setting.js') }}"></script>
-<script src="{{ asset('admin_src/js/default-assets/fullscreen.js') }}"></script>
+    <!-- Must needed plugins to the run this Template -->
+    <script src="{{ asset('admin_src/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('admin_src/js/popper.min.js') }}"></script>
+    <script src="{{ asset('admin_src/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('admin_src/js/bundle.js') }}"></script>
+    <script src="{{ asset('admin_src/js/default-assets/setting.js') }}"></script>
+    <script src="{{ asset('admin_src/js/default-assets/fullscreen.js') }}"></script>
 
-<!-- Active JS -->
-<script src="{{ asset('admin_src/js/default-assets/active.js') }}"></script>
+    <!-- Active JS -->
+    <script src="{{ asset('admin_src/js/default-assets/active.js') }}"></script>
 
-<!-- custom JS -->
+    <!-- custom JS -->
 
 
-@stack('scripts')
-@livewireScripts
+    @stack('scripts')
+    @livewireScripts
 </body>
 
 </html>

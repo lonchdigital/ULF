@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\DashboardController;
 use Modules\Cars\Http\Controllers\Admin\CarsController;
 use App\Http\Controllers\Admin\CarCommonSettingsController;
+use App\Http\Controllers\Admin\RobotsController;
 use Modules\Clients\Http\Controllers\Admin\ClientsController;
 use Modules\Articles\app\Http\Controllers\Admin\ArticlesController;
 
@@ -105,6 +106,7 @@ Route::group([
             Route::get('/{page}/edit-faq/{faq}', [PageFAQController::class, 'editFaq'])->name('edit-faq');
         });
 
+        Route::get('/edit-robots', [RobotsController::class, 'edit'])->name('edit-robots');
     });
 
 });

@@ -33,13 +33,17 @@ class HomeController
 
     public function index()
     {
+        $url['ua'] = url('/');
+        $url['ru'] = url('/') . '/ru/';
+
         return view('web.home.show', [
             'page' => Page::where('key', 'homepage')->first(),
             'homeMainBlock' => HomeMainBlock::first(),
             'homeBenefitBlock' => HomeBenefitBlock::all(),
             'homeDriveBlock' => HomeDriveBlock::first(),
             'clients' => $this->clientService->getAllClientHistories(),
-            'cars' => Car::latest()->limit(5)->get()
+            'cars' => Car::latest()->limit(5)->get(),
+            'url' => $url,
         ]);
     }
 
@@ -55,14 +59,20 @@ class HomeController
 
         $page = Page::where('key', 'faq')->firstOrFail();
 
-        return view('web.pages.faq', compact('page', 'utmParameters'));
+        $url['ua'] = url('/') . $page->slug;
+        $url['ru'] = url('/') . '/ru/' . $page->slug;
+
+        return view('web.pages.faq', compact('page', 'utmParameters', 'url'));
     }
 
     public function contacts()
     {
         $page = Page::where('slug', 'contacts')->firstOrFail();
 
-        return view('web.pages.contacts', compact('page'));
+        $url['ua'] = url('/') . '/' . $page->slug;
+        $url['ru'] = url('/') . '/ru/' . $page->slug;
+
+        return view('web.pages.contacts', compact('page', 'url'));
     }
 
     public function thanks()

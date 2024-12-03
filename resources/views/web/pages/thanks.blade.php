@@ -1,8 +1,30 @@
 @extends('web.layout.index')
 
-@section('title', 'Home page!!!')
-
 @section('head')
+    @if(!empty($page->meta_title))
+        <title>{{ $page->meta_title ?? config('app.name') }}</title>
+        <meta name="title" content="{{ $page->meta_title ?? config('app.name') }}">
+    @endif
+
+    @if(!empty($page->meta_description))
+        <meta name="description" content="{{ $page->meta_description ?? config('app.name') }}">
+    @endif
+    
+    @if(!empty($page->meta_keywords))
+        <meta name="keywords" content="{{ $page->meta_keywords }}">
+    @endif
+
+    @section('OG')
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="{{ config('app.name') }}" />
+        <meta name="twitter:creator" content="{{ config('app.name') }}" />
+
+        <meta property="og:title" content="{{ $page->meta_title ?? config('app.name') }}" />
+        <meta property="og:description" content="{{ $page->meta_description ?? config('app.name') }}" />
+        <meta property="og:type" content="page" />
+        <meta property="og:url" content="{{ request()->url() }}" />
+    {{-- <meta property="og:image" content="" /> --}}
+    @endsection
 @endsection
 
 @section('content')

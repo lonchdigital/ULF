@@ -8,7 +8,7 @@
 
                         <div class="row" id="faqs-cars">
 
-                            @if ($this->locale == 'uk')
+                            @if ($this->locale == 'ua')
                                 <div class="col-12 faq-car-row pb-1 mb-4 d-flex justify-content-start" id="faq-car-id-2">
                                     <div class="border border-secondary rounded p-3 col-md-12">
                                         <div class="row justify-content-between align-items-center">
@@ -23,7 +23,7 @@
                                                                         id="faqs[2][question]-uk">
                                                                         <div class="form-group mb-1">
                                                                             <label for="faqs[2][question]_uk">Заголовок
-                                                                                <strong>UK</strong>
+                                                                                <strong>UA</strong>
                                                                             </label>
                                                                             <input type="text" wire:model="ukTitle"
                                                                                 id="faqs[2][question]_uk"
@@ -52,7 +52,7 @@
                                                                         id="faqs[2][answer]-uk">
                                                                         <div class="form-group mb-1">
                                                                             <label for="faqs[2][answer]_uk">Опис
-                                                                                <strong>UK</strong></label>
+                                                                                <strong>UA</strong></label>
                                                                             <textarea wire:model="ukDescription" class="form-control"></textarea>
                                                                         </div>
                                                                     </div>
@@ -103,10 +103,10 @@
                                                                             id="faqs[2][question]-uk">
                                                                             <div class="form-group mb-1">
                                                                                 <label for="faqs[2][question]_uk">Назва
-                                                                                    <strong>UK</strong>
+                                                                                    <strong>UA</strong>
                                                                                 </label>
                                                                                 <input type="text"
-                                                                                    wire:model="automatches.{{ $index }}.uk.title"
+                                                                                    wire:model="automatches.{{ $index }}.ua.title"
                                                                                     id="automatches[2][title]_uk"
                                                                                     class="form-control">
                                                                             </div>
@@ -188,8 +188,8 @@
                                                                             <div class="form-group mb-1">
                                                                                 <label
                                                                                     for="automatches[2][title]_uk">Опис
-                                                                                    <strong>UK</strong></label>
-                                                                                <textarea wire:model="automatches.{{ $index }}.uk.description" class="form-control"></textarea>
+                                                                                    <strong>UA</strong></label>
+                                                                                <textarea wire:model="automatches.{{ $index }}.ua.description" class="form-control"></textarea>
                                                                             </div>
                                                                         </div>
                                                                     </div>

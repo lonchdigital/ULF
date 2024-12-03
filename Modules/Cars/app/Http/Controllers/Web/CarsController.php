@@ -3,6 +3,7 @@
 namespace Modules\Cars\Http\Controllers\Web;
 
 use App\Models\CarDriveBlock;
+use App\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Cars\Models\CarPage;
@@ -26,14 +27,22 @@ class CarsController extends Controller
 
     public function index(Request $request, CarPage $page)
     {
+        $url['ua'] = url('/') . '/blog/' . $page->slug;
+        $url['ru'] = url('/') . '/ru/blog/' . $page->slug;
+
         return view('cars::web.index', [
-            'page' => CarPage::where('slug', 'cars')->first()
+            // 'page' => CarPage::where('slug', 'cars')->first(),
+            'page' => Page::where('slug', 'catalog')->first(),
+            'url' => $url
         ]);
     }
 
     public function show(string $slug)
     {
         $carPage = CarPage::where('slug', $slug)->firstOrFail();
+
+        $url['ua'] = url('/') . '/blog/' . $carPage->slug;
+        $url['ru'] = url('/') . '/ru/blog/' . $carPage->slug;
 
         return view('cars::web.show', [
             'page' => $carPage,
@@ -43,6 +52,7 @@ class CarsController extends Controller
             'carDriveBlock' => CarDriveBlock::first(),
             'commonFaqs' => $this->commonService->getAllCommonFaqs(),
             'commonCarSettings' => $this->commonService->getAllCommonCarSettings(),
+            'url' => $url,
         ]);
     }
 

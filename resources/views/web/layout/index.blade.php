@@ -18,7 +18,40 @@
 
     <link rel="shortcut icon" href="##" type="image/x-icon" />
 
+    @section('SEO')
+        <meta name="description" content="{{ config('app.name') }}">
+    @show
+
+    @section('OG')
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="{{ config('app.name') }}" />
+        <meta name="twitter:creator" content="{{ config('app.name') }}" />
+
+        <meta property="og:title" content="{{ config('app.name') }}" />
+        <meta property="og:description" content="{{ config('app.name') }}" />
+        <meta property="og:image" content="{{ asset('/images/logos/logo-gold.svg') }}" />
+    @show
+
     @vite(['resources/js/app.js'])
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l][];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'http://web.archive.org/web/20221021003108/https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KG8FLBM');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CSTKL1SCL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-8CSTKL1SCL');
+    </script>
+
 </head>
 <body>
     <div class="wrapper">

@@ -40,7 +40,7 @@
                                 @foreach($cars as $car)
                                     <tr>
                                         <td>{{ $car->getAttribute('id') }}</td>
-                                        <td class="image-preview-td"><img src="{{ $car->getMainImageUrl() }}" class="art-car-image-preview" alt="Car image"></td>
+                                        <td class="image-preview-td"><img src="{{ $car->getMainImageUrl() }}" class="art-car-image-preview" alt="Car image" title="{{ $car->getFullName() ?? 'Car image' }}"></td>
                                         <td><a href="{{ route('car.edit', $car) }}">{{ $car->getFullName() }}</a></td>
                                         <td>{{ $car->getAttribute('lot_id') }}</td>
                                         <td>{{ $car->vehicle->getAttribute('manufacturedYear') }}</td>

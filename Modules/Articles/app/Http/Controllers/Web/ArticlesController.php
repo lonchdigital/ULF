@@ -26,8 +26,12 @@ class ArticlesController extends Controller
 
     public function index(Request $request, ArticlePage $page)
     {
+        $url['ua'] = url('/') . '/blog/' . $page->slug;
+        $url['ru'] = url('/') . '/ru/blog/' . $page->slug;
+
         return view('articles::web.index', [
-            'page' => ArticlePage::where('slug', 'articles')->first(),
+            'page' => Page::where('slug', 'blog')->first(),
+            'url' => $url,
         ]);
     }
 
@@ -35,9 +39,13 @@ class ArticlesController extends Controller
     {
         $articlePage = ArticlePage::where('slug', $slug)->firstOrFail();
 
+        $url['ua'] = url('/') . '/blog/' . $articlePage->slug;
+        $url['ru'] = url('/') . '/ru/blog/' . $articlePage->slug;
+
         return view('articles::web.show', [
             'page' => $articlePage,
-            'article' => $articlePage->article
+            'article' => $articlePage->article,
+            'url' => $url,
         ]);
     }
 

@@ -32,15 +32,15 @@ class Edit extends Component
 
     public function mount(Page $page)
     {
-        $this->locale = 'uk';
+        $this->locale = 'ua';
 
         $this->page = Page::where('key', 'homepage')->first();
 
-        $this->ukTitle = $this->page->pageBlocks->where('block', 'automatch')->first()->translate('uk')->title ?? '';
+        $this->ukTitle = $this->page->pageBlocks->where('block', 'automatch')->first()->translate('ua')->title ?? '';
 
         $this->ruTitle = $this->page->pageBlocks->where('block', 'automatch')->first()->translate('ru')->title ?? '';
 
-        $this->ukDescription = $this->page->pageBlocks->where('block', 'automatch')->first()->translate('uk')->description ?? '';
+        $this->ukDescription = $this->page->pageBlocks->where('block', 'automatch')->first()->translate('ua')->description ?? '';
 
         $this->ruDescription = $this->page->pageBlocks->where('block', 'automatch')->first()->translate('ru')->description ?? '';
 
@@ -58,9 +58,9 @@ class Edit extends Component
 
         foreach($automatches as $automatch) {
             $this->automatches[] = [
-                'uk' => [
-                    'title' => $automatch->translate('uk')->title ?? '',
-                    'description' => $automatch->translate('uk')->description ?? '',
+                'ua' => [
+                    'title' => $automatch->translate('ua')->title ?? '',
+                    'description' => $automatch->translate('ua')->description ?? '',
                 ],
 
                 'ru' => [
@@ -90,7 +90,7 @@ class Edit extends Component
 
         if(empty($this->automatches)) {
             $this->automatches[] = [
-                'uk' => [
+                'ua' => [
                     'title' => '',
                     'description' => '',
                 ],
@@ -118,7 +118,7 @@ class Edit extends Component
     protected function rules()
     {
         return [
-            'automatches.*.uk.title' => [
+            'automatches.*.ua.title' => [
                 'nullable',
                 'string',
             ],
@@ -133,7 +133,7 @@ class Edit extends Component
                 'string',
             ],
 
-            'automatches.*.uk.description' => [
+            'automatches.*.ua.description' => [
                 'nullable',
                 'string',
             ],
@@ -215,7 +215,7 @@ class Edit extends Component
     public function addAutomatch()
     {
         $this->automatches[] = [
-            'uk' => [
+            'ua' => [
                 'title' => '',
                 'description' => '',
             ],
@@ -290,9 +290,9 @@ class Edit extends Component
                 'price' => $automatch2['price'],
                 'link' => $automatch2['link'],
                 'image' => $image,
-                'uk' => [
-                    'title' => $automatch2['uk']['title'],
-                    'description' => $automatch2['uk']['description'],
+                'ua' => [
+                    'title' => $automatch2['ua']['title'],
+                    'description' => $automatch2['ua']['description'],
                 ],
                 'ru' => [
                     'title' => $automatch2['ru']['title'],
@@ -303,7 +303,7 @@ class Edit extends Component
 
         $this->page->pageBlocks->where('block', 'automatch')
             ->first()
-            ->translate('uk')
+            ->translate('ua')
             ->update([
                 'title' => $this->ukTitle,
             ]);
@@ -317,7 +317,7 @@ class Edit extends Component
 
         $this->page->pageBlocks->where('block', 'automatch')
             ->first()
-            ->translate('uk')->update([
+            ->translate('ua')->update([
                 'description' => $this->ukDescription,
             ]);
 

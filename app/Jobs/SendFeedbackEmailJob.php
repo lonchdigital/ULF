@@ -42,7 +42,11 @@ class SendFeedbackEmailJob implements ShouldQueue
 //                    'Сторінка: ' . $this->data['page']
         ;
 
-        Notification::route('mail', $this->email)->notify(new SendFeedback($this->email, $message));
+        $notification = new SendFeedback($this->email, $message);
+
+        Notification::route('mail', $this->email)->notify($notification);
+
+        // Notification::route('mail', $this->email)->notify(new SendFeedback($this->email, $message));
 
 
         $dataForRetailLead = [

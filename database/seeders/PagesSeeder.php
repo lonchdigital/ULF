@@ -140,6 +140,26 @@ class PagesSeeder extends Seeder
 
         $block7->save();
 
+        $block23 = PageBlock::firstOrCreate([
+            'page_id' => $page2->id,
+            'block' => 'map',
+            'key' => 'longitude',
+        ]);
+
+        $block23->translateOrNew('uk')->title = '30.497098789744708';
+
+        $block23->save();
+
+        $block24 = PageBlock::firstOrCreate([
+            'page_id' => $page2->id,
+            'block' => 'map',
+            'key' => 'latitude',
+        ]);
+
+        $block24->translateOrNew('uk')->title = '50.51822599590291';
+
+        $block24->save();
+
         // $page3 = Page::firstOrCreate([
         //     'controller' => 'App\Http\Controllers\Web\HomeController',
         //     'active' => 1,
