@@ -120,6 +120,7 @@
 
             <div class="scroll-trigger">
 
+                {{-- @dd($homeDriveBlock) --}}
                 @if ($homeDriveBlock)
                     <section id="ready-drive" class="ready-drive pt-7 pt-md-10 pt-lg-14 pb-7 pb-md-10 pb-lg-34">
                         <div class="container">
@@ -140,11 +141,21 @@
                                         <button type="button" class="btn btn-video-play-pause"></button>
                                     </div>
                                     <ul class="list-decimal mb-6">
-                                        <li>{{ $homeDriveBlock->step_one }}</li>
-                                        <li>{{ $homeDriveBlock->step_two }}</li>
-                                        <li>{{ $homeDriveBlock->step_three }}</li>
-                                        <li>{{ $homeDriveBlock->step_four }}</li>
-                                        <li>{{ $homeDriveBlock->step_five }}</li>
+                                        @if(!is_null($homeDriveBlock->step_one))
+                                            <li>{{ $homeDriveBlock->step_one }}</li>
+                                        @endif
+                                        @if(!is_null($homeDriveBlock->step_two))
+                                            <li>{{ $homeDriveBlock->step_two }}</li>
+                                        @endif
+                                        @if(!is_null($homeDriveBlock->step_three))
+                                            <li>{{ $homeDriveBlock->step_three }}</li>
+                                        @endif
+                                        @if(!is_null($homeDriveBlock->step_four))
+                                            <li>{{ $homeDriveBlock->step_four }}</li>
+                                        @endif
+                                        @if(!is_null($homeDriveBlock->step_five))
+                                            <li>{{ $homeDriveBlock->step_five }}</li>
+                                        @endif
                                     </ul>
                                 </div>
                                 @if (!is_null($homeDriveBlock->video) || $homeDriveBlock->youtube)
