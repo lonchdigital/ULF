@@ -20,6 +20,7 @@
 
     @stack('head')
 
+    <link rel="stylesheet" href="{{ asset('admin_src/css/quill.snow.css') }}">
     <link rel="stylesheet" href="{{ asset('admin_src/style.css') }}">
     <meta name="robots" content="noindex, nofollow">
     @livewireStyles
@@ -65,7 +66,7 @@
     <script src="{{ asset('admin_src/js/default-assets/active.js') }}"></script>
 
     <!-- custom JS -->
-
+    <script src="{{ asset('admin_src/js/quill.min.js') }}"></script>
 
     @stack('scripts')
     @livewireScripts

@@ -14,6 +14,8 @@ class PageService
 {
     public function updateDocument(Page $page, array $request): Page
     {
+        // dd('update', $request['text']);
+
         $dataPageToUpdate = [];
         foreach ($request['text'] as $lang => $value) {
             $dataPageToUpdate[$lang]['text'] = $value;

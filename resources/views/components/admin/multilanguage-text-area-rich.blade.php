@@ -1,11 +1,12 @@
 <div class="row mb-3">
     <div class="col-md-12">
         <div class="tab-content">
-            @foreach($availableLanguages as $availableLanguage)
-                <div language="{{ $availableLanguage }}" class="multilang-content tab-pane fade @if($availableLanguage == app()->getLocale())active show @endif" id="{{ $fieldName }}-{{ $availableLanguage }}">
-                    <div class="form-group mb-1">
-                        <label for="{{ $fieldName }}_{{ $availableLanguage }}">{{ $label }} <strong>{{ mb_strtoupper($availableLanguage) }}</strong>@if($isRequired) <strong class="text-danger">*</strong>@endif</label>
-                        <textarea name="{{ $fieldName }}[{{$availableLanguage}}]" id="{{ $fieldName }}_{{ $availableLanguage }}" class="form-control textarea-make-rich">@if(isset($values[$availableLanguage])){{ $values[$availableLanguage] }}@endif</textarea>
+            @foreach(config('app.available_languages') as $availableLanguage)
+                <input type="hidden" name="{{ $fieldName }}[{{$availableLanguage}}]" value="@if(isset($valuesField[$availableLanguage])) {!! $valuesField[$availableLanguage] !!} @endif">
+                <div language="{{ $availableLanguage }}" data-field-name="{{$fieldName}}" class="editor-container multilang-content tab-pane fade @if($availableLanguage == app()->getLocale())active show @endif" id="{{ $fieldName }}-{{ $availableLanguage }}">
+                    <label for="{{ $fieldName }}_{{ $availableLanguage }}">{{ $label }} <strong>{{ mb_strtoupper($availableLanguage) }}</strong>@if($isRequired) <strong class="text-danger">*</strong>@endif</label>
+                    <div class="editor rich-editor" id="editor-{{ $availableLanguage }}" style="min-height:100px;">
+                        @if(isset($valuesField[$availableLanguage])) {!! $valuesField[$availableLanguage] !!} @endif
                     </div>
                 </div>
             @endforeach

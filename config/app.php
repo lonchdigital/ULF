@@ -125,6 +125,8 @@ return [
     'images_disk_default' => 'public',
     'icons_path' => 'resources/img/icons/icons.svg',
 
+    'available_languages' => ['ua', 'ru'],
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
