@@ -1446,6 +1446,9 @@
 	@include md-max {
 		background: linear-gradient(180deg, rgb(0, 175, 255), rgb(0, 102, 255) 100%) !important;
 	}
+	span {
+		color: $main-blue;
+	}
 	.h1 {
 		@include md-max {
 			font-size: 24px;
