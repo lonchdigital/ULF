@@ -240,7 +240,7 @@
                                                         <div class="col-md-12">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <x-admin.multilanguage-text-area
+                                                                    <x-admin.multilanguage-text-area-rich
                                                                         :is-required="false"
                                                                         :label="trans('admin.answer')"
                                                                         field-name="faqs[{{ $faqCar->id }}][answer]"
@@ -340,6 +340,17 @@
                 highestFAQsId++;
                 addFaqsCarsRow(highestFAQsId);
                 $('#lang-fields-witcher a.lang-uk[href="#uk"]').click();
+
+                dynamicInitQuillEditors((quill, fieldName, language) => {
+                    quill.on('text-change', function () {
+                        const value = quill.root.innerHTML;
+                        const inputField = document.querySelector(`input[name="${fieldName}[${language}]"]`);
+                        if (inputField) {
+                            inputField.value = value;
+                        }
+                    });
+                });
+                
             });
 
         });
@@ -433,7 +444,7 @@
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <x-admin.multilanguage-text-area
+                                        <x-admin.multilanguage-text-area-rich
                                             :is-required="false"
                                             :label="trans('admin.answer')"
                                             field-name="faqs[${$id}][answer]"
@@ -460,6 +471,24 @@
             $(`#faq-car-id-${id}`).remove();
         }
 
+    </script>
+
+    <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+
+            
+
+            dynamicInitQuillEditors((quill, fieldName, language) => {
+                quill.on('text-change', function () {
+                    const value = quill.root.innerHTML;
+                    const inputField = document.querySelector(`input[name="${fieldName}[${language}]"]`);
+                    if (inputField) {
+                        inputField.value = value;
+                    }
+                });
+            });
+        });
     </script>
 
 @endpush
