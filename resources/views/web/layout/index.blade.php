@@ -14,6 +14,12 @@
     <link rel="apple-touch-icon" sizes="32x32" href="{{ asset('static_images/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('static_images/favicon-32x32.png') }}">
 
+    <script>
+		const translations = @json([
+			'month' => trans('web.month'),
+		]);
+	</script>
+
     @yield('head')
 
     <link rel="shortcut icon" href="##" type="image/x-icon" />

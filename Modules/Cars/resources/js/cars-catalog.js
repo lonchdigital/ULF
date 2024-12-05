@@ -118,7 +118,7 @@ $(document).ready(function() {
 
     function getDocumentHTML(document)
     {
-        // console.log(document);
+        // console.log(translations);
 
         let monthlyPayment = ``;
         let carLabel = ``;
@@ -127,7 +127,7 @@ $(document).ready(function() {
             monthlyPayment = `
             <div class="price mb-1">
                 <span class="currency">$</span>
-                <span class="value">${document['car_additional']['monthly_payment']}</span> / ${translations.month}
+                <span class="value">${document['car_additional']['monthly_payment']}</span> / ${translations['month']}
             </div>
             `;
         }
