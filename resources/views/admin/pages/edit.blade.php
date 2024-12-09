@@ -146,10 +146,11 @@
                 quill.on('text-change', function () {
                     let value = quill.root.innerHTML;
                     value = value.replace(/"/g, "'");
+                    const sanitizedValue = value.replace(/"/g, "'");
 
                     const inputField = document.querySelector(`input[name="${fieldName}[${language}]"]`);
                     if (inputField) {
-                        inputField.value = value;
+                        inputField.value = sanitizedValue;
                     }
                 });
             });
