@@ -47,7 +47,7 @@
                                             aria-labelledby="heading-accordion-question-{{ $loop->iteration }}"
                                             data-parent="#accordion-questions">
                                             <div class="card-body">
-                                                {{ $faq->answer }}
+                                                {!! $faq->answer !!}
                                             </div>
                                         </div>
                                     </div>

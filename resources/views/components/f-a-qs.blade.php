@@ -13,7 +13,7 @@
                                     </div>
                                 </div>
                                 <div id="collapse-accordion-question-{{ $faq->id }}" class="collapse" aria-labelledby="heading-accordion-question-{{ $faq->id }}" data-parent="#accordion-asked-questions">
-                                    <div class="card-body">{{ $faq->answer }}</div>
+                                    <div class="card-body">{!! $faq->answer !!}</div>
                                 </div>
                             </div>
                         @endforeach
@@ -26,7 +26,7 @@
                                     </div>
                                 </div>
                                 <div id="collapse-accordion-question-{{ $faq->id }}" class="collapse" aria-labelledby="heading-accordion-question-{{ $faq->id }}" data-parent="#accordion-asked-questions">
-                                    <div class="card-body">{{ $faq->answer }}</div>
+                                    <div class="card-body">{!! $faq->answer !!}</div>
                                 </div>
                             </div>
                         @endforeach
