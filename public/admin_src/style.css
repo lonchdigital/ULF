@@ -14774,3 +14774,7 @@ td.image-preview-td {
 .art-running-text textarea {
     height: 200px;
 }
+
+.admin-car-gallery .wrap-img {
+    padding: 5px;
+}

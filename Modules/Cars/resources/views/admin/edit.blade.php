@@ -17,6 +17,14 @@
                             <h4 class="card-head-title">{{ $car->getFullName() }}</h4>
                         </div>
 
+                        <section class="form-group d-flex flex-wrap admin-car-gallery">
+                            @foreach ($car->images as $image)
+                                <div class="wrap-img">
+                                    <img src="{{ '/storage/' . $image->Url }}" alt="img" style="width: 160px">
+                                </div>
+                            @endforeach
+                        </section>
+
                         <form class="forms-sample" action="{{ route('car.update', $car) }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
