@@ -135,8 +135,18 @@
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', () => {
             initQuillEditors((quill, fieldName, language) => {
+                // quill.on('text-change', function () {
+                //     const value = quill.root.innerHTML;
+                //     const inputField = document.querySelector(`input[name="${fieldName}[${language}]"]`);
+                //     if (inputField) {
+                //         inputField.value = value;
+                //     }
+                // });
+
                 quill.on('text-change', function () {
-                    const value = quill.root.innerHTML;
+                    let value = quill.root.innerHTML;
+                    value = value.replace(/"/g, "'");
+
                     const inputField = document.querySelector(`input[name="${fieldName}[${language}]"]`);
                     if (inputField) {
                         inputField.value = value;

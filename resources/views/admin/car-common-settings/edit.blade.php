@@ -344,9 +344,11 @@
                 dynamicInitQuillEditors((quill, fieldName, language) => {
                     quill.on('text-change', function () {
                         const value = quill.root.innerHTML;
+                        const sanitizedValue = value.replace(/"/g, "'");
+
                         const inputField = document.querySelector(`input[name="${fieldName}[${language}]"]`);
                         if (inputField) {
-                            inputField.value = value;
+                            inputField.value = sanitizedValue;
                         }
                     });
                 });
@@ -482,9 +484,11 @@
             dynamicInitQuillEditors((quill, fieldName, language) => {
                 quill.on('text-change', function () {
                     const value = quill.root.innerHTML;
+                    const sanitizedValue = value.replace(/"/g, "'");
+
                     const inputField = document.querySelector(`input[name="${fieldName}[${language}]"]`);
                     if (inputField) {
-                        inputField.value = value;
+                        inputField.value = sanitizedValue;
                     }
                 });
             });
