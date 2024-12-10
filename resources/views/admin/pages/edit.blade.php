@@ -66,7 +66,7 @@
 
                             <section>
                                 <div class="card-head mb-20">
-                                    <h6 class="card-head-title">Text77</h6>
+                                    <h6 class="card-head-title">Text</h6>
                                 </div>
                                 <div class="form-group">
                                     <x-admin.multilanguage-text-area-rich
@@ -135,14 +135,6 @@
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', () => {
             initQuillEditors((quill, fieldName, language) => {
-                // quill.on('text-change', function () {
-                //     const value = quill.root.innerHTML;
-                //     const inputField = document.querySelector(`input[name="${fieldName}[${language}]"]`);
-                //     if (inputField) {
-                //         inputField.value = value;
-                //     }
-                // });
-
                 quill.on('text-change', function () {
                     let value = quill.root.innerHTML;
                     value = value.replace(/"/g, "'");

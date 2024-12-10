@@ -20,7 +20,7 @@
                         <form class="forms-sample" action="{{ route('article.update', $article) }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
-                            <div class=form-group">
+                            <div class="form-group">
                                 <x-admin.multilanguage-input :label="trans('admin.title')"
                                     :is-required="true"
                                     field-name="name"
@@ -45,7 +45,7 @@
                                 <p style="margin-bottom: 8px">{{ trans('admin.preview') . ' (250px x 100px)' }}</p>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <img @if(isset($article) && isset($article->image_url)) src="{{ $article->image_url }}" @else style="display: none;" @endif id="article_image" alt="">
+                                        <img @if(isset($article) && isset($article->image_url)) src="{{ $article->image_url }}" @else style="display: none;" @endif id="article_image" alt="" class="art_preview_image">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -64,7 +64,7 @@
 
                             <div class="form-group">
                                 <x-admin.multilanguage-text-area
-                                    :is-required="true"
+                                    :is-required="false"
                                     :label="trans('admin.desc')"
                                     field-name="description"
                                     field-display="description"
@@ -72,7 +72,7 @@
                             </div>
 
                             <div class="form-group">
-                                <x-admin.multilanguage-text-area
+                                <x-admin.multilanguage-text-area-rich
                                     :is-required="true"
                                     :label="trans('admin.text')"
                                     field-name="text"
@@ -81,16 +81,16 @@
                             </div>
 
 
-                            <div class=form-group">
+                            <div class="form-group">
                                 <x-admin.multilanguage-input :label="trans('admin.meta_title')"
-                                    :is-required="true"
+                                    :is-required="false"
                                     field-name="meta_title"
                                     field-display="meta_title"
                                     :values="$article->page->getTranslationsArray()"/>
                             </div>
-                            <div class=form-group">
+                            <div class="form-group">
                                 <x-admin.multilanguage-text-area
-                                    :is-required="true"
+                                    :is-required="false"
                                     :label="trans('admin.meta_description')"
                                     field-name="meta_description"
                                     field-display="meta_description"
@@ -122,6 +122,25 @@
                 }
             });
 
+        });
+    </script>
+
+
+    <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+            initQuillEditors((quill, fieldName, language) => {
+                quill.on('text-change', function () {
+                    let value = quill.root.innerHTML;
+                    value = value.replace(/"/g, "'");
+                    const sanitizedValue = value.replace(/"/g, "'");
+
+                    const inputField = document.querySelector(`input[name="${fieldName}[${language}]"]`);
+                    if (inputField) {
+                        inputField.value = sanitizedValue;
+                    }
+                });
+            });
         });
     </script>
 

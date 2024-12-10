@@ -14778,3 +14778,7 @@ td.image-preview-td {
 .admin-car-gallery .wrap-img {
     padding: 5px;
 }
+
+.art_preview_image {
+    max-width: 300px;
+}

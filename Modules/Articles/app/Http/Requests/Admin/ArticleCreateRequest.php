@@ -30,7 +30,7 @@ class ArticleCreateRequest extends FormRequest
                 'string',
             ];
             $rules['description.' . $lang] = [
-                'required',
+                'nullable',
                 'string',
             ];
             $rules['text.' . $lang] = [
