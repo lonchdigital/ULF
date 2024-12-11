@@ -46,7 +46,7 @@ class TestDriveFeedbackRequest extends BaseRequest
                 'required',
                 'string',
                 'regex:/^[^_]*$/',
-                'min:16'
+                'min:13'
             ],
 
             'agree_drive' => [
@@ -54,6 +54,11 @@ class TestDriveFeedbackRequest extends BaseRequest
             ],
 
             'page' => [
+                'required',
+                'string',
+            ],
+            
+            'ccurrent_url' => [
                 'required',
                 'string',
             ],

@@ -45,6 +45,12 @@ class SendTestDriveFeedbackEmailJob implements ShouldQueue
         $dataForRetailLead = [
             'name' => $this->data['name_drive'],
             'phone' => $this->data['phone_drive'],
+            'current_url' => $this->data['current_url'],
+            'utm_source' => $this->data['utm_source'],
+            'utm_medium' => $this->data['utm_medium'],
+            'utm_campaign' => $this->data['utm_campaign'],
+            'utm_term' => $this->data['utm_term'],
+            'utm_content' => $this->data['utm_content'],
         ];
 
         // send data to ULF system vue API

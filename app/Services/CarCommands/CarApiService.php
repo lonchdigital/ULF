@@ -62,7 +62,13 @@ class CarApiService extends AuthService
                     "surname" => null,
                     "inn" => null,
                     "phoneNumber" => $data['phone']
-                ]
+                ],
+                "currentUrl" => $data['current_url'],
+                "utm_source" => $data['utm_source'],
+                "utm_medium" => $data['utm_medium'],
+                "utm_campaign" => $data['utm_campaign'],
+                "utm_term" => $data['utm_term'],
+                "utm_content" => $data['utm_content']
             ]);
 
         return $response->json();
