@@ -9,195 +9,202 @@ if (TinderCards) {
 	// Set zIndexCounter to the total number of cards
 	let zIndexCounter = cards.length;
 
-	// Loop through each card and assign zIndex dynamically
-	cards.forEach(card => {
-		card.style.zIndex = zIndexCounter;
-		zIndexCounter--;
-	});
+	if (zIndexCounter > 0) {
 
-	let current = TinderCards.querySelector('.card:first-child') // Select the first card instead of the last
-	let likeText = current.children[0]
-	let startX = 0, startY = 0, moveX = 0, moveY = 0
-	let cardsEnded = false; // Variable to track if cards are ended
-	initCard(current)
+		// Loop through each card and assign zIndex dynamically
+		cards.forEach(card => {
+			card.style.zIndex = zIndexCounter;
+			zIndexCounter--;
+		});
 
-	let isAnimationInProgress = false;
+		let current = TinderCards.querySelector('.card:first-child') // Select the first card instead of the last
+		let likeText = current.children[0]
+		let startX = 0, startY = 0, moveX = 0, moveY = 0
+		let cardsEnded = false; // Variable to track if cards are ended
+		initCard(current)
 
-	let lastZIndex = zIndexCounter;
+		let isAnimationInProgress = false;
 
-	document.querySelector('.tinder .i-like').onclick = () => {
-        const nameElement = current.querySelector('.name');
-        const nameValue = nameElement ? nameElement.textContent : null;
+		let lastZIndex = zIndexCounter;
 
-        if (nameValue) {
-            favorites.push(nameValue);
-        }
+		document.querySelector('.tinder .i-like').onclick = () => {
+			const nameElement = current.querySelector('.name');
+			const nameValue = nameElement ? nameElement.textContent : null;
 
-        console.log(favorites.join(', '));
+			if (nameValue) {
+				favorites.push(nameValue);
+			}
 
-		if (!isAnimationInProgress) { // Перевіряємо, чи не триває анімація
-			isAnimationInProgress = true; // Позначаємо, що розпочата анімація
-			moveX = 1;
-			moveY = 0;
-			complete();
+			console.log(favorites.join(', '));
+
+			if (!isAnimationInProgress) { // Перевіряємо, чи не триває анімація
+				isAnimationInProgress = true; // Позначаємо, що розпочата анімація
+				moveX = 1;
+				moveY = 0;
+				complete();
+			}
 		}
-	}
-	document.querySelector('.tinder .i-dislike').onclick = () => {
-		if (!isAnimationInProgress) { // Перевіряємо, чи не триває анімація
-			isAnimationInProgress = true; // Позначаємо, що розпочата анімація
-			moveX = -1;
-			moveY = 0;
-			complete();
+		document.querySelector('.tinder .i-dislike').onclick = () => {
+			if (!isAnimationInProgress) { // Перевіряємо, чи не триває анімація
+				isAnimationInProgress = true; // Позначаємо, що розпочата анімація
+				moveX = -1;
+				moveY = 0;
+				complete();
+			}
 		}
-	}
 
-	document.querySelector('.tinder .i-favorite').onclick = () => {
-        const nameElement = current.querySelector('.name');
-        const nameValue = nameElement ? nameElement.textContent : null;
+		document.querySelector('.tinder .i-favorite').onclick = () => {
+			const nameElement = current.querySelector('.name');
+			const nameValue = nameElement ? nameElement.textContent : null;
 
-        if (nameValue) {
-            favorites.push(nameValue);
-        }
+			if (nameValue) {
+				favorites.push(nameValue);
+			}
 
-		if (!isAnimationInProgress) {
-			isAnimationInProgress = true;
-			current.classList.add('favorite'); // Додати клас "favorite" поточній картці
-			moveX = 1;
-			moveY = 0;
-			complete();
+			if (!isAnimationInProgress) {
+				isAnimationInProgress = true;
+				current.classList.add('favorite'); // Додати клас "favorite" поточній картці
+				moveX = 1;
+				moveY = 0;
+				complete();
+			}
 		}
-	}
 
-	function initCard(card) {
-		card.addEventListener('pointerdown', onPointerDown)
-	}
+		function initCard(card) {
+			card.addEventListener('pointerdown', onPointerDown)
+		}
 
-	function setTransform(x, y, deg, duration) {
-		current.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${deg}deg)`
-		likeText.style.opacity = Math.abs((x / innerWidth * 2.1))
-		likeText.className = `is-like ${x > 0 ? 'like' : 'nope'}`
-		if (duration) current.style.transition = `transform ${duration}ms`
-	}
+		function setTransform(x, y, deg, duration) {
+			current.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${deg}deg)`
+			likeText.style.opacity = Math.abs((x / innerWidth * 2.1))
+			likeText.className = `is-like ${x > 0 ? 'like' : 'nope'}`
+			if (duration) current.style.transition = `transform ${duration}ms`
+		}
 
-	function onPointerDown({ clientX, clientY }) {
-		startX = clientX;
-		startY = clientY;
-		lastZIndex = parseInt(current.style.zIndex); // Зберігаємо поточне значення z-index
-		current.addEventListener('pointermove', onPointerMove);
-		current.addEventListener('pointerup', onPointerUp);
-		current.addEventListener('pointerleave', onPointerUp);
-	}
+		function onPointerDown({ clientX, clientY }) {
+			startX = clientX;
+			startY = clientY;
+			lastZIndex = parseInt(current.style.zIndex); // Зберігаємо поточне значення z-index
+			current.addEventListener('pointermove', onPointerMove);
+			current.addEventListener('pointerup', onPointerUp);
+			current.addEventListener('pointerleave', onPointerUp);
+		}
 
-	function onPointerMove({ clientX, clientY }) {
-		moveX = clientX - startX
-		moveY = clientY - startY
-		setTransform(moveX, moveY, moveX / innerWidth * 50)
-	}
+		function onPointerMove({ clientX, clientY }) {
+			moveX = clientX - startX
+			moveY = clientY - startY
+			setTransform(moveX, moveY, moveX / innerWidth * 50)
+		}
 
-	function onPointerUp() {
-		current.style.zIndex = lastZIndex;
+		function onPointerUp() {
+			current.style.zIndex = lastZIndex;
 
-		current.removeEventListener('pointermove', onPointerMove)
-		current.removeEventListener('pointerup', onPointerUp)
-		current.removeEventListener('pointerleave', onPointerUp)
-		if (Math.abs(moveX) > TinderCards.clientWidth / 2) {
-			current.removeEventListener('pointerdown', onPointerDown)
-			complete()
-		} else cancel()
-	}
+			current.removeEventListener('pointermove', onPointerMove)
+			current.removeEventListener('pointerup', onPointerUp)
+			current.removeEventListener('pointerleave', onPointerUp)
+			if (Math.abs(moveX) > TinderCards.clientWidth / 2) {
+				current.removeEventListener('pointerdown', onPointerDown)
+				complete()
+			} else cancel()
+		}
 
-	// Після анімації встановлюємо isAnimationInProgress назад в false
-	function complete() {
-		const flyX = (Math.abs(moveX) / moveX) * innerWidth * 1.3;
-		const flyY = (moveY / moveX) * flyX;
-		setTransform(flyX, flyY, flyX / innerWidth * 50, innerWidth);
+		// Після анімації встановлюємо isAnimationInProgress назад в false
+		function complete() {
+			const flyX = (Math.abs(moveX) / moveX) * innerWidth * 1.3;
+			const flyY = (moveY / moveX) * flyX;
+			setTransform(flyX, flyY, flyX / innerWidth * 50, innerWidth);
 
-		const prev = current;
-		const next = current.nextElementSibling;
-		if (next) {
-			initCard(next);
-			current = next;
-			likeText = current.children[0];
-			setTimeout(() => {
-				if (prev && prev.parentNode === TinderCards) {
-					TinderCards.removeChild(prev);
-				}
-				isAnimationInProgress = false;
-			}, innerWidth);
-		} else if (!cardsEnded) {
-			const endCard = document.createElement('div');
-			endCard.classList.add('card', 'end');
-			const endText = document.createElement('div');
-			endText.classList.add('card-text');
-			endText.textContent = "Автомобілі за підпискою - мінімум забов'язань, максимум свободи";
-			endCard.appendChild(endText);
-			TinderCards.appendChild(endCard);
+			const prev = current;
+			const next = current.nextElementSibling;
+			if (next) {
+				initCard(next);
+				current = next;
+				likeText = current.children[0];
+				setTimeout(() => {
+					if (prev && prev.parentNode === TinderCards) {
+						TinderCards.removeChild(prev);
+					}
+					isAnimationInProgress = false;
+				}, innerWidth);
+			} else if (!cardsEnded) {
+				const endCard = document.createElement('div');
+				endCard.classList.add('card', 'end');
+				const endText = document.createElement('div');
+				endText.classList.add('card-text');
+				endText.textContent = "Автомобілі за підпискою - мінімум забов'язань, максимум свободи";
+				endCard.appendChild(endText);
+				TinderCards.appendChild(endCard);
 
-			// Заборонити всім кнопкам реагувати на події натискання миші
-			const buttons = document.querySelectorAll('.tinder button');
-			buttons.forEach(button => {
-				button.style.pointerEvents = 'none';
+				// Заборонити всім кнопкам реагувати на події натискання миші
+				const buttons = document.querySelectorAll('.tinder button');
+				buttons.forEach(button => {
+					button.style.pointerEvents = 'none';
+				});
+
+				setTimeout(() => {
+					if (TinderCards.contains(prev)) {
+						TinderCards.removeChild(prev);
+					}
+					isAnimationInProgress = false;
+				}, innerWidth);
+
+				current.removeEventListener('pointerdown', onPointerDown);
+				cardsEnded = true;
+			}
+		}
+
+
+		function cancel() {
+			setTransform(0, 0, 0, 100)
+			setTimeout(() => current.style.transition = '', 100)
+		}
+
+		document.addEventListener("DOMContentLoaded", function() {
+			document.getElementById("tinderForm").addEventListener("submit", function(event) {
+				event.preventDefault();
+
+				const form = document.getElementById('tinderForm');
+				const formData = new FormData(form);
+
+				formData.append('favorite_cars', favorites.join(', '));
+
+				console.log(formData);
+
+				fetch('/api/favorite-cars', {
+					method: 'POST',
+					body: formData,
+				})
+				.then(response => response.json())
+				.then(data => {
+					if (data.success) {
+						window.location.href = '/thanks';
+					} else {
+
+						var errors = data.errors;
+
+						for (var field in errors) {
+							var fieldElement = $('#' + field + '_error');
+
+							var existingError = fieldElement.next('.field--help-info');
+
+							if (existingError.length) {
+								existingError.text(errors[field][0]);
+							} else {
+								fieldElement.after('<div class="field--help-info small-txt text-red mb-2">' +
+									errors[field][0] + '</div>');
+							}
+						}
+					}
+				})
+				.catch(response => {
+				});
 			});
+		});
 
-			setTimeout(() => {
-				if (TinderCards.contains(prev)) {
-					TinderCards.removeChild(prev);
-				}
-				isAnimationInProgress = false;
-			}, innerWidth);
 
-			current.removeEventListener('pointerdown', onPointerDown);
-			cardsEnded = true;
-		}
 	}
 
-
-	function cancel() {
-		setTransform(0, 0, 0, 100)
-		setTimeout(() => current.style.transition = '', 100)
-	}
-
-    document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById("tinderForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            const form = document.getElementById('tinderForm');
-            const formData = new FormData(form);
-
-            formData.append('favorite_cars', favorites.join(', '));
-
-            console.log(formData);
-
-            fetch('/api/favorite-cars', {
-                method: 'POST',
-                body: formData,
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    window.location.href = '/thanks';
-                } else {
-
-                    var errors = data.errors;
-
-                    for (var field in errors) {
-                        var fieldElement = $('#' + field + '_error');
-
-                        var existingError = fieldElement.next('.field--help-info');
-
-                        if (existingError.length) {
-                            existingError.text(errors[field][0]);
-                        } else {
-                            fieldElement.after('<div class="field--help-info small-txt text-red mb-2">' +
-                                errors[field][0] + '</div>');
-                        }
-                    }
-                }
-            })
-            .catch(response => {
-            });
-        });
-    });
+	
 }
 // else {
 // 	// Якщо елемент не знайдено, виведіть повідомлення або виконайте альтернативні дії
