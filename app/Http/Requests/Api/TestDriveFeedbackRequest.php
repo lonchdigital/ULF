@@ -46,7 +46,7 @@ class TestDriveFeedbackRequest extends BaseRequest
                 'required',
                 'string',
                 'regex:/^[^_]*$/',
-                'min:13'
+                'min:16'
             ],
 
             'agree_drive' => [
