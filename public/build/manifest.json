@@ -76,6 +76,15 @@
       "assets/icons-CH-K8qS0.svg"
     ]
   },
+  "resources/js/forms/popupForm.js": {
+    "file": "assets/popupForm-CGSuGQHS.js",
+    "name": "popupForm",
+    "src": "resources/js/forms/popupForm.js",
+    "isEntry": true,
+    "imports": [
+      "_jquery-CqDs7TUd.js"
+    ]
+  },
   "resources/js/libs.js": {
     "file": "assets/libs-CksnGj_u.js",
     "name": "libs",

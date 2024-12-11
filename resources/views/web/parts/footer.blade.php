@@ -307,11 +307,13 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content py-4 px-2 p-md-5">
             <div class="modal-body p-0">
-                <form class="form-popup-any-questions" autocomplete="off">
+                <form class="form-popup-any-questions" id="call-back-form" autocomplete="off">
+                    @csrf
+                    
                     <div class="row">
                         <div class="col">
                             <div class="d-flex align-items-start justify-content-between mb-3">
-                                <div class="modal-title font-weight-bolder mb-0">Залишились питання?</div>
+                                <div class="modal-title font-weight-bolder mb-0">{{ trans('web.have_questions') }}</div>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">
 										<svg>
@@ -322,32 +324,44 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
+
                         <div class="col-12">
                             <div class="field mb-3">
-                                <label class="control-label" for="popup-any-questions--name">Ваше ім’я</label>
-                                <input type="text" id="popup-any-questions---name" class="form-control mb-3" placeholder="Введіть ім’я" autocomplete="no-autofill-please">
-                                <div class="field--help-info small-txt text-red mb-2">Введіть Ваше ім’я українськими літерами (кирилицею)</div>
+                                <label class="control-label" for="popup-any-questions--name_drive">{{ trans('web.your_name') }}</label>
+                                <input type="text" name="name_drive" id="popup-any-questions--name_drive" class="form-control name_drive-field mb-3" placeholder="{{ trans('web.your_name') }}" autocomplete="no-autofill-please">
                             </div>
                         </div>
+
                         <div class="col-12">
                             <div class="field mb-3">
-                                <label class="control-label" for="popup-any-questions--phone">Номер телефону</label>
-                                <input type="tel" id="popup-any-questions--phone" class="form-control mb-3" placeholder="+38 000 0000000" autocomplete="no-autofill-please">
-                                <div class="field--help-info small-txt text-red mb-2">Введіть Ваш номер телефону</div>
+                                <label class="control-label" for="popup-any-questions--phone_drive">{{ trans('web.phone_number') }}</label>
+                                <input type="tel" name="phone_drive" id="popup-any-questions--phone_drive" class="form-control phone-field phone_drive-field mb-3" placeholder="+380" autocomplete="no-autofill-please">
                             </div>
                         </div>
+
+                        <input type="hidden" name="current_url" value="{{ url()->full() }}">
+
+                        <input type="hidden" name="utm_source" value>
+                        <input type="hidden" name="utm_medium" value>
+                        <input type="hidden" name="utm_campaign" value>
+                        <input type="hidden" name="utm_term" value>
+                        <input type="hidden" name="utm_content" value>
+
                         <div class="col-12">
                             <div class="custom-control custom-checkbox position-relative mb-5">
-                                <input type="checkbox" class="custom-control-input" id="form-popup-any-questions">
-                                <label class="custom-control-label" for="form-popup-any-questions">
-                                    <span class="custom-checkbox--info">Я даю згоду на збір, обробку, зберігання та використання своїх <a href="##">персональних даних</a>.</span>
+                                <input type="checkbox" class="custom-control-input" id="popup-any-questions--agree_drive" name="agree_drive" value="1">
+                                <label class="custom-control-label agree_drive-field" for="popup-any-questions--agree_drive">
+                                    <span class="custom-checkbox--info">{{ trans('web.agreement_one') }} <span class=""><a href="##">{{ trans('web.agreement_two') }}</a></span>.</span>
                                 </label>
                             </div>
                         </div>
+
                         <div class="col-12 col-md-auto">
-                            <button type="button" class="btn-modal-close btn-default btn-default-orange btn btn-block btn-orange btn-default text-uppercase">Передзвоніть мені</button>
+                            <button type="submit" class="btn-modal-send btn-default btn-default-orange btn btn-block btn-orange btn-default text-uppercase">{{ trans('web.call_me_back') }}</button>
                         </div>
+
                     </div>
                 </form>
             </div>

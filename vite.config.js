@@ -17,6 +17,8 @@ export default defineConfig({
                 'resources/js/libs.js',
                 'resources/js/main.js',
 
+                'resources/js/forms/popupForm.js',
+
                 // Modules
                 'Modules/Articles/resources/js/articles-catalog.js',
 

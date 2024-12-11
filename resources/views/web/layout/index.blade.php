@@ -15,11 +15,14 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('static_images/favicon-32x32.png') }}">
 
     <script>
-		const translations = @json([
-			'month' => trans('web.month'),
-		]);
-	</script>
+        const translations = {
+            month: "{{ trans('web.month') }}",
+            call_me_back: "{{ trans('web.call_me_back') }}",
+            send: "{{ trans('web.send') }}"
+        };
+    </script>
 
+    @vite(['resources/js/forms/popupForm.js'])
     @yield('head')
 
     <link rel="shortcut icon" href="##" type="image/x-icon" />
