@@ -58,7 +58,7 @@ class TestDriveFeedbackRequest extends BaseRequest
                 'string',
             ],
             
-            'ccurrent_url' => [
+            'current_url' => [
                 'required',
                 'string',
             ],

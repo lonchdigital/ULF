@@ -25,6 +25,7 @@ class FeedbackController extends Controller
     {
         $data = $request->validated();
 
+        // dd($data);
         dispatch(new SendTestDriveFeedbackEmailJob($data));
 
         return redirect()->route('thanks');

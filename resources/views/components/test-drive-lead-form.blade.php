@@ -33,12 +33,13 @@
                                     <input type="hidden" name="page" value="{{ $page }}">
                                     <input type="hidden" name="current_url" value="{{ url()->full() }}">
 
-                                    <input type="hidden" name="utm_source" value="">
-                                    <input type="hidden" name="utm_medium" value="">
-                                    <input type="hidden" name="utm_campaign" value="">
-                                    <input type="hidden" name="utm_term" value="">
-                                    <input type="hidden" name="utm_content" value="">
+                                    <input type="hidden" name="utm_source" value>
+                                    <input type="hidden" name="utm_medium" value>
+                                    <input type="hidden" name="utm_campaign" value>
+                                    <input type="hidden" name="utm_term" value>
+                                    <input type="hidden" name="utm_content" value>
                                 </div>
+
                                 <div class="row">
                                     <div class="col">
                                         <div class="custom-control custom-checkbox position-relative mb-5">
