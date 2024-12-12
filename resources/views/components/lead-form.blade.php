@@ -28,9 +28,13 @@
                                             @enderror
 
                                             <input type="hidden" name="page" value="{{ $page }}">
-                                            @foreach(['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'] as $utm)
-                                                <input type="hidden" name="{{ $utm }}" value="{{ request($utm) }}">
-                                            @endforeach
+                                            <input type="hidden" name="current_url" value="{{ url()->full() }}">
+
+                                            <input type="hidden" name="utm_source" value>
+                                            <input type="hidden" name="utm_medium" value>
+                                            <input type="hidden" name="utm_campaign" value>
+                                            <input type="hidden" name="utm_term" value>
+                                            <input type="hidden" name="utm_content" value>
                                         </div>
                                     </div>
                                 </div>
