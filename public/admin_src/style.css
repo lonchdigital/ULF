@@ -1603,8 +1603,8 @@ div.tagsinput span.tag a {
     top: 0;
     left: 0;
     width: 230px;
-    border-bottom: 1px solid rgba(72, 94, 144, 0.16);
-    border-right: 1px solid rgba(72, 94, 144, 0.16);
+    /* border-bottom: 1px solid rgba(72, 94, 144, 0.16); */
+    /* border-right: 1px solid rgba(72, 94, 144, 0.16); */
     text-align: center;
     height: 70px;
     -webkit-transition-duration: 500ms;
