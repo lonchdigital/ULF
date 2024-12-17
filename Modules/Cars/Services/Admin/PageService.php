@@ -9,7 +9,7 @@ use Modules\Cars\Http\Controllers\Web\CarsController;
 class PageService
 {
 
-    public function updateFromApi(array $data, $vehicle, $lotID): CarPage
+    public function updateFromApi(array $data, $vehicle, $lotID): ?CarPage
     {
         $dataToUpdate = [];
         $carName = $vehicle->model->manufacturer->name .' '. $vehicle->model->name .' '. $vehicle->manufacturedYear;

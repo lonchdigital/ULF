@@ -7,6 +7,7 @@ use Modules\Cars\Models\SubscribePrice;
 use Modules\Cars\Models\CarFaq;
 use Modules\Cars\Models\Vehicle;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class CarUpdateService extends CarBaseService
 {
@@ -20,8 +21,17 @@ class CarUpdateService extends CarBaseService
             if($existingItem) {
 
                 $vehicle = $this->carVehicleService->updateFromApi($lot['vehicle'], $existingItem);
-                $dataToUpdate = $this->setCarData($vehicle, $lot);
 
+                if (is_null($vehicle->model)) {
+                    Log::notice("Lot ID {$lot['id']} does not have a model!");
+                    continue;
+                }
+                if (is_null($vehicle->model->manufacturer)) {
+                    Log::notice("Lot ID {$lot['id']} does not have a manufacturer!");
+                    continue;
+                }
+
+                $dataToUpdate = $this->setCarData($vehicle, $lot);
                 $vehicle->car->update($dataToUpdate);
 
                 if(!is_null($lot['images'])){
@@ -31,8 +41,17 @@ class CarUpdateService extends CarBaseService
             } else {
 
                 $vehicle = $this->carVehicleService->createFromApi($lot['vehicle']);
-                $dataToUpdate = $this->setCarData($vehicle, $lot);
 
+                if (is_null($vehicle->model)) {
+                    Log::notice("Lot ID {$lot['id']} does not have a model!");
+                    continue;
+                }
+                if (is_null($vehicle->model->manufacturer)) {
+                    Log::notice("Lot ID {$lot['id']} does not have a manufacturer!");
+                    continue;
+                }
+
+                $dataToUpdate = $this->setCarData($vehicle, $lot);
                 $car = Car::create($dataToUpdate);
 
                 if(!is_null($lot['images'])){

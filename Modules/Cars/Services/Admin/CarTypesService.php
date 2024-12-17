@@ -80,9 +80,6 @@ class CarTypesService
 
     public function updateAllVehicleDriverTypes($data)
     {
-
-        dd($data);
-
         $dataToUpdate = [];
 
         foreach($data as $item) {

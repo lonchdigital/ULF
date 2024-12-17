@@ -18,7 +18,7 @@ class CarApiService extends AuthService
         return $response->json();
     }
 
-    public function getLotsList($accessToken, int $take = 5, int $skip = 0)
+    public function getLotsList($accessToken, int $take = 20, int $skip = 0)
     {
         $response = Http::withOptions(['verify' => false])
             ->withToken($accessToken)
@@ -30,15 +30,27 @@ class CarApiService extends AuthService
         return $response->json();
     }
 
-    public function getLotInfo($accessToken, array $lotIds)
+    public function getLotInfo($accessToken, array $lotValues)
     {
+        $onlyLotIds = $this->extractLotIds($lotValues);
+
         $response = Http::withOptions(['verify' => false])
             ->withToken($accessToken)
             ->post($this->baseUrl . '/command/GetSubscriptionLotInfo', [
-                'LotIds' => $lotIds
+                'LotIds' => $onlyLotIds
             ]);
 
         return $response->json();
+    }
+
+    private function extractLotIds(array $lotValues): array
+    {
+        $dataToReturn = [];
+        foreach($lotValues as $lotValue) {
+            $dataToReturn[] = $lotValue['lotId'];
+        }
+
+        return $dataToReturn;
     }
 
     public function createRetailLead(array $data, $accessToken)

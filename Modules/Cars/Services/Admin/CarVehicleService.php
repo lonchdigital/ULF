@@ -14,7 +14,7 @@ use Modules\Cars\Models\Car;
 use Illuminate\Support\Str;
 use Modules\Cars\Models\CarImage;
 use Illuminate\Support\Facades\Http;
-
+use Modules\Cars\Models\DriverType;
 
 class CarVehicleService
 {
@@ -91,6 +91,10 @@ class CarVehicleService
         if(!is_null($data['type'])){
             $type = Type::where('type_id', $data['type']['id'])->first();
             $dataToUpdate['type_id'] = ($type) ? $type->id : null;
+        }
+        if(!is_null($data['driverType'])){
+            $dryverType = DriverType::where('driver_type_id', $data['driverType']['id'])->first();
+            $dataToUpdate['driver_type_id'] = ($dryverType) ? $dryverType->id : null;
         }
 
         return $dataToUpdate;

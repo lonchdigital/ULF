@@ -72,26 +72,33 @@ class UpdateCarsDataCommand extends Command
         $this->carTypesService->updateAllManufacturers(
             $this->carApiService->getDictionaryByName('VehicleManufacturer', $this->authService->accessToken)
         );
+        $this->info('Updating vehicleDriverTypes...');
+        $this->carTypesService->updateAllVehicleDriverTypes(
+            $this->carApiService->getDictionaryByName('VehicleDriverType', $this->authService->accessToken)
+        );
         $this->info('Updating vehicleModel...');
         $this->carTypesService->updateAllVehicleModels(
             $this->carApiService->getDictionaryByName('VehicleModel', $this->authService->accessToken)
         );
-
-
-        // Not implemented
-        // $this->info('Updating vehicleDriverTypes...');
-        // $this->carTypesService->updateAllVehicleDriverTypes(
-        //     $this->carApiService->getDictionaryByName('VehicleDriverType', $this->authService->accessToken)
-        // );
+        
 
         $this->info('Getting lotsList...');
-        $carLotsInfo = $this->carApiService->getLotsList($this->authService->accessToken, 10, 1);
+        // $carLotsInfo = $this->carApiService->getLotsList($this->authService->accessToken, 10, 1);
+        $carLotsInfo['value'] = [
+            [
+                'lotId' => 460279,
+                'cohortOrder' => 10
+            ],
+            [
+                'lotId' => 769398,
+                'cohortOrder' => 10
+            ]
+        ];
 
         $this->info('Updating Cars...');
         $this->carUpdateService->updateCars(
-            $this->carApiService->getLotInfo($this->authService->accessToken, $carLotsInfo['lotIds'])['value']
+            $this->carApiService->getLotInfo($this->authService->accessToken, $carLotsInfo['value'])['value']
         );
-
 
         $this->info('All done!');
     }
