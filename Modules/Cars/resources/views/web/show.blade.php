@@ -60,9 +60,9 @@
                                     </nav>
                                     <ul class="list-unstyled mb-0 car-properties-preview">
                                         <li>{{ $car->vehicle->manufacturedYear }}</li>
-                                        <li>{{ $car->vehicle->fuelType->name }}</li> {{-- Бензин, 2.0 --}}
-{{--                                        <li>Автомат</li>--}}
-{{--                                        <li>Повний привод</li>--}}
+                                        <li>{{ $car->vehicle->fuelType->name }}</li>
+                                       <li>{{ $car->vehicle->transmissionType->name }}</li>
+                                       <li>{{ $car->vehicle->driverType->name }}</li>
 {{--                                        <li>Київ</li>--}}
                                     </ul>
                                 </div>

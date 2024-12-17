@@ -36,6 +36,16 @@ class Vehicle extends EloquentModel
         return $this->belongsTo(DriverType::class);
     }
     
+    public function colorType()
+    {
+        return $this->belongsTo(ColorType::class);
+    }
+    
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
+    
     public function transmissionType()
     {
         return $this->belongsTo(TransmissionType::class);

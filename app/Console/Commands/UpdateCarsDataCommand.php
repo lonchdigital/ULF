@@ -76,10 +76,10 @@ class UpdateCarsDataCommand extends Command
         $this->carTypesService->updateAllVehicleDriverTypes(
             $this->carApiService->getDictionaryByName('VehicleDriverType', $this->authService->accessToken)
         );
-        $this->info('Updating vehicleModel...');
-        $this->carTypesService->updateAllVehicleModels(
-            $this->carApiService->getDictionaryByName('VehicleModel', $this->authService->accessToken)
-        );
+        // $this->info('Updating vehicleModel...');
+        // $this->carTypesService->updateAllVehicleModels(
+        //     $this->carApiService->getDictionaryByName('VehicleModel', $this->authService->accessToken)
+        // );
         
 
         $this->info('Getting lotsList...');

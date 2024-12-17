@@ -5,7 +5,7 @@
 <div class="car-properties">
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.engine') }}</div>
-        <div class="car-properties--mean">{{ $car->vehicle->fuelType->name }}</div> {{-- Бензин, 2.0 --}}
+        <div class="car-properties--mean">{{ $car->vehicle->fuelType->name }}</div>
     </div>
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.spend_100') }}</div>
@@ -14,8 +14,7 @@
     </div>
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.transmission') }}</div>
-{{--        <div class="car-properties--mean">Автомат</div>--}}
-        <div class="car-properties--mean">-</div>
+        <div class="car-properties--mean">{{ $car->vehicle->transmissionType->name }}</div>
     </div>
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.mileage') }}</div>
@@ -23,13 +22,11 @@
     </div>
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.car_body') }}</div>
-{{--        <div class="car-properties--mean">Кроссовер</div>--}}
-        <div class="car-properties--mean">-</div>
+        <div class="car-properties--mean">{{ $car->vehicle->type->name }}</div>
     </div>
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.color') }}</div>
-{{--        <div class="car-properties--mean">Сірий</div>--}}
-        <div class="car-properties--mean">-</div>
+        <div class="car-properties--mean">{{ $car->vehicle->colorType->name }}</div>
     </div>
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.safety') }}</div>

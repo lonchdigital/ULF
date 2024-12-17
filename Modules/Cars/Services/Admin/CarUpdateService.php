@@ -76,7 +76,7 @@ class CarUpdateService extends CarBaseService
         // $dataToUpdate['subscription_period_id'] = null;
         // $dataToUpdate['subscription_extentional_id'] = null;
         // $dataToUpdate['advertisement_city_id'] = null;
-        $dataToUpdate['uk']['description'] = $lot['description_ua'];
+        $dataToUpdate['ua']['description'] = $lot['description_ua'];
         $dataToUpdate['ru']['description'] = $lot['description_ru'];
 
         return $dataToUpdate;
