@@ -5,10 +5,14 @@ namespace App\Livewire\Admin\Pages;
 use App\Models\Faq;
 use App\Models\FaqTranslation;
 use App\Models\Page;
+use App\Services\Admin\Page\ImageService;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class EditFooter extends Component
 {
+    use WithFileUploads;
+
     public Page $page;
 
     public string $locale = '';
@@ -44,6 +48,10 @@ class EditFooter extends Component
     public string $youtube;
 
     public string $linkedin;
+
+    public $image;
+
+    public $imageTemporary;
 
     protected $listeners = [
         'languageSwitched' => 'languageSwitched'
@@ -170,6 +178,12 @@ class EditFooter extends Component
                 'nullable',
                 'string',
             ],
+
+            'image' => [
+                'nullable',
+                'mimes:jpeg,jpg,png,gif',
+                'image',
+            ],
         ];
     }
 
@@ -178,9 +192,36 @@ class EditFooter extends Component
         $this->locale = $lang;
     }
 
+    public function updatedImage($val)
+    {
+        $this->validateOnly('image');
+        $this->image = $val;
+        $this->imageTemporary = $val->temporaryUrl();
+    }
+
+    public function deleteImage()
+    {
+        $this->image = null;
+        $this->imageTemporary = null;
+    }
+
     public function save()
     {
         $this->validate();
+
+        $imageService = resolve(ImageService::class);
+
+        if ($this->image) {
+            $image = $imageService->downloadImage($this->image, '/footer');
+
+            if(!empty($this->page->image)) {
+                $imageService->deleteStorageImage($this->image, $this->page->image);
+            }
+
+            $this->page->image = $image;
+        }
+
+        $this->page->save();
 
         $this->page->pageBlocks->where('block', 'footer')
             ->where('key', 'description')
@@ -201,14 +242,29 @@ class EditFooter extends Component
         $this->page->pageBlocks->where('block', 'footer')
             ->where('key', 'communicate_telegram')
             ->first()
-            ->translate('uk')->update([
+            ->translate('ua')->update([
+                'description' => $this->telegramLink,
+            ]);
+
+        $this->page->pageBlocks->where('block', 'footer')
+            ->where('key', 'communicate_telegram')
+            ->first()
+            ->translate('ru')->update([
                 'description' => $this->telegramLink,
             ]);
 
         $this->page->pageBlocks->where('block', 'footer')
             ->where('key', 'communicate_viber')
             ->first()
-            ->translate('uk')
+            ->translate('ua')
+            ->update([
+                'description' => $this->viberLink,
+            ]);
+
+        $this->page->pageBlocks->where('block', 'footer')
+            ->where('key', 'communicate_viber')
+            ->first()
+            ->translate('ru')
             ->update([
                 'description' => $this->viberLink,
             ]);
@@ -216,7 +272,15 @@ class EditFooter extends Component
         $this->page->pageBlocks->where('block', 'footer')
             ->where('key', 'bot_viber')
             ->first()
-            ->translate('uk')
+            ->translate('ua')
+            ->update([
+                'description' => $this->botViber,
+            ]);
+
+            $this->page->pageBlocks->where('block', 'footer')
+            ->where('key', 'bot_viber')
+            ->first()
+            ->translate('ru')
             ->update([
                 'description' => $this->botViber,
             ]);
@@ -224,7 +288,15 @@ class EditFooter extends Component
         $this->page->pageBlocks->where('block', 'footer')
             ->where('key', 'bot_telegram')
             ->first()
-            ->translate('uk')
+            ->translate('ua')
+            ->update([
+                'description' => $this->botTelegram,
+            ]);
+
+        $this->page->pageBlocks->where('block', 'footer')
+            ->where('key', 'bot_telegram')
+            ->first()
+            ->translate('ru')
             ->update([
                 'description' => $this->botTelegram,
             ]);
@@ -232,7 +304,15 @@ class EditFooter extends Component
         $this->page->pageBlocks->where('block', 'footer')
             ->where('key', 'email')
             ->first()
-            ->translate('uk')
+            ->translate('ru')
+            ->update([
+                'description' => $this->email,
+            ]);
+
+        $this->page->pageBlocks->where('block', 'footer')
+            ->where('key', 'email')
+            ->first()
+            ->translate('ua')
             ->update([
                 'description' => $this->email,
             ]);
@@ -240,7 +320,7 @@ class EditFooter extends Component
         $this->page->pageBlocks->where('block', 'phone')
             ->where('key', 'phone1')
             ->first()
-            ->translate('uk')
+            ->translate('ua')
             ->update([
                 'title' => $this->phone1
             ]);
@@ -248,7 +328,7 @@ class EditFooter extends Component
         $this->page->pageBlocks->where('block', 'phone')
             ->where('key', 'phone2')
             ->first()
-            ->translate('uk')
+            ->translate('ua')
             ->update([
                 'title' => $this->phone2
             ]);
@@ -256,7 +336,7 @@ class EditFooter extends Component
         $this->page->pageBlocks->where('block', 'phone')
             ->where('key', 'phone2')
             ->first()
-            ->translate('uk')
+            ->translate('ua')
             ->update([
                 'description' => $this->ukPhone2Desck
             ]);
@@ -272,7 +352,15 @@ class EditFooter extends Component
         $this->page->pageBlocks->where('block', 'footer')
             ->where('key', 'instagram')
             ->first()
-            ->translate('uk')
+            ->translate('ua')
+            ->update([
+                'description' => $this->inst
+            ]);
+
+        $this->page->pageBlocks->where('block', 'footer')
+            ->where('key', 'instagram')
+            ->first()
+            ->translate('ru')
             ->update([
                 'description' => $this->inst
             ]);
@@ -280,7 +368,15 @@ class EditFooter extends Component
         $this->page->pageBlocks->where('block', 'footer')
             ->where('key', 'tik_tok')
             ->first()
-            ->translate('uk')
+            ->translate('ua')
+            ->update([
+                'description' => $this->tikTok
+            ]);
+
+        $this->page->pageBlocks->where('block', 'footer')
+            ->where('key', 'tik_tok')
+            ->first()
+            ->translate('ru')
             ->update([
                 'description' => $this->tikTok
             ]);
@@ -288,7 +384,15 @@ class EditFooter extends Component
         $this->page->pageBlocks->where('block', 'footer')
             ->where('key', 'facebook')
             ->first()
-            ->translate('uk')
+            ->translate('ua')
+            ->update([
+                'description' => $this->facebook
+            ]);
+
+        $this->page->pageBlocks->where('block', 'footer')
+            ->where('key', 'facebook')
+            ->first()
+            ->translate('ru')
             ->update([
                 'description' => $this->facebook
             ]);
@@ -296,7 +400,15 @@ class EditFooter extends Component
         $this->page->pageBlocks->where('block', 'footer')
             ->where('key', 'youtube')
             ->first()
-            ->translate('uk')
+            ->translate('ua')
+            ->update([
+                'description' => $this->youtube,
+            ]);
+
+        $this->page->pageBlocks->where('block', 'footer')
+            ->where('key', 'youtube')
+            ->first()
+            ->translate('ru')
             ->update([
                 'description' => $this->youtube,
             ]);
@@ -304,14 +416,22 @@ class EditFooter extends Component
         $this->page->pageBlocks->where('block', 'footer')
             ->where('key', 'linkedin')
             ->first()
-            ->translate('uk')
+            ->translate('ua')
+            ->update([
+                'description' => $this->linkedin
+            ]);
+
+        $this->page->pageBlocks->where('block', 'footer')
+            ->where('key', 'linkedin')
+            ->first()
+            ->translate('ru')
             ->update([
                 'description' => $this->linkedin
             ]);
 
         session()->flash('success', 'Дані успішно збережено');
 
-        $this->redirectRoute('admin.pages.index');
+        $this->redirectRoute('page.index');
     }
 
     public function render()

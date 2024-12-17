@@ -6,7 +6,12 @@
                     <div class="row">
                         <div class="col-12 col-lg-6 mb-5 mb-lg-0">
                             <div class="footer-logo mb-5">
-                               {{-- <img src="img/logo-4.svg" alt="logo"> --}}
+                                @if(!empty($page->image))
+                                    <img src="{{ $page->imageUrl }}" alt="{{ 'ULF' }}">
+                                @else
+                                    <img src="img/logo-4.svg" alt="logo">
+                                @endif
+
                             </div>
                             <div class="row">
                                 <div class="col col-lg-10 col-xl-8">
@@ -57,14 +62,14 @@
                                                         <li class="list-inline-item">
                                                             <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'communicate_telegram')->first()->description }}" target="_blank">
                                                                 <svg class="i-telegram">
-                                                                    <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-telegram' }}"></use>
+                                                                    <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-instagram' }}"></use>
                                                                 </svg>
                                                             </a>
                                                         </li>
                                                         <li class="list-inline-item">
                                                             <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'communicate_viber')->first()->description }}" target="_blank">
                                                                 <svg class="i-viber">
-                                                                    <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-viber' }}"></use>
+                                                                    <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-facebook' }}"></use>
                                                                 </svg>
                                                             </a>
                                                         </li>
@@ -78,14 +83,14 @@
                                                         <li class="list-inline-item">
                                                             <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'bot_telegram')->first()->description }}" target="_blank">
                                                                 <svg class="i-telegram">
-                                                                    <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-telegram' }}"></use>
+                                                                    <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-instagram' }}"></use>
                                                                 </svg>
                                                             </a>
                                                         </li>
                                                         <li class="list-inline-item">
                                                             <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'bot_viber')->first()->description }}" target="_blank">
                                                                 <svg class="i-viber">
-                                                                    <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-viber' }}"></use>
+                                                                    <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-facebook' }}"></use>
                                                                 </svg>
                                                             </a>
                                                         </li>
@@ -145,7 +150,7 @@
                                 <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-mail' }}"></use>
                             </svg>
                             <div class="footer--email">
-                                <a href="mailto:auto.online@ulf.ua">{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'email')->first()->description }}</a>
+                                <a href="mailto:{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'email')->first()->description }}">{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'email')->first()->description }}</a>
                             </div>
                         </li>
                         <ul class="list-inline mb-0">
@@ -309,7 +314,7 @@
             <div class="modal-body p-0">
                 <form class="form-popup-any-questions" id="call-back-form" autocomplete="off">
                     @csrf
-                    
+
                     <div class="row">
                         <div class="col">
                             <div class="d-flex align-items-start justify-content-between mb-3">

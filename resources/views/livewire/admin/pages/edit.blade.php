@@ -8,7 +8,7 @@
 
                         <div class="row" id="faqs-cars">
 
-                            @if($this->locale == 'uk')
+                            @if($this->locale == 'ua')
                                 @forelse($this->faqs as $index => $faq)
                                     <div class="col-12 faq-car-row pb-1 mb-4 d-flex justify-content-start" id="faq-car-id-2">
                                         <div class="col-md-1">
@@ -39,9 +39,9 @@
                                                                             id="faqs[2][question]-uk">
                                                                             <div class="form-group mb-1">
                                                                                 <label for="faqs[2][question]_uk">Питання
-                                                                                    <strong>UK</strong>
+                                                                                    <strong>UA</strong>
                                                                                 </label>
-                                                                                <input type="text" wire:model="faqs.{{ $index }}.uk.question"
+                                                                                <input type="text" wire:model="faqs.{{ $index }}.ua.question"
                                                                                     id="faqs[2][question]_uk" class="form-control">
                                                                             </div>
                                                                         </div>
@@ -65,8 +65,8 @@
                                                                             id="faqs[2][answer]-uk">
                                                                             <div class="form-group mb-1">
                                                                                 <label for="faqs[2][answer]_uk">Відповідь
-                                                                                    <strong>UK</strong></label>
-                                                                                <textarea wire:model="faqs.{{ $index }}.uk.answer" class="form-control"></textarea>
+                                                                                    <strong>UA</strong></label>
+                                                                                <textarea wire:model="faqs.{{ $index }}.ua.answer" class="form-control"></textarea>
                                                                             </div>
                                                                         </div>
                                                                     </div>

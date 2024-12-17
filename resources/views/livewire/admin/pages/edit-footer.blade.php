@@ -7,12 +7,11 @@
                         <h6 class="card-title">Редагування сторінки контактів</h6>
 
                         <div class="row" id="faqs-cars">
+                            <div class="col-12 faq-car-row pb-1 mb-4 d-flex justify-content-start" id="faq-car-id-2">
+                                <div class="border border-secondary rounded p-3 col-md-11">
+                                    <div class="row justify-content-between align-items-center">
 
-                            @if ($this->locale == 'uk')
-                                <div class="col-12 faq-car-row pb-1 mb-4 d-flex justify-content-start" id="faq-car-id-2">
-                                    <div class="border border-secondary rounded p-3 col-md-11">
-                                        <div class="row justify-content-between align-items-center">
-
+                                        @if ($this->locale == 'uk')
                                             <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -54,7 +53,7 @@
                                                                         id="faqs[2][question]-uk">
                                                                         <div class="form-group mb-1">
                                                                             <label for="faqs[2][question]_uk">Посилання
-                                                                                на телеграм
+                                                                                на instagram
                                                                             </label>
                                                                             <input type="text"
                                                                                 wire:model="telegramLink"
@@ -84,7 +83,7 @@
                                                                         id="faqs[2][question]-uk">
                                                                         <div class="form-group mb-1">
                                                                             <label for="faqs[2][question]_uk">Посилання
-                                                                                на вайбер
+                                                                                на facebook
                                                                             </label>
                                                                             <input type="text" wire:model="viberLink"
                                                                                 class="form-control">
@@ -113,7 +112,7 @@
                                                                         id="faqs[2][question]-uk">
                                                                         <div class="form-group mb-1">
                                                                             <label for="faqs[2][question]_uk">Посилання
-                                                                                на телеграм бот
+                                                                                на instagram бот
                                                                             </label>
                                                                             <input type="text"
                                                                                 wire:model="botTelegram"
@@ -143,7 +142,7 @@
                                                                         id="faqs[2][question]-uk">
                                                                         <div class="form-group mb-1">
                                                                             <label for="faqs[2][question]_uk">Посилання
-                                                                                на вайбер бот
+                                                                                на facebook бот
                                                                             </label>
                                                                             <input type="text" wire:model="botViber"
                                                                                 class="form-control">
@@ -425,17 +424,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
+                                        @endif
 
-                            @if ($this->locale == 'ru')
-                                <div class="col-12 faq-car-row pb-1 mb-4 d-flex justify-content-start"
-                                    id="faq-car-id-2">
-                                    <div class="border border-secondary rounded p-3 col-md-11">
-                                        <div class="row justify-content-between align-items-center">
-
+                                        @if ($this->locale == 'ru')
                                             <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -850,10 +841,52 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        @endif
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                <div
+                                                                    class="multilang-content tab-pane fade active show ">
+                                                                    <div class="form-group mb-1">
+                                                                        <label>{{ __('admin.image') }}</label>
+                                                                        <input type="file" wire:model="image"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('uaDescription')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+
+                                                            @if ($this->imageTemporary)
+                                                                <div class="flex">
+                                                                    <img src="{{ $this->imageTemporary }}"
+                                                                        width="60">
+                                                                    <a wire:click="deleteImage()"
+                                                                        style="cursor: pointer;">
+                                                                        <i class="ti-close font-weight-bold mr-2"></i>
+                                                                        {{ __('admin.delete_image') }}
+                                                                    </a>
+                                                                </div>
+                                                            @elseif(!empty($this->page->image))
+                                                                <img src="{{ $this->page->imageUrl }}"
+                                                                    width="60">
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
+
                                     </div>
                                 </div>
-                            @endif
+                            </div>
                         </div>
                     </section>
 

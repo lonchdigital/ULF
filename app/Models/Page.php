@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Translatable;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
 
 class Page extends Model implements TranslatableContract
 {
@@ -30,10 +31,14 @@ class Page extends Model implements TranslatableContract
         'key',
         'active',
         'is_show_in_header',
-        'is_show_in_footer'
+        'is_show_in_footer',
+        'image',
     ];
 
-
+    public function getImageUrlAttribute()
+    {
+        return Storage::disk('public')->url($this->image);
+    }
 
     public function articles()
     {

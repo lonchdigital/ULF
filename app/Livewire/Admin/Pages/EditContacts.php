@@ -123,9 +123,9 @@ class EditContacts extends Component
 
         $this->ruFacebook = $this->page->pageBlocks->where('block', 'facebook')->where('key', 'text')->first()->translate('ru')->title ?? '';
 
-        $this->longitude = $this->page->pageBlocks->where('block', 'map')->where('key', 'longitude')->first()->translate('ua')->title ?? '';
+        $this->longitude = $this->page->pageBlocks->where('block', 'map')->where('key', 'longitude')->first()->title ?? '';
 
-        $this->latitude = $this->page->pageBlocks->where('block', 'map')->where('key', 'latitude')->first()->translate('ua')->title ?? '';
+        $this->latitude = $this->page->pageBlocks->where('block', 'map')->where('key', 'latitude')->first()->title ?? '';
     }
 
     protected function rules()
