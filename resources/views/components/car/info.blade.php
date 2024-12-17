@@ -5,11 +5,10 @@
 <div class="car-properties">
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.engine') }}</div>
-        <div class="car-properties--mean">{{ $car->vehicle->fuelType->name }}</div>
+        <div class="car-properties--mean">{{ $car->vehicle->fuelType->name . ', ' . $car->vehicle->engineVolume }}</div>
     </div>
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.spend_100') }}</div>
-{{--        <div class="car-properties--mean">12.8</div>--}}
         <div class="car-properties--mean">-</div>
     </div>
     <div class="car-properties--item">
@@ -30,30 +29,51 @@
     </div>
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.safety') }}</div>
-        {{--<div class="car-properties--mean">
-            Антиблокувальна<br>
-            система (ABS)<br>
-            Парктронік
-        </div>--}}
-        <div class="car-properties--mean">-</div>
+        @if( $car->vehicle->equipment->HasSafeAbs )
+            <div class="car-properties--mean">{{ trans('car.has_safe_abs') }}</div>
+        @endif
+        @if( $car->vehicle->equipment->HasSafeEsc )
+            <div class="car-properties--mean">{{ trans('car.has_safe_esc') }}</div>
+        @endif
     </div>
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.safety_pillow') }}</div>
-        {{--<div class="car-properties--mean">
-            Передні<br>
-            Водія та пассажира
-        </div>--}}
-        <div class="car-properties--mean">-</div>
+        @if( $car->vehicle->equipment->HasAirbag )
+            <div class="car-properties--mean">{{ trans('car.has_airbag') }}</div>
+        @endif
+        @if( $car->vehicle->equipment->HasAirbagDr )
+            <div class="car-properties--mean">{{ trans('car.has_airbag_dr') }}</div>
+        @endif
+        @if( $car->vehicle->equipment->HasAirbagDr )
+            <div class="car-properties--mean">{{ trans('car.has_airbag_dr') }}</div>
+        @endif
+        @if( $car->vehicle->equipment->HasAirbagFull )
+            <div class="car-properties--mean">{{ trans('car.has_airbag_full') }}</div>
+        @endif
+        @if( $car->vehicle->equipment->HasAirbagSide )
+            <div class="car-properties--mean">{{ trans('car.has_airbag_side') }}</div>
+        @endif
     </div>
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.interior_upholstery') }}</div>
-{{--        <div class="car-properties--mean">Шкіра</div>--}}
-        <div class="car-properties--mean">-</div>
+        @if( $car->vehicle->equipment->HasCloth )
+            <div class="car-properties--mean">{{ trans('car.has_cloth') }}</div>
+        @endif
+        @if( $car->vehicle->equipment->HasClothLeather )
+            <div class="car-properties--mean">{{ trans('car.has_cloth_leather') }}</div>
+        @endif
+        @if( $car->vehicle->equipment->HasLeather )
+            <div class="car-properties--mean">{{ trans('car.has_leather') }}</div>
+        @endif
     </div>
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.interior_color') }}</div>
-{{--        <div class="car-properties--mean">Темний</div>--}}
-        <div class="car-properties--mean">-</div>
+        @if( $car->vehicle->equipment->HasSalonColorDark )
+            <div class="car-properties--mean">{{ trans('car.has_salon_color_dark') }}</div>
+        @endif
+        @if( $car->vehicle->equipment->HasSalonColorLight )
+            <div class="car-properties--mean">{{ trans('car.has_salon_color_light') }}</div>
+        @endif
     </div>
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.driver_seat') }}</div>
@@ -71,7 +91,11 @@
     </div>
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.climate') }}</div>
-{{--        <div class="car-properties--mean">Зональний</div>--}}
-        <div class="car-properties--mean">-</div>
+        @if( $car->vehicle->equipment->HasClimatControl )
+            <div class="car-properties--mean">{{ trans('car.has_climat_control') }}</div>
+        @endif
+        @if( $car->vehicle->equipment->HasClimatControl2 )
+            <div class="car-properties--mean">{{ trans('car.has_climat_control_2') }}</div>
+        @endif
     </div>
 </div>
