@@ -11,7 +11,7 @@
                                 <div class="border border-secondary rounded p-3 col-md-11">
                                     <div class="row justify-content-between align-items-center">
 
-                                        @if ($this->locale == 'uk')
+                                        @if ($this->locale == 'ua')
                                             <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -23,7 +23,7 @@
                                                                         id="faqs[2][question]-uk">
                                                                         <div class="form-group mb-1">
                                                                             <label for="faqs[2][question]_uk">Опис
-                                                                                <strong>UK</strong>
+                                                                                <strong>UA</strong>
                                                                             </label>
                                                                             <input type="text"
                                                                                 wire:model="ukDescription"
@@ -258,7 +258,7 @@
                                                                         <div class="form-group mb-1">
                                                                             <label for="faqs[2][question]_uk">Опис
                                                                                 номеру телефону 2
-                                                                                <strong>UK</strong>
+                                                                                <strong>UA</strong>
                                                                             </label>
                                                                             <input type="text"
                                                                                 wire:model="ukPhone2Desck"
@@ -406,7 +406,7 @@
                                                                         <div class="form-group mb-1">
                                                                             <label for="faqs[2][question]_uk">Посилання
                                                                                 на linkedin
-                                                                                <strong>UK</strong>
+                                                                                {{-- <strong>UK</strong> --}}
                                                                             </label>
                                                                             <input type="text"
                                                                                 wire:model="linkedin"
@@ -823,7 +823,7 @@
                                                                         <div class="form-group mb-1">
                                                                             <label for="faqs[2][question]_uk">Посилання
                                                                                 на linkedin
-                                                                                <strong>UK</strong>
+                                                                                {{-- <strong>UK</strong> --}}
                                                                             </label>
                                                                             <input type="text"
                                                                                 wire:model="linkedin"

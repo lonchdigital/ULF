@@ -59,7 +59,7 @@ class EditFooter extends Component
 
     public function mount(Page $page)
     {
-        $this->locale = 'uk';
+        $this->locale = 'ua';
 
         $this->page = $page;
 

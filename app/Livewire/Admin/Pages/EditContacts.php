@@ -123,9 +123,9 @@ class EditContacts extends Component
 
         $this->ruFacebook = $this->page->pageBlocks->where('block', 'facebook')->where('key', 'text')->first()->translate('ru')->title ?? '';
 
-        $this->longitude = $this->page->pageBlocks->where('block', 'map')->where('key', 'longitude')->first()->title ?? '';
+        $this->longitude = $this->page->pageBlocks->where('block', 'map')->where('key', 'longitude')->first()->value ?? '';
 
-        $this->latitude = $this->page->pageBlocks->where('block', 'map')->where('key', 'latitude')->first()->title ?? '';
+        $this->latitude = $this->page->pageBlocks->where('block', 'map')->where('key', 'latitude')->first()->value ?? '';
     }
 
     protected function rules()
@@ -455,17 +455,15 @@ class EditContacts extends Component
         $this->page->pageBlocks->where('block', 'map')
             ->where('key', 'longitude')
             ->first()
-            ->translate('ua')
             ->update([
-                'title' => $this->longitude,
+                'value' => $this->longitude,
             ]);
 
         $this->page->pageBlocks->where('block', 'map')
             ->where('key', 'latitude')
             ->first()
-            ->translate('ua')
             ->update([
-                'title' => $this->latitude,
+                'value' => $this->latitude,
             ]);
 
         session()->flash('success', 'Дані успішно збережено');
