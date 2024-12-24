@@ -77,13 +77,30 @@
     </div>
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.driver_seat') }}</div>
-{{--        <div class="car-properties--mean">З електро регулюванням</div>--}}
-        <div class="car-properties--mean">-</div>
+        @if( $car->vehicle->equipment->HasSeatElectro )
+            <div class="car-properties--mean">{{ trans('car.has_seat_electro') }}</div>
+        @endif
+        @if( $car->vehicle->equipment->HasSeatMemory )
+            <div class="car-properties--mean">{{ trans('car.has_seat_memory') }}</div>
+        @endif
+        @if( $car->vehicle->equipment->HasSeatHand )
+            <div class="car-properties--mean">{{ trans('car.has_seat_hand') }}</div>
+        @endif
+        @if( $car->vehicle->equipment->HasSeatHandHeight )
+            <div class="car-properties--mean">{{ trans('car.has_seat_hand_height') }}</div>
+        @endif
     </div>
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.passenger_seat') }}</div>
-{{--        <div class="car-properties--mean">Електро регулювання</div>--}}
-        <div class="car-properties--mean">-</div>
+        @if( $car->vehicle->equipment->HasSeat2Electro )
+            <div class="car-properties--mean">{{ trans('car.has_seat_2_electro') }}</div>
+        @endif
+        @if( $car->vehicle->equipment->HasSeat2Memory )
+            <div class="car-properties--mean">{{ trans('car.has_seat_2_memory') }}</div>
+        @endif
+        @if( $car->vehicle->equipment->HasSeat2Hand )
+            <div class="car-properties--mean">{{ trans('car.has_seat_2_hand') }}</div>
+        @endif
     </div>
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.comfort') }}</div>

@@ -14,5 +14,11 @@ return [
     'has_salon_color_light' => 'Світлий',
     'has_climat_control' => 'Є клімат-контроль',
     'has_climat_control_2' => 'Є клімат-контроль для пасажирів',
-    
+    'has_seat_electro' => 'З електро регулюванням',
+    'has_seat_memory' => 'З пам\'яттю положення',
+    'has_seat_hand' => 'З ручним регулюванням',
+    'has_seat_hand_height' => 'Ручне регулювання по висоті',
+    'has_seat_2_electro' => 'З електро регулюванням',
+    'has_seat_2_memory' => 'З пам\'яттю положення',
+    'has_seat_2_hand' => 'З ручним регулюванням',
 ];

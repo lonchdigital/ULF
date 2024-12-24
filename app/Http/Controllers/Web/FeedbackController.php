@@ -34,6 +34,7 @@ class FeedbackController extends Controller
 
     public function storeFavorite(StoreAutomatchRequest $request)
     {
+        dd($request->all());
         $data = $request->validated();
 
         dispatch(new SendFeedbackEmailJob($data));

@@ -14,4 +14,11 @@ return [
     'has_salon_color_light' => 'Светлый',
     'has_climat_control' => 'Есть климат-контроль',
     'has_climat_control_2' => 'Есть климат-контроль для пассажиров',
+    'has_seat_electro' => 'С электрорегулировкой',
+    'has_seat_memory' => 'С памятью положения',
+    'has_seat_hand' => 'С ручной регулировкой',
+    'has_seat_hand_height' => 'Ручная регулировка по высоте',
+    'has_seat_2_electro' => 'С электрорегулировкой',
+    'has_seat_2_memory' => 'С памятью положения',
+    'has_seat_2_hand' => 'С ручной регулировкой',
 ];
