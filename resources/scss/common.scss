@@ -247,8 +247,21 @@ p {
     &.ql-align-right {
         text-align: right;
     }
-	
 }
+
+.ql-align-justify {
+	text-align: justify;
+}
+.ql-align-left {
+	text-align: left;
+}
+.ql-align-center {
+	text-align: center;
+}
+.ql-align-right {
+	text-align: right;
+}
+
 .small-txt {
 	font-size: 12px;
 	line-height: 16px;
