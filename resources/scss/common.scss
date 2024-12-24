@@ -263,6 +263,23 @@ p {
 	text-align: right;
 }
 
+.art-rich-editor {
+
+	a {
+		position: relative;
+
+		&::before {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			background: rgb(154, 223, 255);
+			height: 10px;
+			width: 100%;
+			z-index: -1;
+		}
+	}
+}
+
 .small-txt {
 	font-size: 12px;
 	line-height: 16px;

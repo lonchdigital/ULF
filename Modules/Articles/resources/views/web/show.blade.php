@@ -78,7 +78,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12 col-lg-10 mx-auto">
-                            <div class="h5 font-m mb-3">
+                            <div class="h5 font-m mb-3 art-rich-editor">
                                 {!! $article->text !!}
                             </div>
                         </div>

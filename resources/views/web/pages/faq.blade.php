@@ -46,7 +46,7 @@
                                         <div id="collapse-accordion-question-{{ $loop->iteration }}" class="collapse"
                                             aria-labelledby="heading-accordion-question-{{ $loop->iteration }}"
                                             data-parent="#accordion-questions">
-                                            <div class="card-body">
+                                            <div class="card-body art-rich-editor">
                                                 {!! $faq->answer !!}
                                             </div>
                                         </div>

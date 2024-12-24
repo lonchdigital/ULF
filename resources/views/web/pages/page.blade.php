@@ -42,7 +42,7 @@
             <section class="privacy-terms pb-7 pb-md-10 pb-lg-13">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12 col-lg-10 mx-auto">
+                        <div class="col-12 col-lg-10 mx-auto art-rich-editor">
                             {!! $page->text ?? '' !!}
                         </div>
                     </div>

@@ -115,7 +115,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <div class="spoiler">
+                            <div class="spoiler art-rich-editor">
                                 {!! $page->seo_text !!}
                             </div>
                         </div>
