@@ -424,6 +424,7 @@
                                         @include('components.car.car-item', ['car' => $car])
                                     @endforeach
 
+                                    {{-- TODO:: do we need this block? --}}
                                     <div class="col-12 col-md-6 col-lg-4 d-none d-md-flex our-fleet-search">
                                         <div class="our-fleet-preview--item bg-main-blue our-fleet-preview--search">
                                             <div class="name text-white">{{ trans('web.did_not_found_dream_car') }}</div>
@@ -431,13 +432,14 @@
                                                 <img src="{{ asset('static_images/car-6.png') }}" alt="Image">
                                             </div>
                                             <div class="price mb-1"><span class="currency">$</span> <span
-                                                    class="value">1 080</span> / міс.</div>
+                                                    class="value">1 080</span> / {{ trans('web.month') }}</div>
                                             <button type="button"
                                                 class="btn-default btn-default-white btn btn-block btn-white text-uppercase font-weight-bold mb-4 mb-lg-0 mr-lg-4"
                                                 data-toggle="modal"
                                                 data-target="#popup-сar-selection">{{ trans('web.go_find_the_car') }}</button>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
