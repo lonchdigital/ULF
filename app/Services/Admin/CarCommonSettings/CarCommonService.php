@@ -3,15 +3,16 @@
 
 namespace App\Services\Admin\CarCommonSettings;
 
-use App\Models\CarDriveBlock;
-use App\Models\CommonCarSetting;
 use App\Models\Faq;
 use App\Models\Page;
+use Illuminate\Support\Str;
+use Modules\Cars\Models\Car;
+use App\Models\CarDriveBlock;
+use App\Models\CommonCarSetting;
 use App\Models\SubscribeBenefit;
 use App\Models\SubscribeSetting;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use App\Services\Application\ApplicationConfigService;
 
 
@@ -97,6 +98,13 @@ class CarCommonService
         }
     }
 
+    public function getFleetCars(int $excludedId)
+    {
+        return Car::where('id', '!=', $excludedId)
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+    }
     public function getAllCommonCarSettings()
     {
         return CommonCarSetting::all();

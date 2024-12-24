@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'could_be_interesting' => 'Может вас заинтересовать',
+    'to_car_park' => 'В Автопарк',
     'send' => 'Отправленно',
     'back' => 'Назад',
     'show_more' => 'Показать больше',

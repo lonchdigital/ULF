@@ -53,6 +53,7 @@ class CarsController extends Controller
             'commonFaqs' => $this->commonService->getAllCommonFaqs(),
             'commonCarSettings' => $this->commonService->getAllCommonCarSettings(),
             'url' => $url,
+            'fleetCars' => $this->commonService->getFleetCars($carPage->car->id),
         ]);
     }
 

@@ -95,7 +95,7 @@
 
             @include('components.test-drive-lead-form', ['page' => 'Single Car Page', 'pbLg' => 13])
 
-            <x-fleet />
+            <x-fleet :fleetCars="$fleetCars" />
 
             <x-f-a-qs :car="$car" :commonFaqs="$commonFaqs" />
 
