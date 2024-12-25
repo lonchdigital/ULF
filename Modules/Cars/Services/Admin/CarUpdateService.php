@@ -16,9 +16,8 @@ class CarUpdateService extends CarBaseService
     public function updateCars($allLots, $console)
     {
         foreach($allLots as $lot){
-            $console->info('Updating Lot ' . $lot['id']);
-
             try {
+                $console->info('Updating Lot ' . $lot['id']);
                 $this->validateLotData($lot);
             } catch (\Exception $e) {
                 $console->info($e->getMessage());
