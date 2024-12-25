@@ -13,23 +13,22 @@ class CarUpdateService extends CarBaseService
 {
 
     // Create/Update cars that we got by API
-    public function updateCars($allLots)
+    public function updateCars($allLots, $console)
     {
         foreach($allLots as $lot){
+            $console->info('Updating Lot ' . $lot['id']);
+
+            try {
+                $this->validateLotData($lot);
+            } catch (\Exception $e) {
+                $console->info($e->getMessage());
+                continue;
+            }
 
             $existingItem = Car::where('lot_id', $lot['id'])->first();
             if($existingItem) {
 
                 $vehicle = $this->carVehicleService->updateFromApi($lot['vehicle'], $existingItem);
-
-                if (is_null($vehicle->model)) {
-                    Log::notice("Lot ID {$lot['id']} does not have a model!");
-                    continue;
-                }
-                if (is_null($vehicle->model->manufacturer)) {
-                    Log::notice("Lot ID {$lot['id']} does not have a manufacturer!");
-                    continue;
-                }
 
                 $dataToUpdate = $this->setCarData($vehicle, $lot);
                 $vehicle->car->update($dataToUpdate);
@@ -41,15 +40,6 @@ class CarUpdateService extends CarBaseService
             } else {
 
                 $vehicle = $this->carVehicleService->createFromApi($lot['vehicle']);
-
-                if (is_null($vehicle->model)) {
-                    Log::notice("Lot ID {$lot['id']} does not have a model!");
-                    continue;
-                }
-                if (is_null($vehicle->model->manufacturer)) {
-                    Log::notice("Lot ID {$lot['id']} does not have a manufacturer!");
-                    continue;
-                }
 
                 $dataToUpdate = $this->setCarData($vehicle, $lot);
                 $car = Car::create($dataToUpdate);

@@ -9,6 +9,7 @@ use Modules\Cars\Models\CarImage;
 use Illuminate\Support\Facades\Http;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class CarBaseService
 {
@@ -58,6 +59,28 @@ class CarBaseService
             }
         }
 
+    }
+
+    /**
+     * Validate Lot data.
+     *
+     * @param array $lot
+     * @throws \Exception
+     */
+    public function validateLotData(array $lot): void
+    {
+        $validator = Validator::make($lot, [
+            'id' => 'required|integer',
+            'vehicle' => 'required|array',
+            'vehicle.model' => 'required|array',
+            'vehicle.model.manufacturer' => 'required|array',
+            'images' => 'nullable|array',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = implode(', ', $validator->errors()->all());
+            throw new \Exception('Invalid Lot id ' . $lot['id'] . ': ' . $errors);
+        }
     }
 
 }

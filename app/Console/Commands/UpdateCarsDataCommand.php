@@ -97,7 +97,7 @@ class UpdateCarsDataCommand extends Command
 
         $this->info('Updating Cars...');
         $this->carUpdateService->updateCars(
-            $this->carApiService->getLotInfo($this->authService->accessToken, $carLotsInfo['value'])['value']
+            $this->carApiService->getLotInfo($this->authService->accessToken, $carLotsInfo['value'])['value'], $this
         );
 
         $this->info('All done!');
