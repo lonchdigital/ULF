@@ -138,7 +138,9 @@ if (TinderCards) {
 				// Заборонити всім кнопкам реагувати на події натискання миші
 				const buttons = document.querySelectorAll('.tinder button');
 				buttons.forEach(button => {
-					button.style.pointerEvents = 'none';
+					if (!button.classList.contains('btn-modal-close')) {
+                        button.style.pointerEvents = 'none';
+                    }
 				});
 
 				setTimeout(() => {
@@ -204,7 +206,7 @@ if (TinderCards) {
 
 	}
 
-	
+
 }
 // else {
 // 	// Якщо елемент не знайдено, виведіть повідомлення або виконайте альтернативні дії

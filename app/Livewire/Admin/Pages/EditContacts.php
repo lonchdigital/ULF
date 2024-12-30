@@ -277,191 +277,287 @@ class EditContacts extends Component
 
         $this->page->save();
 
-        $this->page->pageBlocks->where('block', 'days')
-            ->where('key', 'first')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'days',
+            'key' => 'first'
+        ])
+        // where('block', 'days')
+        //     ->where('key', 'first')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'title' => $this->ukFirstDay,
             ]);
 
-        $this->page->pageBlocks->where('block', 'days')
-            ->where('key', 'first')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'days',
+            'key' => 'first'
+        ])
+        // where('block', 'days')
+        //     ->where('key', 'first')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'title' => $this->ruFirstDay,
             ]);
 
-        $this->page->pageBlocks->where('block', 'days')
-            ->where('key', 'second')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'days',
+            'key' => 'second'
+        ])
+        // where('block', 'days')
+        //     ->where('key', 'second')
+        //     ->first()
             ->translate('ua')->update([
                 'title' => $this->ukSecondDay,
             ]);
 
-        $this->page->pageBlocks->where('block', 'days')
-            ->where('key', 'second')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'days',
+            'key' => 'second'
+        ])
+        // where('block', 'days')
+        //     ->where('key', 'second')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'title' => $this->ruSecondDay,
             ]);
 
-        $this->page->pageBlocks->where('block', 'days')
-            ->where('key', 'first')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'days',
+            'key' => 'first'
+        ])
+        // where('block', 'days')
+        //     ->where('key', 'first')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'description' => $this->ukFirstHours,
             ]);
 
-        $this->page->pageBlocks->where('block', 'days')
-            ->where('key', 'first')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'days',
+            'key' => 'first'
+        ])
+        // where('block', 'days')
+        //     ->where('key', 'first')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'description' => $this->ruFirstHours,
             ]);
 
-        $this->page->pageBlocks->where('block', 'days')
-            ->where('key', 'second')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'days',
+            'key' => 'second'
+        ])
+        // where('block', 'days')
+        //     ->where('key', 'second')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'description' => $this->ukSecondHours,
             ]);
 
-        $this->page->pageBlocks->where('block', 'days')
-            ->where('key', 'second')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'days',
+            'key' => 'second'
+        ])
+        // where('block', 'days')
+        //     ->where('key', 'second')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'description' => $this->ruSecondHours
             ]);
 
-        $this->page->pageBlocks->where('block', 'address')
-            ->where('key', 'text')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'address',
+            'key' => 'text'
+        ])
+        // where('block', 'address')
+        //     ->where('key', 'text')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'title' => $this->ukFirstAddress
             ]);
 
-        $this->page->pageBlocks->where('block', 'address')
-            ->where('key', 'text')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'address',
+            'key' => 'text'
+        ])
+        // where('block', 'address')
+        //     ->where('key', 'text')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'tite' => $this->ruFirstAddress
             ]);
 
-        $this->page->pageBlocks->where('block', 'address')
-            ->where('key', 'text')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'address',
+            'key' => 'text'
+        ])
+        // where('block', 'address')
+        //     ->where('key', 'text')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'description' => $this->ukSecondAddress
             ]);
 
-        $this->page->pageBlocks->where('block', 'address')
-            ->where('key', 'text')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'address',
+            'key' => 'text'
+        ])
+        // where('block', 'address')
+        //     ->where('key', 'text')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'title' => $this->ruSecondAddress
             ]);
 
-        $this->page->pageBlocks->where('block', 'phone')
-            ->where('key', 'text')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'phone',
+            'key' => 'text'
+        ])
+        // where('block', 'phone')
+        //     ->where('key', 'text')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'title' => $this->ukFirstPhone
             ]);
 
-        $this->page->pageBlocks->where('block', 'phone')
-            ->where('key', 'text')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'phone',
+            'key' => 'text'
+        ])
+        // where('block', 'phone')
+        //     ->where('key', 'text')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'title' => $this->ruFirstPhone,
             ]);
 
-        $this->page->pageBlocks->where('block', 'phone')
-            ->where('key', 'text')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'phone',
+            'key' => 'text'
+        ])
+        // where('block', 'phone')
+        //     ->where('key', 'text')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'description' => $this->ukSecondPhone
             ]);
 
-        $this->page->pageBlocks->where('block', 'phone')
-            ->where('key', 'text')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'phone',
+            'key' => 'text'
+        ])
+        // where('block', 'phone')
+        //     ->where('key', 'text')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'title' => $this->ruSecondPhone
             ]);
 
-        $this->page->pageBlocks->where('block', 'email')
-            ->where('key', 'text')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'email',
+            'key' => 'text'
+        ])
+        // where('block', 'email')
+        //     ->where('key', 'text')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'title' => $this->ukEmail
             ]);
 
-        $this->page->pageBlocks->where('block', 'email')
-            ->where('key', 'text')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'email',
+            'key' => 'text'
+        ])
+        // where('block', 'email')
+        //     ->where('key', 'text')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'title' => $this->ruEmail
             ]);
 
-        $this->page->pageBlocks->where('block', 'instagram')
-            ->where('key', 'text')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'instagram',
+            'key' => 'text'
+        ])
+        // where('block', 'instagram')
+        //     ->where('key', 'text')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'title' => $this->ukInstagram
             ]);
 
-        $this->page->pageBlocks->where('block', 'instagram')
-            ->where('key', 'text')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'instagram',
+            'key' => 'text'
+        ])
+        // where('block', 'instagram')
+        //     ->where('key', 'text')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'title' => $this->ruInstagram
             ]);
 
-        $this->page->pageBlocks->where('block', 'facebook')
-            ->where('key', 'text')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'facebook',
+            'key' => 'text'
+        ])
+        // where('block', 'facebook')
+        //     ->where('key', 'text')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'title' => $this->ukFacebook
             ]);
 
-        $this->page->pageBlocks->where('block', 'facebook')
-            ->where('key', 'text')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'facebook',
+            'key' => 'text'
+        ])
+        // where('block', 'facebook')
+        //     ->where('key', 'text')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'title' => $this->ruFacebook
             ]);
 
-        $this->page->pageBlocks->where('block', 'map')
-            ->where('key', 'longitude')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'map',
+            'key' => 'longitude'
+        ])
+        // where('block', 'map')
+        //     ->where('key', 'longitude')
+        //     ->first()
             ->update([
                 'value' => $this->longitude,
             ]);
 
-        $this->page->pageBlocks->where('block', 'map')
-            ->where('key', 'latitude')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'map',
+            'key' => 'latitude'
+        ])
+        // where('block', 'map')
+        //     ->where('key', 'latitude')
+        //     ->first()
             ->update([
                 'value' => $this->latitude,
             ]);

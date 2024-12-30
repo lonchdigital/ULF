@@ -63,10 +63,17 @@
                                                                         <div language="uk"
                                                                             class="multilang-content tab-pane fade active show "
                                                                             id="faqs[2][answer]-uk">
-                                                                            <div class="form-group mb-1">
+                                                                            <div class="form-group mb-1" wire:ignore>
                                                                                 <label for="faqs[2][answer]_uk">Відповідь
                                                                                     <strong>UA</strong></label>
-                                                                                <textarea wire:model="faqs.{{ $index }}.ua.answer" class="form-control"></textarea>
+                                                                                {{-- <textarea wire:model="faqs.{{ $index }}.ua.answer" name="faqs.{{ $index }}.ua.answer"
+                                                                                data-quill-editor class="form-control"></textarea> --}}
+                                                                                    <div
+                                                                                        data-quill-editor
+                                                                                        data-name="faqs.{{ $index }}.ua.answer"
+                                                                                        data-value="{{ $faqs[$index]['ua']['answer'] }}"
+                                                                                        class="editor">
+                                                                                    </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -147,10 +154,19 @@
                                                                         <div language="uk"
                                                                             class="multilang-content tab-pane fade active show "
                                                                             id="faqs[2][answer]-uk">
-                                                                            <div class="form-group mb-1">
+                                                                            <div class="form-group mb-1" wire:ignore.self>
                                                                                 <label for="faqs[2][answer]_ru">Відповідь
                                                                                     <strong>RU</strong></label>
-                                                                                <textarea wire:model="faqs.{{ $index }}.ru.answer" class="form-control"></textarea>
+                                                                                {{-- <textarea wire:model="faqs.{{ $index }}.ru.answer" data-quill-editor
+                                                                                    wire:model="faqs.{{ $index }}.ru.answer" class="form-control"></textarea> --}}
+                                                                                    <div wire:ignore>
+                                                                                        <div
+                                                                                            data-quill-editor
+                                                                                            data-name="faqs.{{ $index }}.ru.answer"
+                                                                                            data-value="{{ $faqs[$index]['ru']['answer'] }}"
+                                                                                            class="editor">
+                                                                                        </div>
+                                                                                    </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -195,3 +211,139 @@
         </div>
     </div>
 </div>
+
+{{-- @push('scripts')
+    <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
+    <script type="text/javascript">
+        document.addEventListener('livewire:load', () => {
+            initQuillEditors();
+        });
+
+        document.addEventListener('livewire:update', () => {
+            initQuillEditors();
+        });
+
+        function initQuillEditors() {
+            const textareas = document.querySelectorAll('textarea[data-quill-editor]');
+            textareas.forEach((textarea) => {
+                if (!textarea.dataset.quillInitialized) {
+                    textarea.dataset.quillInitialized = true;
+
+                    const quill = new Quill(textarea, {
+                        theme: 'snow',
+                        modules: {
+                            toolbar: [
+                                ['bold', 'italic', 'underline', 'strike'],        // Formatting buttons
+                                [{ 'list': 'ordered' }, { 'list': 'bullet' }],   // Lists
+                                [{ 'align': [] }],                               // Alignment options
+                                ['clean']                                       // Remove formatting
+                            ],
+                        },
+                    });
+
+                    quill.on('text-change', () => {
+                        @this.set(textarea.name, quill.root.innerHTML);
+                    });
+
+                    quill.root.innerHTML = textarea.value;
+                }
+            });
+        }
+    </script>
+@endpush --}}
+{{-- @push('scripts')
+    <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
+    <script type="text/javascript">
+        document.addEventListener('livewire:load', () => {
+            console.log(123);
+            initQuillEditors();
+        });
+
+        document.addEventListener('livewire:update', () => {
+            console.log(456);
+            initQuillEditors();
+        });
+
+        function initQuillEditors() {
+            console.log(789);
+            const textareas = document.querySelectorAll('textarea[data-quill-editor]');
+            console.log(textareas);
+            textareas.forEach((textarea) => {
+                if (!textarea.dataset.quillInitialized) {
+                    textarea.dataset.quillInitialized = true;
+
+                    const quill = new Quill(textarea, {
+                        theme: 'snow',
+                        modules: {
+                            toolbar: [
+                                ['bold', 'italic', 'underline', 'strike'],        // Formatting buttons
+                                [{ 'list': 'ordered' }, { 'list': 'bullet' }],   // Lists
+                                [{ 'align': [] }],                               // Alignment options
+                                ['clean']                                       // Remove formatting
+                            ],
+                        },
+                    });
+
+                    quill.on('text-change', () => {
+                        @this.set(textarea.name, quill.root.innerHTML);
+                    });
+
+                    // Set initial content
+                    quill.root.innerHTML = textarea.value;
+                }
+            });
+        }
+    </script>
+@endpush --}}
+@push('scripts')
+    <script src="{{ asset('admin_src/js/default-assets/quill-init.js') }}"></script>
+    <script type="text/javascript">
+        document.addEventListener('livewire:load', () => {
+            console.log('Livewire loaded');
+            setTimeout(() => {
+                initQuillEditors();
+            }, 20);
+        });
+
+        document.addEventListener('livewire:update', () => {
+            console.log('Livewire updated');
+            setTimeout(() => {
+                initQuillEditors();
+            }, 50);
+        });
+
+        function initQuillEditors() {
+            console.log('Initializing Quill editors...');
+            const editors = document.querySelectorAll('div[data-quill-editor]');
+            console.log(editors);
+
+            editors.forEach((editor) => {
+                if (!editor.dataset.quillInitialized) {
+                    editor.dataset.quillInitialized = true;
+
+                    const quill = new Quill(editor, {
+                        theme: 'snow',
+                        modules: {
+                            toolbar: [
+                                ['bold', 'italic', 'underline', 'strike'],        // Formatting buttons
+                                [{ 'list': 'ordered' }, { 'list': 'bullet' }],   // Lists
+                                [{ 'align': [] }],                               // Alignment options
+                                ['clean']                                       // Remove formatting
+                            ],
+                        },
+                    });
+
+                    quill.on('text-change', () => {
+                        @this.set(editor.getAttribute('data-name'), quill.root.innerHTML);
+                    });
+
+                    // Set initial content
+                    const initialValue = editor.getAttribute('data-value');
+                    if (initialValue) {
+                        quill.root.innerHTML = initialValue;
+                    }
+                }
+            });
+        }
+    </script>
+@endpush

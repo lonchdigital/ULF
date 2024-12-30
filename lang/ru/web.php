@@ -62,4 +62,11 @@ return [
     'go_on_test_drive' => 'Посети тест-драйв',
     'you_can_try_than_subscribe' => 'Можешь попробовать, а затем подписаться',
     'want_to_test' => 'Хочу затестить',
+    'your_name' => 'Ваше имя',
+    'phone_number' => 'Номер телефона',
+    'consent_to_the_collection_processing_storage_and_use_of_my' => 'Я даю согласие на сбор, обработку, хранение и использование своих',
+    'personal_data' => 'персональных данных',
+    'send_form' => 'Отправить',
+    'do_you_like_the_car' => 'Понравился автомобиль?',
+    'drive_it_today' => 'Управляйте им уже сегодня!',
 ];

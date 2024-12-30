@@ -145,7 +145,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="d-flex align-items-start justify-content-between mb-3">
-                                    <div class="modal-title font-weight-bolder mb-0">Сподобалось авто? <br><span class="text-main-blue">Кермуй його вже сьогодні!</span></div>
+                                    <div class="modal-title font-weight-bolder mb-0">{{ __('web.do_you_like_the_car') }} <br><span class="text-main-blue">{{ __('web.drive_it_today') }}</span></div>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">
                                             <svg>
@@ -159,7 +159,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="field mb-3">
-                                    <label class="control-label" for="popup-tinder--name">Ваше ім’я</label>
+                                    <label class="control-label" for="popup-tinder--name">{{ __('web.your_name') }}</label>
                                     <input type="text" id="popup-tinder---name" name="name" class="form-control mb-3" placeholder="Введіть ім’я" autocomplete="no-autofill-please">
                                     {{-- <div class="field--help-info small-txt text-red mb-2" id="name-error">Введіть Ваше ім’я українськими літерами (кирилицею)</div> --}}
                                 </div>
@@ -167,9 +167,9 @@
                             </div>
                             <div class="col-12">
                                 <div class="field mb-3">
-                                    <label class="control-label" for="popup-tinder--phone">Номер телефону</label>
+                                    <label class="control-label" for="popup-tinder--phone">{{ __('web.phone_number') }}</label>
                                     <input type="tel" id="popup-tinder--phone" name="phone" class="form-control mb-3" placeholder="+38 000 0000000" autocomplete="no-autofill-please">
-                                    <div class="field--help-info small-txt text-red mb-2" id="phone-error">Введіть Ваш номер телефону</div>
+                                    <div class="field--help-info small-txt text-red mb-2" id="phone-error"></div>
                                 </div>
                                 <div class="field--help-info small-txt text-red mb-2" id="phone_error"></div>
                             </div>
@@ -177,14 +177,14 @@
                                 <div class="custom-control custom-checkbox position-relative mb-5">
                                     <input type="checkbox" class="custom-control-input" id="check-form-popup-tinder" name="approve">
                                     <label class="custom-control-label" for="check-form-popup-tinder">
-                                        <span class="custom-checkbox--info">Я даю згоду на збір, обробку, зберігання та використання своїх <a href="##">персональних даних</a>.</span>
+                                        <span class="custom-checkbox--info">{{ __('web.consent_to_the_collection_processing_storage_and_use_of_my') }} <a href="##">{{ __('web.personal_data') }}</a>.</span>
                                     </label>
                                 </div>
                                 <div class="field--help-info small-txt text-red mb-2" id="approve_error"></div>
                             </div>
                             <input type="hidden" name="page" value="Головна сторінка">
                             <div class="col-12 col-md-auto">
-                                <button type="submit" class="btn-modal-close btn-default btn-default-orange btn btn-block btn-orange btn-default text-uppercase">Відправити</button>
+                                <button type="submit" class="btn-modal-close btn-default btn-default-orange btn btn-block btn-orange btn-default text-uppercase">{{ __('web.send_form') }}</button>
                             </div>
                         </div>
                     </form>

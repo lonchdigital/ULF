@@ -19,6 +19,8 @@ class Edit extends Component
 
     public function mount(Page $page)
     {
+        $this->dispatch('livewire:load');
+
         $this->locale = 'ua';
 
         $this->page = $page;
@@ -97,6 +99,7 @@ class Edit extends Component
     public function languageSwitched($lang)
     {
         $this->locale = $lang;
+        $this->dispatch('livewire:update');
     }
 
     public function getFaqsProperty()
@@ -121,6 +124,8 @@ class Edit extends Component
 
             'sort' => count($this->faqs) + 1,
         ];
+
+        $this->dispatch('livewire:update');
     }
 
     public function removeElement($index)
@@ -134,6 +139,8 @@ class Edit extends Component
         if (array_key_exists($index, $this->faqs)) {
             unset($this->faqs[$index]);
         }
+
+        $this->dispatch('livewire:update');
     }
 
     public function save()
@@ -173,6 +180,8 @@ class Edit extends Component
         usort($this->faqs, function ($a, $b) {
             return $a['sort'] <=> $b['sort'];
         });
+
+        $this->dispatch('livewire:update');
     }
 
     public function render()
