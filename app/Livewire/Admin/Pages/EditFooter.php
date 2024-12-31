@@ -223,207 +223,311 @@ class EditFooter extends Component
 
         $this->page->save();
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'description')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'description'
+        ])
+        // where('block', 'footer')
+        //     ->where('key', 'description')
+        //     ->first()
             ->translate('uk')
             ->update([
                 'description' => $this->ukDescription,
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'description')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'description'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'description')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'description' => $this->ruDescription,
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'communicate_telegram')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'communicate_telegram'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'communicate_telegram')
+        //     ->first()
             ->translate('ua')->update([
                 'description' => $this->telegramLink,
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'communicate_telegram')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'communicate_telegram'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'communicate_telegram')
+        //     ->first()
             ->translate('ru')->update([
                 'description' => $this->telegramLink,
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'communicate_viber')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'communicate_viber'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'communicate_viber')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'description' => $this->viberLink,
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'communicate_viber')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'communicate_viber'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'communicate_viber')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'description' => $this->viberLink,
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'bot_viber')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'bot_viber'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'bot_viber')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'description' => $this->botViber,
             ]);
 
-            $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'bot_viber')
-            ->first()
+            $this->page->pageBlocks()->firstOrCreate([
+                'block' => 'footer',
+                'ley' => 'bot_viber'
+            ])
+            // ->where('block', 'footer')
+            // ->where('key', 'bot_viber')
+            // ->first()
             ->translate('ru')
             ->update([
                 'description' => $this->botViber,
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'bot_telegram')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'bot_telegram'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'bot_telegram')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'description' => $this->botTelegram,
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'bot_telegram')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'bot_telegram'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'bot_telegram')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'description' => $this->botTelegram,
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'email')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'email'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'email')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'description' => $this->email,
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'email')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'email'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'email')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'description' => $this->email,
             ]);
 
-        $this->page->pageBlocks->where('block', 'phone')
-            ->where('key', 'phone1')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'phone',
+            'ley' => 'phone1'
+        ])
+        // ->where('block', 'phone')
+        //     ->where('key', 'phone1')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'title' => $this->phone1
             ]);
 
-        $this->page->pageBlocks->where('block', 'phone')
-            ->where('key', 'phone2')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'phone',
+            'ley' => 'phone2'
+        ])
+        // ->where('block', 'phone')
+        //     ->where('key', 'phone2')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'title' => $this->phone2
             ]);
 
-        $this->page->pageBlocks->where('block', 'phone')
-            ->where('key', 'phone2')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'phone',
+            'ley' => 'phone2'
+        ])
+        // ->where('block', 'phone')
+        //     ->where('key', 'phone2')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'description' => $this->ukPhone2Desck
             ]);
 
-        $this->page->pageBlocks->where('block', 'phone')
-            ->where('key', 'phone2')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'phone',
+            'ley' => 'phone2'
+        ])
+        // ->where('block', 'phone')
+        //     ->where('key', 'phone2')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'description' => $this->ruPhone2Desck
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'instagram')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'instagram'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'instagram')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'description' => $this->inst
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'instagram')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'instagram'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'instagram')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'description' => $this->inst
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'tik_tok')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'tik_tok'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'tik_tok')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'description' => $this->tikTok
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'tik_tok')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'tik_tok'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'tik_tok')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'description' => $this->tikTok
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'facebook')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'facebook'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'facebook')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'description' => $this->facebook
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'facebook')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'facebook'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'facebook')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'description' => $this->facebook
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'youtube')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'youtube'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'youtube')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'description' => $this->youtube,
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'youtube')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'youtube'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'youtube')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'description' => $this->youtube,
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'linkedin')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'linkedin'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'linkedin')
+        //     ->first()
             ->translate('ua')
             ->update([
                 'description' => $this->linkedin
             ]);
 
-        $this->page->pageBlocks->where('block', 'footer')
-            ->where('key', 'linkedin')
-            ->first()
+        $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'ley' => 'linkedin'
+        ])
+        // ->where('block', 'footer')
+        //     ->where('key', 'linkedin')
+        //     ->first()
             ->translate('ru')
             ->update([
                 'description' => $this->linkedin

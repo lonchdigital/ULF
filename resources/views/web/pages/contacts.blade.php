@@ -113,7 +113,7 @@
                                 referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
 
                             <iframe
-                                src="https://www.google.com/maps?q={{ $page->pageBlocks()->where('block', 'map')->where('key', 'latitude')->first()->title }},{{ $page->pageBlocks()->where('block', 'map')->where('key', 'longitude')->first()->title }}&hl=uk&output=embed"
+                                src="https://www.google.com/maps?q={{ $page->pageBlocks()->where('block', 'map')->where('key', 'latitude')->first()->value }},{{ $page->pageBlocks()->where('block', 'map')->where('key', 'longitude')->first()->value }}&hl=uk&output=embed"
                                 style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
 

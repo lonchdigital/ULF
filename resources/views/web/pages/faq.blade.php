@@ -34,26 +34,26 @@
                         <div class="col-12 col-lg-10 mx-auto">
                             <div class="row accordion" id="accordion-questions">
                                 @forelse($page->faqs()->orderBy('sort', 'ASC')->get() as $faq)
-                                <div class="col-12 content">
-                                    <div class="card">
-                                        <div class="card-header p-0" id="heading-accordion-question-{{ $loop->iteration }}">
-                                            <div class="h4 mb-0">
-                                                <div class="btn btn-link collapsed" data-toggle="collapse"
-                                                    data-target="#collapse-accordion-question-{{ $loop->iteration }}" aria-expanded="false"
-                                                    aria-controls="collapse-accordion-question-{{ $loop->iteration }}">{{ $faq->question }}</div>
+                                    <div class="col-12 content">
+                                        <div class="card">
+                                            <div class="card-header p-0" id="heading-accordion-question-{{ $loop->iteration }}">
+                                                <div class="h4 mb-0">
+                                                    <div class="btn btn-link collapsed" data-toggle="collapse"
+                                                        data-target="#collapse-accordion-question-{{ $loop->iteration }}" aria-expanded="false"
+                                                        aria-controls="collapse-accordion-question-{{ $loop->iteration }}">{{ $faq->question }}</div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div id="collapse-accordion-question-{{ $loop->iteration }}" class="collapse"
-                                            aria-labelledby="heading-accordion-question-{{ $loop->iteration }}"
-                                            data-parent="#accordion-questions">
-                                            <div class="card-body art-rich-editor">
-                                                {!! $faq->answer !!}
+                                            <div id="collapse-accordion-question-{{ $loop->iteration }}" class="collapse"
+                                                aria-labelledby="heading-accordion-question-{{ $loop->iteration }}"
+                                                data-parent="#accordion-questions">
+                                                <div class="card-body art-rich-editor">
+                                                    {!! $faq->answer !!}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 @empty
-                                @endif
+                                @endforelse
                             </div>
                         </div>
                     </div>
@@ -172,5 +172,5 @@
             </section>
         </div>
     </main>
-    
+
 @endsection

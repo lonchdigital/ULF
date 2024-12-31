@@ -493,7 +493,24 @@
                         <div class="col">
                             <div class="head font-weight-bolder mb-3 mb-md-6 text-center">Часті питання</div>
                             <div class="accordion" id="accordion-asked-questions">
-                                <div class="card">
+                                @forelse($page->faqs()->orderBy('sort', 'ASC')->get() as $faq)
+                                    <div class="card">
+                                        <div class="card-header p-0" id="heading-accordion-question-{{ $loop->iteration }}">
+                                            <div class="h4 mb-0">
+                                                <div class="btn btn-link collapsed" data-toggle="collapse"
+                                                    data-target="#collapse-accordion-question-{{ $loop->iteration }}" aria-expanded="false"
+                                                    aria-controls="collapse-accordion-question-{{ $loop->iteration }}">{{ $faq->question }}</div>
+                                            </div>
+                                        </div>
+                                        <div id="collapse-accordion-question-{{ $loop->iteration }}" class="collapse"
+                                            aria-labelledby="heading-accordion-question-{{ $loop->iteration }}"
+                                            data-parent="#accordion-asked-questions">
+                                            <div class="card-body">{!! $faq->answer !!}</div>
+                                        </div>
+                                    </div>
+                                @empty
+                                @endforelse
+                                {{-- <div class="card">
                                     <div class="card-header p-0" id="heading-accordion-question-1">
                                         <div class="h4 mb-0">
                                             <div class="btn btn-link collapsed" data-toggle="collapse"
@@ -566,9 +583,9 @@
                                         data-parent="#accordion-asked-questions">
                                         <div class="card-body">Чи можу я поміняти авто?</div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
-                            <a href="asked-questions.html"
+                            <a href="/faq"
                                 class="btn-default btn btn-block btn-outline-main-blue text-uppercase mt-3 mt-md-6 col-12 col-md-6 col-lg-4 mx-auto">Більше
                                 Відповідей</a>
                         </div>

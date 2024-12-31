@@ -21,6 +21,7 @@ class PageBlock extends Model
         'page_id',
         'key',
         'block',
+        'value',
     ];
 
     public function page(): BelongsTo
