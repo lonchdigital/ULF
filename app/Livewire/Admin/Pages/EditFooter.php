@@ -225,7 +225,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'description'
+            'key' => 'description'
         ])
         // where('block', 'footer')
         //     ->where('key', 'description')
@@ -237,7 +237,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'description'
+            'key' => 'description'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'description')
@@ -249,7 +249,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'communicate_telegram'
+            'key' => 'communicate_telegram'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'communicate_telegram')
@@ -260,7 +260,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'communicate_telegram'
+            'key' => 'communicate_telegram'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'communicate_telegram')
@@ -271,7 +271,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'communicate_viber'
+            'key' => 'communicate_viber'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'communicate_viber')
@@ -283,7 +283,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'communicate_viber'
+            'key' => 'communicate_viber'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'communicate_viber')
@@ -295,7 +295,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'bot_viber'
+            'key' => 'bot_viber'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'bot_viber')
@@ -307,7 +307,7 @@ class EditFooter extends Component
 
             $this->page->pageBlocks()->firstOrCreate([
                 'block' => 'footer',
-                'ley' => 'bot_viber'
+                'key' => 'bot_viber'
             ])
             // ->where('block', 'footer')
             // ->where('key', 'bot_viber')
@@ -319,7 +319,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'bot_telegram'
+            'key' => 'bot_telegram'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'bot_telegram')
@@ -331,7 +331,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'bot_telegram'
+            'key' => 'bot_telegram'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'bot_telegram')
@@ -343,7 +343,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'email'
+            'key' => 'email'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'email')
@@ -355,7 +355,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'email'
+            'key' => 'email'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'email')
@@ -367,7 +367,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'phone',
-            'ley' => 'phone1'
+            'key' => 'phone1'
         ])
         // ->where('block', 'phone')
         //     ->where('key', 'phone1')
@@ -379,7 +379,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'phone',
-            'ley' => 'phone2'
+            'key' => 'phone2'
         ])
         // ->where('block', 'phone')
         //     ->where('key', 'phone2')
@@ -391,7 +391,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'phone',
-            'ley' => 'phone2'
+            'key' => 'phone2'
         ])
         // ->where('block', 'phone')
         //     ->where('key', 'phone2')
@@ -403,7 +403,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'phone',
-            'ley' => 'phone2'
+            'key' => 'phone2'
         ])
         // ->where('block', 'phone')
         //     ->where('key', 'phone2')
@@ -415,7 +415,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'instagram'
+            'key' => 'instagram'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'instagram')
@@ -427,7 +427,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'instagram'
+            'key' => 'instagram'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'instagram')
@@ -439,7 +439,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'tik_tok'
+            'key' => 'tik_tok'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'tik_tok')
@@ -451,7 +451,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'tik_tok'
+            'key' => 'tik_tok'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'tik_tok')
@@ -463,7 +463,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'facebook'
+            'key' => 'facebook'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'facebook')
@@ -475,7 +475,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'facebook'
+            'key' => 'facebook'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'facebook')
@@ -487,7 +487,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'youtube'
+            'key' => 'youtube'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'youtube')
@@ -499,7 +499,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'youtube'
+            'key' => 'youtube'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'youtube')
@@ -511,7 +511,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'linkedin'
+            'key' => 'linkedin'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'linkedin')
@@ -523,7 +523,7 @@ class EditFooter extends Component
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
-            'ley' => 'linkedin'
+            'key' => 'linkedin'
         ])
         // ->where('block', 'footer')
         //     ->where('key', 'linkedin')
