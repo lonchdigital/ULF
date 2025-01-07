@@ -108,7 +108,7 @@ class CarApiService extends AuthService
                     "inn" => null,
                     "phoneNumber" => $data['phone']
                 ],
-                "currentUrl" => $data['current_url'],
+                "currentUrl" => null,
                 "utm_source" => $data['utm_source'],
                 "utm_medium" => $data['utm_medium'],
                 "utm_campaign" => $data['utm_campaign'],
