@@ -37,24 +37,6 @@
         @endif
     </div>
     <div class="car-properties--item">
-        <div class="car-properties--name">{{ trans('web.safety_pillow') }}</div>
-        @if( $car->vehicle->equipment->HasAirbag )
-            <div class="car-properties--mean">{{ trans('car.has_airbag') }}</div>
-        @endif
-        @if( $car->vehicle->equipment->HasAirbagDr )
-            <div class="car-properties--mean">{{ trans('car.has_airbag_dr') }}</div>
-        @endif
-        @if( $car->vehicle->equipment->HasAirbagDr )
-            <div class="car-properties--mean">{{ trans('car.has_airbag_dr') }}</div>
-        @endif
-        @if( $car->vehicle->equipment->HasAirbagFull )
-            <div class="car-properties--mean">{{ trans('car.has_airbag_full') }}</div>
-        @endif
-        @if( $car->vehicle->equipment->HasAirbagSide )
-            <div class="car-properties--mean">{{ trans('car.has_airbag_side') }}</div>
-        @endif
-    </div>
-    <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.interior_upholstery') }}</div>
         @if( $car->vehicle->equipment->HasCloth )
             <div class="car-properties--mean">{{ trans('car.has_cloth') }}</div>
@@ -101,10 +83,6 @@
         @if( $car->vehicle->equipment->HasSeat2Hand )
             <div class="car-properties--mean">{{ trans('car.has_seat_2_hand') }}</div>
         @endif
-    </div>
-    <div class="car-properties--item">
-        <div class="car-properties--name">{{ trans('web.comfort') }}</div>
-        <div class="car-properties--mean">-</div>
     </div>
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.climate') }}</div>
