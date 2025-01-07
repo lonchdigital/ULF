@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Jobs\SendFeedbackEmailJob;
 use App\Http\Controllers\Controller;
 use App\Jobs\SendCallBackFormEmailJob;
+use App\Jobs\SendFeedbackTinderEmailJob;
 use App\Http\Requests\Api\FeedbackRequest;
 use App\Jobs\SendTestDriveFeedbackEmailJob;
 use App\Http\Requests\Api\CallBackFormRequest;
@@ -36,7 +37,9 @@ class FeedbackController extends Controller
     {
         $data = $request->validated();
 
-        dispatch(new SendFeedbackEmailJob($data));
+        // dd('hello, STOP!', $data);
+        dispatch(new SendFeedbackTinderEmailJob($data));
+        // dispatch(new SendFeedbackEmailJob($data));
 
         return response()->json(['success' => true]);
     }
