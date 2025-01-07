@@ -32,8 +32,8 @@ class SendFeedbackTinderEmailJob implements ShouldQueue
      */
     public function handle(): void
     {
-        $message = 'Ім\'я клієнта: ' . $this->data['name_lead'] . '<br>' .
-                    'Телефон клієнта: ' . $this->data['phone_lead'] . '<br>'
+        $message = 'Ім\'я клієнта: ' . $this->data['name'] . '<br>' .
+                    'Телефон клієнта: ' . $this->data['phone'] . '<br>'
 //                    'Обрані авто: ' . $this->data['favorite_cars'] . '<br>' .
 //                    'Сторінка: ' . $this->data['page']
         ;
@@ -45,14 +45,13 @@ class SendFeedbackTinderEmailJob implements ShouldQueue
 
 
         $dataForRetailLead = [
-            'name' => $this->data['name_lead'],
-            'phone' => $this->data['phone_lead'],
-            'current_url' => $this->data['current_url'],
-            'utm_source' => $this->data['utm_source'],
-            'utm_medium' => $this->data['utm_medium'],
-            'utm_campaign' => $this->data['utm_campaign'],
-            'utm_term' => $this->data['utm_term'],
-            'utm_content' => $this->data['utm_content'],
+            'name' => $this->data['name'],
+            'phone' => $this->data['phone'],
+            'utm_source' => null,
+            'utm_medium' => null,
+            'utm_campaign' => null,
+            'utm_term' => null,
+            'utm_content' => null,
         ];
 
         // send data to ULF system vue API

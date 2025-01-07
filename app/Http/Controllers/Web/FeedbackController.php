@@ -33,13 +33,31 @@ class FeedbackController extends Controller
         return redirect()->route('thanks');
     }
 
-    public function storeFavorite(StoreAutomatchRequest $request)
-    {
-        $data = $request->validated();
+    // public function storeFavorite(StoreAutomatchRequest $request)
+    // {
+    //     $data = $request->validated();
 
-        // dd('hello, STOP!', $data);
-        dispatch(new SendFeedbackTinderEmailJob($data));
-        // dispatch(new SendFeedbackEmailJob($data));
+    //     // dd('hello, STOP!', $data);
+    //     dispatch(new SendFeedbackTinderEmailJob($data));
+    //     // dispatch(new SendFeedbackEmailJob($data));
+
+    //     return response()->json(['success' => true]);
+    // }
+
+    public function storeFavorite(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:100',
+            'phone' => 'required|string|regex:/^[^_]*$/|min:16',
+            'approve' => 'accepted',
+            'utm_source' => 'nullable|string',
+            'utm_medium' => 'nullable|string',
+            'utm_campaign' => 'nullable|string',
+            'utm_term' => 'nullable|string',
+            'utm_content' => 'nullable|string',
+        ]);
+
+        dispatch(new SendFeedbackTinderEmailJob($request->all()));
 
         return response()->json(['success' => true]);
     }
