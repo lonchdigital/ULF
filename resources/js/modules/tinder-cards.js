@@ -28,11 +28,12 @@ if (TinderCards) {
 		let lastZIndex = zIndexCounter;
 
 		document.querySelector('.tinder .i-like').onclick = () => {
-			const nameElement = current.querySelector('.name');
-			const nameValue = nameElement ? nameElement.textContent : null;
+			// const nameElement = current.querySelector('.name');
+			const carComment = current.querySelector('.car-comment');
+			const carCommentValue = carComment ? carComment.textContent : null;
 
-			if (nameValue) {
-				favorites.push(nameValue);
+			if (carCommentValue) {
+				favorites.push(carCommentValue);
 			}
 
 			console.log(favorites.join(', '));
@@ -54,11 +55,11 @@ if (TinderCards) {
 		}
 
 		document.querySelector('.tinder .i-favorite').onclick = () => {
-			const nameElement = current.querySelector('.name');
-			const nameValue = nameElement ? nameElement.textContent : null;
+			const carComment = current.querySelector('.car-comment');
+			const carCommentValue = carComment ? carComment.textContent : null;
 
-			if (nameValue) {
-				favorites.push(nameValue);
+			if (carCommentValue) {
+				favorites.push(carCommentValue);
 			}
 
 			if (!isAnimationInProgress) {
@@ -168,7 +169,7 @@ if (TinderCards) {
 				const form = document.getElementById('tinderForm');
 				const formData = new FormData(form);
 
-				formData.append('favorite_cars', favorites.join(', '));
+				formData.append('favorite_cars', favorites.join(' | '));
 
 				console.log(formData);
 

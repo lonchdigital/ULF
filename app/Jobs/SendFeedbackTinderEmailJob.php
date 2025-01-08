@@ -52,6 +52,7 @@ class SendFeedbackTinderEmailJob implements ShouldQueue
             'utm_campaign' => null,
             'utm_term' => null,
             'utm_content' => null,
+            'comment' => $this->data['favorite_cars'],
         ];
 
         // send data to ULF system vue API

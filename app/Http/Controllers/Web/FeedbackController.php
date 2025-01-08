@@ -68,6 +68,7 @@ class FeedbackController extends Controller
             'utm_campaign' => 'nullable|string',
             'utm_term' => 'nullable|string',
             'utm_content' => 'nullable|string',
+            'favorite_cars' => 'nullable|string',
         ]);
 
         dispatch(new SendFeedbackTinderEmailJob($request->all()));

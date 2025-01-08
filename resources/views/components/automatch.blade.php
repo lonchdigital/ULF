@@ -25,6 +25,7 @@
                                                 </div>
                                                 </a>
                                             </div>
+                                            <div class="car-comment d-none">{{ $match->comment ?? '' }}</div>
                                         </div>
                                         <div class="wrap-img">
                                             @if($match->image)
