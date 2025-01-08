@@ -53,13 +53,20 @@
                         </a>
                     </li>
 
+                    <li @if( $currentRoute === 'admin.automatch.feedbacks.index' ) class="active"@endif>
+                        <a href="{{ route('admin.automatch.feedbacks.index') }}">
+                            <i class="fa fa-edit"></i>
+                            <span>Заявки</span>
+                        </a>
+                    </li>
+
                     <li @if( $currentRoute === 'article.index' ) class="active"@endif>
                         <a href="{{ route('article.index') }}">
                             <i class='fa fa-book'></i>
                             <span>{{ trans('admin.blog') }}</span>
                         </a>
                     </li>
-                    
+
                     <li @if(Route::is('admin.pages.*')) class="active"@endif>
                         <a href="{{ route('admin.pages.index') }}">
                             <i class="fa fa-file-powerpoint-o"></i>
