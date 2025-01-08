@@ -153,7 +153,7 @@
                                 <a href="mailto:{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'email')->first()->description }}">{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'email')->first()->description }}</a>
                             </div>
                         </li>
-                        <ul class="list-inline mb-0">
+                        <ul class="list-inline mb-0 mt-8">
                             @if(!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->description))
                                 <li class="list-inline-item">
                                     <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->description }}" target="_blank">
