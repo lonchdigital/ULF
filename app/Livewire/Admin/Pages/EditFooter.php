@@ -5,6 +5,7 @@ namespace App\Livewire\Admin\Pages;
 use App\Models\Faq;
 use App\Models\FaqTranslation;
 use App\Models\Page;
+use App\Models\PageBlock;
 use App\Services\Admin\Page\ImageService;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -52,6 +53,36 @@ class EditFooter extends Component
     public $image;
 
     public $imageTemporary;
+
+    public PageBlock $linkedinBlock;
+
+    public $linkedinImage;
+
+    public $linkedinImageTemporary;
+
+    public PageBlock $youtubeBlock;
+
+    public $youtubeImage;
+
+    public $youtubeImageTemporary;
+
+    public PageBlock $facebookBlock;
+
+    public $facebookImage;
+
+    public $facebookImageTemporary;
+
+    public PageBlock $tiktokBlock;
+
+    public $tiktokImage;
+
+    public $tiktokImageTemporary;
+
+    public PageBlock $instagramBlock;
+
+    public $instagramImage;
+
+    public $instagramImageTemporary;
 
     protected $listeners = [
         'languageSwitched' => 'languageSwitched'
@@ -174,6 +205,31 @@ class EditFooter extends Component
             ])
             ->translate('ua')
             ->description ?? '';
+
+        $this->linkedinBlock = $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'key' => 'linkedin'
+        ]);
+
+        $this->youtubeBlock = $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'key' => 'youtube'
+        ]);
+
+        $this->facebookBlock = $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'key' => 'facebook'
+        ]);
+
+        $this->tiktokBlock = $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'key' => 'tik_tok'
+        ]);
+
+        $this->instagramBlock = $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'key' => 'instagram'
+        ]);
     }
 
     protected function rules()
@@ -264,6 +320,36 @@ class EditFooter extends Component
                 'mimes:jpeg,jpg,png,gif',
                 'image',
             ],
+
+            'linkedinImage' => [
+                'nullable',
+                'mimes:jpeg,jpg,png,gif,svg',
+                'image',
+            ],
+
+            'youtubeImage' => [
+                'nullable',
+                'mimes:jpeg,jpg,png,gif,svg',
+                'image',
+            ],
+
+            'facebookImage' => [
+                'nullable',
+                'mimes:jpeg,jpg,png,gif,svg',
+                'image',
+            ],
+
+            'tiktokImage' => [
+                'nullable',
+                'mimes:jpeg,jpg,png,gif,svg',
+                'image',
+            ],
+
+            'instagramImage' => [
+                'nullable',
+                'mimes:jpeg,jpg,png,gif,svg',
+                // 'image',
+            ],
         ];
     }
 
@@ -279,10 +365,75 @@ class EditFooter extends Component
         $this->imageTemporary = $val->temporaryUrl();
     }
 
+    public function updatedLinkedinImage($val)
+    {
+        $this->validateOnly('linkedinImage');
+        $this->linkedinImage = $val;
+        $this->linkedinImageTemporary = $val->temporaryUrl();
+    }
+
+    public function updatedYoutubeImage($val)
+    {
+        $this->validateOnly('youtubeImage');
+        $this->youtubeImage = $val;
+        $this->youtubeImageTemporary = $val->temporaryUrl();
+    }
+
+    public function updatedFacebookImage($val)
+    {
+        $this->validateOnly('facebookImage');
+        $this->facebookImage = $val;
+        $this->facebookImageTemporary = $val->temporaryUrl();
+    }
+
+    public function updatedTiktokImage($val)
+    {
+        $this->validateOnly('tiktokImage');
+        $this->tiktokImage = $val;
+        $this->tiktokImageTemporary = $val->temporaryUrl();
+    }
+
+    public function updatedInstagramImage($val)
+    {
+        $this->validateOnly('instagramImage');
+        $this->instagramImage = $val;
+        $this->instagramImageTemporary = $val->temporaryUrl();
+    }
+
     public function deleteImage()
     {
         $this->image = null;
         $this->imageTemporary = null;
+    }
+
+    public function deleteLinkedinImage()
+    {
+        $this->linkedinImage = null;
+        $this->linkedinImageTemporary = null;
+    }
+
+    public function deleteYoutubeImage()
+    {
+        $this->youtubeImage = null;
+        $this->youtubeImageTemporary = null;
+    }
+
+    public function deleteFacebookImage()
+    {
+        $this->facebookImage = null;
+        $this->facebookImageTemporary = null;
+    }
+
+    public function deleteTiktokImage()
+    {
+        $this->tiktokImage = null;
+        $this->tiktokImageTemporary = null;
+    }
+
+    public function deleteInstagramImage()
+    {
+        $this->instagramImage = null;
+        $this->instagramImageTemporary = null;
     }
 
     public function save()
@@ -421,6 +572,17 @@ class EditFooter extends Component
             'key' => 'instagram'
         ]);
 
+        if ($this->instagramImage) {
+            $image = $imageService->downloadImage($this->instagramImage, '/footer');
+
+            if(!empty($this->block->value)) {
+                $imageService->deleteStorageImage($this->instagramImage, $this->block->value);
+            }
+
+            $block->value = $image;
+            $block->save();
+        }
+
         $translation = $block->translateOrNew('ua');
         $translation->description = $this->inst;
         $translation->save();
@@ -433,6 +595,17 @@ class EditFooter extends Component
             'block' => 'footer',
             'key' => 'tik_tok'
         ]);
+
+        if ($this->tiktokImage) {
+            $image = $imageService->downloadImage($this->tiktokImage, '/footer');
+
+            if(!empty($this->block->value)) {
+                $imageService->deleteStorageImage($this->tiktokImage, $this->block->value);
+            }
+
+            $block->value = $image;
+            $block->save();
+        }
 
         $translation = $block->translateOrNew('ua');
         $translation->description = $this->tikTok;
@@ -447,6 +620,17 @@ class EditFooter extends Component
             'key' => 'facebook'
         ]);
 
+        if ($this->facebookImage) {
+            $image = $imageService->downloadImage($this->facebookImage, '/footer');
+
+            if(!empty($this->block->value)) {
+                $imageService->deleteStorageImage($this->facebookImage, $this->block->value);
+            }
+
+            $block->value = $image;
+            $block->save();
+        }
+
         $translation = $block->translateOrNew('ua');
         $translation->description = $this->facebook;
         $translation->save();
@@ -460,6 +644,17 @@ class EditFooter extends Component
             'key' => 'youtube'
         ]);
 
+        if ($this->youtubeImage) {
+            $image = $imageService->downloadImage($this->youtubeImage, '/footer');
+
+            if(!empty($this->block->value)) {
+                $imageService->deleteStorageImage($this->youtubeImage, $this->block->value);
+            }
+
+            $block->value = $image;
+            $block->save();
+        }
+
         $translation = $block->translateOrNew('ua');
         $translation->description = $this->youtube;
         $translation->save();
@@ -472,6 +667,17 @@ class EditFooter extends Component
             'block' => 'footer',
             'key' => 'linkedin'
         ]);
+
+        if ($this->linkedinImage) {
+            $image = $imageService->downloadImage($this->linkedinImage, '/footer');
+
+            if(!empty($this->block->value)) {
+                $imageService->deleteStorageImage($this->linkedinImage, $this->block->value);
+            }
+
+            $block->value = $image;
+            $block->save();
+        }
 
         $translation = $block->translateOrNew('ua');
         $translation->description = $this->linkedin;

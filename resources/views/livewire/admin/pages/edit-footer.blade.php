@@ -276,154 +276,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div language="uk"
-                                                                        class="multilang-content tab-pane fade active show "
-                                                                        id="faqs[2][question]-uk">
-                                                                        <div class="form-group mb-1">
-                                                                            <label for="faqs[2][question]_uk">Посилання
-                                                                                на instagram
-                                                                            </label>
-                                                                            <input type="text" wire:model="inst"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @error('inst')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div language="uk"
-                                                                        class="multilang-content tab-pane fade active show "
-                                                                        id="faqs[2][question]-uk">
-                                                                        <div class="form-group mb-1">
-                                                                            <label for="faqs[2][question]_uk">Посилання
-                                                                                на tik tok
-                                                                            </label>
-                                                                            <input type="text" wire:model="tikTok"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @error('tikTok')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div language="uk"
-                                                                        class="multilang-content tab-pane fade active show "
-                                                                        id="faqs[2][question]-uk">
-                                                                        <div class="form-group mb-1">
-                                                                            <label for="faqs[2][question]_uk">Посилання
-                                                                                на facebook
-                                                                            </label>
-                                                                            <input type="text"
-                                                                                wire:model="facebook"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @error('facebook')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div language="uk"
-                                                                        class="multilang-content tab-pane fade active show "
-                                                                        id="faqs[2][question]-uk">
-                                                                        <div class="form-group mb-1">
-                                                                            <label for="faqs[2][question]_uk">Посилання
-                                                                                на youtube
-                                                                            </label>
-                                                                            <input type="text" wire:model="youtube"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @error('youtube')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div language="uk"
-                                                                        class="multilang-content tab-pane fade active show "
-                                                                        id="faqs[2][question]-uk">
-                                                                        <div class="form-group mb-1">
-                                                                            <label for="faqs[2][question]_uk">Посилання
-                                                                                на linkedin
-                                                                                {{-- <strong>UK</strong> --}}
-                                                                            </label>
-                                                                            <input type="text"
-                                                                                wire:model="linkedin"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @error('linkedin')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         @endif
 
                                         @if ($this->locale == 'ru')
@@ -693,155 +545,360 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div language="uk"
-                                                                        class="multilang-content tab-pane fade active show "
-                                                                        id="faqs[2][question]-uk">
-                                                                        <div class="form-group mb-1">
-                                                                            <label for="faqs[2][question]_uk">Посилання
-                                                                                на instagram
-                                                                            </label>
-                                                                            <input type="text" wire:model="inst"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @error('inst')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div language="uk"
-                                                                        class="multilang-content tab-pane fade active show "
-                                                                        id="faqs[2][question]-uk">
-                                                                        <div class="form-group mb-1">
-                                                                            <label for="faqs[2][question]_uk">Посилання
-                                                                                на tik tok
-                                                                            </label>
-                                                                            <input type="text" wire:model="tikTok"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @error('tikTok')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div language="uk"
-                                                                        class="multilang-content tab-pane fade active show "
-                                                                        id="faqs[2][question]-uk">
-                                                                        <div class="form-group mb-1">
-                                                                            <label for="faqs[2][question]_uk">Посилання
-                                                                                на facebook
-                                                                            </label>
-                                                                            <input type="text"
-                                                                                wire:model="facebook"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @error('facebook')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div language="uk"
-                                                                        class="multilang-content tab-pane fade active show "
-                                                                        id="faqs[2][question]-uk">
-                                                                        <div class="form-group mb-1">
-                                                                            <label for="faqs[2][question]_uk">Посилання
-                                                                                на youtube
-                                                                            </label>
-                                                                            <input type="text" wire:model="youtube"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @error('youtube')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row mb-3">
-                                                            <div class="col-md-12">
-                                                                <div class="tab-content">
-                                                                    <div language="uk"
-                                                                        class="multilang-content tab-pane fade active show "
-                                                                        id="faqs[2][question]-uk">
-                                                                        <div class="form-group mb-1">
-                                                                            <label for="faqs[2][question]_uk">Посилання
-                                                                                на linkedin
-                                                                                {{-- <strong>UK</strong> --}}
-                                                                            </label>
-                                                                            <input type="text"
-                                                                                wire:model="linkedin"
-                                                                                class="form-control">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                @error('linkedin')
-                                                                    <div class="mt-1 text-danger ajaxError">
-                                                                        {{ $message }}
-                                                                    </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         @endif
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                <div language="uk"
+                                                                    class="multilang-content tab-pane fade active show "
+                                                                    id="faqs[2][question]-uk">
+                                                                    <div class="form-group mb-1">
+                                                                        <label for="faqs[2][question]_uk">Посилання
+                                                                            на instagram
+                                                                        </label>
+                                                                        <input type="text" wire:model="inst"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('inst')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                <div
+                                                                    class="multilang-content tab-pane fade active show ">
+                                                                    <div class="form-group mb-1">
+                                                                        <label>{{ __('admin.image') }} Instagram</label>
+                                                                        <input type="file" wire:model="instagramImage"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('instagramImage')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+
+                                                            @if ($this->instagramImageTemporary)
+                                                                <div class="flex">
+                                                                    <img src="{{ $this->instagramImageTemporary }}"
+                                                                        width="60">
+                                                                    <a wire:click="deleteInstagramImage()"
+                                                                        style="cursor: pointer;">
+                                                                        <i class="ti-close font-weight-bold mr-2"></i>
+                                                                        {{ __('admin.delete_image') }}
+                                                                    </a>
+                                                                </div>
+                                                            @elseif(!empty($this->instagramBlock->value))
+                                                                <img src="{{ $this->instagramBlock->imageUrl }}"
+                                                                    width="60">
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                <div language="uk"
+                                                                    class="multilang-content tab-pane fade active show "
+                                                                    id="faqs[2][question]-uk">
+                                                                    <div class="form-group mb-1">
+                                                                        <label for="faqs[2][question]_uk">Посилання
+                                                                            на tik tok
+                                                                        </label>
+                                                                        <input type="text" wire:model="tikTok"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('tikTok')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                <div
+                                                                    class="multilang-content tab-pane fade active show ">
+                                                                    <div class="form-group mb-1">
+                                                                        <label>{{ __('admin.image') }} Tik tok</label>
+                                                                        <input type="file" wire:model="tiktokImage"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('tiktokImage')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+
+                                                            @if ($this->tiktokImageTemporary)
+                                                                <div class="flex">
+                                                                    <img src="{{ $this->tiktokImageTemporary }}"
+                                                                        width="60">
+                                                                    <a wire:click="deleteTiktokImage()"
+                                                                        style="cursor: pointer;">
+                                                                        <i class="ti-close font-weight-bold mr-2"></i>
+                                                                        {{ __('admin.delete_image') }}
+                                                                    </a>
+                                                                </div>
+                                                            @elseif(!empty($this->tiktokBlock->value))
+                                                                <img src="{{ $this->tiktokBlock->imageUrl }}"
+                                                                    width="60">
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                <div language="uk"
+                                                                    class="multilang-content tab-pane fade active show "
+                                                                    id="faqs[2][question]-uk">
+                                                                    <div class="form-group mb-1">
+                                                                        <label for="faqs[2][question]_uk">Посилання
+                                                                            на facebook
+                                                                        </label>
+                                                                        <input type="text"
+                                                                            wire:model="facebook"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('facebook')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                <div
+                                                                    class="multilang-content tab-pane fade active show ">
+                                                                    <div class="form-group mb-1">
+                                                                        <label>{{ __('admin.image') }} Facebook</label>
+                                                                        <input type="file" wire:model="facebookImage"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('facebookImage')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+
+                                                            @if ($this->facebookImageTemporary)
+                                                                <div class="flex">
+                                                                    <img src="{{ $this->facebookImageTemporary }}"
+                                                                        width="60">
+                                                                    <a wire:click="deleteFacebookImage()"
+                                                                        style="cursor: pointer;">
+                                                                        <i class="ti-close font-weight-bold mr-2"></i>
+                                                                        {{ __('admin.delete_image') }}
+                                                                    </a>
+                                                                </div>
+                                                            @elseif(!empty($this->facebookBlock->value))
+                                                                <img src="{{ $this->facebookBlock->imageUrl }}"
+                                                                    width="60">
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                <div language="uk"
+                                                                    class="multilang-content tab-pane fade active show "
+                                                                    id="faqs[2][question]-uk">
+                                                                    <div class="form-group mb-1">
+                                                                        <label for="faqs[2][question]_uk">Посилання
+                                                                            на youtube
+                                                                        </label>
+                                                                        <input type="text" wire:model="youtube"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('youtube')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                <div
+                                                                    class="multilang-content tab-pane fade active show ">
+                                                                    <div class="form-group mb-1">
+                                                                        <label>{{ __('admin.image') }} Youtube</label>
+                                                                        <input type="file" wire:model="youtubeImage"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('youtubeImage')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+
+                                                            @if ($this->youtubeImageTemporary)
+                                                                <div class="flex">
+                                                                    <img src="{{ $this->youtubeImageTemporary }}"
+                                                                        width="60">
+                                                                    <a wire:click="deleteYoutubeImage()"
+                                                                        style="cursor: pointer;">
+                                                                        <i class="ti-close font-weight-bold mr-2"></i>
+                                                                        {{ __('admin.delete_image') }}
+                                                                    </a>
+                                                                </div>
+                                                            @elseif(!empty($this->youtubeBlock->value))
+                                                                <img src="{{ $this->youtubeBlock->imageUrl }}"
+                                                                    width="60">
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                <div language="uk"
+                                                                    class="multilang-content tab-pane fade active show "
+                                                                    id="faqs[2][question]-uk">
+                                                                    <div class="form-group mb-1">
+                                                                        <label for="faqs[2][question]_uk">Посилання
+                                                                            на linkedIn
+                                                                            {{-- <strong>UK</strong> --}}
+                                                                        </label>
+                                                                        <input type="text"
+                                                                            wire:model="linkedin"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('linkedin')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                <div
+                                                                    class="multilang-content tab-pane fade active show ">
+                                                                    <div class="form-group mb-1">
+                                                                        <label>{{ __('admin.image') }} LinkedIn</label>
+                                                                        <input type="file" wire:model="linkedinImage"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('linkedinImage')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+
+                                                            @if ($this->linkedinImageTemporary)
+                                                                <div class="flex">
+                                                                    <img src="{{ $this->linkedinImageTemporary }}"
+                                                                        width="60">
+                                                                    <a wire:click="deleteLinkedinImage()"
+                                                                        style="cursor: pointer;">
+                                                                        <i class="ti-close font-weight-bold mr-2"></i>
+                                                                        {{ __('admin.delete_image') }}
+                                                                    </a>
+                                                                </div>
+                                                            @elseif(!empty($this->linkedinBlock->value))
+                                                                <img src="{{ $this->linkedinBlock->imageUrl }}"
+                                                                    width="60">
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="col-md-12">
                                             <div class="row">
@@ -858,7 +915,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            @error('uaDescription')
+                                                            @error('image')
                                                                 <div class="mt-1 text-danger ajaxError">
                                                                     {{ $message }}
                                                                 </div>
