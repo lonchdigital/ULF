@@ -45,7 +45,7 @@
                                         <div class="custom-control custom-checkbox position-relative mb-5">
                                             <input type="checkbox" class="custom-control-input" id="form-test-drive-check" name="agree_drive" value="1">
                                             <label class="custom-control-label" for="form-test-drive-check">
-                                                <span class="custom-checkbox--info">{{ trans('web.agreement_one') }} <span class="link-underline"><a href="##">{{ trans('web.agreement_two') }}</a></span>.</span>
+                                                <span class="custom-checkbox--info">{{ trans('web.agreement_one') }} <span class="link-underline"><a href="/policy">{{ trans('web.agreement_two') }}</a></span>.</span>
                                             </label>
                                             @error('agree_drive')
                                             <div class="field--help-info small-txt text-red mb-2">{{ $message }}</div>

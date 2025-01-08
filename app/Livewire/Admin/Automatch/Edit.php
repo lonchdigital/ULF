@@ -81,6 +81,8 @@ class Edit extends Component
                 'sort' => $automatch->sort,
 
                 'is_active' => $automatch->is_active ? true : false,
+
+                'comment' => $automatch->comment ?? '',
             ];
         }
 
@@ -111,6 +113,8 @@ class Edit extends Component
                 'image' => null,
 
                 'newImage' => null,
+
+                'comment' => '',
             ];
         }
     }
@@ -144,6 +148,11 @@ class Edit extends Component
             ],
 
             'automatches.*.ru.description' => [
+                'nullable',
+                'string',
+            ],
+
+            'automatches.*.comment' => [
                 'nullable',
                 'string',
             ],
@@ -235,6 +244,8 @@ class Edit extends Component
 
             'is_active' => true,
 
+            'comment' => '',
+
             'sort' => count($this->automatches) + 1,
         ];
     }
@@ -289,6 +300,7 @@ class Edit extends Component
                 'is_active' => $automatch2['is_active'],
                 'price' => $automatch2['price'],
                 'link' => $automatch2['link'],
+                'comment' => $automatch2['comment'],
                 'image' => $image,
                 'ua' => [
                     'title' => $automatch2['ua']['title'],

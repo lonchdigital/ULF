@@ -17,6 +17,7 @@ class Automatch extends Model
         'is_active',
         'sort',
         'link',
+        'comment',
     ];
 
     public $translatedAttributes = [

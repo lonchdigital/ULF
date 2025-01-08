@@ -96,6 +96,7 @@ Route::group([
 
         Route::prefix('/automatch')->name('admin.automatch.')->group(function() {
             Route::get('/', [AutomatchController::class, 'index'])->name('index');
+            Route::get('/feedbacks', [AutomatchController::class, 'feedbacksIndex'])->name('feedbacks.index');
         });
 
         Route::prefix('/faqs/pages')->name('admin.pages.')->group(function() {

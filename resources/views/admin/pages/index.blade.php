@@ -30,7 +30,7 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Назва документа</th>
+                                        <th>Назва</th>
                                         <th>Дія</th>
                                     </tr>
                                 </thead>

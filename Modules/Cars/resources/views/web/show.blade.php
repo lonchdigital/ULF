@@ -97,7 +97,9 @@
 
             <x-fleet :fleetCars="$fleetCars" />
 
-            <x-f-a-qs :car="$car" :commonFaqs="$commonFaqs" />
+            @if(count($car->faqs))
+                <x-f-a-qs :car="$car" :commonFaqs="$commonFaqs" />
+            @endif
 
             @include('components.lead-form', ['page' => 'Single Car Page', 'pbLg' => 13])
 

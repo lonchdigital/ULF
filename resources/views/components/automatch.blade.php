@@ -177,7 +177,7 @@
                                 <div class="custom-control custom-checkbox position-relative mb-5">
                                     <input type="checkbox" class="custom-control-input" id="check-form-popup-tinder" name="approve">
                                     <label class="custom-control-label" for="check-form-popup-tinder">
-                                        <span class="custom-checkbox--info">{{ __('web.consent_to_the_collection_processing_storage_and_use_of_my') }} <a href="##">{{ __('web.personal_data') }}</a>.</span>
+                                        <span class="custom-checkbox--info">{{ __('web.consent_to_the_collection_processing_storage_and_use_of_my') }} <a href="/policy">{{ __('web.personal_data') }}</a>.</span>
                                     </label>
                                 </div>
                                 <div class="field--help-info small-txt text-red mb-2" id="approve_error"></div>

@@ -205,6 +205,29 @@
                                                 <div class="col-md-12">
                                                     <div class="row">
                                                         <div class="col-md-12">
+                                                            <div class="row mb-3">
+                                                                <div class="col-md-12">
+                                                                    <div class="tab-content">
+                                                                        <div language="uk"
+                                                                            class="multilang-content tab-pane fade active show "
+                                                                            id="automatches[2][description]-uk">
+                                                                            <div class="form-group mb-1">
+                                                                                <label
+                                                                                    for="automatches[2][title]_uk">Коментар
+                                                                                </label>
+                                                                                <textarea wire:model="automatches.{{ $index }}.comment" class="form-control"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <div class="checkbox d-inline">
                                                                     <input type="checkbox" name="checkbox-1"
@@ -465,6 +488,29 @@
                                                                     </div>
                                                                     <div class="mt-1 text-danger ajaxError"
                                                                         id="error-field-automatches.2.description.*">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="row mb-3">
+                                                                <div class="col-md-12">
+                                                                    <div class="tab-content">
+                                                                        <div language="uk"
+                                                                            class="multilang-content tab-pane fade active show "
+                                                                            id="automatches[2][description]-uk">
+                                                                            <div class="form-group mb-1">
+                                                                                <label
+                                                                                    for="automatches[2][title]_uk">Коментар
+                                                                                </label>
+                                                                                <textarea wire:model="automatches.{{ $index }}.comment" class="form-control"></textarea>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>

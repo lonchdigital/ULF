@@ -11,4 +11,9 @@ class AutomatchController extends Controller
     {
         return view('admin.automatch.index');
     }
+
+    public function feedbacksIndex()
+    {
+        return view('admin.automatch.feedbacks-index');
+    }
 }

@@ -154,41 +154,51 @@
                             </div>
                         </li>
                         <ul class="list-inline mb-0">
-                            <li class="list-inline-item">
-                                <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->description }}" target="_blank">
-                                    <svg class="i-instagram">
-                                        <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-instagram' }}"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'tik_tok')->first()->description }}" target="_blank">
-                                    <svg class="i-tiktok">
-                                        <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-tiktok' }}"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'facebook')->first()->description }}" target="_blank">
-                                    <svg class="i-facebook">
-                                        <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-facebook' }}"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'youtube')->first()->description }}" target="_blank">
-                                    <svg class="i-youtube">
-                                        <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-youtube' }}"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'linkedin')->first()->description }}" target="_blank">
-                                    <svg class="i-linkedin">
-                                        <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-linkedin' }}"></use>
-                                    </svg>
-                                </a>
-                            </li>
+                            @if(!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->description))
+                                <li class="list-inline-item">
+                                    <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->description }}" target="_blank">
+                                        <svg class="i-instagram">
+                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-instagram' }}"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            @endif
+                            @if($page->pageBlocks()->where('block', 'footer')->where('key', 'tik_tok')->first()->description)
+                                <li class="list-inline-item">
+                                    <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'tik_tok')->first()->description }}" target="_blank">
+                                        <svg class="i-tiktok">
+                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-tiktok' }}"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            @endif
+                            @if(!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'facebook')->first()->description))
+                                <li class="list-inline-item">
+                                    <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'facebook')->first()->description }}" target="_blank">
+                                        <svg class="i-facebook">
+                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-facebook' }}"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            @endif
+                            @if(!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'youtube')->first()->description))
+                                <li class="list-inline-item">
+                                    <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'youtube')->first()->description }}" target="_blank">
+                                        <svg class="i-youtube">
+                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-youtube' }}"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            @endif
+                            @if(!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'linkedin')->first()->description))
+                                <li class="list-inline-item">
+                                    <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'linkedin')->first()->description }}" target="_blank">
+                                        <svg class="i-linkedin">
+                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-linkedin' }}"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>

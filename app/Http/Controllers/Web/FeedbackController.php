@@ -12,6 +12,8 @@ use App\Jobs\SendTestDriveFeedbackEmailJob;
 use App\Http\Requests\Api\CallBackFormRequest;
 use App\Http\Requests\Api\StoreAutomatchRequest;
 use App\Http\Requests\Api\TestDriveFeedbackRequest;
+use App\Services\Feedback\StoreService;
+use Illuminate\Support\Facades\Log;
 
 class FeedbackController extends Controller
 {
@@ -21,6 +23,13 @@ class FeedbackController extends Controller
 
         dispatch(new SendFeedbackEmailJob($data));
 
+        $this->saveFeedback([
+            'name' => $data['name_lead'],
+            'phone' => $data['phone_lead'],
+            'type' => 'Feedback',
+            'page' => $data['page']
+        ]);
+
         return redirect()->route('thanks');
     }
 
@@ -29,6 +38,10 @@ class FeedbackController extends Controller
         $data = $request->validated();
 
         dispatch(new SendTestDriveFeedbackEmailJob($data));
+
+        $data['type'] = 'Automatch';
+        $data['page'] = 'Main page';
+        $this->saveFeedback($data);
 
         return redirect()->route('thanks');
     }
@@ -79,5 +92,18 @@ class FeedbackController extends Controller
         dispatch(new SendCallBackFormEmailJob($request->all()));
 
         return response()->json(['success' => true]);
+    }
+
+    public function saveFeedback($data)
+    {
+        $service = resolve(StoreService::class);
+
+        $service->store([
+            'name' => $data['name'],
+            'phone' => $data['phone'],
+            'cars' => $data['favorite_cars'] ?? '',
+            'type' => $data['type'],
+            'page' => $data['page'],
+        ]);
     }
 }
