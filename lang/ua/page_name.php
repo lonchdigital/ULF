@@ -18,4 +18,5 @@ return [
     'footer' => 'Футер',
     'catalog' => 'Автопарк',
     'customer-stories' => 'Історії клієнтів',
+    'footer_catalog' => 'Каталог',
 ];

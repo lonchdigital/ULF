@@ -29,7 +29,7 @@
                                         @endif
 
                                         @if($pages->where('slug', 'catalog')->first()->is_show_in_footer)
-                                            <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">{{ trans('page_name.car_park') }}</a></li>
+                                            <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">{{ trans('page_name.footer_catalog') }}</a></li>
                                         @endif
 
                                         @if($pages->where('slug', 'customer-stories')->first()->is_show_in_footer)
