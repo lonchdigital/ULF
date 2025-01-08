@@ -92,14 +92,14 @@ class CarApiService extends AuthService
             ->withToken($accessToken)
             ->post($this->baseUrl . '/command/CreateRetailLead', [
                 "vehicle" => [
-                    "manufacturerId" => 'тестовое значение 1',
-                    "modelId" => 'тестовое значение 2',
-                    "manufacturedYear" => 'еще одно значение',
-                    "bodyId" => 'тип кузова будет здесь',
-                    "fuelTypeId" => 'Топливо',
+                    "manufacturerId" => null,
+                    "modelId" => null,
+                    "manufacturedYear" => null,
+                    "bodyId" => null,
+                    "fuelTypeId" => null,
                     "transmissionTypeId" => null,
                     "engineVolume" => null,
-                    "mileage" => 'пробег будет здесь'
+                    "mileage" => null
                 ],
                 "autoRiaAdUrl" => null,
                 "contact" => [
@@ -108,12 +108,13 @@ class CarApiService extends AuthService
                     "inn" => null,
                     "phoneNumber" => $data['phone']
                 ],
+                "comment" => 'there will be a comment about the cars',
                 "currentUrl" => null,
-                "utm_source" => $data['utm_source'],
-                "utm_medium" => $data['utm_medium'],
-                "utm_campaign" => $data['utm_campaign'],
-                "utm_term" => $data['utm_term'],
-                "utm_content" => $data['utm_content']
+                "utm_source" => null,
+                "utm_medium" => null,
+                "utm_campaign" => null,
+                "utm_term" => null,
+                "utm_content" => null,
             ]);
 
         return $response->json();
