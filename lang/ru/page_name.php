@@ -9,4 +9,5 @@ return [
     'faqs' => 'Частые вопросы',
     'contacts' => 'Контакти',
     'agreements' => 'Договори',
+    'footer_catalog' => 'Каталог',
 ];

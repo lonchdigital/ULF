@@ -29,7 +29,7 @@
                                         @endif
 
                                         @if($pages->where('slug', 'catalog')->first()->is_show_in_footer)
-                                            <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">{{ trans('page_name.car_park') }}</a></li>
+                                            <li><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">{{ trans('page_name.footer_catalog') }}</a></li>
                                         @endif
 
                                         @if($pages->where('slug', 'customer-stories')->first()->is_show_in_footer)
@@ -153,49 +153,69 @@
                                 <a href="mailto:{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'email')->first()->description }}">{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'email')->first()->description }}</a>
                             </div>
                         </li>
-                        <ul class="list-inline mb-0">
+                        <ul class="list-inline mb-0 mt-8">
                             @if(!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->description))
                                 <li class="list-inline-item">
                                     <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->description }}" target="_blank">
-                                        <svg class="i-instagram">
-                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-instagram' }}"></use>
-                                        </svg>
+                                        @if(!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->value))
+                                            <img class="i-instagram" src="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->imageUrl }}" alt="instagram" style="max-width: 30px">
+                                        @else
+                                            <svg class="i-instagram">
+                                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-instagram' }}"></use>
+                                            </svg>
+                                        @endif
                                     </a>
                                 </li>
                             @endif
                             @if($page->pageBlocks()->where('block', 'footer')->where('key', 'tik_tok')->first()->description)
                                 <li class="list-inline-item">
                                     <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'tik_tok')->first()->description }}" target="_blank">
-                                        <svg class="i-tiktok">
-                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-tiktok' }}"></use>
-                                        </svg>
+                                        @if(!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'tik_tok')->first()->value))
+                                            <img class="i-tiktok" src="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'tik_tok')->first()->imageUrl }}" alt="tik_tok" style="max-width: 30px">
+                                        @else
+                                            <svg class="i-tiktok">
+                                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-tiktok' }}"></use>
+                                            </svg>
+                                        @endif
                                     </a>
                                 </li>
                             @endif
                             @if(!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'facebook')->first()->description))
                                 <li class="list-inline-item">
                                     <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'facebook')->first()->description }}" target="_blank">
-                                        <svg class="i-facebook">
-                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-facebook' }}"></use>
-                                        </svg>
+                                        @if(!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'facebook')->first()->value))
+                                            <img class="i-facebook" src="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'facebook')->first()->imageUrl }}" alt="facebook" style="max-width: 30px">
+                                        @else
+                                            <svg class="i-facebook">
+                                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-facebook' }}"></use>
+                                            </svg>
+                                        @endif
                                     </a>
                                 </li>
                             @endif
                             @if(!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'youtube')->first()->description))
                                 <li class="list-inline-item">
                                     <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'youtube')->first()->description }}" target="_blank">
-                                        <svg class="i-youtube">
-                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-youtube' }}"></use>
-                                        </svg>
+                                        @if(!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'youtube')->first()->value))
+                                            <img class="i-youtube" src="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'youtube')->first()->imageUrl }}" alt="youtube" style="max-width: 30px">
+                                        @else
+                                            <svg class="i-youtube">
+                                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-youtube' }}"></use>
+                                            </svg>
+                                        @endif
                                     </a>
                                 </li>
                             @endif
                             @if(!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'linkedin')->first()->description))
                                 <li class="list-inline-item">
                                     <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'linkedin')->first()->description }}" target="_blank">
-                                        <svg class="i-linkedin">
-                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-linkedin' }}"></use>
-                                        </svg>
+                                        @if(!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'linkedin')->first()->value))
+                                            <img class="i-linkedin" src="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'linkedin')->first()->imageUrl }}" alt="linkedin" style="max-width: 30px">
+                                        @else
+                                            <svg class="i-linkedin">
+                                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-linkedin' }}"></use>
+                                            </svg>
+                                        @endif
                                     </a>
                                 </li>
                             @endif
