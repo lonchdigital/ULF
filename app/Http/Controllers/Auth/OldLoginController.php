@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
-class LoginController extends Controller
+class OldLoginController extends Controller
 {
     /**
      * Update the user's password.

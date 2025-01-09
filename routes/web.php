@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\Web\PageController;
-use App\Http\Controllers\Web\StaticScriptController;
-use App\Services\Locale\LocaleService;
 use Illuminate\Support\Facades\Route;
+use App\Services\Locale\LocaleService;
 use App\Http\Controllers\Web\HomeController;
-use App\Http\Controllers\Web\DynamicPageController;
+use App\Http\Controllers\Web\PageController;
 use App\Http\Controllers\Web\FeedbackController;
+use App\Http\Controllers\Web\DynamicPageController;
+use App\Http\Controllers\Web\StaticScriptController;
 use Modules\Cars\Http\Controllers\Web\CarsController;
 use Modules\Clients\Http\Controllers\Web\ClientsController;
 use Modules\Articles\app\Http\Controllers\Web\ArticlesController;
@@ -16,9 +16,10 @@ require __DIR__.'/auth.php';
 
 Route::redirect('/dashboard', '/admin');
 
-Route::name('auth.')->prefix('/admin')->group(function () {
-    Auth::routes(['register' => false, 'reset' => false]);
-});
+// TODO:: remove it as now we use Breeze component
+// Route::name('auth.')->prefix('/admin')->group(function () {
+//     Auth::routes(['register' => false, 'reset' => false]);
+// });
 
 Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store');
 Route::post('/feedback/test-drive-store', [FeedbackController::class, 'testDriveStore'])->name('test.drive.feedback.store');
