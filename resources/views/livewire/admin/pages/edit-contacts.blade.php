@@ -426,6 +426,64 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div language="uk"
+                                                                        class="multilang-content tab-pane fade active show "
+                                                                        id="faqs[2][question]-uk">
+                                                                        <div class="form-group mb-1">
+                                                                            <label for="faqs[2][question]_uk"> Meta заголовок
+                                                                                <strong>UK</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="ukMetaTitle"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('ukMetaTitle')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div language="uk"
+                                                                        class="multilang-content tab-pane fade active show "
+                                                                        id="faqs[2][question]-uk">
+                                                                        <div class="form-group mb-1">
+                                                                            <label for="faqs[2][question]_uk"> Meta опис
+                                                                                <strong>UK</strong>
+                                                                            </label>
+                                                                            <textarea wire:model="ukMetaDescription"
+                                                                                class="form-control"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('ukMetaTitle')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -840,6 +898,64 @@
                                                                     </div>
                                                                 </div>
                                                                 @error('latitude')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div language="uk"
+                                                                        class="multilang-content tab-pane fade active show "
+                                                                        id="faqs[2][question]-uk">
+                                                                        <div class="form-group mb-1">
+                                                                            <label for="faqs[2][question]_uk"> Meta заголовок
+                                                                                <strong>RU</strong>
+                                                                            </label>
+                                                                            <input type="text" wire:model="ruMetaTitle"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('ruMetaTitle')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div language="uk"
+                                                                        class="multilang-content tab-pane fade active show "
+                                                                        id="faqs[2][question]-uk">
+                                                                        <div class="form-group mb-1">
+                                                                            <label for="faqs[2][question]_uk"> Meta опис
+                                                                                <strong>RU</strong>
+                                                                            </label>
+                                                                            <textarea wire:model="ruMetaDescription"
+                                                                                class="form-control"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('ruMetaTitle')
                                                                     <div class="mt-1 text-danger ajaxError">
                                                                         {{ $message }}
                                                                     </div>

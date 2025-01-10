@@ -7,11 +7,16 @@ use App\Http\Requests\BaseRequest;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StoreAutomatchRequest extends ApiBaseRequest
+class SelectCarRequest extends ApiBaseRequest
 {
     public function rules(): array
     {
         return [
+            'car' => [
+                'required',
+                'string',
+                'max:255',
+            ],
             'name' => [
                 'required',
                 'string',
@@ -35,16 +40,6 @@ class StoreAutomatchRequest extends ApiBaseRequest
                 'min:10',
                 'max:20',
                 'regex:/^(\+?380)[\d\s-]{9,}$/i',
-            ],
-
-            'favorite_cars' => [
-                'required',
-                'string'
-            ],
-
-            'page' => [
-                'required',
-                'string',
             ],
 
             'utm_source' => [
@@ -85,6 +80,7 @@ class StoreAutomatchRequest extends ApiBaseRequest
             'name' => __('web.your_name'),
             'phone' => __('web.phone_number'),
             'approve' => __('web.approve'),
+            'car' => __('web.car_select'),
         ];
     }
 }

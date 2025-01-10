@@ -75,6 +75,16 @@
                                             </td>
                                         </tr>
                                     @endif
+                                    @if (!is_null($faq))
+                                        <tr>
+                                            <td>{{ $faq->getAttribute('id') }}</td>
+                                            <td>{{ $faq->getAttribute('name') ?? $faq->getAttribute('key') }}</td>
+                                            <td>
+                                                <a href="{{ route('page.edit-faq', $faq) }}" class="mr-2"><i
+                                                    class="fa fa-edit text-info font-18"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endif
                                     @foreach ($pages as $page)
                                         <tr>
                                             <td>{{ $page->getAttribute('id') }}</td>

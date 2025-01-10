@@ -18,6 +18,7 @@
                         <thead>
                             <tr>
                                 <th>Назва сторінки</th>
+                                {{-- <th>Чи відображати в футері</th> --}}
                                 <th style="text-align: right">Дії</th>
                             </tr>
                         </thead>
@@ -25,6 +26,14 @@
                         @foreach($this->pages as $page)
                             <tr>
                                 <td>{{ $page->title ?? __('page_name.' . ($page->key ?? $page->slug)) }}</td>
+                                {{-- <td>
+                                    <div class="new-checkbox art-text-block-switcher">
+                                        <label class="switch mr-3">
+                                            <input type="checkbox" wire:click="changeActive('{{ $page->id }}')" @if($doctor->is_show_in_footer) checked @endif>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                </td> --}}
                                 <td style="text-align: right">
                                     {{-- @if($document->page)
                                     <a href="{{ route('slug.page', ['section' => $document->page->section, 'slug' => $document->page->slug]) }}" target="_blank" class="mr-2"><i class="fa fa-eye text-info font-18"></i></a>

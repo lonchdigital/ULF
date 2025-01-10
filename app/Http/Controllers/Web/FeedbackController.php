@@ -10,6 +10,7 @@ use App\Jobs\SendFeedbackTinderEmailJob;
 use App\Http\Requests\Api\FeedbackRequest;
 use App\Jobs\SendTestDriveFeedbackEmailJob;
 use App\Http\Requests\Api\CallBackFormRequest;
+use App\Http\Requests\Api\SelectCarRequest;
 use App\Http\Requests\Api\StoreAutomatchRequest;
 use App\Http\Requests\Api\TestDriveFeedbackRequest;
 use App\Services\Feedback\StoreService;
@@ -39,39 +40,56 @@ class FeedbackController extends Controller
 
         dispatch(new SendTestDriveFeedbackEmailJob($data));
 
-        $data['type'] = 'Automatch';
+        $data['type'] = 'Test drive';
         $data['page'] = 'Main page';
         $this->saveFeedback($data);
 
         return redirect()->route('thanks');
     }
 
-    // public function storeFavorite(StoreAutomatchRequest $request)
-    // {
-    //     $data = $request->validated();
+    public function storeFavorite(StoreAutomatchRequest $request)
+    {
+        $data = $request->validated();
 
-    //     // dd('hello, STOP!', $data);
-    //     dispatch(new SendFeedbackTinderEmailJob($data));
-    //     // dispatch(new SendFeedbackEmailJob($data));
+        // dd('hello, STOP!', $data);
+        dispatch(new SendFeedbackTinderEmailJob($data));
+        // dispatch(new SendFeedbackEmailJob($data));
+        $data['type'] = 'Automatch';
+        $data['page'] = 'Main page';
+        $this->saveFeedback($data);
+
+        return response()->json(['success' => true]);
+    }
+
+    // public function storeFavorite(Request $request)
+    // {
+    //     $request->validate([
+    //         'name' => 'required|string|max:100',
+    //         'phone' => 'required|string|regex:/^[^_]*$/|min:16',
+    //         'approve' => 'accepted',
+    //         'utm_source' => 'nullable|string',
+    //         'utm_medium' => 'nullable|string',
+    //         'utm_campaign' => 'nullable|string',
+    //         'utm_term' => 'nullable|string',
+    //         'utm_content' => 'nullable|string',
+    //         'favorite_cars' => 'nullable|string',
+    //     ]);
+
+    //     dispatch(new SendFeedbackTinderEmailJob($request->all()));
 
     //     return response()->json(['success' => true]);
     // }
 
-    public function storeFavorite(Request $request)
+    public function storeSelectCar(SelectCarRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:100',
-            'phone' => 'required|string|regex:/^[^_]*$/|min:16',
-            'approve' => 'accepted',
-            'utm_source' => 'nullable|string',
-            'utm_medium' => 'nullable|string',
-            'utm_campaign' => 'nullable|string',
-            'utm_term' => 'nullable|string',
-            'utm_content' => 'nullable|string',
-            'favorite_cars' => 'nullable|string',
-        ]);
+        $data = $request->validated();
 
-        dispatch(new SendFeedbackTinderEmailJob($request->all()));
+        dispatch(new SendFeedbackEmailJob($data));
+
+        $data['favorite_cars'] = $data['car'];
+        $data['type'] = 'Select car';
+        $data['page'] = 'Main page';
+        $this->saveFeedback($data);
 
         return response()->json(['success' => true]);
     }

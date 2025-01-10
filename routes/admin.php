@@ -90,6 +90,8 @@ Route::group([
         Route::prefix('pages')->group(function () {
             Route::get('/', [PageController::class, 'index'])->name('page.index');
             Route::get('/edit-contacts', [PageController::class, 'editContacts'])->name('page.edit-contacts');
+            Route::get('/edit-faq/{page}', [PageController::class, 'editFaq'])->name('page.edit-faq');
+            Route::post('/update-faq/{page}', [PageController::class, 'updateFaq'])->name('page.update-faq');
             Route::get('/{page}/edit', [PageController::class, 'edit'])->name('page.edit');
             Route::post('/{page}', [PageController::class, 'update'])->name('page.update');
         });

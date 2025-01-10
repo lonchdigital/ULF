@@ -169,7 +169,7 @@
                             <div class="col-12">
                                 <div class="field mb-3">
                                     <label class="control-label" for="popup-tinder--phone">{{ __('web.phone_number') }}</label>
-                                    <input type="tel" id="popup-tinder--phone" name="phone" class="form-control mb-3" placeholder="+38 000 0000000" autocomplete="no-autofill-please">
+                                    <input type="tel" id="popup-tinder--phone" name="phone" class="form-control phone-field mb-3" placeholder="+38 000 0000000" autocomplete="no-autofill-please">
                                     <div class="field--help-info small-txt text-red mb-2" id="phone-error"></div>
                                 </div>
                                 <div class="field--help-info small-txt text-red mb-2" id="phone_error"></div>

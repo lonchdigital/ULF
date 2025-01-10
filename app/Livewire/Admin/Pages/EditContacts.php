@@ -65,6 +65,14 @@ class EditContacts extends Component
 
     public string $latitude;
 
+    public string $ukMetaTitle;
+
+    public string $ruMetaTitle;
+
+    public string $ukMetaDescription;
+
+    public string $ruMetaDescription;
+
     protected $listeners = [
         'languageSwitched' => 'languageSwitched'
     ];
@@ -79,53 +87,179 @@ class EditContacts extends Component
 
         $this->ruTitle = $page->translate('ru')->h1 ?? '';
 
-        $this->ukFirstDay = $this->page->pageBlocks->where('block', 'days')->where('key', 'first')->first()->translate('ua')->title ?? '';
+        $this->ukMetaTitle = $page->translate('ua')->meta_title ?? '';
 
-        $this->ruFirstDay = $this->page->pageBlocks->where('block', 'days')->where('key', 'first')->first()->translate('ru')->title ?? '';
+        $this->ruMetaTitle = $page->translate('ru')->meta_title ?? '';
 
-        $this->ukSecondDay = $this->page->pageBlocks->where('block', 'days')->where('key', 'second')->first()->translate('ua')->title ?? '';
+        $this->ukMetaDescription = $page->translate('ua')->meta_description ?? '';
 
-        $this->ruSecondDay = $this->page->pageBlocks->where('block', 'days')->where('key', 'second')->first()->translate('ru')->title ?? '';
+        $this->ruMetaDescription = $page->translate('ru')->meta_description ?? '';
 
-        $this->ukFirstHours = $this->page->pageBlocks->where('block', 'days')->where('key', 'first')->first()->translate('ua')->description ?? '';
+        $this->ukFirstDay = $this->page->pageBlocks
+            ->where('block', 'days')
+            ->where('key', 'first')
+            ->first()
+            ->translate('ua')
+            ->title ?? '';
 
-        $this->ruFirstHours = $this->page->pageBlocks->where('block', 'days')->where('key', 'first')->first()->translate('ru')->description ?? '';
+        $this->ruFirstDay = $this->page->pageBlocks
+            ->where('block', 'days')
+            ->where('key', 'first')
+            ->first()
+            ->translate('ru')
+            ->title ?? '';
 
-        $this->ukSecondHours = $this->page->pageBlocks->where('block', 'days')->where('key', 'second')->first()->translate('ua')->description ?? '';
+        $this->ukSecondDay = $this->page->pageBlocks
+            ->where('block', 'days')
+            ->where('key', 'second')
+            ->first()
+            ->translate('ua')
+            ->title ?? '';
 
-        $this->ruSecondHours = $this->page->pageBlocks->where('block', 'days')->where('key', 'second')->first()->translate('ru')->description ?? '';
+        $this->ruSecondDay = $this->page->pageBlocks
+            ->where('block', 'days')
+            ->where('key', 'second')
+            ->first()
+            ->translate('ru')
+            ->title ?? '';
 
-        $this->ukFirstAddress = $this->page->pageBlocks->where('block', 'address')->where('key', 'text')->first()->translate('ua')->title ?? '';
+        $this->ukFirstHours = $this->page->pageBlocks
+            ->where('block', 'days')
+            ->where('key', 'first')
+            ->first()
+            ->translate('ua')
+            ->description ?? '';
 
-        $this->ruFirstAddress = $this->page->pageBlocks->where('block', 'address')->where('key', 'text')->first()->translate('ru')->title ?? '';
+        $this->ruFirstHours = $this->page->pageBlocks
+            ->where('block', 'days')
+            ->where('key', 'first')
+            ->first()
+            ->translate('ru')
+            ->description ?? '';
 
-        $this->ukSecondAddress  = $this->page->pageBlocks->where('block', 'address')->where('key', 'text')->first()->translate('ua')->description ?? '';
+        $this->ukSecondHours = $this->page->pageBlocks
+            ->where('block', 'days')
+            ->where('key', 'second')
+            ->first()
+            ->translate('ua')
+            ->description ?? '';
 
-        $this->ruSecondAddress = $this->page->pageBlocks->where('block', 'address')->where('key', 'text')->first()->translate('ru')->title ?? '';
+        $this->ruSecondHours = $this->page->pageBlocks
+            ->where('block', 'days')
+            ->where('key', 'second')
+            ->first()
+            ->translate('ru')
+            ->description ?? '';
 
-        $this->ukFirstPhone = $this->page->pageBlocks->where('block', 'phone')->where('key', 'text')->first()->translate('ua')->title ?? '';
+        $this->ukFirstAddress = $this->page->pageBlocks
+            ->where('block', 'address')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ua')
+            ->title ?? '';
 
-        $this->ruFirstPhone = $this->page->pageBlocks->where('block', 'phone')->where('key', 'text')->first()->translate('ru')->title ?? '';
+        $this->ruFirstAddress = $this->page->pageBlocks
+            ->where('block', 'address')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ru')
+            ->title ?? '';
 
-        $this->ukSecondPhone  = $this->page->pageBlocks->where('block', 'phone')->where('key', 'text')->first()->translate('ua')->description ?? '';
+        $this->ukSecondAddress  = $this->page->pageBlocks
+            ->where('block', 'address')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ua')
+            ->description ?? '';
 
-        $this->ruSecondPhone  = $this->page->pageBlocks->where('block', 'phone')->where('key', 'text')->first()->translate('ru')->title ?? '';
+        $this->ruSecondAddress = $this->page->pageBlocks
+            ->where('block', 'address')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ru')
+            ->title ?? '';
 
-        $this->ukEmail  = $this->page->pageBlocks->where('block', 'email')->where('key', 'text')->first()->translate('ua')->title ?? '';
+        $this->ukFirstPhone = $this->page->pageBlocks
+            ->where('block', 'phone')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ua')
+            ->title ?? '';
 
-        $this->ruEmail = $this->page->pageBlocks->where('block', 'email')->where('key', 'text')->first()->translate('ru')->title ?? '';
+        $this->ruFirstPhone = $this->page->pageBlocks
+            ->where('block', 'phone')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ru')
+            ->title ?? '';
 
-        $this->ukInstagram = $this->page->pageBlocks->where('block', 'instagram')->where('key', 'text')->first()->translate('ua')->title ?? '';
+        $this->ukSecondPhone  = $this->page->pageBlocks
+            ->where('block', 'phone')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ua')
+            ->description ?? '';
 
-        $this->ruInstagram = $this->page->pageBlocks->where('block', 'instagram')->where('key', 'text')->first()->translate('ru')->title ?? '';
+        $this->ruSecondPhone  = $this->page->pageBlocks
+            ->where('block', 'phone')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ru')
+            ->title ?? '';
 
-        $this->ukFacebook = $this->page->pageBlocks->where('block', 'facebook')->where('key', 'text')->first()->translate('ua')->title ?? '';
+        $this->ukEmail  = $this->page->pageBlocks
+            ->where('block', 'email')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ua')
+            ->title ?? '';
 
-        $this->ruFacebook = $this->page->pageBlocks->where('block', 'facebook')->where('key', 'text')->first()->translate('ru')->title ?? '';
+        $this->ruEmail = $this->page->pageBlocks
+            ->where('block', 'email')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ru')
+            ->title ?? '';
 
-        $this->longitude = $this->page->pageBlocks->where('block', 'map')->where('key', 'longitude')->first()->value ?? '';
+        $this->ukInstagram = $this->page->pageBlocks
+            ->where('block', 'instagram')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ua')
+            ->title ?? '';
 
-        $this->latitude = $this->page->pageBlocks->where('block', 'map')->where('key', 'latitude')->first()->value ?? '';
+        $this->ruInstagram = $this->page->pageBlocks
+            ->where('block', 'instagram')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ru')
+            ->title ?? '';
+
+        $this->ukFacebook = $this->page->pageBlocks
+            ->where('block', 'facebook')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ua')
+            ->title ?? '';
+
+        $this->ruFacebook = $this->page->pageBlocks
+            ->where('block', 'facebook')
+            ->where('key', 'text')
+            ->first()
+            ->translate('ru')
+            ->title ?? '';
+
+        $this->longitude = $this->page->pageBlocks
+            ->where('block', 'map')
+            ->where('key', 'longitude')
+            ->first()
+            ->value ?? '';
+
+        $this->latitude = $this->page->pageBlocks
+            ->where('block', 'map')
+            ->where('key', 'latitude')
+            ->first()
+            ->value ?? '';
     }
 
     protected function rules()
@@ -260,6 +394,26 @@ class EditContacts extends Component
                 'nullable',
                 'string',
             ],
+
+            'ukMetaTitle' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruMetaTitle' => [
+                'nullable',
+                'string',
+            ],
+
+            'ukMetaDescription' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruMetaDescription' => [
+                'nullable',
+                'string',
+            ],
         ];
     }
 
@@ -275,15 +429,18 @@ class EditContacts extends Component
         $this->page->translateOrNew('ua')->h1 = $this->ukTitle;
         $this->page->translateOrNew('ru')->h1 = $this->ruTitle;
 
+        $this->page->translateOrNew('ua')->meta_title = $this->ukMetaTitle;
+        $this->page->translateOrNew('ru')->meta_title = $this->ruMetaTitle;
+
+        $this->page->translateOrNew('ua')->meta_description = $this->ukMetaDescription;
+        $this->page->translateOrNew('ru')->meta_description = $this->ruMetaDescription;
+
         $this->page->save();
 
         $this->page->pageBlocks()->firstOrCreate([
             'block' => 'days',
             'key' => 'first'
         ])
-        // where('block', 'days')
-        //     ->where('key', 'first')
-        //     ->first()
             ->translate('ua')
             ->update([
                 'title' => $this->ukFirstDay,
@@ -293,9 +450,6 @@ class EditContacts extends Component
             'block' => 'days',
             'key' => 'first'
         ])
-        // where('block', 'days')
-        //     ->where('key', 'first')
-        //     ->first()
             ->translate('ru')
             ->update([
                 'title' => $this->ruFirstDay,
@@ -305,9 +459,6 @@ class EditContacts extends Component
             'block' => 'days',
             'key' => 'second'
         ])
-        // where('block', 'days')
-        //     ->where('key', 'second')
-        //     ->first()
             ->translate('ua')->update([
                 'title' => $this->ukSecondDay,
             ]);
@@ -316,9 +467,6 @@ class EditContacts extends Component
             'block' => 'days',
             'key' => 'second'
         ])
-        // where('block', 'days')
-        //     ->where('key', 'second')
-        //     ->first()
             ->translate('ru')
             ->update([
                 'title' => $this->ruSecondDay,
@@ -328,9 +476,6 @@ class EditContacts extends Component
             'block' => 'days',
             'key' => 'first'
         ])
-        // where('block', 'days')
-        //     ->where('key', 'first')
-        //     ->first()
             ->translate('ua')
             ->update([
                 'description' => $this->ukFirstHours,
@@ -340,9 +485,6 @@ class EditContacts extends Component
             'block' => 'days',
             'key' => 'first'
         ])
-        // where('block', 'days')
-        //     ->where('key', 'first')
-        //     ->first()
             ->translate('ru')
             ->update([
                 'description' => $this->ruFirstHours,
@@ -352,9 +494,6 @@ class EditContacts extends Component
             'block' => 'days',
             'key' => 'second'
         ])
-        // where('block', 'days')
-        //     ->where('key', 'second')
-        //     ->first()
             ->translate('ua')
             ->update([
                 'description' => $this->ukSecondHours,
@@ -364,9 +503,6 @@ class EditContacts extends Component
             'block' => 'days',
             'key' => 'second'
         ])
-        // where('block', 'days')
-        //     ->where('key', 'second')
-        //     ->first()
             ->translate('ru')
             ->update([
                 'description' => $this->ruSecondHours
@@ -376,9 +512,6 @@ class EditContacts extends Component
             'block' => 'address',
             'key' => 'text'
         ])
-        // where('block', 'address')
-        //     ->where('key', 'text')
-        //     ->first()
             ->translate('ua')
             ->update([
                 'title' => $this->ukFirstAddress
@@ -388,9 +521,6 @@ class EditContacts extends Component
             'block' => 'address',
             'key' => 'text'
         ])
-        // where('block', 'address')
-        //     ->where('key', 'text')
-        //     ->first()
             ->translate('ru')
             ->update([
                 'tite' => $this->ruFirstAddress
@@ -400,9 +530,6 @@ class EditContacts extends Component
             'block' => 'address',
             'key' => 'text'
         ])
-        // where('block', 'address')
-        //     ->where('key', 'text')
-        //     ->first()
             ->translate('ua')
             ->update([
                 'description' => $this->ukSecondAddress
@@ -412,9 +539,6 @@ class EditContacts extends Component
             'block' => 'address',
             'key' => 'text'
         ])
-        // where('block', 'address')
-        //     ->where('key', 'text')
-        //     ->first()
             ->translate('ru')
             ->update([
                 'title' => $this->ruSecondAddress
@@ -424,9 +548,6 @@ class EditContacts extends Component
             'block' => 'phone',
             'key' => 'text'
         ])
-        // where('block', 'phone')
-        //     ->where('key', 'text')
-        //     ->first()
             ->translate('ua')
             ->update([
                 'title' => $this->ukFirstPhone
@@ -436,9 +557,6 @@ class EditContacts extends Component
             'block' => 'phone',
             'key' => 'text'
         ])
-        // where('block', 'phone')
-        //     ->where('key', 'text')
-        //     ->first()
             ->translate('ru')
             ->update([
                 'title' => $this->ruFirstPhone,
@@ -448,9 +566,6 @@ class EditContacts extends Component
             'block' => 'phone',
             'key' => 'text'
         ])
-        // where('block', 'phone')
-        //     ->where('key', 'text')
-        //     ->first()
             ->translate('ua')
             ->update([
                 'description' => $this->ukSecondPhone
@@ -460,9 +575,6 @@ class EditContacts extends Component
             'block' => 'phone',
             'key' => 'text'
         ])
-        // where('block', 'phone')
-        //     ->where('key', 'text')
-        //     ->first()
             ->translate('ru')
             ->update([
                 'title' => $this->ruSecondPhone
@@ -472,9 +584,6 @@ class EditContacts extends Component
             'block' => 'email',
             'key' => 'text'
         ])
-        // where('block', 'email')
-        //     ->where('key', 'text')
-        //     ->first()
             ->translate('ua')
             ->update([
                 'title' => $this->ukEmail
@@ -484,9 +593,6 @@ class EditContacts extends Component
             'block' => 'email',
             'key' => 'text'
         ])
-        // where('block', 'email')
-        //     ->where('key', 'text')
-        //     ->first()
             ->translate('ru')
             ->update([
                 'title' => $this->ruEmail
@@ -496,9 +602,6 @@ class EditContacts extends Component
             'block' => 'instagram',
             'key' => 'text'
         ])
-        // where('block', 'instagram')
-        //     ->where('key', 'text')
-        //     ->first()
             ->translate('ua')
             ->update([
                 'title' => $this->ukInstagram
@@ -508,9 +611,6 @@ class EditContacts extends Component
             'block' => 'instagram',
             'key' => 'text'
         ])
-        // where('block', 'instagram')
-        //     ->where('key', 'text')
-        //     ->first()
             ->translate('ru')
             ->update([
                 'title' => $this->ruInstagram
@@ -520,9 +620,6 @@ class EditContacts extends Component
             'block' => 'facebook',
             'key' => 'text'
         ])
-        // where('block', 'facebook')
-        //     ->where('key', 'text')
-        //     ->first()
             ->translate('ua')
             ->update([
                 'title' => $this->ukFacebook
@@ -532,9 +629,6 @@ class EditContacts extends Component
             'block' => 'facebook',
             'key' => 'text'
         ])
-        // where('block', 'facebook')
-        //     ->where('key', 'text')
-        //     ->first()
             ->translate('ru')
             ->update([
                 'title' => $this->ruFacebook
@@ -544,9 +638,6 @@ class EditContacts extends Component
             'block' => 'map',
             'key' => 'longitude'
         ])
-        // where('block', 'map')
-        //     ->where('key', 'longitude')
-        //     ->first()
             ->update([
                 'value' => $this->longitude,
             ]);
@@ -555,9 +646,6 @@ class EditContacts extends Component
             'block' => 'map',
             'key' => 'latitude'
         ])
-        // where('block', 'map')
-        //     ->where('key', 'latitude')
-        //     ->first()
             ->update([
                 'value' => $this->latitude,
             ]);

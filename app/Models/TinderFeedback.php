@@ -20,7 +20,8 @@ class TinderFeedback extends Model
     {
         return $query->when($val, function($q) use ($val) {
             $q->where('name', 'like', "%$val%")
-                ->orWhere('phone', 'like', "%$val%");
+                ->orWhere('phone', 'like', "%$val%")
+                ->orWhere('cars', 'like', "%$val%");
         });
     }
 

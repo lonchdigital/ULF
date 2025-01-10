@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="app-url" content="{{ env('APP_URL') }}">
 
-    <title>@yield('title', 'Автопарк')</title>
+    {{-- <title>@yield('title', 'Автопарк')</title> --}}
     <meta name="robots" content="noindex, nofollow">
     <meta property="og:image" content="{{ asset('static_images/favicon-32x32.png') }}">
     <link rel="apple-touch-icon" sizes="32x32" href="{{ asset('static_images/favicon-32x32.png') }}">

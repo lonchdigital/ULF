@@ -283,11 +283,11 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content py-4 px-2 p-md-5">
             <div class="modal-body p-0">
-                <form class="form-popup-сar-selection" autocomplete="off">
+                <form class="form-popup-сar-selection" id="form-сar-selection" autocomplete="off">
                     <div class="row">
                         <div class="col">
                             <div class="d-flex align-items-start justify-content-between mb-3">
-                                <div class="modal-title font-weight-bolder mb-0">Підбір авто</div>
+                                <div class="modal-title font-weight-bolder mb-0">{{ __('web.car_selection') }}</div>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">
 										<svg>
@@ -296,41 +296,50 @@
 									</span>
                                 </button>
                             </div>
-                            <p class="mb-3">Вкажи бажану марку, модель, параметри.</p>
+                            <p class="mb-3">{{ __('web.specify_the_desired_brand_model_and_parameters') }}</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
                             <div class="field mb-3">
-                                <label class="control-label" for="popup-сar-selection--car-make-model">Марка та модель авто</label>
-                                <input type="text" id="popup-сar-selection--car-make-model" class="form-control mb-3" placeholder="Напр. Hyundai Santa FE" autocomplete="no-autofill-please">
-                                <div class="field--help-info small-txt text-red mb-2">Введіть марку та модель авто</div>
+                                <label class="control-label" for="popup-сar-selection--car-make-model">{{ __('web.car_make_and_model') }}</label>
+                                <input type="text" id="popup-сar-selection--car-make-model" class="form-control mb-3" name="car" placeholder="Напр. Hyundai Santa FE" autocomplete="no-autofill-please">
+                                <div class="field--help-info small-txt text-red mb-2" id="car_error_select">
+                                    {{-- Введіть марку та модель авто --}}
+                                </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="field mb-3">
-                                <label class="control-label" for="popup-сar-selection--name">Ваше ім’я</label>
-                                <input type="text" id="popup-сar-selection---name" class="form-control mb-3" placeholder="Введіть ім’я" autocomplete="no-autofill-please">
-                                <div class="field--help-info small-txt text-red mb-2">Введіть Ваше ім’я українськими літерами (кирилицею)</div>
+                                <label class="control-label" for="popup-сar-selection--name">{{ __('web.your_name') }}</label>
+                                <input type="text" id="popup-сar-selection---name" class="form-control mb-3" placeholder="Введіть ім’я" name="name" autocomplete="no-autofill-please">
+                                <div class="field--help-info small-txt text-red mb-2" id="name_error_select">
+                                    {{-- Введіть Ваше ім’я українськими літерами (кирилицею) --}}
+                                </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="field mb-3">
-                                <label class="control-label" for="popup-сar-selection--phone">Номер телефону</label>
-                                <input type="tel" id="popup-сar-selection--phone" class="form-control mb-3" placeholder="+38 000 0000000" autocomplete="no-autofill-please">
-                                <div class="field--help-info small-txt text-red mb-2">Введіть Ваш номер телефону</div>
+                                <label class="control-label" for="popup-сar-selection--phone">{{ __('web.phone_number') }}</label>
+                                <input type="tel" id="popup-сar-selection--phone" class="form-control phone-field mb-3" placeholder="+38 000 0000000" name="phone" autocomplete="no-autofill-please">
+                                <div class="field--help-info small-txt text-red mb-2" id="phone_error_select">
+                                    {{-- Введіть Ваш номер телефону --}}
+                                </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="custom-control custom-checkbox position-relative mb-5">
-                                <input type="checkbox" class="custom-control-input" id="form-popup-сar-selection">
+                                <input type="checkbox" class="custom-control-input" id="form-popup-сar-selection" name="approve">
                                 <label class="custom-control-label" for="form-popup-сar-selection">
-                                    <span class="custom-checkbox--info">Я даю згоду на збір, обробку, зберігання та використання своїх <a href="##">персональних даних</a>.</span>
+                                    <span class="custom-checkbox--info">{{ __('web.consent_to_the_collection_processing_storage_and_use_of_my') }} <a href="/policy">{{ __('web.personal_data') }}</a>.</span>
                                 </label>
+                            </div>
+                            <div class="field--help-info small-txt text-red mb-2" id="approve_error_select">
+                                {{-- Введіть Ваш номер телефону --}}
                             </div>
                         </div>
                         <div class="col-12 col-md-auto">
-                            <button type="button" class="btn-modal-close btn-default btn-default-orange btn btn-block btn-orange btn-default text-uppercase">Відправити</button>
+                            <button type="submit" class="btn-modal-close btn-default btn-default-orange btn btn-block btn-orange btn-default text-uppercase">{{ __('web.send_form') }}</button>
                         </div>
                     </div>
                 </form>

@@ -25,11 +25,17 @@ class PageController extends Controller
 
         return view('admin.pages.index', [
             'homePage' => $allPages->where('key', 'homepage')->first(),
+            'faq' => $allPages->where('key', 'faq')->first(),
             'pages' => $allPages->where('key', null),
             'articlesPage' => ArticlePage::where('slug', 'articles')->first(),
             'carsPage' => CarPage::where('slug', 'cars')->first(),
             'customerStories' => $allPages->where('key', 'customer-stories')->first()
         ]);
+    }
+
+    public function editFaq(Page $page)
+    {
+        return view('admin.pages.edit-faq', compact('page'));
     }
 
     public function edit(Page $page)
@@ -56,6 +62,46 @@ class PageController extends Controller
         }
 
         return redirect()->route('page.edit', [
+            'page' => $this->service->updateDocument($page, $data)
+        ])->with('success', trans('admin.document_updated'));
+    }
+
+    public function updateFaq(Page $page, Request $request)
+    {
+        $data = $request->all();
+
+        $data['text'] = [];
+        $data['seo_data'] = [];
+        $data['meta_keywords'] = [];
+        $data['ua'] = [
+            'name' => 'FAQ'
+        ];
+        $data['ru'] = [
+            'name' => 'FAQ'
+        ];
+
+        if(isset($data['is_show_in_header'])) {
+            $data['is_show_in_header'] = true;
+        } else {
+            $data['is_show_in_header'] = false;
+        }
+
+        if(isset($data['is_show_in_footer'])) {
+            $data['is_show_in_footer'] = true;
+        } else {
+            $data['is_show_in_footer'] = false;
+        }
+
+        $page->update([
+            'ua' => [
+                'name' => 'FAQ'
+            ],
+            'ru' => [
+                'name' => 'FAQ'
+            ]
+        ]);
+
+        return redirect()->route('page.edit-faq', [
             'page' => $this->service->updateDocument($page, $data)
         ])->with('success', trans('admin.document_updated'));
     }

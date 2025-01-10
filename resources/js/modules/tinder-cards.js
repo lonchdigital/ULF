@@ -171,7 +171,7 @@ if (TinderCards) {
 
 				formData.append('favorite_cars', favorites.join(' | '));
 
-				console.log(formData);
+				// console.log(formData);
 
 				fetch('/api/favorite-cars', {
 					method: 'POST',
@@ -209,6 +209,42 @@ if (TinderCards) {
 
 
 }
+
+document.getElementById("form-сar-selection").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const form = document.getElementById('form-сar-selection');
+    const formData = new FormData(form);
+
+    fetch('/api/select-cars', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            window.location.href = '/thanks';
+        } else {
+
+            var errors = data.errors;
+
+            for (var field in errors) {
+                var fieldElement = $('#' + field + '_error_select');
+
+                var existingError = fieldElement.next('.field--help-info');
+
+                if (existingError.length) {
+                    existingError.text(errors[field][0]);
+                } else {
+                    fieldElement.after('<div class="field--help-info small-txt text-red mb-2">' +
+                        errors[field][0] + '</div>');
+                }
+            }
+        }
+    })
+    .catch(response => {
+    });
+});
 // else {
 // 	// Якщо елемент не знайдено, виведіть повідомлення або виконайте альтернативні дії
 // 	console.error("Елемент з класом .tinder-cards не знайдено на сторінці.");

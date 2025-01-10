@@ -69,4 +69,9 @@ return [
     'send_form' => 'Відправити',
     'do_you_like_the_car' => 'Сподобалось авто?',
     'drive_it_today' => 'Кермуй його вже сьогодні!',
+    'car_selection' => 'Підбір авто',
+    'specify_the_desired_brand_model_and_parameters' => 'Вкажи бажану марку, модель, параметри.',
+    'car_make_and_model' => 'Марка та модель авто',
+    'approve' => 'згода на обробку персональних даних',
+    'car_select' => 'марка та модель авто',
 ];
