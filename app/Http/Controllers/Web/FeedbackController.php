@@ -108,6 +108,8 @@ class FeedbackController extends Controller
             'utm_content' => 'nullable|string',
         ]);
 
+        dd( 'hello test', app()->getLocale() );
+
         dispatch(new SendCallBackFormEmailJob($request->all()));
 
         return response()->json(['success' => true]);

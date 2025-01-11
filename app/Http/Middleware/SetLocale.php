@@ -10,15 +10,18 @@ class SetLocale
 {
     public function handle(Request $request, Closure $next): Response
     {
-        app()->setLocale($request->segment(1));
+        $locale = $request->segment(1);
+        
+        app()->setLocale($locale);
+        session()->put('locale', $locale);
 
-        \URL::defaults(['lang' => $request->segment(1)]);
+        \URL::defaults(['lang' => $locale]);
 
         $request->route()->forgetParameter('lang');
 
         if (auth()->user()) {
             auth()->user()->update([
-                'language' => $request->segment(1)
+                'language' => $locale
             ]);
         }
 
