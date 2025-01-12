@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'congratulations' => 'Поздравляем',
     'settings' => 'Настройки',
     'car_common_settings' => 'Настройка карты авто',
     'subscribe_benefits' => 'Фишки Подпистки',

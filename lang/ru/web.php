@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'notify_about_availability' => 'Сообщить про наличие',
     'could_be_interesting' => 'Может вас заинтересовать',
     'to_car_park' => 'В Автопарк',
     'send' => 'Отправленно',

@@ -2,13 +2,14 @@
 
 namespace Modules\Cars\Services\Admin;
 
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Modules\Cars\Models\Car;
-use Illuminate\Support\Facades\DB;
-use Modules\Cars\Models\CarImage;
 use Modules\Cars\Models\CarPage;
-use Modules\Cars\Models\CarPageTranslation;
 use Modules\Cars\Models\Vehicle;
+use Modules\Cars\Models\CarImage;
+use Illuminate\Support\Facades\DB;
+use Modules\Cars\Models\CarsAvailability;
+use Modules\Cars\Models\CarPageTranslation;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class CarsService extends CarBaseService
 {
@@ -91,6 +92,20 @@ class CarsService extends CarBaseService
         $page->update($dataPageToUpdate);
 
         return $page;
+    }
+
+    public function addNoteToCarsAvailability( int $carId, string $email)
+    {
+        $exists = CarsAvailability::where('car_id', $carId)
+            ->where('email', $email)
+            ->exists();
+    
+        if (!$exists) {
+            CarsAvailability::create([
+                'car_id' => $carId,
+                'email' => $email
+            ]);
+        }
     }
 
 }

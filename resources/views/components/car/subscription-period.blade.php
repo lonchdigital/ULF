@@ -49,14 +49,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row no-gutters btn-wrap mb-5">
-                            <div class="col-12 col-sm-7 col-lg-12 col-xl-8">
-                                <button type="button" class="btn btn-default-orange btn-orange btn-default text-uppercase w-100" data-toggle="modal" data-target="#popup-any-questions">{{ trans('web.submit_application') }}</button>
+                        @if($car->status_id === \App\DataClasses\CarStatusesClass::IN_SUBSCRIPTION)
+                            <div class="row no-gutters btn-wrap mb-5">
+                                <div class="col-12">
+                                    <button type="button" class="btn btn-default-orange btn-orange btn-default text-uppercase w-100" data-toggle="modal" data-target="#notify-about-availability">{{ trans('web.notify_about_availability') }}</button>
+                                </div>
                             </div>
-                            <div class="col">
-                                <a href="##" class="btn-default btn-default-white btn btn-block btn-outline-white text-uppercase mt-0" data-toggle="modal" data-target="#popup-сar-selection">{{ trans('web.test_drive') }}</a>
+                        @else
+                            <div class="row no-gutters btn-wrap mb-5">
+                                <div class="col-12 col-sm-7 col-lg-12 col-xl-8">
+                                    <button type="button" class="btn btn-default-orange btn-orange btn-default text-uppercase w-100" data-toggle="modal" data-target="#popup-any-questions">{{ trans('web.submit_application') }}</button>
+                                </div>
+                                <div class="col">
+                                    <a href="##" class="btn-default btn-default-white btn btn-block btn-outline-white text-uppercase mt-0" data-toggle="modal" data-target="#popup-сar-selection">{{ trans('web.test_drive') }}</a>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                         <div class="row">
                             <div class="col">
                                 <div class="h5 text-white font-weight-bolder mb-2">{{ trans('web.you_will_get') }}:</div>

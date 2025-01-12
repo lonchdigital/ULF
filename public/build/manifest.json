@@ -38,7 +38,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-CxiBQqaw.css",
+    "file": "assets/app-Dt-8Rs1L.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -74,6 +74,15 @@
       "assets/Montserrat-Thin-DZnZU91S.woff2",
       "assets/Montserrat-Thin-D_BYdjTx.woff",
       "assets/icons-CH-K8qS0.svg"
+    ]
+  },
+  "resources/js/forms/notifyAboutAvailability.js": {
+    "file": "assets/notifyAboutAvailability-DV1buVC_.js",
+    "name": "notifyAboutAvailability",
+    "src": "resources/js/forms/notifyAboutAvailability.js",
+    "isEntry": true,
+    "imports": [
+      "_jquery-CqDs7TUd.js"
     ]
   },
   "resources/js/forms/popupForm.js": {

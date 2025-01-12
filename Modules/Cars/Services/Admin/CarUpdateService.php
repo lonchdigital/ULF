@@ -3,11 +3,15 @@
 namespace Modules\Cars\Services\Admin;
 
 use Modules\Cars\Models\Car;
-use Modules\Cars\Models\SubscribePrice;
 use Modules\Cars\Models\CarFaq;
 use Modules\Cars\Models\Vehicle;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\DataClasses\CarStatusesClass;
+use Modules\Cars\Models\SubscribePrice;
+use Modules\Cars\Models\CarsAvailability;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\SendAvailabilityNotification;
 
 class CarUpdateService extends CarBaseService
 {
@@ -119,7 +123,9 @@ class CarUpdateService extends CarBaseService
     // Update one car from dashboard
     public function updateCarFromDashboard(Car $car, array $data)
     {
-//         dd($data);
+        if($car->status_id === CarStatusesClass::IN_SUBSCRIPTION && (int)$data['status_id'] === CarStatusesClass::AVAILABLE) {
+            $this->notifyAboutCarAvailability($car);
+        }
 
         $this->syncSubscribePrices($car, $data['month_settings']);
         (isset($data['faqs'])) ? $this->syncFaqs($car, $data['faqs']) : $car->faqs()->delete();
@@ -156,6 +162,20 @@ class CarUpdateService extends CarBaseService
 
         // dd($data, $car->page);
         return $car;
+    }
+
+    private function notifyAboutCarAvailability(Car $car)
+    {
+        $posts = CarsAvailability::where('car_id', $car->id)->get();
+
+        if(count($posts) > 0) {
+            $message['name'] = $car->getFullName();
+            $message['url'] = route('car.single.page', ['slug' => $car->page->slug]);
+
+            foreach($posts as $post) {
+                Notification::route('mail', $post->email)->notify(new SendAvailabilityNotification($post->email, $message));
+            }
+        }
     }
 
     private function syncSubscribePrices(Car $car, array $data)

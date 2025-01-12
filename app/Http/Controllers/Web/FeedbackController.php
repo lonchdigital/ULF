@@ -4,20 +4,29 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Jobs\SendFeedbackEmailJob;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Jobs\SendCallBackFormEmailJob;
+use App\Services\Feedback\StoreService;
 use App\Jobs\SendFeedbackTinderEmailJob;
+use App\Jobs\SendCallBackAvailabilityJob;
 use App\Http\Requests\Api\FeedbackRequest;
-use App\Jobs\SendTestDriveFeedbackEmailJob;
-use App\Http\Requests\Api\CallBackFormRequest;
 use App\Http\Requests\Api\SelectCarRequest;
+use App\Jobs\SendTestDriveFeedbackEmailJob;
+use Modules\Cars\Services\Admin\CarsService;
+use App\Http\Requests\Api\CallBackFormRequest;
 use App\Http\Requests\Api\StoreAutomatchRequest;
 use App\Http\Requests\Api\TestDriveFeedbackRequest;
-use App\Services\Feedback\StoreService;
-use Illuminate\Support\Facades\Log;
 
 class FeedbackController extends Controller
 {
+    private CarsService $carsService;
+
+    public function __construct(CarsService $carsService)
+    {
+        $this->carsService = $carsService;
+    }
+
     public function store(FeedbackRequest $request)
     {
         $data = $request->validated();
@@ -108,10 +117,30 @@ class FeedbackController extends Controller
             'utm_content' => 'nullable|string',
         ]);
 
-        dd( 'hello test', app()->getLocale() );
-
         dispatch(new SendCallBackFormEmailJob($request->all()));
 
+        return response()->json(['success' => true]);
+    }
+
+    public function callBackAvailabilityForm(Request $request)
+    {
+        $request->validate([
+            'email_drive' => 'required|email|max:255',
+            'agree_drive' => 'accepted',
+            'current_url' => 'required|string',
+            'utm_source' => 'nullable|string',
+            'utm_medium' => 'nullable|string',
+            'utm_campaign' => 'nullable|string',
+            'utm_term' => 'nullable|string',
+            'utm_content' => 'nullable|string',
+            'car_id' => 'required|integer',
+        ]);
+
+        $data = $request->all();
+
+        $this->carsService->addNoteToCarsAvailability($data['car_id'], $data['email_drive']);
+
+        // dispatch(new SendCallBackAvailabilityJob($request->all()));
         return response()->json(['success' => true]);
     }
 

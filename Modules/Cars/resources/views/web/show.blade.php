@@ -3,6 +3,8 @@
 @section('title', 'Single Car!!!')
 
 @section('head')
+    @vite(['resources/js/forms/notifyAboutAvailability.js'])
+
     @if($page->meta_title)
         <title>{{ $page->meta_title }}</title>
         <meta name="title" content="{{ $page->meta_title }}">
@@ -117,5 +119,66 @@
 
         </div>
     </main>
+
+    <div class="modal modal--custom popup-any-questions fade" id="notify-about-availability" data-keyboard="false" tabindex="-1" aria-labelledby="notify-about-availability" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content py-4 px-2 p-md-5">
+                <div class="modal-body p-0">
+                    <form class="notify-about-availability" id="call-back-availability-form" autocomplete="off">
+                        @csrf
+    
+                        <div class="row">
+                            <div class="col">
+                                <div class="d-flex align-items-start justify-content-between mb-3">
+                                    <div class="modal-title font-weight-bolder mb-0">{{ trans('web.notify_about_availability') }}</div>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">
+                                            <svg>
+                                                <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-close' }}"></use>
+                                            </svg>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="row">
+    
+                            <div class="col-12">
+                                <div class="field mb-3">
+                                    <label class="control-label" for="popup-notify-about-availability--email_drive">Email</label>
+                                    <input type="text" name="email_drive" id="popup-notify-about-availability--email_drive" class="form-control email_drive-field mb-3" placeholder="example@gmail.com" autocomplete="no-autofill-please" value="">
+                                </div>
+                            </div>
+    
+                            <input type="hidden" name="current_url" value="{{ url()->full() }}">
+    
+                            <input type="hidden" name="utm_source" value>
+                            <input type="hidden" name="utm_medium" value>
+                            <input type="hidden" name="utm_campaign" value>
+                            <input type="hidden" name="utm_term" value>
+                            <input type="hidden" name="utm_content" value>
+
+                            <input type="hidden" name="car_id" value="{{ $car->id }}">
+    
+                            <div class="col-12">
+                                <div class="custom-control custom-checkbox position-relative mb-5">
+                                    <input type="checkbox" class="custom-control-input" id="popup-notify-about-availability--agree_drive" name="agree_drive" value="1">
+                                    <label class="custom-control-label agree_drive-field" for="popup-notify-about-availability--agree_drive">
+                                        <span class="custom-checkbox--info">{{ trans('web.agreement_one') }} <span class=""><a href="##">{{ trans('web.agreement_two') }}</a></span>.</span>
+                                    </label>
+                                </div>
+                            </div>
+    
+                            <div class="col-12 col-md-auto">
+                                <button type="submit" class="btn-modal-send btn-default btn-default-orange btn btn-block btn-orange btn-default text-uppercase">{{ trans('web.call_me_back') }}</button>
+                            </div>
+    
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection

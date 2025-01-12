@@ -24,6 +24,7 @@ Route::redirect('/dashboard', '/admin');
 Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store');
 Route::post('/feedback/test-drive-store', [FeedbackController::class, 'testDriveStore'])->name('test.drive.feedback.store');
 Route::post('/feedback/call-back-form', [FeedbackController::class, 'callBackForm']);
+Route::post('/feedback/call-back-availability-form', [FeedbackController::class, 'callBackAvailabilityForm']);
 
 
 $optionalLanguageRoutes = function () {
