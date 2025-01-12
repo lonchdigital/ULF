@@ -174,6 +174,7 @@ class CarUpdateService extends CarBaseService
 
             foreach($posts as $post) {
                 Notification::route('mail', $post->email)->notify(new SendAvailabilityNotification($post->email, $message));
+                $post->delete();
             }
         }
     }
