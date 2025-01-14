@@ -1,4 +1,6 @@
 import $ from 'jquery';
+import { setFilterParams } from './set-filter-params';
+import { extractFilterParams } from './extract-filter-params';
 
 $(document).ready(function() {
 
@@ -7,6 +9,7 @@ $(document).ready(function() {
     const $postPaginationWrapper = $('#pagination-wrapper');
     const $showMore = $('#show-more');
     const $filterCarsButton = $('#filter-cars-button');
+    const $filterCatalogSortLink = $('.art-select-options.art-sort-catalog a');
 
     runAjaxFilter();
 
@@ -31,46 +34,24 @@ $(document).ready(function() {
     $filterCarsButton.on('click', function (event) {
         buildUrlFromParamsAndFollowIt(event);
     });
+    $filterCatalogSortLink.on('click', function (event) {
+        let artThis = $(this);
+        buildUrlFromParamsAndFollowIt(event, artThis);
+    });
 
-    function buildUrlFromParamsAndFollowIt(event) {
+    // filterCatalogSortLink.on('click', function(event) {
+    //     // event.preventDefault();
+    //     let artThis = $(this);
+
+
+    // });
+
+    function buildUrlFromParamsAndFollowIt(event, artThis = null) {
         event.preventDefault();
 
-        // Create object URLSearchParams
-        const params = new URLSearchParams(window.location.search);
-
-        // fuelType
-        const fuelType = document.querySelector('.select-choose-fuel-types').value;
-        if (fuelType) {
-            params.set('fuelType', fuelType);
-        } else {
-            params.delete('fuelType');
-        }
-
-        // bodyTypes (checkboxes)
-        const selectedBodyTypes = [];
-        document.querySelectorAll('.body-type-input').forEach(checkbox => {
-            if (checkbox.checked) {
-                selectedBodyTypes.push(checkbox.value);
-            }
-        });
-        if (selectedBodyTypes.length > 0) {
-            params.set('bodyTypes', selectedBodyTypes.join(','));
-        } else {
-            params.delete('bodyTypes');
-        }
-
-        // driverTypes (checkboxes)
-        const selectedDryverTypes = [];
-        document.querySelectorAll('.dryver-type-input').forEach(checkbox => {
-            if (checkbox.checked) {
-                selectedDryverTypes.push(checkbox.value);
-            }
-        });
-        if (selectedDryverTypes.length > 0) {
-            params.set('driverTypes', selectedDryverTypes.join(','));
-        } else {
-            params.delete('driverTypes');
-        }
+        // Create object URLSearchParams and set params
+        let params = new URLSearchParams(window.location.search);
+        params = setFilterParams(params, artThis);
 
         const newUrl = `${window.location.pathname}?${params.toString()}`;
         // console.log(newUrl);
@@ -82,18 +63,7 @@ $(document).ready(function() {
         // $postPaginationWrapper.html('');
 
         let filters = {};
-        filters['orderValue'] = getParameterByName('order');
-        filters['fuelType'] = getParameterByName('fuelType') 
-            ? getParameterByName('fuelType').split(',').map(Number)
-            : [];
-
-        filters['bodyTypes'] = getParameterByName('bodyTypes') 
-            ? getParameterByName('bodyTypes').split(',').map(Number)
-            : [];
-
-        filters['driverTypes'] = getParameterByName('driverTypes') 
-            ? getParameterByName('driverTypes').split(',').map(Number)
-            : [];
+        filters = extractFilterParams(filters);
 
         ajaxThematicFilter(
             function (data) {
@@ -245,17 +215,6 @@ $(document).ready(function() {
 
         $postFilterResult.html(nothingFound);
     }
-
-    function getParameterByName(name) {
-        const url = window.location.href;
-        name = name.replace(/[\[\]]/g, '\\$&');
-        const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
-        const results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, ' '));
-    }
-
 
     // select button
     let filtersButton = $('.filters-button .art-order');

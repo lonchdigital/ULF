@@ -66,12 +66,13 @@
                                                 </svg>
                                             </button>
 
-                                            <div class="art-select-options">
-                                                <a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}" class="filter-option">{{ trans('web.sort_by_default') }}</a>
-                                                <a href="?order=price_up" class="filter-option">{{ trans('web.price_up') }}</a>
-                                                <a href="?order=price_down" class="filter-option">{{ trans('web.price_down') }}</a>
-                                                <a href="?order=popularity_up" class="filter-option">{{ trans('web.more_popular') }}</a>
-                                                <a href="?order=popularity_down" class="filter-option">{{ trans('web.less_popular') }}</a>
+                                            <div class="art-select-options art-sort-catalog">
+                                                <a href="#" data-value="0" class="filter-option">{{ trans('web.sort_by_default') }}</a>
+                                                <a href="#" class="filter-option" data-value="price_up">{{ trans('web.price_up') }}</a>
+                                                <a href="#" class="filter-option" data-value="price_down">{{ trans('web.price_down') }}</a>
+                                                <a href="#" class="filter-option" data-value="popularity_up">{{ trans('web.more_popular') }}</a>
+                                                <a href="#" class="filter-option" data-value="popularity_down">{{ trans('web.less_popular') }}</a>
+                                                <input type="hidden" id="sort-catalog-input" value="{{ ( request()->get('order') ) ? request()->get('order') : "0"; }}">
                                             </div>
                                         </div>
                                         <button type="button" class="btn btn-reset btn-filter collapsed"
@@ -168,9 +169,9 @@
                 </div>
                 <div class="sidebar-filter">
                     <div class="filter-item">
-                        <button type="button" class="btn-clear-filter btn-default btn-transparent btn btn-block mt-0 p-0 align-content-center mb-3">
+                        <a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}" class="btn-clear-filter btn-default btn-transparent btn btn-block mt-0 p-0 align-content-center mb-3">
                             Очистити
-                        </button>
+                        </a>
                     </div>
                     
                     @if( count($filters['fuelTypes']) > 0 )
@@ -181,9 +182,9 @@
                                     <label for="select-choose-fuel-types" class="small-txt font-weight-bold text-grey mb-1">Тип палива</label>
                                     <div class="select-wrap">
                                         <select class="select-choose-fuel-types" name="select-choose-fuel-types">
-                                            <option>Оберіть тип палива</option>
+                                            <option value="0">Оберіть тип палива</option>
                                             @foreach ($filters['fuelTypes'] as $fuelType)
-                                                <option value="{{ $fuelType->id }}">{{ $fuelType->name }}</option>
+                                                <option value="{{ $fuelType->id }}" @if(request()->get('fuelType') == $fuelType->id) selected @endif>{{ $fuelType->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -219,11 +220,11 @@
                                 <div class="small-txt font-weight-bold text-grey mb-1">Рік випуску</div>
                                 <div class="inner">
                                     <div class="datepicker">
-                                        <input id="graduation-year-first" class="form-control" type="text" readonly
+                                        <input id="graduation-year-first" @if(request()->get('yearFrom')) value="{{ request()->get('yearFrom') }}" @endif class="graduation-year-from form-control" type="text" readonly
                                             data-input autocomplete="no-autofill-please">
                                     </div>
                                     <div class="datepicker">
-                                        <input id="graduation-year-last" class="form-control" type="text" readonly
+                                        <input id="graduation-year-last" @if(request()->get('yearTo')) value="{{ request()->get('yearTo') }}" @endif class="graduation-year-to form-control" type="text" readonly
                                             data-input autocomplete="no-autofill-please">
                                     </div>
                                 </div>
@@ -232,12 +233,22 @@
                     </div>
 
                     @if( count($filters['types']) > 0 )
+                        @php
+                            $selectedBodyTypes = request()->get('bodyTypes') ? explode(',', request()->get('bodyTypes')) : [];
+                        @endphp
                         <div class="filter-item">
                             <div class="small-txt font-weight-bold text-grey mb-1">Тип кузову</div>
                             <div class="mb-6">
                                 @foreach ($filters['types'] as $type)
                                     <div class="custom-control custom-checkbox position-relative mb-2">
-                                        <input type="checkbox" value="{{ $type->id }}" name="body-type-{{ $type->id }}" class="body-type-input custom-control-input" id="body-type-{{ $type->id }}">
+                                        <input 
+                                            type="checkbox" 
+                                            value="{{ $type->id }}" 
+                                            name="body-type-{{ $type->id }}" 
+                                            class="body-type-input custom-control-input" 
+                                            id="body-type-{{ $type->id }}"
+                                            @if(in_array($type->id, $selectedBodyTypes)) checked @endif
+                                        >
                                         <label class="custom-control-label" for="body-type-{{ $type->id }}">
                                             <span class="custom-checkbox--info">{{ $type->name }}</span>
                                         </label>
@@ -248,12 +259,22 @@
                     @endif
 
                     @if( count($filters['driverTypes']) > 0 )
+                        @php
+                            $selectedDriverTypes = request()->get('driverTypes') ? explode(',', request()->get('driverTypes')) : [];
+                        @endphp
                         <div class="filter-item">
                             <div class="small-txt font-weight-bold text-grey mb-1">Привод</div>
                             <div class="mb-6">
                                 @foreach ($filters['driverTypes'] as $driverType)
                                     <div class="custom-control custom-checkbox position-relative mb-2">
-                                        <input type="checkbox" value="{{ $driverType->id }}" name="dryver-type-{{ $driverType->id }}" class="dryver-type-input custom-control-input" id="dryver-type-{{ $driverType->id }}">
+                                        <input 
+                                            type="checkbox" 
+                                            value="{{ $driverType->id }}" 
+                                            name="dryver-type-{{ $driverType->id }}" 
+                                            class="dryver-type-input custom-control-input" 
+                                            id="dryver-type-{{ $driverType->id }}"
+                                            @if(in_array($driverType->id, $selectedDriverTypes)) checked @endif
+                                        >
                                         <label class="custom-control-label" for="dryver-type-{{ $driverType->id }}">
                                             <span class="custom-checkbox--info">{{ $driverType->name }}</span>
                                         </label>
@@ -269,8 +290,8 @@
                                 {{-- <div class="field--help-info small-txt text-red mb-1">Вкажіть об‘єм двигуна</div> --}}
                                 <div class="small-txt font-weight-bold text-grey mb-1">Об‘єм двигуна (л)</div>
                                 <div class="inner">
-                                    <input class="form-control" type="number" autocomplete="no-autofill-please">
-                                    <input class="form-control" type="number" autocomplete="no-autofill-please">
+                                    <input class="form-control engine-volume-from" @if(request()->get('engineFrom')) value="{{ request()->get('engineFrom') }}" @endif type="number" autocomplete="no-autofill-please">
+                                    <input class="form-control engine-volume-to" @if(request()->get('engineTo')) value="{{ request()->get('engineTo') }}" @endif type="number" autocomplete="no-autofill-please">
                                 </div>
                             </div>
                         </div>

@@ -30,16 +30,51 @@ class WebService
         app()->setLocale($currentLocale);
 
         $filters = $request->all()['filters'];
-
-        // dd('ohhh', $filters);
-
         $query = Car::query();
 
         // dd($filters);
 
+        if(!empty($filters['yearFrom']) && !empty($filters['yearTo'])) {
+            $query->whereHas('vehicle', function ($query) use ($filters) {
+                $query->whereBetween('manufacturedYear', [$filters['yearFrom'], $filters['yearTo']]);
+            });
+        } elseif (!empty($filters['yearFrom'])) {
+            $query->whereHas('vehicle', function ($query) use ($filters) {
+                $query->where('manufacturedYear', '>', $filters['yearFrom']);
+            });
+        } elseif (!empty($filters['yearTo'])) {
+            $query->whereHas('vehicle', function ($query) use ($filters) {
+                $query->where('manufacturedYear', '<', $filters['yearTo']);
+            });
+        }
+
+        if(!empty($filters['engineFrom']) && !empty($filters['engineTo'])) {
+            $query->whereHas('vehicle', function ($query) use ($filters) {
+                $query->whereBetween('engineVolume', [$filters['engineFrom'], $filters['engineTo']]);
+            });
+        } elseif (!empty($filters['engineFrom'])) {
+            $query->whereHas('vehicle', function ($query) use ($filters) {
+                $query->where('engineVolume', '>', $filters['engineFrom']);
+            });
+        } elseif (!empty($filters['engineTo'])) {
+            $query->whereHas('vehicle', function ($query) use ($filters) {
+                $query->where('engineVolume', '<', $filters['engineTo']);
+            });
+        }
+
         if (!empty($filters['fuelType'])) {
             $query->whereHas('vehicle', function ($query) use ($filters) {
                 $query->where('fuel_type_id', $filters['fuelType']);
+            });
+        }
+        if (!empty($filters['bodyTypes'])) {
+            $query->whereHas('vehicle', function ($query) use ($filters) {
+                $query->whereIn('type_id', $filters['bodyTypes']);
+            });
+        }
+        if (!empty($filters['driverTypes'])) {
+            $query->whereHas('vehicle', function ($query) use ($filters) {
+                $query->whereIn('driver_type_id', $filters['driverTypes']);
             });
         }
 
