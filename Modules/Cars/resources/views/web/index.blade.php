@@ -168,45 +168,31 @@
                 </div>
                 <div class="sidebar-filter">
                     <div class="filter-item">
-                        <button type="button"
-                            class="btn-clear-filter btn-default btn-transparent btn btn-block mt-0 p-0 align-content-center mb-3">Очистити</button>
+                        <button type="button" class="btn-clear-filter btn-default btn-transparent btn btn-block mt-0 p-0 align-content-center mb-3">
+                            Очистити
+                        </button>
                     </div>
-                    <div class="filter-item">
-                        <div class="field-wrap mb-3">
-                            <div class="field">
-                                <div class="field--help-info small-txt text-red mb-1">Оберіть ваше місто</div>
-                                <label for="select-choose-city"
-                                    class="small-txt font-weight-bold text-grey mb-1">Місто</label>
-                                <div class="select-wrap">
-                                    <select class="select-choose-city" name="select-choose-city">
-                                        <!-- <option></option> -->
-                                        <option value="1">Луцьк</option>
-                                        <option value="2">Львів</option>
-                                        <option value="3">Київ</option>
-                                        <option value="4">Володимир</option>
-                                    </select>
+                    
+                    @if( count($filters['fuelTypes']) > 0 )
+                        <div class="filter-item">
+                            <div class="field-wrap mb-3">
+                                <div class="field">
+                                    {{-- <div class="field--help-info small-txt text-red mb-1">Оберіть марку авто</div> --}}
+                                    <label for="select-choose-fuel-types" class="small-txt font-weight-bold text-grey mb-1">Тип палива</label>
+                                    <div class="select-wrap">
+                                        <select class="select-choose-fuel-types" name="select-choose-fuel-types">
+                                            <option>Оберіть тип палива</option>
+                                            @foreach ($filters['fuelTypes'] as $fuelType)
+                                                <option value="{{ $fuelType->id }}">{{ $fuelType->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="filter-item">
-                        <div class="field-wrap mb-3">
-                            <div class="field">
-                                <div class="field--help-info small-txt text-red mb-1">Оберіть марку авто</div>
-                                <label for="select-choose-brand" class="small-txt font-weight-bold text-grey mb-1">Марка
-                                    авто</label>
-                                <div class="select-wrap">
-                                    <select class="select-choose-brand" name="select-choose-brand">
-                                        <option></option>
-                                        <option value="1">Ford</option>
-                                        <option value="2">Volvo</option>
-                                        <option value="3">Nissan</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="filter-item">
+                    @endif
+
+                    {{-- <div class="filter-item">
                         <div class="field-wrap mb-6">
                             <div class="field">
                                 <div class="field--help-info small-txt text-red mb-1">Вкажіть ціну</div>
@@ -224,11 +210,12 @@
                                 <div class="range-bar-full"></div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
+
                     <div class="filter-item">
                         <div class="field-wrap mb-6">
                             <div class="field">
-                                <div class="field--help-info small-txt text-red mb-1">Вкажіть рік випуску</div>
+                                {{-- <div class="field--help-info small-txt text-red mb-1">Вкажіть рік випуску</div> --}}
                                 <div class="small-txt font-weight-bold text-grey mb-1">Рік випуску</div>
                                 <div class="inner">
                                     <div class="datepicker">
@@ -243,79 +230,43 @@
                             </div>
                         </div>
                     </div>
-                    <div class="filter-item">
-                        <div class="small-txt font-weight-bold text-grey mb-1">Тип кузову</div>
-                        <div class="mb-6">
-                            <div class="custom-control custom-checkbox position-relative mb-2">
-                                <input type="checkbox" class="custom-control-input" id="body-type-1">
-                                <label class="custom-control-label" for="body-type-1">
-                                    <span class="custom-checkbox--info">Тип 1</span>
-                                </label>
-                            </div>
-                            <div class="custom-control custom-checkbox position-relative mb-2">
-                                <input type="checkbox" class="custom-control-input" id="body-type-2">
-                                <label class="custom-control-label" for="body-type-2">
-                                    <span class="custom-checkbox--info">Тип 2</span>
-                                </label>
-                            </div>
-                            <div class="custom-control custom-checkbox position-relative mb-2">
-                                <input type="checkbox" class="custom-control-input" id="body-type-3">
-                                <label class="custom-control-label" for="body-type-3">
-                                    <span class="custom-checkbox--info">Тип 3</span>
-                                </label>
+
+                    @if( count($filters['types']) > 0 )
+                        <div class="filter-item">
+                            <div class="small-txt font-weight-bold text-grey mb-1">Тип кузову</div>
+                            <div class="mb-6">
+                                @foreach ($filters['types'] as $type)
+                                    <div class="custom-control custom-checkbox position-relative mb-2">
+                                        <input type="checkbox" value="{{ $type->id }}" name="body-type-{{ $type->id }}" class="body-type-input custom-control-input" id="body-type-{{ $type->id }}">
+                                        <label class="custom-control-label" for="body-type-{{ $type->id }}">
+                                            <span class="custom-checkbox--info">{{ $type->name }}</span>
+                                        </label>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
-                    </div>
-                    <div class="filter-item">
-                        <div class="small-txt font-weight-bold text-grey mb-1">Коробка передач</div>
-                        <div class="mb-6">
-                            <div class="custom-control custom-checkbox position-relative mb-2">
-                                <input type="checkbox" class="custom-control-input" id="transmission-1">
-                                <label class="custom-control-label" for="transmission-1">
-                                    <span class="custom-checkbox--info">Тип 1</span>
-                                </label>
-                            </div>
-                            <div class="custom-control custom-checkbox position-relative mb-2">
-                                <input type="checkbox" class="custom-control-input" id="transmission-2">
-                                <label class="custom-control-label" for="transmission-2">
-                                    <span class="custom-checkbox--info">Тип 2</span>
-                                </label>
-                            </div>
-                            <div class="custom-control custom-checkbox position-relative mb-2">
-                                <input type="checkbox" class="custom-control-input" id="transmission-3">
-                                <label class="custom-control-label" for="transmission-3">
-                                    <span class="custom-checkbox--info">Тип 3</span>
-                                </label>
+                    @endif
+
+                    @if( count($filters['driverTypes']) > 0 )
+                        <div class="filter-item">
+                            <div class="small-txt font-weight-bold text-grey mb-1">Привод</div>
+                            <div class="mb-6">
+                                @foreach ($filters['driverTypes'] as $driverType)
+                                    <div class="custom-control custom-checkbox position-relative mb-2">
+                                        <input type="checkbox" value="{{ $driverType->id }}" name="dryver-type-{{ $driverType->id }}" class="dryver-type-input custom-control-input" id="dryver-type-{{ $driverType->id }}">
+                                        <label class="custom-control-label" for="dryver-type-{{ $driverType->id }}">
+                                            <span class="custom-checkbox--info">{{ $driverType->name }}</span>
+                                        </label>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
-                    </div>
-                    <div class="filter-item">
-                        <div class="small-txt font-weight-bold text-grey mb-1">Тип палива</div>
-                        <div class="mb-6">
-                            <div class="custom-control custom-checkbox position-relative mb-2">
-                                <input type="checkbox" class="custom-control-input" id="fuel-type-1">
-                                <label class="custom-control-label" for="fuel-type-1">
-                                    <span class="custom-checkbox--info">Тип 1</span>
-                                </label>
-                            </div>
-                            <div class="custom-control custom-checkbox position-relative mb-2">
-                                <input type="checkbox" class="custom-control-input" id="fuel-type-2">
-                                <label class="custom-control-label" for="fuel-type-2">
-                                    <span class="custom-checkbox--info">Тип 2</span>
-                                </label>
-                            </div>
-                            <div class="custom-control custom-checkbox position-relative mb-2">
-                                <input type="checkbox" class="custom-control-input" id="fuel-type-3">
-                                <label class="custom-control-label" for="fuel-type-3">
-                                    <span class="custom-checkbox--info">Тип 3</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                    @endif
+
                     <div class="filter-item">
                         <div class="field-wrap mb-3">
                             <div class="field">
-                                <div class="field--help-info small-txt text-red mb-1">Вкажіть об‘єм двигуна</div>
+                                {{-- <div class="field--help-info small-txt text-red mb-1">Вкажіть об‘єм двигуна</div> --}}
                                 <div class="small-txt font-weight-bold text-grey mb-1">Об‘єм двигуна (л)</div>
                                 <div class="inner">
                                     <input class="form-control" type="number" autocomplete="no-autofill-please">
@@ -326,7 +277,7 @@
                     </div>
                 </div>
                 <div class="mx-n3">
-                    <a class="btn-filter-close btn btn-main-blue btn-default text-uppercase w-100 rounded-0"
+                    <a id="filter-cars-button" class="btn-filter-close btn btn-main-blue btn-default text-uppercase w-100 rounded-0"
                         data-toggle="collapse" href="#navbarFilters" role="button" aria-expanded="false"
                         aria-controls="navbarFilters">Застосувати</a>
                 </div>

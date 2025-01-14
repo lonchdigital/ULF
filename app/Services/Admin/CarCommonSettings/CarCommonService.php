@@ -8,13 +8,16 @@ use App\Models\Page;
 use Illuminate\Support\Str;
 use Modules\Cars\Models\Car;
 use App\Models\CarDriveBlock;
+use Modules\Cars\Models\Type;
 use App\Models\CommonCarSetting;
 use App\Models\SubscribeBenefit;
 use App\Models\SubscribeSetting;
 use Illuminate\Http\UploadedFile;
+use Modules\Cars\Models\FuelType;
 use Illuminate\Support\Facades\Storage;
 use App\Services\Application\ApplicationConfigService;
-
+use Modules\Cars\Models\DriverType;
+use Modules\Cars\Models\TransmissionType;
 
 class CarCommonService
 {
@@ -251,4 +254,16 @@ class CarCommonService
         return SubscribeSetting::all();
     }
 
+    public function getAllFiltersForCatalogPage(): array
+    {
+        // return SubscribeSetting::all();
+        $filters = [];
+
+        $filters['driverTypes'] = DriverType::all();
+        $filters['fuelTypes'] = FuelType::all();
+        $filters['types'] = Type::whereIn('id', [1,2,3,4])->get();
+        $filters['transmissionTypes'] = TransmissionType::all();
+
+        return $filters;
+    }
 }

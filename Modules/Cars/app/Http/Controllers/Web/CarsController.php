@@ -33,6 +33,7 @@ class CarsController extends Controller
         return view('cars::web.index', [
             // 'page' => CarPage::where('slug', 'cars')->first(),
             'page' => Page::where('slug', 'catalog')->first(),
+            'filters' => $this->commonService->getAllFiltersForCatalogPage(),
             'url' => $url
         ]);
     }

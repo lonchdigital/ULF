@@ -13,19 +13,19 @@ $(document).ready(function() {
         });
     }
 
-    let selectChooseCity = $('.select-choose-city');
-    if (selectChooseCity.length) {
-        selectChooseCity.select2({
-            minimumResultsForSearch: -1,
-            placeholder: 'Оберіть ваше місто'
-        });
-    }
+    // let selectChooseCity = $('.select-choose-city');
+    // if (selectChooseCity.length) {
+    //     selectChooseCity.select2({
+    //         minimumResultsForSearch: -1,
+    //         placeholder: 'Оберіть ваше місто'
+    //     });
+    // }
 
     let selectChooseBrand = $('.select-choose-brand');
     if (selectChooseBrand.length) {
         selectChooseBrand.select2({
             minimumResultsForSearch: -1,
-            placeholder: 'Оберіть марку авто'
+            // placeholder: 'Оберіть марку авто'
         });
     }
 

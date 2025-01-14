@@ -29,26 +29,38 @@ class WebService
         $currentLocale = session()->get('language', 'ua');
         app()->setLocale($currentLocale);
 
+        $filters = $request->all()['filters'];
+
+        // dd('ohhh', $filters);
+
         $query = Car::query();
 
-        if ($request['catalogOrder'] !== null) {
-            if ($request['catalogOrder'] === 'price_up') {
+        // dd($filters);
+
+        if (!empty($filters['fuelType'])) {
+            $query->whereHas('vehicle', function ($query) use ($filters) {
+                $query->where('fuel_type_id', $filters['fuelType']);
+            });
+        }
+
+        if ($filters['orderValue'] !== null) {
+            if ($filters['orderValue'] === 'price_up') {
                 $query->select('cars.*')
                     ->join('subscribe_prices', function($join) {
                         $join->on('cars.id', '=', 'subscribe_prices.car_id')
                             ->where('subscribe_prices.section_id', '=', 1);
                     })
                     ->orderBy('subscribe_prices.monthly_payment', 'asc');
-            } elseif ($request['catalogOrder'] === 'price_down') {
+            } elseif ($filters['orderValue'] === 'price_down') {
                 $query->select('cars.*')
                     ->join('subscribe_prices', function($join) {
                         $join->on('cars.id', '=', 'subscribe_prices.car_id')
                             ->where('subscribe_prices.section_id', '=', 1);
                     })
                     ->orderBy('subscribe_prices.monthly_payment', 'desc');
-            } elseif ($request['catalogOrder'] === 'popularity_up') {
+            } elseif ($filters['orderValue'] === 'popularity_up') {
                 $query->orderByRaw('COALESCE(sort_by_popularity_id, 999999) ASC');
-            } elseif ($request['catalogOrder'] === 'popularity_down') {
+            } elseif ($filters['orderValue'] === 'popularity_down') {
                 $query->orderByRaw('COALESCE(sort_by_popularity_id, 0) DESC');
             }
         }

@@ -6,7 +6,7 @@ $(document).ready(function() {
     const $postFilterResult = $('#cars-list');
     const $postPaginationWrapper = $('#pagination-wrapper');
     const $showMore = $('#show-more');
-
+    const $filterCarsButton = $('#filter-cars-button');
 
     runAjaxFilter();
 
@@ -28,12 +28,72 @@ $(document).ready(function() {
         runAjaxFilter(pageNumber, true);
     });
 
+    $filterCarsButton.on('click', function (event) {
+        buildUrlFromParamsAndFollowIt(event);
+    });
+
+    function buildUrlFromParamsAndFollowIt(event) {
+        event.preventDefault();
+
+        // Create object URLSearchParams
+        const params = new URLSearchParams(window.location.search);
+
+        // fuelType
+        const fuelType = document.querySelector('.select-choose-fuel-types').value;
+        if (fuelType) {
+            params.set('fuelType', fuelType);
+        } else {
+            params.delete('fuelType');
+        }
+
+        // bodyTypes (checkboxes)
+        const selectedBodyTypes = [];
+        document.querySelectorAll('.body-type-input').forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedBodyTypes.push(checkbox.value);
+            }
+        });
+        if (selectedBodyTypes.length > 0) {
+            params.set('bodyTypes', selectedBodyTypes.join(','));
+        } else {
+            params.delete('bodyTypes');
+        }
+
+        // driverTypes (checkboxes)
+        const selectedDryverTypes = [];
+        document.querySelectorAll('.dryver-type-input').forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedDryverTypes.push(checkbox.value);
+            }
+        });
+        if (selectedDryverTypes.length > 0) {
+            params.set('driverTypes', selectedDryverTypes.join(','));
+        } else {
+            params.delete('driverTypes');
+        }
+
+        const newUrl = `${window.location.pathname}?${params.toString()}`;
+        // console.log(newUrl);
+        window.location.href = newUrl;
+    }
 
     function runAjaxFilter(pageNumber = null, showMore = false) {
         // $postFilterResult.html('<div class="art-loader-post-wrapper"><div class="loader">Шукаю, зачекайте...</div></div>');
         // $postPaginationWrapper.html('');
 
-        let orderValue = getParameterByName('order');
+        let filters = {};
+        filters['orderValue'] = getParameterByName('order');
+        filters['fuelType'] = getParameterByName('fuelType') 
+            ? getParameterByName('fuelType').split(',').map(Number)
+            : [];
+
+        filters['bodyTypes'] = getParameterByName('bodyTypes') 
+            ? getParameterByName('bodyTypes').split(',').map(Number)
+            : [];
+
+        filters['driverTypes'] = getParameterByName('driverTypes') 
+            ? getParameterByName('driverTypes').split(',').map(Number)
+            : [];
 
         ajaxThematicFilter(
             function (data) {
@@ -70,11 +130,11 @@ $(document).ready(function() {
                 console.error('init: error during Filter.');
             },
             pageNumber,
-            orderValue
+            filters
         );
     }
 
-    function ajaxThematicFilter(success, fail, pageNumber = null, catalogOrder = null)
+    function ajaxThematicFilter(success, fail, pageNumber = null, filters = null)
     {
         const csrfToken = document.head.querySelector('meta[name="csrf-token"]').content;
         const appUrl = document.head.querySelector('meta[name="app-url"]').content;
@@ -85,7 +145,7 @@ $(document).ready(function() {
             data: {
                 _token: csrfToken,
                 pageNumber: pageNumber,
-                catalogOrder: catalogOrder
+                filters: filters
             },
             dataType: 'json'
         }).done(function(data) {
