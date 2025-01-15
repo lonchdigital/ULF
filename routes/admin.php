@@ -86,6 +86,7 @@ Route::group([
         });
 
         Route::get('/edit-footer', [PageController::class, 'editFooter'])->name('page.edit-footer');
+        Route::get('/edit-header', [PageController::class, 'editHeader'])->name('page.edit-header');
 
         Route::prefix('pages')->group(function () {
             Route::get('/', [PageController::class, 'index'])->name('page.index');

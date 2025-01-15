@@ -1,6 +1,8 @@
 const TinderCards = document.body.querySelector('.tinder-cards');
 
 if (TinderCards) {
+    const automatchButton = document.getElementById("automatch-send-button");
+    var originalButtonText = automatchButton.textContent;
     let favorites = [];
 
 	// Get all the cards
@@ -170,18 +172,24 @@ if (TinderCards) {
 				const formData = new FormData(form);
 
 				formData.append('favorite_cars', favorites.join(' | '));
+                const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
 				// console.log(formData);
 
-				fetch('/api/favorite-cars', {
+				fetch('/favorite-cars', {
 					method: 'POST',
 					body: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken
+                    },
 				})
 				.then(response => response.json())
 				.then(data => {
 					if (data.success) {
 						window.location.href = '/thanks';
 					} else {
+                        automatchButton.classList.remove('active');
+                        automatchButton.textContent = originalButtonText;
 
 						var errors = data.errors;
 
@@ -210,13 +218,16 @@ if (TinderCards) {
 
 }
 
+const selectButton = document.getElementById("select-send-button");
+var originalText = selectButton.textContent;
+
 document.getElementById("form-сar-selection").addEventListener("submit", function(event) {
     event.preventDefault();
 
     const form = document.getElementById('form-сar-selection');
     const formData = new FormData(form);
 
-    fetch('/api/select-cars', {
+    fetch('/select-cars', {
         method: 'POST',
         body: formData,
     })
@@ -225,6 +236,8 @@ document.getElementById("form-сar-selection").addEventListener("submit", functi
         if (data.success) {
             window.location.href = '/thanks';
         } else {
+            selectButton.classList.remove('active');
+            selectButton.textContent = originalText;
 
             var errors = data.errors;
 

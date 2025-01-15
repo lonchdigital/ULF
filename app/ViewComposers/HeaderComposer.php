@@ -15,7 +15,7 @@ class HeaderComposer
     {
         $view->with([
             'locationService' =>app()->make(LocaleService::class),
-            'pages' => Page::whereNotIn('slug', ['footer', 'header'])->get(),
+            'pages' => Page::whereNotIn('slug', ['footer'])->get(),
             'page' => Page::where('slug', 'footer')->with('pageBlocks')->first(),
         ]);
     }

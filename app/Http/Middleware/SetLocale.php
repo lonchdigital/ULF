@@ -11,7 +11,11 @@ class SetLocale
     public function handle(Request $request, Closure $next): Response
     {
         $locale = $request->segment(1);
-        
+
+        if (!in_array($locale, config('app.available_languages', ['ua', 'ru']))) {
+            $locale = config('app.fallback_locale', 'ua');
+        }
+
         app()->setLocale($locale);
         session()->put('locale', $locale);
 

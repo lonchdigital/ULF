@@ -96,6 +96,9 @@
                                                 @if ($page->slug == 'contacts')
                                                     <a href="{{ route('page.edit-contacts') }}" class="mr-2"><i
                                                             class="fa fa-edit text-info font-18"></i></a>
+                                                @elseif($page->slug == 'header')
+                                                    <a href="{{ route('page.edit-header') }}" class="mr-2"><i
+                                                        class="fa fa-edit text-info font-18"></i></a>
                                                 @else
                                                     @if ($page->slug == 'footer')
                                                         <a href="{{ route('page.edit-footer') }}" class="mr-2"><i

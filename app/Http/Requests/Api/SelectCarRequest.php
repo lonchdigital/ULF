@@ -11,6 +11,9 @@ class SelectCarRequest extends ApiBaseRequest
 {
     public function rules(): array
     {
+        $locale = session('locale', config('app.locale'));
+        app()->setLocale($locale);
+        
         return [
             'car' => [
                 'required',

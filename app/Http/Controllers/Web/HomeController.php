@@ -10,6 +10,7 @@ use App\Models\HomeMainBlock;
 use App\Models\Page;
 //use App\Services\Web\HomePage\HomePageService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Modules\Cars\Models\Car;
 use Modules\Clients\Services\Web\WebService as ClientHistoriesService;
 
@@ -33,6 +34,7 @@ class HomeController
 
     public function index()
     {
+        // dd(session('locale'), app()->getLocale());
         $url['ua'] = url('/');
         $url['ru'] = url('/') . '/ru/';
 
@@ -78,5 +80,12 @@ class HomeController
     public function thanks()
     {
         return view('web.pages.thanks');
+    }
+
+    public function changeLanguage($lang)
+    {
+        Session::put('locale', $lang);
+
+        return redirect()->back();
     }
 }

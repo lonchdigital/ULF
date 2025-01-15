@@ -4,13 +4,22 @@ namespace App\Http\Requests\Api;
 
 use App\Http\Requests\ApiBaseRequest;
 use App\Http\Requests\BaseRequest;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StoreAutomatchRequest extends ApiBaseRequest
+class StoreAutomatchRequest extends BaseRequest
 {
+    public function authorize(): bool
+    {
+        return true;
+    }
+
     public function rules(): array
     {
+        $locale = session('locale', config('app.locale'));
+        app()->setLocale($locale);
+
         return [
             'name' => [
                 'required',
@@ -82,9 +91,26 @@ class StoreAutomatchRequest extends ApiBaseRequest
     public function attributes()
     {
         return [
-            'name' => __('web.your_name'),
-            'phone' => __('web.phone_number'),
-            'approve' => __('web.approve'),
+            'name' => mb_strtolower(__('web.your_name')),
+            'phone' =>  mb_strtolower(__('web.phone_number')),
+            'approve' =>  mb_strtolower(__('web.approve')),
         ];
+    }
+
+    // public function messages()
+    // {
+    //     return [
+    //         'name.required' => __('validation.required')
+    //     ];
+    // }
+
+    protected function failedValidation(Validator $validator)
+    {
+        $response = response()->json([
+            'success' => false,
+            'errors' => $validator->errors()
+        ], 422);
+
+        throw new HttpResponseException($response);
     }
 }

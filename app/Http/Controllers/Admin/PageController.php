@@ -120,4 +120,11 @@ class PageController extends Controller
 
         return view('admin.pages.edit-footer', compact('page'));
     }
+
+    public function editHeader()
+    {
+        $page = Page::where('slug', 'header')->firstOrFail();
+
+        return view('admin.pages.edit-header', compact('page'));
+    }
 }

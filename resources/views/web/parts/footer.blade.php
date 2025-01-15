@@ -339,7 +339,7 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-auto">
-                            <button type="submit" class="btn-modal-close btn-default btn-default-orange btn btn-block btn-orange btn-default text-uppercase">{{ __('web.send_form') }}</button>
+                            <button type="submit" id="select-send-button" class="btn-modal-close btn-default btn-default-orange btn btn-block btn-orange btn-default text-uppercase">{{ __('web.send_form') }}</button>
                         </div>
                     </div>
                 </form>
