@@ -22,6 +22,11 @@ class LocaleService extends BaseService
         session()->put('language', $currentLocale);
 
         $urlParsed = parse_url($currentLink);
+
+        if ($urlParsed === false || !isset($urlParsed['scheme'], $urlParsed['host'])) {
+            return $currentLink; // return current url if it is not correct
+        }
+
         $port = isset($urlParsed['port']) ? ':' . $urlParsed['port'] : '';
         $newUrl = $urlParsed['scheme'] . '://' . $urlParsed['host'] . $port;
         $currentPath = isset($urlParsed['path']) ? $urlParsed['path'] : '';
@@ -30,7 +35,6 @@ class LocaleService extends BaseService
         if ($currentLocale === config('app.fallback_locale')) {
             $path = '/' . $newLocale . $currentPath;
         } else {
-            //has lang prefix
             if (Route::currentRouteName() == 'main.page') {
                 $path = str_replace('/' . $currentLocale , '/', $currentPath);
             } else {
@@ -40,7 +44,6 @@ class LocaleService extends BaseService
             if ($newLocale !== config('app.fallback_locale')) {
                 $path = '/' . $newLocale . $path;
             }
-
         }
 
         return $newUrl . $path;
