@@ -6,9 +6,9 @@ if (document.querySelector("#currency-range-slider")) {
 	var CurrencyRangeSlider = new RangeSlider({
 		target: document.getElementById("currency-range-slider"),
 		props: {
-			min: 0,
-			max: 50000,
-			values: [0, 50000],
+			min: window.pricesMin,
+			max: window.pricesMax,
+			values: [window.pricesMinCurrent, window.pricesMaxCurrent],
 			step: 1,
 			range: true,
 			float: true,
@@ -27,7 +27,7 @@ if (document.querySelector("#currency-range-slider")) {
 		CurrencyLast.value = e.detail.values[1];
 	});
 
-	//змінює значення в інпутах
+	// change input value
 	CurrencyFirst.addEventListener("change", (e) => {
 		CurrencyRangeSlider.$set({ values: [CurrencyFirst.value, CurrencyLast.value] });
 	});
@@ -37,8 +37,3 @@ if (document.querySelector("#currency-range-slider")) {
 	});
 
 }
-
-
-
-
-

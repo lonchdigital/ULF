@@ -71,12 +71,13 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="subscription-period-benefits">
-
                                             @foreach($subscribeMonthSettings->where('section_id', $subscribeMonthSection['id']) as $item)
                                                 <div class="subscription-period-benefits--item {{ ($item->is_active)? 'benefits-close': 'benefits-open' }}">{{ $item->title }}</div>
                                             @endforeach
                                         </div>
-                                        <button type="button" class="btn-more btn-default btn-default-white btn btn-block btn-outline-white text-center text-uppercase mt-2">{{ trans('web.all_benefits') }}</button>
+                                        @if( count($subscribeMonthSettings->where('section_id', $subscribeMonthSection['id'])) > 5 )
+                                            <button type="button" class="btn-more btn-default btn-default-white btn btn-block btn-outline-white text-center text-uppercase mt-2">{{ trans('web.all_benefits') }}</button>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

@@ -28,6 +28,14 @@
 
     @vite(['Modules/Cars/resources/js/cars-catalog.js'])
     @vite(['front/src/js/modules/filter.js'])
+    <script>
+        window.model = @json( (request()->get('model')) ? request()->get('model') : 0 );
+        window.manufacturersData = @json($filters['manufacturers']);
+        window.pricesMax = @json($filters['prices']['max']);
+        window.pricesMin = @json($filters['prices']['min']);
+        window.pricesMinCurrent = @json( (request()->get('priceMin') ? request()->get('priceMin') : $filters['prices']['min']) );
+        window.pricesMaxCurrent = @json( (request()->get('priceMax') ? request()->get('priceMax') : $filters['prices']['max']) );
+    </script>
 @endsection
 
 @section('OG')
@@ -173,6 +181,56 @@
                             Очистити
                         </a>
                     </div>
+
+                    {{-- @dd($filters['manufacturers']) --}}
+                    
+                    @if( !is_null($filters['manufacturers']) )
+                        <div class="filter-item">
+                            <div class="field-wrap mb-3">
+                                <div class="field">
+                                    <label for="select-choose-manufacturer" class="small-txt font-weight-bold text-grey mb-1">Марка</label>
+                                    <div class="select-wrap">
+                                        <select id="select-choose-manufacturer" class="select-choose-manufacturer" name="select-choose-manufacturer">
+                                            <option value="0">Оберіть марку авто</option>
+                                            @foreach ($filters['manufacturers'] as $key => $manufacturer)
+                                                <option value="{{ $key }}" @if(request()->get('manufacturer') == $key) selected @endif>{{ $manufacturer['manufacturer_name'] }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="select-choose-model-container" class="filter-item{{ is_null(request()->get('manufacturer')) ? ' d-none' : '' }}">
+                            <div class="field-wrap mb-3">
+                                <div class="field">
+                                    <label for="select-choose-model" class="small-txt font-weight-bold text-grey mb-1">Модель</label>
+                                    <div class="select-wrap">
+                                        <select id="select-choose-model" class="select-choose-model" name="select-choose-model">
+                                            <option value="0">Оберіть модель</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+                    <div class="filter-item">
+                        <div class="field-wrap mb-6">
+                            <div class="field">
+                                <div class="small-txt font-weight-bold text-grey mb-1">Ціна $ / міс.</div>
+                                <div class="inner">
+                                    <input class="currency-first form-control price-filter-min" type="number" value="{{ ( request()->get('priceMin') ) ? request()->get('priceMin') : $filters['prices']['min'] }}">
+                                    <input class="currency-last form-control price-filter-max" type="number" value="{{ ( request()->get('priceMax') ) ? request()->get('priceMax') : $filters['prices']['max'] }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <div id="currency-range-slider" class="price-slider slider-range position-relative">
+                                <div class="range-bar-full"></div>
+                            </div>
+                        </div>
+                    </div>
                     
                     @if( count($filters['fuelTypes']) > 0 )
                         <div class="filter-item">
@@ -192,26 +250,6 @@
                             </div>
                         </div>
                     @endif
-
-                    {{-- <div class="filter-item">
-                        <div class="field-wrap mb-6">
-                            <div class="field">
-                                <div class="field--help-info small-txt text-red mb-1">Вкажіть ціну</div>
-                                <div class="small-txt font-weight-bold text-grey mb-1">Ціна $ / міс.</div>
-                                <div class="inner">
-                                    <input class="currency-first form-control" type="number" value="0"
-                                        min="0" max="50000" step="1">
-                                    <input class="currency-last form-control" type="number" value="50000"
-                                        min="0" max="50000" step="1">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-6">
-                            <div id="currency-range-slider" class="price-slider slider-range position-relative">
-                                <div class="range-bar-full"></div>
-                            </div>
-                        </div>
-                    </div> --}}
 
                     <div class="filter-item">
                         <div class="field-wrap mb-6">

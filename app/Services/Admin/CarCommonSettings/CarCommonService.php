@@ -1,23 +1,22 @@
 <?php
 
-
 namespace App\Services\Admin\CarCommonSettings;
 
 use App\Models\Faq;
 use App\Models\Page;
-use Illuminate\Support\Str;
 use Modules\Cars\Models\Car;
 use App\Models\CarDriveBlock;
 use Modules\Cars\Models\Type;
 use App\Models\CommonCarSetting;
 use App\Models\SubscribeBenefit;
 use App\Models\SubscribeSetting;
-use Illuminate\Http\UploadedFile;
 use Modules\Cars\Models\FuelType;
-use Illuminate\Support\Facades\Storage;
-use App\Services\Application\ApplicationConfigService;
+use Illuminate\Support\Facades\DB;
 use Modules\Cars\Models\DriverType;
+use Illuminate\Support\Facades\Cache;
+use Modules\Cars\Models\SubscribePrice;
 use Modules\Cars\Models\TransmissionType;
+use App\Services\Application\ApplicationConfigService;
 
 class CarCommonService
 {
@@ -256,14 +255,43 @@ class CarCommonService
 
     public function getAllFiltersForCatalogPage(): array
     {
-        // return SubscribeSetting::all();
         $filters = [];
 
+        $filters['prices']['max'] = SubscribePrice::where('section_id', 1)->max('monthly_payment');
+        $filters['prices']['min'] = SubscribePrice::where('section_id', 1)->min('monthly_payment');
         $filters['driverTypes'] = DriverType::all();
         $filters['fuelTypes'] = FuelType::all();
         $filters['types'] = Type::whereIn('id', [1,2,3,4])->get();
         $filters['transmissionTypes'] = TransmissionType::all();
+        $filters['manufacturers'] = ( Cache::has('manufacturers_with_models') ) ? Cache::get('manufacturers_with_models') : $this->getManufacturersWithModelsOnlyForExistingCars();
 
         return $filters;
+    }
+
+    private function getManufacturersWithModelsOnlyForExistingCars(): array|null
+    {
+        $result = null;
+
+        $manufacturers = DB::table('model_manufacturers')
+            ->join('models', 'model_manufacturers.id', '=', 'models.model_manufacturer_id')
+            ->join('vehicles', 'models.id', '=', 'vehicles.model_id')
+            ->join('cars', 'vehicles.id', '=', 'cars.vehicle_id')
+            ->selectRaw('model_manufacturers.id as manufacturer_id, model_manufacturers.name as manufacturer_name, JSON_OBJECTAGG(models.id, models.name) as models')
+            ->groupBy('model_manufacturers.id', 'model_manufacturers.name')
+            ->get();
+
+        if (!$manufacturers->isEmpty()) {
+            $result = $manufacturers->mapWithKeys(function ($manufacturer) {
+                return [
+                    $manufacturer->manufacturer_id => [
+                        'manufacturer_name' => $manufacturer->manufacturer_name,
+                        'models' => json_decode($manufacturer->models, true),
+                    ],
+                ];
+            })->toArray();
+        }
+
+        Cache::put('manufacturers_with_models', $result, 1440); // 24 hours
+        return $result;
     }
 }

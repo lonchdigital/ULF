@@ -12,8 +12,8 @@ class ModelManufacturer extends EloquentModel
         'name'
     ];
 
-    public function model()
+    public function models()
     {
-        return $this->hasOne(Model::class);
+        return $this->hasMany(Model::class);
     }
 }

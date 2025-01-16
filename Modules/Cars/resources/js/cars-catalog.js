@@ -1,18 +1,51 @@
 import $ from 'jquery';
 import { setFilterParams } from './set-filter-params';
 import { extractFilterParams } from './extract-filter-params';
+import "./with-lib-svelte-range-slider-pips.js";
 
 $(document).ready(function() {
-
-    // Ajax Filter
     const $postFilterResult = $('#cars-list');
     const $postPaginationWrapper = $('#pagination-wrapper');
     const $showMore = $('#show-more');
     const $filterCarsButton = $('#filter-cars-button');
     const $filterCatalogSortLink = $('.art-select-options.art-sort-catalog a');
+    const $modelSelectContainer = $('#select-choose-model-container');
+    const $modelSelect = $('#select-choose-model');
+    const $selectChooseManufacturer = $('#select-choose-manufacturer');
 
     runAjaxFilter();
+    setDynamicModels();
 
+    $selectChooseManufacturer.on('change', function() {
+        let artThis = $(this);
+        setDynamicModels(artThis);
+    });
+
+    function setDynamicModels(artThis = null){
+        let manufacturerId = artThis ? artThis.val() : $selectChooseManufacturer.val();
+        
+        $modelSelect.empty();
+        $modelSelect.append('<option value="0">Оберіть модель</option>');
+
+        if (manufacturerId !== '0' && window.manufacturersData) {
+            $modelSelectContainer.removeClass('d-none');
+            const models = window.manufacturersData[manufacturerId].models;
+
+            // $.each(models, function(modelId, model) {
+            //     $modelSelect.append($('<option>', {
+            //         value: modelId,
+            //         text: model
+            //     }));
+            // });
+
+            $.each(models, function(modelId, model) {
+                let isSelected = (modelId == window.model) ? 'selected' : '';
+                $modelSelect.append(`<option value="${modelId}" ${isSelected}>${model}</option>`);
+            });
+        } else {
+            $modelSelectContainer.addClass('d-none');
+        }
+    }
 
     $postPaginationWrapper.on('click', 'li a', function(event) {
         event.preventDefault();
@@ -39,13 +72,6 @@ $(document).ready(function() {
         buildUrlFromParamsAndFollowIt(event, artThis);
     });
 
-    // filterCatalogSortLink.on('click', function(event) {
-    //     // event.preventDefault();
-    //     let artThis = $(this);
-
-
-    // });
-
     function buildUrlFromParamsAndFollowIt(event, artThis = null) {
         event.preventDefault();
 
@@ -54,7 +80,6 @@ $(document).ready(function() {
         params = setFilterParams(params, artThis);
 
         const newUrl = `${window.location.pathname}?${params.toString()}`;
-        // console.log(newUrl);
         window.location.href = newUrl;
     }
 

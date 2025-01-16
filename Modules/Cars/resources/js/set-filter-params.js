@@ -1,5 +1,36 @@
 export function setFilterParams(params, artThis) {
 
+    // manufacturer
+    let manufacturer = document.querySelector('.select-choose-manufacturer').value;
+    if (manufacturer && manufacturer != 0) {
+        params.set('manufacturer', manufacturer);
+    } else {
+        params.delete('manufacturer');
+    }
+    
+    // model
+    let model = document.querySelector('.select-choose-model').value;
+    if (model && model != 0) {
+        params.set('model', model);
+    } else {
+        params.delete('model');
+    }
+
+    // price filter min
+    let priceFilterMin = document.querySelector('.price-filter-min').value;
+    if(priceFilterMin) {
+        params.set('priceMin', priceFilterMin);
+    } else {
+        params.delete('priceMin');
+    }
+    // price filter max
+    let priceFilterMax = document.querySelector('.price-filter-max').value;
+    if(priceFilterMax) {
+        params.set('priceMax', priceFilterMax);
+    } else {
+        params.delete('priceMax');
+    }
+
     // order
     let sortCatalogInput = document.getElementById('sort-catalog-input');
     if(artThis !== null) {

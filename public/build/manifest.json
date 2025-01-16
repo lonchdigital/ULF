@@ -9,7 +9,7 @@
     ]
   },
   "Modules/Cars/resources/js/cars-catalog.js": {
-    "file": "assets/cars-catalog-HXpX7YDg.js",
+    "file": "assets/cars-catalog-DtlKng7k.js",
     "name": "cars-catalog",
     "src": "Modules/Cars/resources/js/cars-catalog.js",
     "isEntry": true,
@@ -38,7 +38,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-Ct-l0zax.css",
+    "file": "assets/app-a6nVV6rk.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -95,7 +95,7 @@
     ]
   },
   "resources/js/libs.js": {
-    "file": "assets/libs-VoRB339D.js",
+    "file": "assets/libs-DGuwt37d.js",
     "name": "libs",
     "src": "resources/js/libs.js",
     "isEntry": true,

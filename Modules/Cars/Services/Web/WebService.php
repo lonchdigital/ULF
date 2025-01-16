@@ -34,17 +34,37 @@ class WebService
 
         // dd($filters);
 
+        if (!empty($filters['manufacturer'])) {
+            $query->whereHas('vehicle.model.manufacturer', function ($query) use ($filters) {
+                $query->where('id', $filters['manufacturer']);
+            });
+        }
+        if (!empty($filters['model'])) {
+            $query->whereHas('vehicle', function ($query) use ($filters) {
+                $query->where('model_id', $filters['model']);
+            });
+        }
+
+
+        if(!empty($filters['priceMin']) && !empty($filters['priceMax'])) {
+            $query->whereHas('subscribePrices', function ($q) use ($filters) {
+                $q->where('section_id', 1);
+                $q->whereBetween('monthly_payment', [$filters['priceMin'], $filters['priceMax']]);
+            });
+        }
+
+
         if(!empty($filters['yearFrom']) && !empty($filters['yearTo'])) {
             $query->whereHas('vehicle', function ($query) use ($filters) {
                 $query->whereBetween('manufacturedYear', [$filters['yearFrom'], $filters['yearTo']]);
             });
         } elseif (!empty($filters['yearFrom'])) {
             $query->whereHas('vehicle', function ($query) use ($filters) {
-                $query->where('manufacturedYear', '>', $filters['yearFrom']);
+                $query->where('manufacturedYear', '>=', $filters['yearFrom']);
             });
         } elseif (!empty($filters['yearTo'])) {
             $query->whereHas('vehicle', function ($query) use ($filters) {
-                $query->where('manufacturedYear', '<', $filters['yearTo']);
+                $query->where('manufacturedYear', '<=', $filters['yearTo']);
             });
         }
 
@@ -54,11 +74,11 @@ class WebService
             });
         } elseif (!empty($filters['engineFrom'])) {
             $query->whereHas('vehicle', function ($query) use ($filters) {
-                $query->where('engineVolume', '>', $filters['engineFrom']);
+                $query->where('engineVolume', '>=', $filters['engineFrom']);
             });
         } elseif (!empty($filters['engineTo'])) {
             $query->whereHas('vehicle', function ($query) use ($filters) {
-                $query->where('engineVolume', '<', $filters['engineTo']);
+                $query->where('engineVolume', '<=', $filters['engineTo']);
             });
         }
 

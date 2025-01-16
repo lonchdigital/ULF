@@ -1,4 +1,16 @@
 export function extractFilterParams(filters) {
+
+    filters['manufacturer'] = getParameterByName('manufacturer') 
+        ? getParameterByName('manufacturer').split(',').map(Number)
+        : [];
+    
+    filters['model'] = getParameterByName('model') 
+        ? getParameterByName('model').split(',').map(Number)
+        : [];
+
+    filters['priceMin'] = getParameterByName('priceMin');
+    filters['priceMax'] = getParameterByName('priceMax');
+    
     filters['yearFrom'] = getParameterByName('yearFrom');
     filters['yearTo'] = getParameterByName('yearTo');
 
