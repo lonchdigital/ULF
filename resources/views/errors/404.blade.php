@@ -46,7 +46,7 @@
                                     <div class="our-fleet-preview--item bg-main-blue">
                                         <div class="name text-white text-center">Не знайшов авто мрії в нашому автопарку?</div>
                                         <div class="wrap-img">
-                                            <img src="img/car-6.png" alt="Image">
+                                            <img src="{{ asset('static_images/car-6.png') }}" alt="Image">
                                         </div>
                                         <div class="row">
                                             <div class="col col-sm-auto mx-auto">
@@ -54,7 +54,7 @@
                                             </div>
                                         </div>
                                         <div class="wrap-img wrap-img--hidden">
-                                            <img src="img/bg-car-preview.png" class="bg-down" alt="Image">
+                                            <img src="{{ asset('static_images/bg-car-preview.png') }}" class="bg-down" alt="Image">
                                         </div>
                                     </div>
                                 </div>

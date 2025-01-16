@@ -9,7 +9,7 @@
                                 @if(!empty($page->image))
                                     <img src="{{ $page->imageUrl }}" alt="{{ 'ULF' }}">
                                 @else
-                                    <img src="img/logo-4.svg" alt="logo">
+                                    <img src="{{ asset('static_images/logo-4.svg') }}" alt="logo">
                                 @endif
 
                             </div>
