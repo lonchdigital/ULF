@@ -491,7 +491,7 @@
                 <script type="application/ld+json">
                 {
                     "@context": "https://schema.org",
-                    "@type": "FAQPage",
+                    "@type": "Homepage",
                     "mainEntity": [
                     @foreach($page->faqs()->orderBy('sort', 'ASC')->get() as $faq)
                         {

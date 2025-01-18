@@ -60,6 +60,26 @@
                     </div>
                 </div>
             </section>
+            @if($page->faqs->count())
+                <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                    @foreach($page->faqs()->orderBy('sort', 'ASC')->get() as $faq)
+                        {
+                            "@type": "Question",
+                            "name": "{{ $faq->question }}",
+                            "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "<p>{{ $faq->answer }}</p>"
+                            }
+                        },
+                    @endforeach
+                    ]
+                }
+                </script>
+            @endif
             <section id="questions" class="questions position-relative pb-7 pb-md-10 pb-lg-13">
                 <div class="container">
                     <div class="row">

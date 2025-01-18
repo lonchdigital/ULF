@@ -2,7 +2,7 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "FAQPage",
+        "@type": "CarPage",
         "mainEntity": [
         @foreach($car->faqs as $faq)
             {
