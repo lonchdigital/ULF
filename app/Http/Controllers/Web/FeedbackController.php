@@ -49,9 +49,12 @@ class FeedbackController extends Controller
 
         dispatch(new SendTestDriveFeedbackEmailJob($data));
 
-        $data['type'] = 'Test drive';
-        $data['page'] = 'Main page';
-        $this->saveFeedback($data);
+        $this->saveFeedback([
+            'name' => $data['name_drive'],
+            'phone' => $data['phone_drive'],
+            'type' => 'Test drive',
+            'page' => $data['page']
+        ]);
 
         return redirect()->route('thanks');
     }
