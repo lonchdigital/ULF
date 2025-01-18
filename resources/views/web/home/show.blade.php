@@ -488,11 +488,29 @@
                 </section>
             </div>
             @if($page->faqs->count())
+                <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                    @foreach($page->faqs()->orderBy('sort', 'ASC')->get() as $faq)
+                        {
+                            "@type": "Question",
+                            "name": "{{ $faq->question }}",
+                            "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "<p>{{ $faq->answer }}</p>"
+                            }
+                        },
+                    @endforeach
+                    ]
+                }
+                </script>
                 <section id="asked-questions" class="asked-questions pb-7 pb-md-10 pb-lg-13 pt-7 pt-md-0">
                     <div class="container">
                         <div class="row mb-6">
                             <div class="col">
-                                <div class="head font-weight-bolder mb-3 mb-md-6 text-center">Часті питання</div>
+                                <div class="head font-weight-bolder mb-3 mb-md-6 text-center">{{ trans('web.faqs') }}</div>
                                 <div class="accordion" id="accordion-asked-questions">
                                     @forelse($page->faqs()->orderBy('sort', 'ASC')->get() as $faq)
                                         <div class="card">

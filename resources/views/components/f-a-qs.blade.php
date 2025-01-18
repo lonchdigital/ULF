@@ -1,3 +1,23 @@
+@if(count($car->faqs) > 0)
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+        @foreach($car->faqs as $faq)
+            {
+                "@type": "Question",
+                "name": "{{ $faq->question }}",
+                "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "<p>{{ $faq->answer }}</p>"
+                }
+            },
+        @endforeach
+        ]
+    }
+    </script>
+@endif
 <section class="asked-questions pb-7 pb-md-10 pb-lg-13">
     <div class="container">
         <div class="row mb-6">
