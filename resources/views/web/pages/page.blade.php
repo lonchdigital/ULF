@@ -14,6 +14,27 @@
     @if($page->meta_keywords)
         <meta name="keywords" content="{{ $page->meta_keywords }}">
     @endif
+
+    @if (isset($url['ua']) && isset($url['ru']))
+        <link rel="canonical" href="{{ $url[app()->getLocale()] }}">
+        <meta property="og:url" content="{{ $url[app()->getLocale()] }}" />
+
+        <link rel="alternate" href="{{ $url['ua'] }}" hreflang="uk-UA">
+        <link rel="alternate" href="{{ $url['ru'] }}" hreflang="ru-UA">
+        <link rel="alternate" href="{{ $url['ua'] }}" hreflang="x-default">
+    @endif
+@endsection
+
+@section('OG')
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="{{ config('app.name') }}" />
+    <meta name="twitter:creator" content="{{ config('app.name') }}" />
+
+    <meta property="og:title" content="{{ $page->meta_title }}" />
+    <meta property="og:description" content="{{ $page->meta_description }}" />
+    <meta property="og:type" content="page" />
+    <meta property="og:url" content="{{ request()->url() }}" />
+    {{-- <meta property="og:image" content="" /> --}}
 @endsection
 
 @section('content')
@@ -49,7 +70,7 @@
                 </div>
             </section>
             <hr class="d-lg-none mt-0 mb-7 mb-10">
-            
+
             @include('components.lead-form', ['page' => 'home page', 'pbLg' => 13])
 
             {{-- TODO:: SEO section for pages --}}

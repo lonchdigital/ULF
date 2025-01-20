@@ -9,7 +9,7 @@
     @if(!empty($page->meta_description))
         <meta name="description" content="{{ $page->meta_description ?? config('app.name') }}">
     @endif
-    
+
     @if(!empty($page->meta_keywords))
         <meta name="keywords" content="{{ $page->meta_keywords }}">
     @endif
@@ -36,7 +36,7 @@
                         <div class="col mx-auto">
                             <div class="section-top--info nav-breadcrumb">
                                 <div class="mb-2">
-                                    <a href="index.html" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">Назад</a>
+                                    <a href="index.html" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">{{ __('web.back') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -47,20 +47,19 @@
                 <div class="container">
                     <div class="row">
                         <div class="col text-center">
-                            <div class="not-found--title mb-3 mb-lg-5">Дякую</div>
-                            <div class="h5 font-m mb-3 mb-lg-7">Ваш запит успішно надіслано</div>
+                            <div class="not-found--title mb-3 mb-lg-5">{{ __('web.thank') }}</div>
+                            <div class="h5 font-m mb-3 mb-lg-7">{{ __('web.your_request_successful_send') }}</div>
                             <div class="row">
                                 <div class="col col-sm-auto mx-auto">
                                     <a href="/"
-                                        class="btn-default btn btn-block btn-main-blue text-uppercase">Повернутись на
-                                        головну</a>
+                                        class="btn-default btn btn-block btn-main-blue text-uppercase">{{ __('web.return_to_main_page') }}</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <section class="tinder py-sm-5 py-md-8 py-lg-13 mb-7 mb-md-10 mb-lg-35">
+            {{-- <section class="tinder py-sm-5 py-md-8 py-lg-13 mb-7 mb-md-10 mb-lg-35">
                 <div class="container">
                     <div class="row">
                         <div class="col">
@@ -310,7 +309,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> --}}
         </div>
     </main>
 @endsection

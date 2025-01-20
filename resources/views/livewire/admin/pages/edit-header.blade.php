@@ -20,7 +20,7 @@
                                                                 <div
                                                                     class="multilang-content tab-pane fade active show ">
                                                                     <div class="form-group mb-1">
-                                                                        <label>{{ __('admin.image') }}</label>
+                                                                        <label>{{ __('admin.main_image') }}</label>
                                                                         <input type="file" wire:model="image"
                                                                             class="form-control">
                                                                     </div>
@@ -44,6 +44,47 @@
                                                                 </div>
                                                             @elseif(!empty($this->page->image))
                                                                 <img src="{{ $this->page->imageUrl }}"
+                                                                    width="60">
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row mb-3">
+                                                        <div class="col-md-12">
+                                                            <div class="tab-content">
+                                                                <div
+                                                                    class="multilang-content tab-pane fade active show ">
+                                                                    <div class="form-group mb-1">
+                                                                        <label>{{ __('admin.main_image_mob') }}</label>
+                                                                        <input type="file" wire:model="mobileImage"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            @error('mobileImage')
+                                                                <div class="mt-1 text-danger ajaxError">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+
+                                                            @if ($this->mobileImageTemporary)
+                                                                <div class="flex">
+                                                                    <img src="{{ $this->mobileImageTemporary }}"
+                                                                        width="60">
+                                                                    <a wire:click="deleteMobileImage()"
+                                                                        style="cursor: pointer;">
+                                                                        <i class="ti-close font-weight-bold mr-2"></i>
+                                                                        {{ __('admin.delete_image') }}
+                                                                    </a>
+                                                                </div>
+                                                            @elseif(!empty($this->page->mobile_image))
+                                                                <img src="{{ $this->page->mobileImageUrl }}"
                                                                     width="60">
                                                             @endif
                                                         </div>

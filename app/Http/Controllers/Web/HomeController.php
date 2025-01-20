@@ -36,7 +36,7 @@ class HomeController
     {
         // dd(session('locale'), app()->getLocale());
         $url['ua'] = url('/');
-        $url['ru'] = url('/') . '/ru/';
+        $url['ru'] = url('/') . '/ru';
 
         return view('web.home.show', [
             'page' => Page::where('key', 'homepage')->first(),

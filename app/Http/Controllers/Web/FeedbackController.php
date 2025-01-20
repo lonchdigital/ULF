@@ -69,8 +69,12 @@ class FeedbackController extends Controller
         $data['type'] = 'Automatch';
         $data['page'] = 'Main page';
         $this->saveFeedback($data);
+        $locale = app()->getLocale();
 
-        return response()->json(['success' => true]);
+        return response()->json([
+            'success' => true,
+            'redirect_url' => $locale === 'ua' ? '/thanks' : "/$locale/thanks",
+        ]);
     }
 
     // public function storeFavorite(Request $request)
@@ -102,8 +106,12 @@ class FeedbackController extends Controller
         $data['type'] = 'Select car';
         $data['page'] = 'Main page';
         $this->saveFeedback($data);
+        $locale = app()->getLocale();
 
-        return response()->json(['success' => true]);
+        return response()->json([
+            'success' => true,
+            'redirect_url' => $locale === 'ua' ? '/thanks' : "/$locale/thanks",
+        ]);
     }
 
     public function callBackForm(Request $request)

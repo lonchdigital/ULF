@@ -17,8 +17,12 @@ class PageController
             abort(404);
         }
 
+        $url['ua'] = url('/') . '/' . $page->slug;
+        $url['ru'] = url('/') . '/ru/' . $page->slug;
+
         return view('web.pages.page', [
-            'page' => $page
+            'page' => $page,
+            'url' => $url,
         ]);
     }
 

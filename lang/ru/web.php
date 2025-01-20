@@ -70,4 +70,9 @@ return [
     'send_form' => 'Отправить',
     'do_you_like_the_car' => 'Понравился автомобиль?',
     'drive_it_today' => 'Управляйте им уже сегодня!',
+    'thank' => 'Спасибо',
+    'your_request_successful_send' => 'Ваш запрос успешно отправлен',
+    'return_to_main_page' => 'Вернуться на главную',
+    'call_me_back' => 'Передзвоните мне',
+    'more_answers' => 'Больше ответов',
 ];

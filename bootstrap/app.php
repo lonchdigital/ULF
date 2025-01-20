@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Middleware\LowercaseUrl;
+use App\Http\Middleware\RedirectToCanonical;
+use App\Http\Middleware\TrimRouteSuffix;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -42,6 +45,9 @@ return Application::configure(basePath: dirname(__DIR__))
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\Http\Middleware\FrameGuard::class,
+            TrimRouteSuffix::class,
+            LowercaseUrl::class,
+            RedirectToCanonical::class,
         ]);
 
         $middleware->group('api', [

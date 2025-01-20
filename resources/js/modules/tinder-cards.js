@@ -186,7 +186,7 @@ if (TinderCards) {
 				.then(response => response.json())
 				.then(data => {
 					if (data.success) {
-						window.location.href = '/thanks';
+						window.location.href = data.redirect_url;
 					} else {
                         automatchButton.classList.remove('active');
                         automatchButton.textContent = originalButtonText;
@@ -226,15 +226,19 @@ document.getElementById("form-сar-selection").addEventListener("submit", functi
 
     const form = document.getElementById('form-сar-selection');
     const formData = new FormData(form);
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
     fetch('/select-cars', {
         method: 'POST',
         body: formData,
+        headers: {
+            'X-CSRF-TOKEN': csrfToken
+        },
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            window.location.href = '/thanks';
+            window.location.href = data.redirect_url;;
         } else {
             selectButton.classList.remove('active');
             selectButton.textContent = originalText;

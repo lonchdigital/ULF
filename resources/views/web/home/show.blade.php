@@ -530,9 +530,8 @@
                                     @empty
                                     @endforelse
                                 </div>
-                                <a href="/faq"
-                                    class="btn-default btn btn-block btn-outline-main-blue text-uppercase mt-3 mt-md-6 col-12 col-md-6 col-lg-4 mx-auto">Більше
-                                    Відповідей</a>
+                                <a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('faq') }}"
+                                    class="btn-default btn btn-block btn-outline-main-blue text-uppercase mt-3 mt-md-6 col-12 col-md-6 col-lg-4 mx-auto">{{ __('web.more_answers') }}</a>
                             </div>
                         </div>
                     </div>

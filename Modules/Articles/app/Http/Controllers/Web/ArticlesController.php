@@ -39,8 +39,8 @@ class ArticlesController extends Controller
     {
         $articlePage = ArticlePage::where('slug', $slug)->firstOrFail();
 
-        $url['ua'] = url('/') . '/blog/' . $articlePage->slug;
-        $url['ru'] = url('/') . '/ru/blog/' . $articlePage->slug;
+        $url['ua'] = url('/') . '/post/' . $articlePage->slug;
+        $url['ru'] = url('/') . '/ru/post/' . $articlePage->slug;
 
         return view('articles::web.show', [
             'page' => $articlePage,

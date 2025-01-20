@@ -20,6 +20,10 @@ class EditHeader extends Component
 
     public $imageTemporary;
 
+    public $mobileImage;
+
+    public $mobileImageTemporary;
+
     public function mount(Page $page)
     {
         $this->page = $page;
@@ -29,6 +33,12 @@ class EditHeader extends Component
     {
         return [
             'image' => [
+                'nullable',
+                'mimes:jpeg,jpg,png,gif',
+                'image',
+            ],
+
+            'mobileImage' => [
                 'nullable',
                 'mimes:jpeg,jpg,png,gif',
                 'image',
@@ -43,10 +53,23 @@ class EditHeader extends Component
         $this->imageTemporary = $val->temporaryUrl();
     }
 
+    public function updatedMobileImage($val)
+    {
+        $this->validateOnly('mobileImage');
+        $this->mobileImage = $val;
+        $this->mobileImageTemporary = $val->temporaryUrl();
+    }
+
     public function deleteImage()
     {
         $this->image = null;
         $this->imageTemporary = null;
+    }
+
+    public function deleteMobileImage()
+    {
+        $this->mobileImage = null;
+        $this->mobileImageTemporary = null;
     }
 
     public function save()
@@ -63,6 +86,16 @@ class EditHeader extends Component
             }
 
             $this->page->image = $image;
+        }
+
+        if ($this->mobileImage) {
+            $image = $imageService->downloadImage($this->mobileImage, '/header');
+
+            if(!empty($this->page->mobile_image)) {
+                $imageService->deleteStorageImage($this->mobileImage, $this->page->mobile_image);
+            }
+
+            $this->page->mobile_image = $image;
         }
 
         $this->page->save();

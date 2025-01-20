@@ -38,7 +38,7 @@ final class SitemapSettingService
 
     private function isPage(string $url): bool
     {
-        return $url !== '/' || $url !== '/ru/' || $url !== '/en/';
+        return $url !== '/' || $url !== '/ru' || $url !== '/en';
     }
 
     private function isBlog(string $url): bool
@@ -48,6 +48,6 @@ final class SitemapSettingService
 
     private function isMainPage(string $url): bool
     {
-        return $url === '/' || $url === '/ru/' || $url === '/en/';
+        return $url === '/' || $url === '/ru' || $url === '/en';
     }
 }

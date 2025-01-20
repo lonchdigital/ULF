@@ -75,4 +75,9 @@ return [
     'car_make_and_model' => 'Марка та модель авто',
     'approve' => 'згода на обробку персональних даних',
     'car_select' => 'марка та модель авто',
+    'thank' => 'Дякую',
+    'your_request_successful_send' => 'Ваш запит успішно надіслано',
+    'return_to_main_page' => 'Повернутись на головну',
+    'call_me_back' => 'Передзвоніть мені',
+    'more_answers' => 'Більше Відповідей',
 ];

@@ -5,15 +5,29 @@
                 <div class="col">
                     <nav class="navbar navbar-expand-lg flex-column p-0">
                         <div class="navbar-inner d-flex flex-wrap align-items-center justify-content-between w-100 p-3 px-lg-0">
-                            <a class="navbar-brand p-0" href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">
-                                <img
-                                    @if($pages->where('slug', 'header')->first()->image ?? false)
-                                        src="{{ $pages->where('slug', 'header')->first()->imageUrl }}"
-                                    @else
-                                        src="{{ asset('static_images/main-logo.png') }}"
-                                    @endif
-                                alt="{{ config('app.name') ?? 'ULF' }}">
-                            </a>
+                            <div class="d-none d-lg-block">
+                                <a class="navbar-brand p-0" href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">
+                                 {{-- <img src="https://ulf.lonch.digital/static_images/main-logo.png" alt="ULF"> --}}
+                                    <img
+                                        @if($pages->where('slug', 'header')->first()->image ?? false)
+                                            src="{{ $pages->where('slug', 'header')->first()->imageUrl }}"
+                                        @else
+                                            src="{{ asset('static_images/main-logo.png') }}"
+                                        @endif
+                                        alt="{{ config('app.name') ?? 'ULF' }}">
+                                </a>
+                            </div>
+                            <div class="d-lg-none">
+                                <a class="navbar-brand p-0" href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">
+                                    <img
+                                    @if($pages->where('slug', 'header')->first()->mobile_image ?? false)
+                                            src="{{ $pages->where('slug', 'header')->first()->mobileImageUrl }}"
+                                        @else
+                                            src="{{ asset('static_images/main-logo.png') }}"
+                                        @endif
+                                        alt="{{ config('app.name') ?? 'ULF' }}">
+                                </a>
+                            </div>
                             <div class="collapse navbar-collapse justify-content-between order-last" id="navbarSupportedContent">
                                 <div class="header-main--desk d-none d-lg-flex align-items-center justify-content-between w-100">
                                     <ul class="navbar-nav list-inline w-100 justify-content-center">
@@ -106,7 +120,7 @@
 
                                     </div>
                                     <ul class="navbar-nav--other list-inline mb-0 d-none d-lg-flex align-items-center">
-                                        <li class="list-inline-item"><button type="button" class="btn btn-main-blue btn-default text-uppercase" data-toggle="modal" data-target="#popup-any-questions">Передзвоніть мені</button></li>
+                                        <li class="list-inline-item"><button type="button" class="btn btn-main-blue btn-default text-uppercase" data-toggle="modal" data-target="#popup-any-questions">{{ __('web.call_me_back') }}</button></li>
                                     </ul>
                                 </div>
                                 <div class="header-main--mob d-lg-none">

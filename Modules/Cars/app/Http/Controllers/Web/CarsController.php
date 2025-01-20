@@ -27,8 +27,8 @@ class CarsController extends Controller
 
     public function index(Request $request, CarPage $page)
     {
-        $url['ua'] = url('/') . '/blog/' . $page->slug;
-        $url['ru'] = url('/') . '/ru/blog/' . $page->slug;
+        $url['ua'] = url('/') . '/catalog/' . $page->slug;
+        $url['ru'] = url('/') . '/ru/catalog/' . $page->slug;
 
         return view('cars::web.index', [
             // 'page' => CarPage::where('slug', 'cars')->first(),
@@ -42,8 +42,8 @@ class CarsController extends Controller
     {
         $carPage = CarPage::where('slug', $slug)->firstOrFail();
 
-        $url['ua'] = url('/') . '/blog/' . $carPage->slug;
-        $url['ru'] = url('/') . '/ru/blog/' . $carPage->slug;
+        $url['ua'] = url('/') . '/product/' . $carPage->slug;
+        $url['ru'] = url('/') . '/ru/product/' . $carPage->slug;
 
         return view('cars::web.show', [
             'page' => $carPage,

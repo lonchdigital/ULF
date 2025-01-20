@@ -33,11 +33,17 @@ class Page extends Model implements TranslatableContract
         'is_show_in_header',
         'is_show_in_footer',
         'image',
+        'mobile_image',
     ];
 
     public function getImageUrlAttribute()
     {
         return Storage::disk('public')->url($this->image);
+    }
+
+    public function getMobileImageUrlAttribute()
+    {
+        return Storage::disk('public')->url($this->mobile_image);
     }
 
     public function articles()
