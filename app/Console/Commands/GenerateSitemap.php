@@ -15,7 +15,7 @@ class GenerateSitemap extends Command
     public function handle()
     {
         resolve(SitemapService::class)->generate();
-        dd(123);
+
         try {
             SitemapGenerateJob::dispatch();
             $this->info('Sitemap generated successfully.');
