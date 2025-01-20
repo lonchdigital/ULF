@@ -59,7 +59,7 @@ class Car extends Model implements TranslatableContract
 
     public function getShortDesc(): string
     {
-        return $this->vehicle->fuelType->name . ', ' . $this->vehicle->transmissionType->name . ', ' . $this->vehicle->driverType->name;
+        return $this->vehicle->fuelType->name . ', ' . $this->vehicle->transmissionType->name . ', ' . optional($this->vehicle->driverType)->name;
     }
 
     public function getMainImageUrl(): ?string

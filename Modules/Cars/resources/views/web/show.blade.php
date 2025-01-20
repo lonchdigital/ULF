@@ -64,7 +64,9 @@
                                         <li>{{ $car->vehicle->manufacturedYear }}</li>
                                         <li>{{ $car->vehicle->fuelType->name }}</li>
                                        <li>{{ $car->vehicle->transmissionType->name }}</li>
-                                       <li>{{ $car->vehicle->driverType->name }}</li>
+                                       @if(!is_null($car->vehicle->driverType))
+                                            <li>{{ $car->vehicle->driverType->name }}</li>
+                                       @endif
 {{--                                        <li>Київ</li>--}}
                                     </ul>
                                 </div>
