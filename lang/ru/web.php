@@ -73,6 +73,6 @@ return [
     'thank' => 'Спасибо',
     'your_request_successful_send' => 'Ваш запрос успешно отправлен',
     'return_to_main_page' => 'Вернуться на главную',
-    'call_me_back' => 'Передзвоните мне',
+    'call_me_back' => 'Перезвоните мне',
     'more_answers' => 'Больше ответов',
 ];
