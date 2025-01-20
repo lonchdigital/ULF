@@ -297,9 +297,9 @@
                                     </svg>
                                 </button>
                                 <button class="navbar-toggler h-100 collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="toggleMenu">
-                                    <div class="menu-burger position-relative">
+                                    <span class="menu-burger position-relative">
                                         <div class="lines"></div>
-                                    </div>
+                                    </span>
                                 </button>
                             </div>
                         </div>

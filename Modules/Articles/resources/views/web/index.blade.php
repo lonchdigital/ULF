@@ -65,7 +65,7 @@
                                         <button type="button" class="btn btn-reset btn-filter collapsed"
                                             data-toggle="collapse" data-target="#navbarFilters"
                                             aria-controls="navbarFilters" aria-expanded="false"
-                                            aria-label="Toggle navigation" id="toggleFilter">
+                                            aria-label="Toggle navigation" role="button" id="toggleFilter">
                                             <svg class="i-filters-menu">
                                                 <use xlink:href="img/icons/icons.svg#i-filters-menu"></use>
                                             </svg>

@@ -86,7 +86,7 @@
                                         <button type="button" class="btn btn-reset btn-filter collapsed"
                                             data-toggle="collapse" data-target="#navbarFilters"
                                             aria-controls="navbarFilters" aria-expanded="false"
-                                            aria-label="Toggle navigation" id="toggleFilter">
+                                            aria-label="Toggle navigation" role="button" id="toggleFilter">
                                             <svg class="i-filters-menu">
                                                 <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-filters-menu' }}"></use>
                                             </svg>
@@ -169,7 +169,7 @@
                 <div class="d-flex justify-content-between mb-3">
                     <div class="filter-title mr-4">Фільтри</div>
                     <button type="button" class="btn-close btn btn-reset" data-toggle="collapse" href="#navbarFilters"
-                        role="button" aria-expanded="false" aria-controls="navbarFilters">
+                        aria-expanded="false" aria-controls="navbarFilters">
                         <svg class="i-close">
                             <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-close' }}"></use>
                         </svg>
@@ -337,7 +337,7 @@
                 </div>
                 <div class="mx-n3">
                     <a id="filter-cars-button" class="btn-filter-close btn btn-main-blue btn-default text-uppercase w-100 rounded-0"
-                        data-toggle="collapse" href="#navbarFilters" role="button" aria-expanded="false"
+                        data-toggle="collapse" href="#navbarFilters" aria-expanded="false"
                         aria-controls="navbarFilters">Застосувати</a>
                 </div>
             </div>

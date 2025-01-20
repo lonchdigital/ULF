@@ -159,7 +159,7 @@
                                                     </use>
                                                 </svg>
                                                 <div class="d-flex flex-column">
-                                                    <a href="tel:+380 67 236 62 63">{{ $phone->title }}</a>
+                                                    <a href="tel:+380672366263">{{ $phone->title }}</a>
                                                     @if ($phone->description)
                                                         <span
                                                             class="small-txt text-light-grey">{{ $phone->description }}</span>
@@ -176,7 +176,7 @@
                 </div>
                 <div class="col-12 col-md-6">
                     <div class="footer--socials socials mob-line pb-3 mb-3 pb-md-0 mb-md-0">
-                        <li class="d-flex align-items-center mb-3">
+                        <div class="d-flex align-items-center mb-3">
                             <svg class="i-mail mr-2">
                                 <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-mail' }}"></use>
                             </svg>
@@ -184,7 +184,7 @@
                                 <a
                                     href="mailto:{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'email')->first()->description }}">{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'email')->first()->description }}</a>
                             </div>
-                        </li>
+                        </div>
                         <ul class="list-inline mb-0 mt-8">
                             @if (!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->description))
                                 <li class="list-inline-item">
