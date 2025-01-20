@@ -36,7 +36,7 @@ final class SitemapService extends SitemapPageService
 
         $xmlContent = $this->sitemap->render();
 
-        $xmlContentWithSlashes = str_replace('</loc>', '/</loc>', $xmlContent);
+        $xmlContentWithSlashes = str_replace('</loc>', '</loc>', $xmlContent);
         file_put_contents(public_path('sitemap.xml'), $xmlContentWithSlashes);
 
         return response($xmlContentWithSlashes)->header('Content-Type', 'application/xml');
