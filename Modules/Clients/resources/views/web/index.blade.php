@@ -66,7 +66,7 @@
                                         <div class="inner h-100 position-relative">
                                             <div class="video-wrap video-wrap--vissible h-100">
                                                 <a data-src="#scroll-gallery-player-1" data-thumb="{{ $client->image_url }}">
-                                                    <video class=" js-player specific-player" playsinline controls
+                                                    <video class=" js-player specific-player" playsinline
                                                            data-poster="{{ $client->image_url }}">
                                                         <source src="{{ '/storage/' . $client->video }}" type="video/mp4" />
                                                     </video>
@@ -74,7 +74,7 @@
                                                 <button type="button" class="btn btn-video-play-pause"></button>
                                             </div>
                                             <div id="scroll-gallery-player-1" class="video-wrap hidden" style="display:none">
-                                                <video class="js-player specific-player" playsinline controls
+                                                <video class="js-player specific-player" playsinline
                                                        data-poster="{{ $client->image_url }}">
                                                     <source src="{{ '/storage/' . $client->video }}" type="video/mp4" />
                                                 </video>

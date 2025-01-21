@@ -92,7 +92,7 @@
                                                 <div class="h4 mb-0">
                                                     <div class="btn btn-link collapsed" data-toggle="collapse"
                                                         data-target="#collapse-accordion-question-{{ $loop->iteration }}" aria-expanded="false"
-                                                        aria-controls="collapse-accordion-question-{{ $loop->iteration }}">{{ $faq->question }}</div>
+                                                        aria-controls="collapse-accordion-question-{{ $loop->iteration }}" role="button">{{ $faq->question }}</div>
                                                 </div>
                                             </div>
                                             <div id="collapse-accordion-question-{{ $loop->iteration }}" class="collapse"

@@ -298,7 +298,7 @@
                                 </button>
                                 <button class="navbar-toggler h-100 collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="toggleMenu">
                                     <span class="menu-burger position-relative">
-                                        <div class="lines"></div>
+                                        <span class="lines"></span>
                                     </span>
                                 </button>
                             </div>

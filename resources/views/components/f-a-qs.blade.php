@@ -29,7 +29,7 @@
                             <div class="card">
                                 <div class="card-header p-0" id="heading-accordion-question-{{ $faq->id }}">
                                     <div class="h4 mb-0">
-                                        <div class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-accordion-question-{{ $faq->id }}" aria-expanded="false" aria-controls="collapse-accordion-question-{{ $faq->id }}">{{ $faq->question }}</div>
+                                        <div class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-accordion-question-{{ $faq->id }}" aria-expanded="false" aria-controls="collapse-accordion-question-{{ $faq->id }}" role="button">{{ $faq->question }}</div>
                                     </div>
                                 </div>
                                 <div id="collapse-accordion-question-{{ $faq->id }}" class="collapse" aria-labelledby="heading-accordion-question-{{ $faq->id }}" data-parent="#accordion-asked-questions">
@@ -42,7 +42,7 @@
                             <div class="card">
                                 <div class="card-header p-0" id="heading-accordion-question-{{ $faq->id }}">
                                     <div class="h4 mb-0">
-                                        <div class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-accordion-question-{{ $faq->id }}" aria-expanded="false" aria-controls="collapse-accordion-question-{{ $faq->id }}">{{ $faq->question }}</div>
+                                        <div class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse-accordion-question-{{ $faq->id }}" aria-expanded="false" aria-controls="collapse-accordion-question-{{ $faq->id }}" role="button">{{ $faq->question }}</div>
                                     </div>
                                 </div>
                                 <div id="collapse-accordion-question-{{ $faq->id }}" class="collapse" aria-labelledby="heading-accordion-question-{{ $faq->id }}" data-parent="#accordion-asked-questions">

@@ -133,7 +133,7 @@
                                         class="video-wrap video-wrap--vissible w-100 d-lg-none d-flex justify-content-center mb-sm-3">
                                         <a class="w-100" data-fancybox="specific-player-mob" data-src="#specific-player"
                                             data-thumb="{{ '/storage/' . $homeDriveBlock->image }}">
-                                            <video class="js-player specific-player" playsinline controls
+                                            <video class="js-player specific-player" playsinline
                                                 data-poster="{{ '/storage/' . $homeDriveBlock->image }}">
                                                 <source src="assets/video/example.mp4" type="video/mp4" />
                                             </video>
@@ -175,7 +175,7 @@
                                             <div class="video-wrap video-wrap--vissible">
                                                 <a data-fancybox="specific-player" data-src="#specific-player"
                                                     data-thumb="{{ '/storage/' . $homeDriveBlock->image }}">
-                                                    <video class="js-player specific-player" playsinline controls
+                                                    <video class="js-player specific-player" playsinline
                                                         data-poster="{{ '/storage/' . $homeDriveBlock->image }}">
                                                         <source src="{{ '/storage/' . $homeDriveBlock->video }}"
                                                             type="video/mp4" />
@@ -184,7 +184,7 @@
                                                 <button type="button" class="btn btn-video-play-pause"></button>
                                             </div>
                                             <div id="specific-player" class="video-wrap hidden" style="display:none">
-                                                <video class="js-player specific-player" playsinline controls
+                                                <video class="js-player specific-player" playsinline
                                                     data-poster="{{ '/storage/' . $homeDriveBlock->image }}">
                                                     <source src="{{ '/storage/' . $homeDriveBlock->video }}"
                                                         type="video/mp4" />
@@ -253,7 +253,7 @@
                                                                         data-src="#scroll-gallery-player-{{ $client->id }}"
                                                                         data-thumb="{{ $client->image_url }}">
                                                                         <video class=" js-player specific-player" muted
-                                                                            playsinline controls
+                                                                            playsinline
                                                                             data-poster="{{ $client->image_url }}">
                                                                             <source
                                                                                 src="{{ '/storage/' . $client->video }}"
@@ -266,7 +266,7 @@
                                                                 <div id="scroll-gallery-player-{{ $client->id }}"
                                                                     class="video-wrap hidden" style="display:none">
                                                                     <video class="js-player specific-player" playsinline
-                                                                        controls data-poster="{{ $client->image_url }}">
+                                                                        data-poster="{{ $client->image_url }}">
                                                                         <source src="{{ '/storage/' . $client->video }}"
                                                                             type="video/mp4" />
                                                                     </video>
@@ -340,7 +340,7 @@
                                                                             data-src="#story-cube-gallery-player-{{ $client->id }}"
                                                                             data-thumb="{{ $client->image_url }}">
                                                                             <video class="js-player specific-player"
-                                                                                playsinline controls
+                                                                                playsinline
                                                                                 data-poster="{{ $client->image_url }}">
                                                                                 <source
                                                                                     src="{{ '/storage/' . $client->video }}"
@@ -353,7 +353,7 @@
                                                                     <div id="story-cube-gallery-player-{{ $client->id }}"
                                                                         class="video-wrap hidden" style="display:none">
                                                                         <video class="js-player specific-player"
-                                                                            playsinline controls
+                                                                            playsinline
                                                                             data-poster="{{ $client->image_url }}">
                                                                             <source
                                                                                 src="{{ '/storage/' . $client->video }}"
@@ -518,7 +518,7 @@
                                                 <div class="h4 mb-0">
                                                     <div class="btn btn-link collapsed" data-toggle="collapse"
                                                         data-target="#collapse-accordion-question-{{ $loop->iteration }}" aria-expanded="false"
-                                                        aria-controls="collapse-accordion-question-{{ $loop->iteration }}">{{ $faq->question }}</div>
+                                                        aria-controls="collapse-accordion-question-{{ $loop->iteration }}" role="button">{{ $faq->question }}</div>
                                                 </div>
                                             </div>
                                             <div id="collapse-accordion-question-{{ $loop->iteration }}" class="collapse"
