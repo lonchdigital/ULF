@@ -6,8 +6,8 @@
                     <div class="row">
                         <div class="col-12 col-lg-6 mb-5 mb-lg-0">
                             <div class="footer-logo mb-5">
-                                @if (!empty($page->image))
-                                    <img src="{{ $page->imageUrl }}" alt="{{ 'ULF' }}">
+                                @if (!empty($footerPage->image))
+                                    <img src="{{ $footerPage->imageUrl }}" alt="{{ 'ULF' }}">
                                 @else
                                     <img src="{{ asset('static_images/logo-4.svg') }}" alt="logo">
                                 @endif
@@ -16,7 +16,7 @@
                             <div class="row">
                                 <div class="col col-lg-10 col-xl-8">
                                     <p class="mob-line font-weight-bold mb-0 text-white pb-3 mb-3 pb-md-0 mb-md-0">
-                                        {{ $page->pageBlocks()->where('block', 'footer')->where('key', 'description')->first()->description }}
+                                        {{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'description')->first()->description }}
                                     </p>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@
                                                         {{ trans('web.talk_in_messengers') }}</p>
                                                     <ul class="list-inline mb-0 py-2">
                                                         <li class="list-inline-item">
-                                                            <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'communicate_telegram')->first()->description }}"
+                                                            <a href="{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'communicate_telegram')->first()->description }}"
                                                                 target="_blank">
                                                                 <svg class="i-telegram">
                                                                     <use
@@ -85,7 +85,7 @@
                                                             </a>
                                                         </li>
                                                         <li class="list-inline-item">
-                                                            <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'communicate_viber')->first()->description }}"
+                                                            <a href="{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'communicate_viber')->first()->description }}"
                                                                 target="_blank">
                                                                 <svg class="i-viber">
                                                                     <use
@@ -103,7 +103,7 @@
                                                         {{ trans('web.more_info_chat_bots') }}</p>
                                                     <ul class="list-inline mb-0 py-2">
                                                         <li class="list-inline-item">
-                                                            <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'bot_telegram')->first()->description }}"
+                                                            <a href="{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'bot_telegram')->first()->description }}"
                                                                 target="_blank">
                                                                 <svg class="i-telegram">
                                                                     <use
@@ -113,7 +113,7 @@
                                                             </a>
                                                         </li>
                                                         <li class="list-inline-item">
-                                                            <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'bot_viber')->first()->description }}"
+                                                            <a href="{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'bot_viber')->first()->description }}"
                                                                 target="_blank">
                                                                 <svg class="i-viber">
                                                                     <use
@@ -151,7 +151,7 @@
                                             </svg>
                                             <a href="tel:0 800 331 001">0 800 331 001</a>
                                         </li> --}}
-                                        @forelse($page->pageBlocks()->where('block', 'phone')->get() as $phone)
+                                        @forelse($footerPage->pageBlocks()->where('block', 'phone')->get() as $phone)
                                             <li class="d-flex align-items-center">
                                                 <svg class="i-phone mr-2">
                                                     <use
@@ -182,17 +182,17 @@
                             </svg>
                             <div class="footer--email">
                                 <a
-                                    href="mailto:{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'email')->first()->description }}">{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'email')->first()->description }}</a>
+                                    href="mailto:{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'email')->first()->description }}">{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'email')->first()->description }}</a>
                             </div>
                         </div>
                         <ul class="list-inline mb-0 mt-8">
-                            @if (!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->description))
+                            @if (!empty($footerPage->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->description))
                                 <li class="list-inline-item">
-                                    <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->description }}"
+                                    <a href="{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->description }}"
                                         target="_blank">
-                                        @if (!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->value))
+                                        @if (!empty($footerPage->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->value))
                                             <img class="i-instagram"
-                                                src="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->imageUrl }}"
+                                                src="{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->imageUrl }}"
                                                 alt="instagram" style="max-width: 30px">
                                         @else
                                             <svg class="i-instagram">
@@ -204,13 +204,13 @@
                                     </a>
                                 </li>
                             @endif
-                            @if ($page->pageBlocks()->where('block', 'footer')->where('key', 'tik_tok')->first()->description)
+                            @if ($footerPage->pageBlocks()->where('block', 'footer')->where('key', 'tik_tok')->first()->description)
                                 <li class="list-inline-item">
-                                    <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'tik_tok')->first()->description }}"
+                                    <a href="{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'tik_tok')->first()->description }}"
                                         target="_blank">
-                                        @if (!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'tik_tok')->first()->value))
+                                        @if (!empty($footerPage->pageBlocks()->where('block', 'footer')->where('key', 'tik_tok')->first()->value))
                                             <img class="i-tiktok"
-                                                src="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'tik_tok')->first()->imageUrl }}"
+                                                src="{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'tik_tok')->first()->imageUrl }}"
                                                 alt="tik_tok" style="max-width: 30px">
                                         @else
                                             <svg class="i-tiktok">
@@ -222,13 +222,13 @@
                                     </a>
                                 </li>
                             @endif
-                            @if (!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'facebook')->first()->description))
+                            @if (!empty($footerPage->pageBlocks()->where('block', 'footer')->where('key', 'facebook')->first()->description))
                                 <li class="list-inline-item">
-                                    <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'facebook')->first()->description }}"
+                                    <a href="{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'facebook')->first()->description }}"
                                         target="_blank">
-                                        @if (!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'facebook')->first()->value))
+                                        @if (!empty($footerPage->pageBlocks()->where('block', 'footer')->where('key', 'facebook')->first()->value))
                                             <img class="i-facebook"
-                                                src="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'facebook')->first()->imageUrl }}"
+                                                src="{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'facebook')->first()->imageUrl }}"
                                                 alt="facebook" style="max-width: 30px">
                                         @else
                                             <svg class="i-facebook">
@@ -240,13 +240,13 @@
                                     </a>
                                 </li>
                             @endif
-                            @if (!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'youtube')->first()->description))
+                            @if (!empty($footerPage->pageBlocks()->where('block', 'footer')->where('key', 'youtube')->first()->description))
                                 <li class="list-inline-item">
-                                    <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'youtube')->first()->description }}"
+                                    <a href="{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'youtube')->first()->description }}"
                                         target="_blank">
-                                        @if (!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'youtube')->first()->value))
+                                        @if (!empty($footerPage->pageBlocks()->where('block', 'footer')->where('key', 'youtube')->first()->value))
                                             <img class="i-youtube"
-                                                src="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'youtube')->first()->imageUrl }}"
+                                                src="{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'youtube')->first()->imageUrl }}"
                                                 alt="youtube" style="max-width: 30px">
                                         @else
                                             <svg class="i-youtube">
@@ -258,13 +258,13 @@
                                     </a>
                                 </li>
                             @endif
-                            @if (!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'linkedin')->first()->description))
+                            @if (!empty($footerPage->pageBlocks()->where('block', 'footer')->where('key', 'linkedin')->first()->description))
                                 <li class="list-inline-item">
-                                    <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'linkedin')->first()->description }}"
+                                    <a href="{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'linkedin')->first()->description }}"
                                         target="_blank">
-                                        @if (!empty($page->pageBlocks()->where('block', 'footer')->where('key', 'linkedin')->first()->value))
+                                        @if (!empty($footerPage->pageBlocks()->where('block', 'footer')->where('key', 'linkedin')->first()->value))
                                             <img class="i-linkedin"
-                                                src="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'linkedin')->first()->imageUrl }}"
+                                                src="{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'linkedin')->first()->imageUrl }}"
                                                 alt="linkedin" style="max-width: 30px">
                                         @else
                                             <svg class="i-linkedin">

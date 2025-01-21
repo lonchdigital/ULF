@@ -41,6 +41,30 @@
 
 @section('content')
 
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "{{ $car->getFullName() }}",
+        @if(count($car->images))
+        "image": "{{ '/storage/' . $car->images->first()->Url }}",
+        @endif
+        "description": "{{ $car->description }}",
+        "brand": {
+            "@type": "Brand",
+            "name": "{{ $car->vehicle->model->manufacturer->name }}"
+        },
+        "offers": {
+            "@type": "Offer",
+            "priceCurrency": "USD",
+            @if(count($car->subscribePrices) > 0)
+                "price": "{{ $car->subscribePrices->where('section_id', 1)->first()['monthly_payment'] }}",
+            @endif
+            "availability": "{{ App\DataClasses\CarStatusesClass::get($car->status_id)['name'] }}",
+        }
+    }
+</script>
+
     <main class="main">
         <div class="content">
             <section class="section-top pt-5 d-none d-sm-block">
@@ -54,10 +78,10 @@
                                 <div class="h3 font-m font-weight-bolder mb-2">{{ $car->getName() }}</div>
                                 <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between mb-3">
                                     <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3 mb-lg-0">
-                                        <ol class="breadcrumb mb-0">
-                                            <li class="breadcrumb-item"><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">{{ trans('page_name.index') }}</a></li>
-                                            <li class="breadcrumb-item"><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">{{ trans('page_name.car_park') }}</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">{{ $car->getName() }}</li>
+                                        <ol class="breadcrumb mb-0" itemscope itemtype="https://schema.org/BreadcrumbList">
+                                            <li class="breadcrumb-item" itemtype="https://schema.org/ListItem"><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">{{ trans('page_name.index') }}</a></li>
+                                            <li class="breadcrumb-item" itemtype="https://schema.org/ListItem"><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">{{ trans('page_name.car_park') }}</a></li>
+                                            <li class="breadcrumb-item active" itemtype="https://schema.org/ListItem" aria-current="page">{{ $car->getName() }}</li>
                                         </ol>
                                     </nav>
                                     <ul class="list-unstyled mb-0 car-properties-preview">

@@ -43,6 +43,48 @@
 
     @vite(['resources/js/app.js'])
 
+    @if( Route::currentRouteName() === 'main.page' )
+        <script type="application/ld+json" defer>
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "Name": "{{ config('app.name') }}",
+                "url": "{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}",
+                "logo": "{{ asset('static_images/main-logo.png') }}",
+                "image": "{{ asset('static_images/main-logo.png') }}",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "м. Київ, Оболонський проспект, 35-А, офіс 300",
+                    "postalCode": "03150",
+                    "addressCountry": "Україна"
+                },
+                "email": "{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'email')->first()->description }}",
+                @forelse($footerPage->pageBlocks()->where('block', 'phone')->get() as $phone)
+                "telephone": "{{ $phone->title }}",
+                @empty
+                @endforelse
+                "sameAs": [
+                    ""
+                ]
+            }
+        </script>
+
+        <script type="application/ld+json" defer>
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "url": "{{ url( App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') ) }}",
+                "name": "{{ config('app.name') }}",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "{{ url( App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') ) }}/search?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                }
+            }
+        </script>
+    @endif
+
+
     <!-- Google Tag Manager -->
     <script>
         (function(w, d, s, l, i) {

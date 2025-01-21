@@ -50,9 +50,9 @@
                                 </div>
                                 <div class="h3 font-m font-weight-bolder mb-2">{{ $page->name ?? '' }}</div>
                                 <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
-                                    <ol class="breadcrumb mb-0">
-                                        <li class="breadcrumb-item"><a href="{{ route('main.page') }}">Головна</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">{{ $page->name ?? '' }}</li>
+                                    <ol class="breadcrumb mb-0" itemscope itemtype="https://schema.org/BreadcrumbList">
+                                        <li class="breadcrumb-item" itemtype="https://schema.org/ListItem"><a href="{{ route('main.page') }}">Головна</a></li>
+                                        <li class="breadcrumb-item active" itemtype="https://schema.org/ListItem" aria-current="page">{{ $page->name ?? '' }}</li>
                                     </ol>
                                 </nav>
                             </div>

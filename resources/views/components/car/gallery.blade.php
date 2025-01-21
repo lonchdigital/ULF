@@ -41,10 +41,10 @@
                         <div class="nav-breadcrumb">
                             <div class="h3 font-weight-bolder mb-2">{{ $car->getName() }}</div>
                             <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
-                                <ol class="breadcrumb mb-0">
-                                    <li class="breadcrumb-item"><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">{{ trans('page_name.index') }}</a></li>
-                                    <li class="breadcrumb-item"><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">{{ trans('page_name.car_park') }}</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">{{ $car->getName() }}</li>
+                                <ol class="breadcrumb mb-0" itemscope itemtype="https://schema.org/BreadcrumbList">
+                                    <li class="breadcrumb-item" itemtype="https://schema.org/ListItem"><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">{{ trans('page_name.index') }}</a></li>
+                                    <li class="breadcrumb-item" itemtype="https://schema.org/ListItem"><a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">{{ trans('page_name.car_park') }}</a></li>
+                                    <li class="breadcrumb-item active" itemtype="https://schema.org/ListItem" aria-current="page">{{ $car->getName() }}</li>
                                 </ol>
                             </nav>
                         </div>

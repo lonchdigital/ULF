@@ -4,20 +4,17 @@ namespace App\ViewComposers;
 
 
 use App\Models\Page;
+use App\Services\Locale\LocaleService;
 use Illuminate\View\View;
 
 
-class FooterComposer
+class IndexComposer
 {
 
     public function compose(View $view)
     {
-        $slugs = ['policy', 'terms', 'rental-agreement', 'insurance-contract'];
-
         $view->with([
-            'footerPages' => Page::whereIn('slug', $slugs)->get(),
             'footerPage' => Page::where('slug', 'footer')->with('pageBlocks')->first(),
-            'pages' => Page::whereNotIn('slug', ['footer', 'header'])->get(),
         ]);
     }
 }
