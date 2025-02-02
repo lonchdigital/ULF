@@ -38,20 +38,28 @@ function initQuillEditors(callback) {
         ['clean']
     ];
 
+    // Get the base URL dynamically from the meta tag
+    const baseUrl = document.querySelector('meta[name="app-url"]')?.content || "https://ulfauto.online/";
+
     // standart link module
     const Link = Quill.import('formats/link');
 
     class CustomLink extends Link {
         static create(value) {
             const node = super.create(value);
-            node.setAttribute('rel', 'nofollow'); // Добавляем rel="nofollow"
+
+            // Check if the link is external
+            if (!value.startsWith(baseUrl)) {
+                node.setAttribute('rel', 'nofollow');
+            }
+
             return node;
         }
-    
+
         static formats(domNode) {
-            return domNode.getAttribute('href'); // return only URL
+            return domNode.getAttribute('href'); // Return only the URL
         }
-    
+
         format(name, value) {
             if (name === 'rel') {
                 if (value) {
