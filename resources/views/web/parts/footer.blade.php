@@ -67,12 +67,17 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="footer--socials mob-line socials pb-1 mb-3 pb-md-0 mb-md-0">
-                                        <div class="h5">{{ trans('web.help') }}</div>
+                                        <div class="h5">
+                                            {{-- {{ trans('web.help') }} --}}
+                                            {{ $page->pageBlocks()->where('block', 'footer')->where('key', 'support_title')->first()->title ?? trans('web.help') }}
+                                        </div>
                                         <div class="row flex-md-column mt-3">
                                             <div class="col-6 col-md">
                                                 <div class="d-flex flex-column h-100 justify-content-between">
                                                     <p class="font-weight-bold mb-0">
-                                                        {{ trans('web.talk_in_messengers') }}</p>
+                                                        {{-- {{ trans('web.talk_in_messengers') }} --}}
+                                                        {{ $page->pageBlocks()->where('block', 'footer')->where('key', 'messenger_title')->first()->title ?? trans('web.talk_in_messengers') }}
+                                                    </p>
                                                     <ul class="list-inline mb-0 py-2">
                                                         <li class="list-inline-item">
                                                             <a href="{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'communicate_telegram')->first()->description }}"
@@ -100,7 +105,9 @@
                                             <div class="col-6 col-md">
                                                 <div class="d-flex flex-column h-100 justify-content-between">
                                                     <p class="font-weight-bold mb-0">
-                                                        {{ trans('web.more_info_chat_bots') }}</p>
+                                                        {{-- {{ trans('web.more_info_chat_bots') }} --}}
+                                                        {{ $page->pageBlocks()->where('block', 'footer')->where('key', 'bot_title')->first()->title ?? trans('web.more_info_chat_bots') }}
+                                                    </p>
                                                     <ul class="list-inline mb-0 py-2">
                                                         <li class="list-inline-item">
                                                             <a href="{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'bot_telegram')->first()->description }}"

@@ -61,14 +61,16 @@ class Edit extends Component
                 'ua' => [
                     'title' => $automatch->translate('ua')->title ?? '',
                     'description' => $automatch->translate('ua')->description ?? '',
+                    'price' => $automatch->translate('ua')->price ?? '',
+                    'comment' => $automatch->translate('ua')->comment ?? '',
                 ],
 
                 'ru' => [
                     'title' => $automatch->translate('ru')->title ?? '',
                     'description' => $automatch->translate('ru')->description ?? '',
+                    'price' => $automatch->translate('ru')->price ?? '',
+                    'comment' => $automatch->translate('ru')->comment ?? '',
                 ],
-
-                'price' => $automatch->price ?? '',
 
                 'link' => $automatch->link ?? '',
 
@@ -81,8 +83,6 @@ class Edit extends Component
                 'sort' => $automatch->sort,
 
                 'is_active' => $automatch->is_active ? true : false,
-
-                'comment' => $automatch->comment ?? '',
             ];
         }
 
@@ -95,14 +95,16 @@ class Edit extends Component
                 'ua' => [
                     'title' => '',
                     'description' => '',
+                    'price' => '',
+                    'comment' => '',
                 ],
 
                 'ru' => [
                     'title' => '',
-                    'description' => ''
+                    'description' => '',
+                    'price' => '',
+                    'comment' => '',
                 ],
-
-                'price' => '',
 
                 'link' => '',
 
@@ -113,8 +115,6 @@ class Edit extends Component
                 'image' => null,
 
                 'newImage' => null,
-
-                'comment' => '',
             ];
         }
     }
@@ -127,10 +127,10 @@ class Edit extends Component
                 'string',
             ],
 
-            'automatches.*.price' => [
-                'nullable',
-                'string',
-            ],
+            // 'automatches.*.price' => [
+            //     'nullable',
+            //     'string',
+            // ],
 
             'automatches.*.link' => [
                 'nullable',
@@ -152,7 +152,22 @@ class Edit extends Component
                 'string',
             ],
 
-            'automatches.*.comment' => [
+            'automatches.*.ua.price' => [
+                'nullable',
+                'string',
+            ],
+
+            'automatches.*.ru.price' => [
+                'nullable',
+                'string',
+            ],
+
+            'automatches.*.ua.comment' => [
+                'nullable',
+                'string',
+            ],
+
+            'automatches.*.ru.comment' => [
                 'nullable',
                 'string',
             ],
@@ -227,14 +242,16 @@ class Edit extends Component
             'ua' => [
                 'title' => '',
                 'description' => '',
+                'price' => '',
+                'comment' => '',
             ],
 
             'ru' => [
                 'title' => '',
-                'description' => ''
+                'description' => '',
+                'price' => '',
+                'comment' => '',
             ],
-
-            'price' => '',
 
             'link' => '',
 
@@ -243,8 +260,6 @@ class Edit extends Component
             'newImage' => null,
 
             'is_active' => true,
-
-            'comment' => '',
 
             'sort' => count($this->automatches) + 1,
         ];
@@ -298,17 +313,19 @@ class Edit extends Component
             Automatch::create([
                 'sort' => $automatch2['sort'],
                 'is_active' => $automatch2['is_active'],
-                'price' => $automatch2['price'],
                 'link' => $automatch2['link'],
-                'comment' => $automatch2['comment'],
                 'image' => $image,
                 'ua' => [
                     'title' => $automatch2['ua']['title'],
                     'description' => $automatch2['ua']['description'],
+                    'price' => $automatch2['ua']['price'],
+                    'comment' => $automatch2['ua']['comment'],
                 ],
                 'ru' => [
                     'title' => $automatch2['ru']['title'],
                     'description' => $automatch2['ru']['description'],
+                    'price' => $automatch2['ru']['price'],
+                    'comment' => $automatch2['ru']['comment'],
                 ],
             ]);
         }
@@ -318,18 +335,6 @@ class Edit extends Component
             ->translate('ua')
             ->update([
                 'title' => $this->ukTitle,
-            ]);
-
-        $this->page->pageBlocks->where('block', 'automatch')
-            ->first()
-            ->translate('ru')
-            ->update([
-                'title' => $this->ruTitle,
-            ]);
-
-        $this->page->pageBlocks->where('block', 'automatch')
-            ->first()
-            ->translate('ua')->update([
                 'description' => $this->ukDescription,
             ]);
 
@@ -337,7 +342,8 @@ class Edit extends Component
             ->first()
             ->translate('ru')
             ->update([
-                'title' => $this->ruDescription,
+                'title' => $this->ruTitle,
+                'description' => $this->ruDescription,
             ]);
 
         session()->flash('success', 'Дані успішно збережено');

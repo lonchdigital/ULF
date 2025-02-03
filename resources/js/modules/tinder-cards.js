@@ -193,6 +193,10 @@ if (TinderCards) {
 
 						var errors = data.errors;
 
+                        document.querySelectorAll('.field--help-info').forEach(function(errorElement) {
+                            errorElement.textContent = '';
+                        });
+
 						for (var field in errors) {
 							var fieldElement = $('#' + field + '_error');
 
@@ -244,6 +248,10 @@ document.getElementById("form-сar-selection").addEventListener("submit", functi
             selectButton.textContent = originalText;
 
             var errors = data.errors;
+
+            document.querySelectorAll('.field--help-info').forEach(function(errorElement) {
+                errorElement.textContent = '';
+            });
 
             for (var field in errors) {
                 var fieldElement = $('#' + field + '_error_select');

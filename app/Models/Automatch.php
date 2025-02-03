@@ -12,17 +12,17 @@ class Automatch extends Model
     use HasFactory, Translatable;
 
     protected $fillable = [
-        'price',
         'image',
         'is_active',
         'sort',
         'link',
-        'comment',
     ];
 
     public $translatedAttributes = [
         'title',
         'description',
+        'price',
+        'comment',
     ];
 
     public function scopeActive($query)

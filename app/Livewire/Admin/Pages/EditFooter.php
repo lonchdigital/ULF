@@ -84,6 +84,18 @@ class EditFooter extends Component
 
     public $instagramImageTemporary;
 
+    public string $ukSupport = '';
+
+    public string $ruSupport = '';
+
+    public string $ukMessengerTitle = '';
+
+    public string $ruMessengerTitle = '';
+
+    public string $ukChatBotTitle = '';
+
+    public string $ruChatBotTitle = '';
+
     protected $listeners = [
         'languageSwitched' => 'languageSwitched'
     ];
@@ -230,6 +242,48 @@ class EditFooter extends Component
             'block' => 'footer',
             'key' => 'instagram'
         ]);
+
+        $this->ukSupport = $this->page->pageBlocks()->firstOrCreate([
+                'block' => 'footer',
+                'key' => 'support_title'
+            ])
+            ->translate('ua')
+            ->title ?? '';
+
+        $this->ruSupport = $this->page->pageBlocks()->firstOrCreate([
+                'block' => 'footer',
+                'key' => 'support_title'
+            ])
+            ->translate('ru')
+            ->title ?? '';
+
+        $this->ukMessengerTitle = $this->page->pageBlocks()->firstOrCreate([
+                'block' => 'footer',
+                'key' => 'messenger_title'
+            ])
+            ->translate('ua')
+            ->title ?? '';
+
+        $this->ruMessengerTitle = $this->page->pageBlocks()->firstOrCreate([
+                'block' => 'footer',
+                'key' => 'messenger_title'
+            ])
+            ->translate('ru')
+            ->title ?? '';
+
+        $this->ukChatBotTitle = $this->page->pageBlocks()->firstOrCreate([
+                'block' => 'footer',
+                'key' => 'bot_title'
+            ])
+            ->translate('ua')
+            ->title ?? '';
+
+        $this->ruChatBotTitle = $this->page->pageBlocks()->firstOrCreate([
+                'block' => 'footer',
+                'key' => 'bot_title'
+            ])
+            ->translate('ru')
+            ->title ?? '';
     }
 
     protected function rules()
@@ -350,6 +404,36 @@ class EditFooter extends Component
                 'mimes:jpeg,jpg,png,gif,svg',
                 // 'image',
             ],
+
+            'ukSupport' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruSupport' => [
+                'nullable',
+                'string',
+            ],
+
+            'ukMessengerTitle' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruMessengerTitle' => [
+                'nullable',
+                'string',
+            ],
+
+            'ukChatBotTitle' => [
+                'nullable',
+                'string',
+            ],
+
+            'ruChatBotTitle' => [
+                'nullable',
+                'string',
+            ]
         ];
     }
 
@@ -566,6 +650,7 @@ class EditFooter extends Component
         $translation = $block->translateOrNew('ru');
         $translation->title = $this->phone2;
         $translation->description = $this->ruPhone2Desck;
+        $translation->save();
 
         $block = $this->page->pageBlocks()->firstOrCreate([
             'block' => 'footer',
@@ -685,6 +770,45 @@ class EditFooter extends Component
 
         $translation = $block->translateOrNew('ru');
         $translation->description = $this->linkedin;
+        $translation->save();
+
+        $block = $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'key' => 'support_title'
+        ]);
+
+        $translation = $block->translateOrNew('ua');
+        $translation->title = $this->ukSupport;
+        $translation->save();
+
+        $translation = $block->translateOrNew('ru');
+        $translation->title = $this->ruSupport;
+        $translation->save();
+
+        $block = $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'key' => 'messenger_title'
+        ]);
+
+        $translation = $block->translateOrNew('ua');
+        $translation->title = $this->ukMessengerTitle;
+        $translation->save();
+
+        $translation = $block->translateOrNew('ru');
+        $translation->title = $this->ruMessengerTitle;
+        $translation->save();
+
+        $block = $this->page->pageBlocks()->firstOrCreate([
+            'block' => 'footer',
+            'key' => 'bot_title'
+        ]);
+
+        $translation = $block->translateOrNew('ua');
+        $translation->title = $this->ukChatBotTitle;
+        $translation->save();
+
+        $translation = $block->translateOrNew('ru');
+        $translation->title = $this->ruChatBotTitle;
         $translation->save();
 
         session()->flash('success', 'Дані успішно збережено');
