@@ -541,7 +541,7 @@ class EditContacts extends Component
         ])
             ->translate('ru')
             ->update([
-                'title' => $this->ruSecondAddress
+                'description' => $this->ruSecondAddress
             ]);
 
         $this->page->pageBlocks()->firstOrCreate([
@@ -577,7 +577,7 @@ class EditContacts extends Component
         ])
             ->translate('ru')
             ->update([
-                'title' => $this->ruSecondPhone
+                'description' => $this->ruSecondPhone
             ]);
 
         $this->page->pageBlocks()->firstOrCreate([
