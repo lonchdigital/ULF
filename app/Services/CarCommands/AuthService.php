@@ -12,8 +12,7 @@ class AuthService
 
     public function getToken()
     {
-        $response = Http::withOptions(['verify' => false])
-            ->post($this->baseUrl . '/auth/token', [
+        $response = Http::post($this->baseUrl . '/auth/token', [
                 'username' => env('CARS_API_USERNAME'),
                 'password' => env('CARS_API_PASSWORD')
             ]);

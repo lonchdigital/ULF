@@ -65,10 +65,6 @@ class CarUpdateService extends CarBaseService
         $dataToUpdate['car_page_id'] = $page->id;
         $dataToUpdate['lot_id'] = $lot['id'];
         $dataToUpdate['subscription_category'] = $lot['SubscriptionCategory'];
-        // TODO:: get more about these fields
-        // $dataToUpdate['subscription_period_id'] = null;
-        // $dataToUpdate['subscription_extentional_id'] = null;
-        // $dataToUpdate['advertisement_city_id'] = null;
         $dataToUpdate['ua']['description'] = $lot['description_ua'];
         $dataToUpdate['ru']['description'] = $lot['description_ru'];
 
@@ -78,6 +74,14 @@ class CarUpdateService extends CarBaseService
     // Create/Update ONE car that we got by API
     public function addOneCar($data)
     {
+
+        try {
+            $this->validateLotData($data);
+        } catch (\Exception $e) {
+            Log::error('Create/Update Car failed', ['error' => $e->getMessage()]);
+            abort(500, 'Internal Server Error');
+        }
+
         try {
 
             $existingItem = Car::where('lot_id', $data['id'])->first();
@@ -97,13 +101,20 @@ class CarUpdateService extends CarBaseService
             } else {
 
                 DB::transaction(function () use ($data) {
-                    $vehicle = $this->carVehicleService->createFromApi($data['vehicle']);
-                    $dataToUpdate = $this->setCarData($vehicle, $data);
-
-                    $car = Car::create($dataToUpdate);
-
-                    if(!is_null($data['images'])){
-                        $this->updateCarImagesApi($data['images'], $car);
+                    try {
+                        $vehicle = $this->carVehicleService->createFromApi($data['vehicle']);
+                        $dataToUpdate = $this->setCarData($vehicle, $data);
+                
+                        $car = Car::create($dataToUpdate);
+                
+                        if (!is_null($data['images'])) {
+                            $this->updateCarImagesApi($data['images'], $car);
+                        }
+                
+                        Log::info('Car created successfully', ['car_id' => $car->id]);
+                    } catch (\Exception $e) {
+                        Log::error('Car creation failed', ['error' => $e->getMessage()]);
+                        throw $e;
                     }
                 });
 

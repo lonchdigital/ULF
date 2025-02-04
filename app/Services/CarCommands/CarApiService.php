@@ -9,8 +9,7 @@ class CarApiService extends AuthService
 
     public function getDictionaryByName($dictionaryName, $accessToken)
     {
-        $response = Http::withOptions(['verify' => false])
-            ->withToken($accessToken)
+        $response = Http::withToken($accessToken)
             ->post($this->baseUrl . '/command/GetDictionary', [
                 'DictionaryName' => $dictionaryName,
             ]);
@@ -20,8 +19,7 @@ class CarApiService extends AuthService
 
     public function getLotsList($accessToken, int $take = 20, int $skip = 0)
     {
-        $response = Http::withOptions(['verify' => false])
-            ->withToken($accessToken)
+        $response = Http::withToken($accessToken)
             ->post($this->baseUrl . '/command/GetSubscriptionLotsList', [
                 'Top' => $take,
                 'Skip' => $skip
@@ -34,8 +32,7 @@ class CarApiService extends AuthService
     {
         $onlyLotIds = $this->extractLotIds($lotValues);
 
-        $response = Http::withOptions(['verify' => false])
-            ->withToken($accessToken)
+        $response = Http::withToken($accessToken)
             ->post($this->baseUrl . '/command/GetSubscriptionLotInfo', [
                 'LotIds' => $onlyLotIds
             ]);
@@ -55,8 +52,7 @@ class CarApiService extends AuthService
 
     public function createRetailLead(array $data, $accessToken)
     {
-        $response = Http::withOptions(['verify' => false])
-            ->withToken($accessToken)
+        $response = Http::withToken($accessToken)
             ->post($this->baseUrl . '/command/CreateRetailLead', [
                 "vehicle" => [
                     "manufacturerId" => null,
@@ -88,8 +84,7 @@ class CarApiService extends AuthService
 
     public function createRetailLeadWithCars(array $data, $accessToken)
     {
-        $response = Http::withOptions(['verify' => false])
-            ->withToken($accessToken)
+        $response = Http::withToken($accessToken)
             ->post($this->baseUrl . '/command/CreateRetailLead', [
                 "vehicle" => [
                     "manufacturerId" => null,

@@ -9,4 +9,9 @@ use Modules\Cars\Http\Controllers\Admin\CarsController;
 
 
 //Route::get('/get-all-cars', [CarsController::class, 'getAllCars'])->name('test.api.all.cars');
-Route::post('/add-car', [CarsController::class, 'addCar'])->name('api.add.car');
+
+Route::middleware('api.auth')->group(function() {
+
+    Route::post('/add-or-update-car', [CarsController::class, 'addOrUpdateCar'])->name('api.add.car');
+    
+});

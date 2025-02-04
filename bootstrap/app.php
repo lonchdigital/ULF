@@ -64,6 +64,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'set.locale' => \App\Http\Middleware\SetLocale::class,
             'check.locale' => \App\Http\Middleware\CheckLocale::class,
+            'api.auth' => \App\Http\Middleware\ApiAuth::class,
 //            'redirect.lowercase' => \App\Http\Middleware\RedirectToLowercase::class,
         ]);
     })
