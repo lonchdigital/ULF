@@ -523,7 +523,7 @@ class EditContacts extends Component
         ])
             ->translate('ru')
             ->update([
-                'tite' => $this->ruFirstAddress
+                'title' => $this->ruFirstAddress
             ]);
 
         $this->page->pageBlocks()->firstOrCreate([
