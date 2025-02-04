@@ -88,13 +88,18 @@ class CarUpdateService extends CarBaseService
             if($existingItem) {
 
                 DB::transaction(function () use ($data, $existingItem) {
-                    $vehicle = $this->carVehicleService->updateFromApi($data['vehicle'], $existingItem);
-                    $dataToUpdate = $this->setCarData($vehicle, $data);
+                    try {
+                        $vehicle = $this->carVehicleService->updateFromApi($data['vehicle'], $existingItem);
+                        $dataToUpdate = $this->setCarData($vehicle, $data);
 
-                    $vehicle->car->update($dataToUpdate);
+                        $vehicle->car->update($dataToUpdate);
 
-                    if(!is_null($data['images'])){
-                        $this->updateCarImagesApi($data['images'], $vehicle->car);
+                        if(!is_null($data['images'])){
+                            $this->updateCarImagesApi($data['images'], $vehicle->car);
+                        }
+                    } catch (\Exception $e) {
+                        Log::error('Car updating failed', ['error' => $e->getMessage()]);
+                        throw $e;
                     }
                 });
 
@@ -110,8 +115,6 @@ class CarUpdateService extends CarBaseService
                         if (!is_null($data['images'])) {
                             $this->updateCarImagesApi($data['images'], $car);
                         }
-                
-                        Log::info('Car created successfully', ['car_id' => $car->id]);
                     } catch (\Exception $e) {
                         Log::error('Car creation failed', ['error' => $e->getMessage()]);
                         throw $e;
