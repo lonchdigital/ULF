@@ -65,6 +65,35 @@ class CarsService extends CarBaseService
         CarImage::truncate();
     }
 
+    public function removeOneCar(int $lotId)
+    {
+        $car = Car::where('lot_id', $lotId)->first();
+        
+        if (!$car) {
+            abort(500, 'Internal Server Error');
+            return;
+        }
+
+        $vehicle = $car->vehicle;
+
+        DB::transaction(function () use ($vehicle) {
+            if (!is_null($vehicle->car)) {
+                if ($vehicle->car->images->isNotEmpty()) {
+                    foreach ($vehicle->car->images as $image) {
+                        deleteImage($image->Url);
+                        $image->delete();
+                    }
+                }
+
+                if ($vehicle->car->page) {
+                    $vehicle->car->page->delete();
+                }
+            }
+
+            $vehicle->delete();
+        });
+    }
+
     public function updateDocument(Car $car, array $data): Car
     {
         return $this->updateService->updateCarFromDashboard($car, $data);

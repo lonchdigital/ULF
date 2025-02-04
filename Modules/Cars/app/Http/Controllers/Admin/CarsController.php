@@ -5,8 +5,9 @@ namespace Modules\Cars\Http\Controllers\Admin;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use Modules\Cars\Models\Car;
-use Illuminate\Routing\Controller;
 use Modules\Cars\Models\CarPage;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Log;
 use Modules\Cars\Services\Admin\CarsService;
 use Modules\Cars\Http\Requests\Admin\CarUpdateRequest;
 
@@ -77,6 +78,19 @@ class CarsController extends Controller
     public function addOrUpdateCar(Request $request)
     {
         $this->service->addCarFromApi($request->all());
+    }
+    public function removeCar(Request $request)
+    {
+        try {
+            $request->validate([
+                'lot_id' => 'required|integer'
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Create/Update Car failed', ['error' => $e->getMessage()]);
+            abort(500, 'Internal Server Error');
+        }
+
+        $this->service->removeOneCar($request->all()['lot_id']);
     }
 
 }
