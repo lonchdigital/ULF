@@ -14,5 +14,7 @@ class AutomatchTranslation extends Model
         'locale',
         'title',
         'description',
+        'price',
+        'comment',
     ];
 }

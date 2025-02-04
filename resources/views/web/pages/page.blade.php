@@ -71,7 +71,7 @@
             </section>
             <hr class="d-lg-none mt-0 mb-7 mb-10">
 
-            @include('components.lead-form', ['page' => 'home page', 'pbLg' => 13])
+            @include('components.lead-form', ['page' => 'Main page', 'pbLg' => 13])
 
             {{-- TODO:: SEO section for pages --}}
             {{--<section class="seo pb-7 pb-md-10 pb-lg-13">

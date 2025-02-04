@@ -177,7 +177,7 @@ class EditContacts extends Component
             ->where('key', 'text')
             ->first()
             ->translate('ru')
-            ->title ?? '';
+            ->description ?? '';
 
         $this->ukFirstPhone = $this->page->pageBlocks
             ->where('block', 'phone')
@@ -205,7 +205,7 @@ class EditContacts extends Component
             ->where('key', 'text')
             ->first()
             ->translate('ru')
-            ->title ?? '';
+            ->description ?? '';
 
         $this->ukEmail  = $this->page->pageBlocks
             ->where('block', 'email')
@@ -541,7 +541,7 @@ class EditContacts extends Component
         ])
             ->translate('ru')
             ->update([
-                'title' => $this->ruSecondAddress
+                'description' => $this->ruSecondAddress
             ]);
 
         $this->page->pageBlocks()->firstOrCreate([
@@ -577,7 +577,7 @@ class EditContacts extends Component
         ])
             ->translate('ru')
             ->update([
-                'title' => $this->ruSecondPhone
+                'description' => $this->ruSecondPhone
             ]);
 
         $this->page->pageBlocks()->firstOrCreate([

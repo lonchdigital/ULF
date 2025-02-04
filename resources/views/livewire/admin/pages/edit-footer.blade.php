@@ -276,6 +276,96 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div language="uk"
+                                                                        class="multilang-content tab-pane fade active show "
+                                                                        id="faqs[2][question]-uk">
+                                                                        <div class="form-group mb-1">
+                                                                            <label for="faqs[2][question]_uk">Заголовок блоку Підтримка
+                                                                                <strong>UA</strong>
+                                                                            </label>
+                                                                            <input type="text"
+                                                                                wire:model="ukSupport"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('ukSupport')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div language="uk"
+                                                                        class="multilang-content tab-pane fade active show "
+                                                                        id="faqs[2][question]-uk">
+                                                                        <div class="form-group mb-1">
+                                                                            <label for="faqs[2][question]_uk">Заголовок блоку мессенджери
+                                                                                <strong>UA</strong>
+                                                                            </label>
+                                                                            <input type="text"
+                                                                                wire:model="ukMessengerTitle"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('ukMessengerTitle')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div language="uk"
+                                                                        class="multilang-content tab-pane fade active show "
+                                                                        id="faqs[2][question]-uk">
+                                                                        <div class="form-group mb-1">
+                                                                            <label for="faqs[2][question]_uk">Заголовок блоку чат бот
+                                                                                <strong>UA</strong>
+                                                                            </label>
+                                                                            <input type="text"
+                                                                                wire:model="ukChatBotTitle"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('ukChatBotTitle')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @endif
 
                                         @if ($this->locale == 'ru')
@@ -536,6 +626,96 @@
                                                                     </div>
                                                                 </div>
                                                                 @error('ruPhone2Desck')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div language="uk"
+                                                                        class="multilang-content tab-pane fade active show "
+                                                                        id="faqs[2][question]-uk">
+                                                                        <div class="form-group mb-1">
+                                                                            <label for="faqs[2][question]_uk">Заголовок блоку Підтримка
+                                                                                <strong>RU</strong>
+                                                                            </label>
+                                                                            <input type="text"
+                                                                                wire:model="ruSupport"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('ruSupport')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div language="uk"
+                                                                        class="multilang-content tab-pane fade active show "
+                                                                        id="faqs[2][question]-uk">
+                                                                        <div class="form-group mb-1">
+                                                                            <label for="faqs[2][question]_uk">Заголовок блоку мессенджери
+                                                                                <strong>RU</strong>
+                                                                            </label>
+                                                                            <input type="text"
+                                                                                wire:model="ruMessengerTitle"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('ruMessengerTitle')
+                                                                    <div class="mt-1 text-danger ajaxError">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row mb-3">
+                                                            <div class="col-md-12">
+                                                                <div class="tab-content">
+                                                                    <div language="uk"
+                                                                        class="multilang-content tab-pane fade active show "
+                                                                        id="faqs[2][question]-uk">
+                                                                        <div class="form-group mb-1">
+                                                                            <label for="faqs[2][question]_uk">Заголовок блоку чат бот
+                                                                                <strong>RU</strong>
+                                                                            </label>
+                                                                            <input type="text"
+                                                                                wire:model="ruChatBotTitle"
+                                                                                class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                @error('ruChatBotTitle')
                                                                     <div class="mt-1 text-danger ajaxError">
                                                                         {{ $message }}
                                                                     </div>

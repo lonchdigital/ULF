@@ -134,7 +134,7 @@
                                                                                     for="faqs[2][question]_uk">Вартість
                                                                                 </label>
                                                                                 <input type="text"
-                                                                                    wire:model="automatches.{{ $index }}.price"
+                                                                                    wire:model="automatches.{{ $index }}.ua.price"
                                                                                     id="automatches[2][price]_uk"
                                                                                     class="form-control">
                                                                             </div>
@@ -215,7 +215,7 @@
                                                                                 <label
                                                                                     for="automatches[2][title]_uk">Коментар
                                                                                 </label>
-                                                                                <textarea wire:model="automatches.{{ $index }}.comment" class="form-control"></textarea>
+                                                                                <textarea wire:model="automatches.{{ $index }}.ua.comment" class="form-control"></textarea>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -427,7 +427,7 @@
                                                                                     for="faqs[2][question]_uk">Вартість
                                                                                 </label>
                                                                                 <input type="text"
-                                                                                    wire:model="automatches.{{ $index }}.price"
+                                                                                    wire:model="automatches.{{ $index }}.ru.price"
                                                                                     id="automatches[2][price]_uk"
                                                                                     class="form-control">
                                                                             </div>
@@ -508,7 +508,7 @@
                                                                                 <label
                                                                                     for="automatches[2][title]_uk">Коментар
                                                                                 </label>
-                                                                                <textarea wire:model="automatches.{{ $index }}.comment" class="form-control"></textarea>
+                                                                                <textarea wire:model="automatches.{{ $index }}.ru.comment" class="form-control"></textarea>
                                                                             </div>
                                                                         </div>
                                                                     </div>
