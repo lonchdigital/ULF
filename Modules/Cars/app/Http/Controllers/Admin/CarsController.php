@@ -75,10 +75,12 @@ class CarsController extends Controller
     {
         return response()->json(Car::all());
     }
+
     public function addOrUpdateCar(Request $request)
     {
         $this->service->addCarFromApi($request->all());
     }
+
     public function removeCar(Request $request)
     {
         try {
@@ -91,6 +93,20 @@ class CarsController extends Controller
         }
 
         $this->service->removeOneCar($request->all()['lot_id']);
+    }
+
+    public function updateDirectories(Request $request)
+    {
+        try {
+            $request->validate([
+                'directories_list' => 'required|array'
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Error!', ['error' => $e->getMessage()]);
+            abort(500, 'Internal Server Error');
+        }
+
+        $this->service->updateAllDirectories($request->all()['directories_list']);
     }
 
 }

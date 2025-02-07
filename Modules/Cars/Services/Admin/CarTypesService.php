@@ -2,6 +2,8 @@
 
 namespace Modules\Cars\Services\Admin;
 
+use App\Services\CarCommands\AuthService;
+use App\Services\CarCommands\CarApiService;
 use Modules\Cars\Models\Type;
 use Modules\Cars\Models\Model;
 use Modules\Cars\Models\FuelType;
@@ -156,6 +158,49 @@ class CarTypesService
             } else {
                 Model::create($dataToUpdate);
             }
+        }
+    }
+
+    public function updateDirectoriesByKey(array $directoriesList)
+    {
+        $carApiService = new CarApiService;
+        $authService = new AuthService;
+        $authService->getToken();
+
+        if($directoriesList['VehicleFuelTypes']) {
+            $this->updateAllVehicleFuelTypes(
+                $carApiService->getDictionaryByName('VehicleFuelTypes', $authService->accessToken)
+            );
+        }
+        if($directoriesList['VehicleColorType']) {
+            $this->updateAllVehicleColorTypes(
+                $carApiService->getDictionaryByName('VehicleColorType', $authService->accessToken)
+            );
+        }
+        if($directoriesList['VehicleBodyType']) {
+            $this->updateAllVehicleTypes(
+                $carApiService->getDictionaryByName('VehicleBodyType', $authService->accessToken)
+            );
+        }
+        if($directoriesList['VehicleTransmissionTypes']) {
+            $this->updateAllVehicleTransmissionTypes(
+                $carApiService->getDictionaryByName('VehicleTransmissionTypes', $authService->accessToken)
+            );
+        }
+        if($directoriesList['VehicleManufacturer']) {
+            $this->updateAllManufacturers(
+                $carApiService->getDictionaryByName('VehicleManufacturer', $authService->accessToken)
+            );
+        }
+        if($directoriesList['VehicleDriverType']) {
+            $this->updateAllVehicleDriverTypes(
+                $carApiService->getDictionaryByName('VehicleDriverType', $authService->accessToken)
+            );
+        }
+        if($directoriesList['VehicleModel']) {
+            $this->updateAllVehicleModels(
+                $carApiService->getDictionaryByName('VehicleModel', $authService->accessToken)
+            );
         }
     }
 }

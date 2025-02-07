@@ -137,4 +137,8 @@ class CarsService extends CarBaseService
         }
     }
 
+    public function updateAllDirectories(array $directoriesList)
+    {
+        $this->typesService->updateDirectoriesByKey($directoriesList);
+    }
 }
