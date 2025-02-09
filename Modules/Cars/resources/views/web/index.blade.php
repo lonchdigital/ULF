@@ -115,7 +115,7 @@
                     </div>
                     <div class="row mt-5 mb-5 mb-lg-0">
                         <div class="col-auto mx-auto ">
-                            <button id="show-more" type="button" class="btn-show-more btn btn-main-blue btn-default text-uppercase">Показати більше</button>
+                            <button id="show-more" type="button" class="btn-show-more btn btn-main-blue btn-default text-uppercase">{{ trans('web.show_more') }}</button>
                         </div>
                         <div class="col-12">
                             <nav class="bg-white mt-5 mt-md-2">
@@ -167,7 +167,7 @@
 
             <div class="sidebar collapse" id="navbarFilters">
                 <div class="d-flex justify-content-between mb-3">
-                    <div class="filter-title mr-4">Фільтри</div>
+                    <div class="filter-title mr-4">{{ trans('web.filters') }}</div>
                     <button type="button" class="btn-close btn btn-reset" data-toggle="collapse" href="#navbarFilters"
                         aria-expanded="false" aria-controls="navbarFilters">
                         <svg class="i-close">
@@ -178,20 +178,18 @@
                 <div class="sidebar-filter">
                     <div class="filter-item">
                         <a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}" class="btn-clear-filter btn-default btn-transparent btn btn-block mt-0 p-0 align-content-center mb-3">
-                            Очистити
+                            {{ trans('web.clear') }}
                         </a>
                     </div>
-
-                    {{-- @dd($filters['manufacturers']) --}}
                     
                     @if( !is_null($filters['manufacturers']) )
                         <div class="filter-item">
                             <div class="field-wrap mb-3">
                                 <div class="field">
-                                    <label for="select-choose-manufacturer" class="small-txt font-weight-bold text-grey mb-1">Марка</label>
+                                    <label for="select-choose-manufacturer" class="small-txt font-weight-bold text-grey mb-1">{{ trans('web.brand') }}</label>
                                     <div class="select-wrap">
                                         <select id="select-choose-manufacturer" class="select-choose-manufacturer" name="select-choose-manufacturer">
-                                            <option value="0">Оберіть марку авто</option>
+                                            <option value="0">{{ trans('web.choose_car_brand') }}</option>
                                             @foreach ($filters['manufacturers'] as $key => $manufacturer)
                                                 <option value="{{ $key }}" @if(request()->get('manufacturer') == $key) selected @endif>{{ $manufacturer['manufacturer_name'] }}</option>
                                             @endforeach
@@ -201,13 +199,13 @@
                             </div>
                         </div>
 
-                        <div id="select-choose-model-container" class="filter-item{{ is_null(request()->get('manufacturer')) ? ' d-none' : '' }}">
+                        <div id="select-choose-model-container" class="filter-item{{ is_null(request()->get('manufacturer')) ? ' d-none1' : '' }}">
                             <div class="field-wrap mb-3">
                                 <div class="field">
-                                    <label for="select-choose-model" class="small-txt font-weight-bold text-grey mb-1">Модель</label>
+                                    <label for="select-choose-model" class="small-txt font-weight-bold text-grey mb-1">{{ trans('web.model') }}</label>
                                     <div class="select-wrap">
                                         <select id="select-choose-model" class="select-choose-model" name="select-choose-model">
-                                            <option value="0">Оберіть модель</option>
+                                            <option value="0">{{ trans('web.choose_model') }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -218,7 +216,7 @@
                     <div class="filter-item">
                         <div class="field-wrap mb-6">
                             <div class="field">
-                                <div class="small-txt font-weight-bold text-grey mb-1">Ціна $ / міс.</div>
+                                <div class="small-txt font-weight-bold text-grey mb-1">{{ trans('web.price_dollars_month') }}</div>
                                 <div class="inner">
                                     <input class="currency-first form-control price-filter-min" type="number" value="{{ ( request()->get('priceMin') ) ? request()->get('priceMin') : $filters['prices']['min'] }}">
                                     <input class="currency-last form-control price-filter-max" type="number" value="{{ ( request()->get('priceMax') ) ? request()->get('priceMax') : $filters['prices']['max'] }}">
@@ -236,11 +234,10 @@
                         <div class="filter-item">
                             <div class="field-wrap mb-3">
                                 <div class="field">
-                                    {{-- <div class="field--help-info small-txt text-red mb-1">Оберіть марку авто</div> --}}
-                                    <label for="select-choose-fuel-types" class="small-txt font-weight-bold text-grey mb-1">Тип палива</label>
+                                    <label for="select-choose-fuel-types" class="small-txt font-weight-bold text-grey mb-1">{{ trans('web.fuel_type') }}</label>
                                     <div class="select-wrap">
                                         <select class="select-choose-fuel-types" name="select-choose-fuel-types">
-                                            <option value="0">Оберіть тип палива</option>
+                                            <option value="0">{{ trans('web.choose_fuel_type') }}</option>
                                             @foreach ($filters['fuelTypes'] as $fuelType)
                                                 <option value="{{ $fuelType->id }}" @if(request()->get('fuelType') == $fuelType->id) selected @endif>{{ $fuelType->name }}</option>
                                             @endforeach
@@ -254,8 +251,7 @@
                     <div class="filter-item">
                         <div class="field-wrap mb-6">
                             <div class="field">
-                                {{-- <div class="field--help-info small-txt text-red mb-1">Вкажіть рік випуску</div> --}}
-                                <div class="small-txt font-weight-bold text-grey mb-1">Рік випуску</div>
+                                <div class="small-txt font-weight-bold text-grey mb-1">{{ trans('web.year_of_release') }}</div>
                                 <div class="inner">
                                     <div class="datepicker">
                                         <input id="graduation-year-first" @if(request()->get('yearFrom')) value="{{ request()->get('yearFrom') }}" @endif class="graduation-year-from form-control" type="text" readonly
@@ -275,7 +271,7 @@
                             $selectedBodyTypes = request()->get('bodyTypes') ? explode(',', request()->get('bodyTypes')) : [];
                         @endphp
                         <div class="filter-item">
-                            <div class="small-txt font-weight-bold text-grey mb-1">Тип кузову</div>
+                            <div class="small-txt font-weight-bold text-grey mb-1">{{ trans('web.body_type') }}</div>
                             <div class="mb-6">
                                 @foreach ($filters['types'] as $type)
                                     <div class="custom-control custom-checkbox position-relative mb-2">
@@ -301,7 +297,7 @@
                             $selectedDriverTypes = request()->get('driverTypes') ? explode(',', request()->get('driverTypes')) : [];
                         @endphp
                         <div class="filter-item">
-                            <div class="small-txt font-weight-bold text-grey mb-1">Привод</div>
+                            <div class="small-txt font-weight-bold text-grey mb-1">{{ trans('web.driver_type') }}</div>
                             <div class="mb-6">
                                 @foreach ($filters['driverTypes'] as $driverType)
                                     <div class="custom-control custom-checkbox position-relative mb-2">
@@ -325,8 +321,7 @@
                     <div class="filter-item">
                         <div class="field-wrap mb-3">
                             <div class="field">
-                                {{-- <div class="field--help-info small-txt text-red mb-1">Вкажіть об‘єм двигуна</div> --}}
-                                <div class="small-txt font-weight-bold text-grey mb-1">Об‘єм двигуна (л)</div>
+                                <div class="small-txt font-weight-bold text-grey mb-1">{{ trans('web.engine_volume') }}</div>
                                 <div class="inner">
                                     <input class="form-control engine-volume-from" @if(request()->get('engineFrom')) value="{{ request()->get('engineFrom') }}" @endif type="number" autocomplete="no-autofill-please">
                                     <input class="form-control engine-volume-to" @if(request()->get('engineTo')) value="{{ request()->get('engineTo') }}" @endif type="number" autocomplete="no-autofill-please">
@@ -338,7 +333,7 @@
                 <div class="mx-n3">
                     <a id="filter-cars-button" class="btn-filter-close btn btn-main-blue btn-default text-uppercase w-100 rounded-0"
                         data-toggle="collapse" href="#navbarFilters" aria-expanded="false"
-                        aria-controls="navbarFilters">Застосувати</a>
+                        aria-controls="navbarFilters">{{ trans('web.apply') }}</a>
                 </div>
             </div>
         </div>

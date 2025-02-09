@@ -16,6 +16,9 @@
 
     <script>
         const translations = {
+            in_subscription: "{{ trans('web.in_subscription') }}",
+            nothing_found: "{{ trans('web.nothing_found') }}",
+            choose_model: "{{ trans('web.choose_model') }}",
             month: "{{ trans('web.month') }}",
             call_me_back: "{{ trans('web.call_me_back') }}",
             send: "{{ trans('web.send') }}"

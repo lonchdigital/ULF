@@ -125,7 +125,7 @@ class WebService
 
         // pagination
         $requestPage = $request['pageNumber'] !== null ? (int) $request['pageNumber'] : 1;
-        $currentPage = $request->input('page', $requestPage); // Current page
+        $currentPage = $request->input('page', $requestPage);
 
         $postTypeDocuments = $query->paginate(self::PER_PAGE, ['*'], 'page', $currentPage)->onEachSide(0);
         $postTypeItems = $postTypeDocuments->items();
@@ -135,10 +135,7 @@ class WebService
         $results->setPath($request->fullUrl());
         $paginationHtml = $results->onEachSide(3)->links('vendor.pagination.default')->toHtml();
 
-        // dd($postTypeItems[1]->vehicle->equipment, '7777');
         $postTypeDocuments = $this->getDocumentsAdditional($postTypeItems);
-
-        // dd('yes', $postTypeDocuments);
 
         return [
             'paginationHTML' => $paginationHtml,

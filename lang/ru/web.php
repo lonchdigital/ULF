@@ -1,6 +1,21 @@
 <?php
 
 return [
+    'nothing_found' => 'По указанным фильтрам материалы в системе не найдены. Попробуйте другой запрос',
+    'filters' => 'Фильтры',
+    'clear' => 'Очистить',
+    'apply' => 'Применить',
+    'engine_volume' => 'Объем двигателя (л)',
+    'driver_type' => 'Привод',
+    'body_type' => 'Тип кузова',
+    'year_of_release' => 'Год выпуска',
+    'fuel_type' => 'Тип топлива',
+    'choose_fuel_type' => 'Выберите тип топлива',
+    'price_dollars_month' => 'Цена $ / мес.',
+    'brand' => 'Марка',
+    'choose_car_brand' => 'Выберите марку автомобиля',
+    'model' => 'Модель',
+    'choose_model' => 'Выберите модель',
     'notify_about_availability' => 'Сообщить про наличие',
     'could_be_interesting' => 'Может вас заинтересовать',
     'to_car_park' => 'В Автопарк',

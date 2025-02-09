@@ -25,18 +25,11 @@ $(document).ready(function() {
         let manufacturerId = artThis ? artThis.val() : $selectChooseManufacturer.val();
         
         $modelSelect.empty();
-        $modelSelect.append('<option value="0">Оберіть модель</option>');
+        $modelSelect.append('<option value="0">'+ translations['choose_model'] +'</option>');
 
         if (manufacturerId !== '0' && window.manufacturersData) {
             $modelSelectContainer.removeClass('d-none');
             const models = window.manufacturersData[manufacturerId].models;
-
-            // $.each(models, function(modelId, model) {
-            //     $modelSelect.append($('<option>', {
-            //         value: modelId,
-            //         text: model
-            //     }));
-            // });
 
             $.each(models, function(modelId, model) {
                 let isSelected = (modelId == window.model) ? 'selected' : '';
@@ -118,6 +111,7 @@ $(document).ready(function() {
                 } else {
                     $postFilterResult.addClass('art-posts-nothing-found');
                     $postPaginationWrapper.html('');
+                    $showMore.addClass('d-none');
                     nothingFound();
                 }
             },
@@ -173,8 +167,6 @@ $(document).ready(function() {
 
     function getDocumentHTML(document)
     {
-        // console.log(translations);
-
         let monthlyPayment = ``;
         let carLabel = ``;
 
@@ -189,7 +181,7 @@ $(document).ready(function() {
 
         if( document['status_id'] === 2 ) {
             carLabel = `
-                    <div class="in-subscription">${translations.in_subscription}</div>
+                    <div class="in-subscription">${translations['in_subscription']}</div>
                 `;
         } else {
             if(document['car_additional']['car_label']) {
@@ -232,8 +224,8 @@ $(document).ready(function() {
         let nothingFound = `
         <div class="art-nothing-found">
             <div class="nothing-found-data">
-                <img src="/img/clouds.png" alt="nothing found">
-                <p class="h3">За обраними фільтрами матеріалів в системі не знайдено. Спробуйте інший запит</p>
+                <img src="/static_images/clouds.png" alt="nothing found">
+                <p class="h3">${translations['nothing_found']}</p>
             </div>
         </div>
         `;
@@ -244,7 +236,6 @@ $(document).ready(function() {
     // select button
     let filtersButton = $('.filters-button .art-order');
     filtersButton.on('click', function(event) {
-        // event.preventDefault();
         let artThis = $(this);
 
         if(artThis.hasClass('active')) {
