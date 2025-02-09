@@ -60,7 +60,27 @@ class CarsController extends Controller
 
     public function filter(Request $request): array
     {
-        $request->validate([]);
+        $filters = $request->input('filters', []);
+        $filters = $this->service->prepareFilterData($filters);
+
+        $request->merge(['filters' => $filters]); // update request
+        $request->validate([
+            'filters.manufacturer' => 'nullable|integer',
+            'filters.model' => 'nullable|integer',
+            'filters.priceMin' => 'nullable|numeric|min:0',
+            'filters.priceMax' => 'nullable|numeric|min:0|gte:filters.priceMin',
+            'filters.yearFrom' => 'nullable|integer|min:1900|max:' . date('Y'),
+            'filters.yearTo' => 'nullable|integer|min:1900|max:' . date('Y') . '|gte:filters.yearFrom',
+            'filters.engineFrom' => 'nullable|numeric|min:0',
+            'filters.engineTo' => 'nullable|numeric|min:0|gte:filters.engineFrom',
+            'filters.fuelType' => 'nullable|integer',
+            'filters.bodyTypes' => 'nullable|array',
+            'filters.bodyTypes.*' => 'integer',
+            'filters.driverTypes' => 'nullable|array',
+            'filters.driverTypes.*' => 'integer',
+            'filters.orderValue' => 'nullable|string|in:price_up,price_down,popularity_up,popularity_down',
+            'pageNumber' => 'nullable|integer|min:1',
+        ]);
 
         return $this->service->getFilteredPosts($request);
     }

@@ -45,14 +45,12 @@ class WebService
             });
         }
 
-
         if(!empty($filters['priceMin']) && !empty($filters['priceMax'])) {
             $query->whereHas('subscribePrices', function ($q) use ($filters) {
                 $q->where('section_id', 1);
                 $q->whereBetween('monthly_payment', [$filters['priceMin'], $filters['priceMax']]);
             });
         }
-
 
         if(!empty($filters['yearFrom']) && !empty($filters['yearTo'])) {
             $query->whereHas('vehicle', function ($query) use ($filters) {
@@ -162,6 +160,45 @@ class WebService
         }
 
         return $cars;
+    }
+
+    public function prepareFilterData(array $filters) : array
+    {
+        if (isset($filters['manufacturer']) && is_array($filters['manufacturer'])) {
+            $filters['manufacturer'] = (int) $filters['manufacturer'][0];
+        }
+        if (isset($filters['model']) && is_array($filters['model'])) {
+            $filters['model'] = (int) $filters['model'][0];
+        }
+        if (isset($filters['fuelType']) && is_array($filters['fuelType'])) {
+            $filters['fuelType'] = (int) $filters['fuelType'][0];
+        }
+        if (isset($filters['priceMin'])) {
+            $filters['priceMin'] = (float) $filters['priceMin'];
+        }
+        if (isset($filters['priceMax'])) {
+            $filters['priceMax'] = (float) $filters['priceMax'];
+        }
+        if (isset($filters['yearFrom'])) {
+            $filters['yearFrom'] = (int) $filters['yearFrom'];
+        }
+        if (isset($filters['yearTo'])) {
+            $filters['yearTo'] = (int) $filters['yearTo'];
+        }
+        if (isset($filters['engineFrom'])) {
+            $filters['engineFrom'] = (float) $filters['engineFrom'];
+        }
+        if (isset($filters['engineTo'])) {
+            $filters['engineTo'] = (float) $filters['engineTo'];
+        }
+        if (isset($filters['bodyTypes']) && is_array($filters['bodyTypes'])) {
+            $filters['bodyTypes'] = array_map('intval', $filters['bodyTypes']);
+        }
+        if (isset($filters['driverTypes']) && is_array($filters['driverTypes'])) {
+            $filters['driverTypes'] = array_map('intval', $filters['driverTypes']);
+        }
+
+        return $filters;
     }
 
 }
