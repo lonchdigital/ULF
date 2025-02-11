@@ -18,10 +18,11 @@
             <!-- Sidebar Menu -->
             <nav>
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li @if( $currentRoute === 'adminDashboard' ) class="active"@endif>
-                        <a href="{{ route('adminDashboard') }}">
-                            <i class='fa fa-home'></i>
-                            <span>{{ trans('admin.main') }}</span>
+
+                    <li @if( $currentRoute === 'page.index' ) class="active"@endif>
+                        <a href="{{ route('page.index') }}">
+                            <i class="fa fa-file-powerpoint-o"></i>
+                            <span>{{ trans('admin.pages_title') }}</span>
                         </a>
                     </li>
 
@@ -29,13 +30,6 @@
                         <a href="{{ route('car.index') }}">
                             <i class='fa fa-car'></i>
                             <span>{{ trans('admin.cars_title') }}</span>
-                        </a>
-                    </li>
-
-                    <li @if( $currentRoute === 'page.index' ) class="active"@endif>
-                        <a href="{{ route('page.index') }}">
-                            <i class="fa fa-file-powerpoint-o"></i>
-                            <span>{{ trans('admin.pages_title') }}</span>
                         </a>
                     </li>
 
@@ -77,6 +71,8 @@
                     <li class="treeview {{ in_array($currentRoute, [
                             'admin.car-common-settings.edit.page',
                             'admin.one.car.page',
+                            'page.edit-header',
+                            'page.edit-footer'
                         ]) ? 'active' : '' }}">
                         <a href="javascript:void(0)">
                             <i class='fa fa-cog'></i>
@@ -85,6 +81,8 @@
                         </a>
                         <ul class="treeview-menu">
                             <li @if( $currentRoute === 'admin.car-common-settings.edit.page' ) class="active"@endif><a href="{{ route('admin.car-common-settings.edit.page') }}">{{ trans('admin.car_common_settings') }}</a></li>
+                            <li @if( $currentRoute === 'page.edit-header' ) class="active"@endif><a href="{{ route('page.edit-header') }}">{{ trans('admin.header_settings') }}</a></li>
+                            <li @if( $currentRoute === 'page.edit-footer' ) class="active"@endif><a href="{{ route('page.edit-footer') }}">{{ trans('admin.footer_settings') }}</a></li>
                         </ul>
                     </li>
 

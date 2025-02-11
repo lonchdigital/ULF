@@ -21,7 +21,7 @@ class PageController extends Controller
 
     public function index()
     {
-        $allPages = Page::all();
+        $allPages = Page::whereNotIn('slug', ['footer', 'header'])->get();
 
         return view('admin.pages.index', [
             'homePage' => $allPages->where('key', 'homepage')->first(),

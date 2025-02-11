@@ -36,8 +36,15 @@ Route::group([
 //        'middleware' => ['admin_auth']
     ], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('adminDashboard');
-//        Route::get('/test', [DashboardController::class, 'test'])->name('test');
-        Route::get('/add-car', [CarsController::class, 'addCar'])->name('add.car.test');
+
+        Route::prefix('pages')->group(function () {
+            Route::get('/', [PageController::class, 'index'])->name('page.index');
+            Route::get('/edit-contacts', [PageController::class, 'editContacts'])->name('page.edit-contacts');
+            Route::get('/edit-faq/{page}', [PageController::class, 'editFaq'])->name('page.edit-faq');
+            Route::post('/update-faq/{page}', [PageController::class, 'updateFaq'])->name('page.update-faq');
+            Route::get('/{page}/edit', [PageController::class, 'edit'])->name('page.edit');
+            Route::post('/{page}', [PageController::class, 'update'])->name('page.update');
+        });
 
         Route::prefix('car-common-settings')->group(function () {
             Route::get('edit', [CarCommonSettingsController::class, 'edit'])->name('admin.car-common-settings.edit.page');
@@ -87,15 +94,6 @@ Route::group([
 
         Route::get('/edit-footer', [PageController::class, 'editFooter'])->name('page.edit-footer');
         Route::get('/edit-header', [PageController::class, 'editHeader'])->name('page.edit-header');
-
-        Route::prefix('pages')->group(function () {
-            Route::get('/', [PageController::class, 'index'])->name('page.index');
-            Route::get('/edit-contacts', [PageController::class, 'editContacts'])->name('page.edit-contacts');
-            Route::get('/edit-faq/{page}', [PageController::class, 'editFaq'])->name('page.edit-faq');
-            Route::post('/update-faq/{page}', [PageController::class, 'updateFaq'])->name('page.update-faq');
-            Route::get('/{page}/edit', [PageController::class, 'edit'])->name('page.edit');
-            Route::post('/{page}', [PageController::class, 'update'])->name('page.update');
-        });
 
         Route::prefix('/automatch')->name('admin.automatch.')->group(function() {
             Route::get('/', [AutomatchController::class, 'index'])->name('index');

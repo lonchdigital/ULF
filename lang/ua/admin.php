@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'header_settings' => 'Налаштування хедера',
+    'footer_settings' => 'Налаштування футера',
     'congratulations' => 'Вітаємо',
     'settings' => 'Налаштування',
     'car_common_settings' => 'Налаштування картки авто',
