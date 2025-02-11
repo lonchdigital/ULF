@@ -54,15 +54,15 @@
                                     </div>
 
                                     <div class="col-md-4">
-                                        <label for="exampleSelectGender">{{ trans('admin.popularity') }}</label>
-                                        <select class="form-control" id="exampleSelectGender" name="popularity_id">
+                                        <label for="popularity">{{ trans('admin.popularity') }}</label>
+                                        <select class="form-control" id="popularity" name="popularity_id">
                                             @foreach(App\DataClasses\CarPopularityClass::get() as $popularity)
                                                 <option value="{{ $popularity['id'] }}" {{ ($car->popularity_id === $popularity['id']) ? 'selected' : '' }}>{{ $popularity['name'] ?? '' }}</option>
                                             @endforeach
                                         </select>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-4" id="sort-by-popularity-wrapper" style="{{ $car->popularity_id === App\DataClasses\CarPopularityClass::ORDINARY ? 'display: none;' : 'display: block;' }}">
                                         <label for="exampleSelectGender">{{ trans('admin.sort_by_popularity') }}</label>
                                         <select class="form-control" id="exampleSelectGender" name="sort_by_popularity">
                                             <option value="">none</option>
@@ -294,6 +294,16 @@
 
     <script type='text/javascript'>
         $(document).ready(function () {
+
+            // show hide field if we change popularity status
+            let sort_by_popularity_wrapper = $('#sort-by-popularity-wrapper');
+            $('#popularity').change(function() {
+                if ($(this).val() == '2') {
+                    sort_by_popularity_wrapper.hide();
+                } else {
+                    sort_by_popularity_wrapper.show();
+                }
+            });
 
             // show hide fields if we change status
             let label_line = $('#label-line');
