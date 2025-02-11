@@ -64,18 +64,22 @@
                                     </div>
                                 </div>
 
-                                {{--<div class="form-group">
-                                    <label for="video">Video</label>
-                                    <input type="text"
-                                        class="form-control"
-                                        id="video"
-                                        name="hero[video]"
-                                        value="{{ (!is_null($homeMainBlock)) ? $homeMainBlock->video: '' }}"
-                                    >
-                                    @error('video')
+                                <div class="form-group">
+                                    <label for="video">video (MP4)</label>
+                                    <input type="file" class="form-control" name="hero[video]" accept="video/mp4">
+
+                                    <div class="mt-2">
+                                        <span class="hero-video-string">{{ $homeMainBlock->video ?? ''}}</span>
+                                        @if($homeMainBlock->video ?? null)
+                                            <button type="button" class="btn btn-danger ml-5" id="delete-hero-video-button">{{ trans('admin.delete_video') }}</button>
+                                        @endif
+                                        <input type="hidden" name="hero[delete_video]" id="delete-hero-video-input" value="0">
+                                    </div>
+
+                                    @error('hero.video')
                                     <label id="firstname-error" class="error mt-2 text-danger" for="firstname">{{ $message }}</label>
                                     @enderror
-                                </div>--}}
+                                </div>
 
                                 <div class="form-group">
                                     <x-admin.multilanguage-input :label="trans('admin.title')"
@@ -477,6 +481,13 @@
             });
 
 
+            $('#delete-hero-video-button').on('click', function() {
+                $('#delete-hero-video-input').val('1');
+
+                $('.hero-video-string').empty();
+                $(this).hide();
+            });
+            
             $('#delete-video-button').on('click', function() {
                 $('#delete-video-input').val('1');
 

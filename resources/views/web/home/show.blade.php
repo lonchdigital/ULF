@@ -108,13 +108,18 @@
                         </div>
                         <div class="section-top--img">
                             <div class="wrap-img">
-									 <video playsinline autoplay muted loop>
-                                                <source src="/storage/clients-media/0d5bf12f0158230d71b113f89890b743fde5e2c4_UFSiWugRf5.mp4" type="video/mp4" />
-                                            </video>
-                                <!-- <img class="bg-down d-none d-sm-block"
-                                    src="{{ !is_null($homeMainBlock->image) ? '/storage/' . $homeMainBlock->image : '' }}"
-                                    alt="img">
-                                <img class="bg-down d-sm-none" src="img/bg-mob.jpeg" alt="img"> -->
+                                @if( !is_null($homeMainBlock->video) )
+                                    <video playsinline autoplay muted loop>
+                                        <source src="{{ '/storage/' . $homeMainBlock->video }}" type="video/mp4" />
+                                    </video>
+                                @else
+                                    <img class="bg-down d-none d-sm-block"
+                                        src="{{ !is_null($homeMainBlock->image) ? '/storage/' . $homeMainBlock->image : '' }}"
+                                        alt="img">
+                                    <img class="bg-down d-sm-none" 
+                                        src="{{ !is_null($homeMainBlock->image_mob) ? '/storage/' . $homeMainBlock->image_mob : '' }}" 
+                                        alt="img">
+                                @endif
                             </div>
                         </div>
                     </div>

@@ -75,7 +75,18 @@ class HomePageService
             }
         }
 
-//        $dataToUpdate['video'] = $data['video'];
+        if($data['delete_video']) {
+            deleteVideo($homeMainBlock->video);
+            $dataToUpdate['video'] = null;
+        }
+        if(isset($data['video'])) {
+            $imagePath = self::HOMEPAGE_IMAGES_FOLDER;
+            $filename = sha1(time()) . '_' . Str::random(10) . '.' . $data['video']->getClientOriginalExtension();
+            if(storeVideo($imagePath, $data['video'], $filename)) {
+                $dataToUpdate['video'] = $imagePath .'/'. $filename;
+            }
+            deleteVideo($homeMainBlock->video);
+        }
 
         foreach( $data['title'] as $lang => $value ){
             $dataToUpdate[$lang]['title'] = $value;
