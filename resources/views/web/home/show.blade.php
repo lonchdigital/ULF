@@ -108,10 +108,13 @@
                         </div>
                         <div class="section-top--img">
                             <div class="wrap-img">
-                                <img class="bg-down d-none d-sm-block"
+									 <video playsinline autoplay muted loop>
+                                                <source src="/storage/clients-media/0d5bf12f0158230d71b113f89890b743fde5e2c4_UFSiWugRf5.mp4" type="video/mp4" />
+                                            </video>
+                                <!-- <img class="bg-down d-none d-sm-block"
                                     src="{{ !is_null($homeMainBlock->image) ? '/storage/' . $homeMainBlock->image : '' }}"
                                     alt="img">
-                                <img class="bg-down d-sm-none" src="img/bg-mob.jpeg" alt="img">
+                                <img class="bg-down d-sm-none" src="img/bg-mob.jpeg" alt="img"> -->
                             </div>
                         </div>
                     </div>
