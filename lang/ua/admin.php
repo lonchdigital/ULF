@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'display_video' => 'Відображати відео',
     'header_settings' => 'Налаштування хедера',
     'footer_settings' => 'Налаштування футера',
     'congratulations' => 'Вітаємо',

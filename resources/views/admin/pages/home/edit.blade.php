@@ -26,40 +26,45 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <p style="margin-bottom: 8px">{{ trans('admin.main_image') . ' (4008px x 1932px)' }}</p>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <img @if(isset($homeMainBlock) && isset($homeMainBlock->image)) src="{{ '/storage/' . $homeMainBlock->image }}" @else style="display: none;" @endif id="home_hero_image" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <input type="file" name="hero[bg_image]" id="bg_image_input" class="custom-input-file">
-                                            <label for="bg_image_input">
-                                                <i class="fa fa-upload"></i>
-                                                <span>{{ trans('admin.choose_image') }}</span>
-                                            </label>
-                                            @error('preview_image')
-                                                <label id="preview_image-error" class="error mt-2 text-danger" for="preview_image">{{ $message }}</label>
-                                            @enderror
-                                        </div>
+                                    <div class="checkbox checkbox-primary d-inline">
+                                        <input type="checkbox" name="hero[is_video]" id="hero-is-video" @if($homeMainBlock->is_video) checked @endif>
+                                        <label for="hero-is-video" class="cr">{{ trans('admin.display_video') }}</label>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <p style="margin-bottom: 8px">{{ trans('admin.main_image_mob') }}</p>
                                     <div class="row">
-                                        <div class="col-md-2">
-                                            <img @if(isset($homeMainBlock) && isset($homeMainBlock->image_mob)) src="{{ '/storage/' . $homeMainBlock->image_mob }}" @else style="display: none;" @endif id="home_hero_image_mob" alt="">
+                                        <div class="col-6">
+                                            <p style="margin-bottom: 8px">{{ trans('admin.main_image') . ' (4008px x 1932px)' }}</p>
+
+                                            <div>
+                                                <img @if(isset($homeMainBlock) && isset($homeMainBlock->image)) src="{{ '/storage/' . $homeMainBlock->image }}" @else style="display: none;" @endif id="home_hero_image" alt="">
+                                            </div>
+
+                                            <div>
+                                                <input type="file" name="hero[bg_image]" id="bg_image_input" class="custom-input-file">
+                                                <label for="bg_image_input">
+                                                    <i class="fa fa-upload"></i>
+                                                    <span>{{ trans('admin.choose_image') }}</span>
+                                                </label>
+                                                @error('preview_image')
+                                                    <label id="preview_image-error" class="error mt-2 text-danger" for="preview_image">{{ $message }}</label>
+                                                @enderror
+                                            </div>
+
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <input type="file" name="hero[bg_image_mob]" id="bg_image_input_mob" class="custom-input-file">
-                                            <label for="bg_image_input_mob">
-                                                <i class="fa fa-upload"></i>
-                                                <span>{{ trans('admin.choose_image') }}</span>
-                                            </label>
+                                        <div class="col-6">
+                                            <p style="margin-bottom: 8px">{{ trans('admin.main_image_mob') }}</p>
+                                            <div>
+                                                <img @if(isset($homeMainBlock) && isset($homeMainBlock->image_mob)) src="{{ '/storage/' . $homeMainBlock->image_mob }}" @else style="display: none;" @endif id="home_hero_image_mob" alt="">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="file" name="hero[bg_image_mob]" id="bg_image_input_mob" class="custom-input-file">
+                                                <label for="bg_image_input_mob">
+                                                    <i class="fa fa-upload"></i>
+                                                    <span>{{ trans('admin.choose_image') }}</span>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

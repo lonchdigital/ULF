@@ -43,7 +43,7 @@
         <div class="content">
 
             @if ($homeMainBlock)
-                <section id="section-top" class="section-top {{ ( !is_null($homeMainBlock->video) ) ? 'art-mask' : '' }}">
+                <section id="section-top" class="section-top {{ ( $homeMainBlock->is_video ) ? 'art-mask' : '' }}">
                     <div class="mx-auto position-relative">
                         <div class="row pt-18 pt-lg-16 pt-xl-26 pt-xxl-42 pb-8">
                             <div class="col">
@@ -108,7 +108,7 @@
                         </div>
                         <div class="section-top--img">
                             <div class="wrap-img">
-                                @if( !is_null($homeMainBlock->video) )
+                                @if( $homeMainBlock->is_video )
                                     <video playsinline autoplay muted loop>
                                         <source src="{{ '/storage/' . $homeMainBlock->video }}" type="video/mp4" />
                                     </video>

@@ -51,6 +51,8 @@ class HomePageService
         $homeMainBlock = HomeMainBlock::first();
         $dataToUpdate = [];
 
+        $dataToUpdate['is_video'] = (isset($data['is_video']) && $data['is_video'] == 'on') ? true : false;
+
         if (isset($data['bg_image'])) {
             $imagePath = self::HOMEPAGE_IMAGES_FOLDER . '/'  . sha1(time()) . '_' . Str::random(10);
 
