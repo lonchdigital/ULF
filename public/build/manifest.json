@@ -38,7 +38,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-Ct-l0zax.css",
+    "file": "assets/app-DkU-eAcE.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -47,12 +47,12 @@
     "src": "resources/img/icons/icons.svg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-hER-rND1.js",
+    "file": "assets/app-D0NcdECB.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-BwuzmihD.css"
+      "assets/app-s4mdxTEn.css"
     ],
     "assets": [
       "assets/Montserrat-Black-DHRMOOaf.woff2",
