@@ -66,7 +66,7 @@
                                                         <div class="button-wrap row pt-60 pt-sm-40 pt-lg-0">
                                                             <div
                                                                 class="col d-flex flex-column flex-lg-row align-items-center">
-                                                                <a href="{{ route('catalog.page') }}"
+                                                                <a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}"
                                                                     class="btn-default btn-default-orange btn btn-block btn-orange text-uppercase mb-4 mb-lg-0 mr-lg-4">{{ $homeMainBlock->button_one }}</a>
                                                                 <button type="button"
                                                                     class="btn-default btn-default-white btn btn-block btn-outline-white text-uppercase mt-0"
@@ -413,7 +413,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-auto mx-auto">
-                                    <a href="{{ route('clients.page') }}"
+                                    <a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('clients.page') }}"
                                         class="btn-default btn-transparent btn btn-block btn-outline-main-blue text-uppercase mt-0">{{ trans('web.show_more_histories') }}</a>
                                 </div>
                             </div>
