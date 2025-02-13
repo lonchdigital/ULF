@@ -95,4 +95,6 @@ return [
     'return_to_main_page' => 'Повернутись на головну',
     'call_me_back' => 'Передзвоніть мені',
     'more_answers' => 'Більше Відповідей',
+    'we_are_on_social_networks' => 'Ми у соціальних мережах',
+    'language' => 'Мова',
 ];

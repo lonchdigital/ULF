@@ -9,9 +9,12 @@ class MultiLangRoute
         $lang = app()->getLocale();
 
         if ($lang !== config('app.fallback_locale')) {
-            return '/' . $lang . route($routeName, $routeParams, false);
+
+            return rtrim('/' . $lang . route($routeName, $routeParams, false), '/');
         }
 
-        return route($routeName, $routeParams, false);
+        return route($routeName, $routeParams, false) !== '/'
+            ? rtrim(route($routeName, $routeParams, false), '/')
+            : route($routeName, $routeParams, false);
     }
 }

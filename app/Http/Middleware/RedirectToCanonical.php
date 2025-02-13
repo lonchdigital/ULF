@@ -38,8 +38,13 @@ class RedirectToCanonical
         ];
 
         // Перевірка, чи розширення файлу не входить в масив виключених
-        if (!empty($extencion) && !in_array($extension, $excludedExtensions)) {
-            $url = $request->getUri();
+        if (!in_array($extension, $excludedExtensions)) {
+            $url = request()->getSchemeAndHttpHost() . $_SERVER['REQUEST_URI'];
+
+            if($_SERVER['REQUEST_URI'] == '/') {
+                $url = rtrim($url, '/');
+            }
+
             $fUrl = trim(str_replace(':/', '://', trim(preg_replace('/\/+/', '/', $url), '/')));
 
             if (empty($request->query())) {

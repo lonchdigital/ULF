@@ -83,6 +83,7 @@
                             <li @if( $currentRoute === 'admin.car-common-settings.edit.page' ) class="active"@endif><a href="{{ route('admin.car-common-settings.edit.page') }}">{{ trans('admin.car_common_settings') }}</a></li>
                             <li @if( $currentRoute === 'page.edit-header' ) class="active"@endif><a href="{{ route('page.edit-header') }}">{{ trans('admin.header_settings') }}</a></li>
                             <li @if( $currentRoute === 'page.edit-footer' ) class="active"@endif><a href="{{ route('page.edit-footer') }}">{{ trans('admin.footer_settings') }}</a></li>
+                            <li @if( $currentRoute === 'edit-robots' ) class="active"@endif><a href="{{ route('edit-robots') }}">robots.txt</a></li>
                         </ul>
                     </li>
 

@@ -28,37 +28,49 @@
                                     <ul class="footer--nav-list mob-line list-unstyled pb-3 mb-3 pb-md-0 mb-md-0">
                                         @if ($pages->where('key', 'homepage')->first()->is_show_in_footer)
                                             <li><a
-                                                    href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}">{{ trans('page_name.index') }}</a>
+                                                    @if(optional(request()->route())->getName() ?? '' !== 'main.page')
+                                                        href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}"
+                                                    @endif>{{ trans('page_name.index') }}</a>
                                             </li>
                                         @endif
 
                                         @if ($pages->where('slug', 'catalog')->first()->is_show_in_footer)
                                             <li><a
-                                                    href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}">{{ trans('page_name.footer_catalog') }}</a>
+                                                    @if(optional(request()->route())->getName() !== 'catalog.page')
+                                                        href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}"
+                                                    @endif>{{ trans('page_name.footer_catalog') }}</a>
                                             </li>
                                         @endif
 
                                         @if ($pages->where('slug', 'customer-stories')->first()->is_show_in_footer)
                                             <li><a
-                                                    href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('clients.page') }}">{{ trans('page_name.client_history') }}</a>
+                                                    @if(optional(request()->route())->getName() !== 'clients.page')
+                                                        href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('clients.page') }}"
+                                                    @endif>{{ trans('page_name.client_history') }}</a>
                                             </li>
                                         @endif
 
                                         @if ($pages->where('slug', 'blog')->first()->is_show_in_footer)
                                             <li><a
-                                                    href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('blog.page') }}">{{ trans('page_name.blog') }}</a>
+                                                    @if(optional(request()->route())->getName() !== 'blog.page')
+                                                        href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('blog.page') }}"
+                                                    @endif>{{ trans('page_name.blog') }}</a>
                                             </li>
                                         @endif
 
                                         @if ($pages->where('slug', 'faq')->first()->is_show_in_footer)
                                             <li><a
-                                                    href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('faq') }}">{{ trans('page_name.faqs') }}</a>
+                                                    @if(optional(request()->route())->getName() !== 'faq')
+                                                        href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('faq') }}"
+                                                    @endif>{{ trans('page_name.faqs') }}</a>
                                             </li>
                                         @endif
 
                                         @if ($pages->where('slug', 'contacts')->first()->is_show_in_footer)
                                             <li><a
-                                                    href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('contacts') }}">{{ trans('page_name.contacts') }}</a>
+                                                    @if(optional(request()->route())->getName() !== 'contacts')
+                                                        href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('contacts') }}"
+                                                    @endif>{{ trans('page_name.contacts') }}</a>
                                             </li>
                                         @endif
 
@@ -102,10 +114,9 @@
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <div class="col-6 col-md">
+                                            {{-- <div class="col-6 col-md">
                                                 <div class="d-flex flex-column h-100 justify-content-between">
                                                     <p class="font-weight-bold mb-0">
-                                                        {{-- {{ trans('web.more_info_chat_bots') }} --}}
                                                         {{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'bot_title')->first()->title ?? trans('web.more_info_chat_bots') }}
                                                     </p>
                                                     <ul class="list-inline mb-0 py-2">
@@ -131,7 +142,7 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -166,7 +177,7 @@
                                                     </use>
                                                 </svg>
                                                 <div class="d-flex flex-column">
-                                                    <a href="tel:+380672366263">{{ $phone->title }}</a>
+                                                    <a href="tel:{{ $phone->title }}">{{ $phone->title }}</a>
                                                     @if ($phone->description)
                                                         <span
                                                             class="small-txt text-light-grey">{{ $phone->description }}</span>
@@ -192,7 +203,7 @@
                                     href="mailto:{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'email')->first()->description }}">{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'email')->first()->description }}</a>
                             </div>
                         </div>
-                        <ul class="list-inline mb-0 mt-8">
+                        {{-- <ul class="list-inline mb-0 mt-8">
                             @if (!empty($footerPage->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->description))
                                 <li class="list-inline-item">
                                     <a href="{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'instagram')->first()->description }}"
@@ -283,7 +294,7 @@
                                     </a>
                                 </li>
                             @endif
-                        </ul>
+                        </ul> --}}
                     </div>
                 </div>
             </div>
@@ -301,7 +312,9 @@
                 @if (!is_null($policy))
                     <div class="col-12 col-lg-auto mb-3 mb-lg-0">
                         <a
-                            href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $policy->slug]) }}">
+                            @if(request()->getRequestUri() !== App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $policy->slug]))
+                                href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $policy->slug]) }}"
+                            @endif>
                             {{-- <a href="{{ route('page.single.page', ['slug' => $policy->slug]) }}"> --}}
                             {{ $policy->name }}</a>
                     </div>
@@ -309,7 +322,9 @@
                 @if (!is_null($terms))
                     <div class="col-12 col-lg-auto mb-3 mb-lg-0">
                         <a
-                            href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $terms->slug]) }}">
+                            @if(request()->getRequestUri() !== App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $terms->slug]))
+                                href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $terms->slug]) }}"
+                            @endif>
                             {{-- <a href="{{ route('page.single.page', ['slug' => $terms->slug]) }}"> --}}
                             {{ $terms->name }}</a>
                     </div>
@@ -317,7 +332,9 @@
                 @if (!is_null($rentalAgreement))
                     <div class="col-12 col-lg-auto mb-3 mb-lg-0">
                         <a
-                            href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $rentalAgreement->slug]) }}">
+                            @if(request()->getRequestUri() !== App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $rentalAgreement->slug]))
+                                href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $rentalAgreement->slug]) }}"
+                            @endif>
                             {{-- <a href="{{ route('page.single.page', ['slug' => $rentalAgreement->slug]) }}"> --}}
                             {{ $rentalAgreement->name }}</a>
                     </div>
@@ -325,7 +342,9 @@
                 @if (!is_null($insuranceContract))
                     <div class="col-12 col-lg-auto mb-3 mb-lg-0">
                         <a
-                            href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $insuranceContract->slug]) }}">
+                            @if(request()->getRequestUri() !== App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $insuranceContract->slug]))
+                                href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $insuranceContract->slug]) }}"
+                            @endif>
                             {{ $insuranceContract->name }}
                         </a>
                     </div>

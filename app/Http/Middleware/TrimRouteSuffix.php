@@ -22,18 +22,17 @@ class TrimRouteSuffix
         $path = $request->path();
         $allowedSuffixes = [
             'index.php',
-            'home.php5',
+            'home.php',
             'index.html',
             'home.html',
             'index.htm',
             'home.htm',
             'home',
-            '*',
         ];
 
         foreach ($allowedSuffixes as $suffix) {
             if (str_ends_with($path, $suffix) ) {
-                $path = rtrim($path, '/' . $suffix) . '/';
+                $path = rtrim($path, '/' . $suffix);
 
                 if($path == '/') {
                     return redirect(config('app.url'), 301);
@@ -50,9 +49,16 @@ class TrimRouteSuffix
         if (is_numeric($lastSegment)) {
             array_pop($segments);
 
-            $newUrl = implode('/', $segments) . '/';
+            $newUrl = implode('/', $segments);
 
             return redirect(config('app.url') . '/' . $newUrl, 301);
+        }
+
+        if (strpos($request->getHost(), 'www.') === 0) {
+            return redirect()->to(
+                $request->getScheme() . '://' . preg_replace('/^www\./', '', $request->getHost()) . $request->getRequestUri(),
+                301
+            );
         }
 
         return $next($request);

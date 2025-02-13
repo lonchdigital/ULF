@@ -37,9 +37,9 @@ class LowercaseUrl
 
                 $lowercaseUrl = strtolower($path);
 
-                if (!str_ends_with($lowercaseUrl, '/') && empty($request->query())) {
-                    $lowercaseUrl .= '/';
-                }
+                // if (!str_ends_with($lowercaseUrl, '/') && empty($request->query())) {
+                //     $lowercaseUrl .= '/';
+                // }
 
                 if (!empty($request->query())) {
                     $lowercaseUrl .= '?' . http_build_query($request->query());

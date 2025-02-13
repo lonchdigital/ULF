@@ -90,4 +90,6 @@ return [
     'return_to_main_page' => 'Вернуться на главную',
     'call_me_back' => 'Перезвоните мне',
     'more_answers' => 'Больше ответов',
+    'we_are_on_social_networks' => 'Мы в соц сетях',
+    'language' => 'Язык',
 ];

@@ -27,8 +27,8 @@ class CarsController extends Controller
 
     public function index(Request $request, CarPage $page)
     {
-        $url['ua'] = url('/') . '/catalog/' . $page->slug;
-        $url['ru'] = url('/') . '/ru/catalog/' . $page->slug;
+        $url['ua'] = url('/') . '/catalog';
+        $url['ru'] = url('/') . '/ru/catalog';
 
         return view('cars::web.index', [
             // 'page' => CarPage::where('slug', 'cars')->first(),

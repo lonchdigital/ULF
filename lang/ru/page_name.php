@@ -7,7 +7,7 @@ return [
     'blog' => 'Блог',
     'car_park' => 'Автопарк',
     'faqs' => 'Частые вопросы',
-    'contacts' => 'Контакти',
+    'contacts' => 'Контакты',
     'agreements' => 'Договори',
     'footer_catalog' => 'Каталог',
 ];

@@ -24,7 +24,7 @@
                                                                             <label for="faqs[2][question]_uk">Контент файлу
                                                                             </label>
                                                                             <textarea wire:model="content"
-                                                                            class="form-control"></textarea>
+                                                                            class="form-control" style="height: 300px"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>

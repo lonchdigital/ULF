@@ -26,8 +26,8 @@ class ArticlesController extends Controller
 
     public function index(Request $request, ArticlePage $page)
     {
-        $url['ua'] = url('/') . '/blog/' . $page->slug;
-        $url['ru'] = url('/') . '/ru/blog/' . $page->slug;
+        $url['ua'] = url('/') . '/blog';
+        $url['ru'] = url('/') . '/ru/blog';
 
         return view('articles::web.index', [
             'page' => Page::where('slug', 'blog')->first(),
