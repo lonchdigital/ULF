@@ -5,7 +5,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener('DOMContentLoaded', function () {
 	// Перевіряємо ширину вікна
-	if (window.innerWidth >= 768) {
+	if (window.innerWidth >= 768 && window.innerWidth < 1200) {
 		let horizontalSection = document.querySelector('.horizontal');
 
 		if (horizontalSection) { // перевіряємо, чи існує елемент
