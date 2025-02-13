@@ -94,7 +94,7 @@
                                                         <li class="list-inline-item">
                                                             <a href="{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'communicate_telegram')->first()->description }}"
                                                                 target="_blank">
-                                                                <svg class="i-telegram">
+                                                                <svg class="i-instagram">
                                                                     <use
                                                                         xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-instagram' }}">
                                                                     </use>
@@ -104,7 +104,7 @@
                                                         <li class="list-inline-item">
                                                             <a href="{{ $footerPage->pageBlocks()->where('block', 'footer')->where('key', 'communicate_viber')->first()->description }}"
                                                                 target="_blank">
-                                                                <svg class="i-viber">
+                                                                <svg class="i-facebook">
                                                                     <use
                                                                         xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-facebook' }}">
                                                                     </use>

@@ -254,15 +254,15 @@
                                                                             <ul class="list-inline mb-0 py-2">
                                                                                 <li class="list-inline-item">
                                                                                     <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'communicate_telegram')->first()->description }}" target="_blank">
-                                                                                        <svg class="i-telegram">
-                                                                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-telegram' }}"></use>
+                                                                                        <svg class="i-instagram">
+                                                                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-instagram' }}"></use>
                                                                                         </svg>
                                                                                     </a>
                                                                                 </li>
                                                                                 <li class="list-inline-item">
                                                                                     <a href="{{ $page->pageBlocks()->where('block', 'footer')->where('key', 'communicate_viber')->first()->description }}" target="_blank">
-                                                                                        <svg class="i-viber">
-                                                                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-viber' }}"></use>
+                                                                                        <svg class="i-facebook">
+                                                                                            <use xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-facebook' }}"></use>
                                                                                         </svg>
                                                                                     </a>
                                                                                 </li>
