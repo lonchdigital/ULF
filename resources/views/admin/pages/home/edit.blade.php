@@ -70,7 +70,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="video">video (MP4)</label>
+                                    <label for="video">Video (MP4)</label>
                                     <input type="file" class="form-control" name="hero[video]" accept="video/mp4">
 
                                     <div class="mt-2">
@@ -82,7 +82,24 @@
                                     </div>
 
                                     @error('hero.video')
-                                    <label id="firstname-error" class="error mt-2 text-danger" for="firstname">{{ $message }}</label>
+                                        <label id="firstname-error" class="error mt-2 text-danger" for="firstname">{{ $message }}</label>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="video">Video mob (MP4)</label>
+                                    <input type="file" class="form-control" name="hero[video_mob]" accept="video/mp4">
+
+                                    <div class="mt-2">
+                                        <span class="hero-video-mob-string">{{ $homeMainBlock->video_mob ?? ''}}</span>
+                                        @if($homeMainBlock->video_mob ?? null)
+                                            <button type="button" class="btn btn-danger ml-5" id="delete-hero-video-mob-button">{{ trans('admin.delete_video') }}</button>
+                                        @endif
+                                        <input type="hidden" name="hero[delete_video_mob]" id="delete-hero-video-mob-input" value="0">
+                                    </div>
+
+                                    @error('hero.video_mob')
+                                        <label id="firstname-error" class="error mt-2 text-danger" for="firstname">{{ $message }}</label>
                                     @enderror
                                 </div>
 
@@ -490,6 +507,13 @@
                 $('#delete-hero-video-input').val('1');
 
                 $('.hero-video-string').empty();
+                $(this).hide();
+            });
+            
+            $('#delete-hero-video-mob-button').on('click', function() {
+                $('#delete-hero-video-mob-input').val('1');
+
+                $('.hero-video-mob-string').empty();
                 $(this).hide();
             });
             

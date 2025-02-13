@@ -17,5 +17,5 @@ class HomeMainBlock extends Model implements TranslatableContract
         'button_one',
         'button_two'
     ];
-    protected $fillable = ['is_video', 'image', 'image_mob', 'video'];
+    protected $fillable = ['is_video', 'image', 'image_mob', 'video', 'video_mob'];
 }

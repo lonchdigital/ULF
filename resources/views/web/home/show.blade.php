@@ -109,8 +109,11 @@
                         <div class="section-top--img">
                             <div class="wrap-img">
                                 @if( $homeMainBlock->is_video )
-                                    <video playsinline autoplay muted loop>
+                                    <video class="d-none d-sm-block" playsinline autoplay muted loop>
                                         <source src="{{ '/storage/' . $homeMainBlock->video }}" type="video/mp4" />
+                                    </video>
+                                    <video class="d-sm-none" playsinline autoplay muted loop>
+                                        <source src="{{ '/storage/' . $homeMainBlock->video_mob }}" type="video/mp4" />
                                     </video>
                                 @else
                                     <img class="bg-down d-none d-sm-block"

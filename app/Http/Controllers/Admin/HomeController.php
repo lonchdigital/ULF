@@ -43,6 +43,7 @@ class HomeController
             'hero' => ['nullable', 'array'],
             'hero.is_video' => ['nullable', 'string', 'in:on'],
             'hero.delete_video' => ['nullable', 'integer', 'in:0,1'],
+            'hero.delete_video_mob' => ['nullable', 'integer', 'in:0,1'],
             'hero.title' => ['nullable', 'array'],
             'hero.title.*' => ['nullable', 'string', 'max:255'],
             'hero.running_text' => ['nullable', 'array'],
