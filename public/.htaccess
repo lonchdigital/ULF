@@ -9,12 +9,12 @@
     RewriteCond %{THE_REQUEST} ^[A-Z]+\s/index\.php [NC]
     RewriteRule ^ / [R=301,L]
 
-    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-    add_header Content-Security-Policy "default-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'" always;
-    add_header X-Frame-Options "DENY" always;
-    add_header X-Content-Type-Options "nosniff" always;
-    add_header Referrer-Policy "no-referrer-when-downgrade" always;
-    add_header Permissions-Policy "geolocation=(), microphone=(), camera=()" always;
+    # add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+    # add_header Content-Security-Policy "default-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'" always;
+    # add_header X-Frame-Options "DENY" always;
+    # add_header X-Content-Type-Options "nosniff" always;
+    # add_header Referrer-Policy "no-referrer-when-downgrade" always;
+    # add_header Permissions-Policy "geolocation=(), microphone=(), camera=()" always;
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
