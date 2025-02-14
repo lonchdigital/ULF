@@ -1,9 +1,9 @@
 const TinderCards = document.body.querySelector('.tinder-cards');
 
 if (TinderCards) {
-    const automatchButton = document.getElementById("automatch-send-button");
-    var originalButtonText = automatchButton.textContent;
-    let favorites = [];
+	const automatchButton = document.getElementById("automatch-send-button");
+	var originalButtonText = automatchButton.textContent;
+	let favorites = [];
 
 	// Get all the cards
 	const cards = TinderCards.querySelectorAll('.card');
@@ -128,7 +128,7 @@ if (TinderCards) {
 						TinderCards.removeChild(prev);
 					}
 					isAnimationInProgress = false;
-				}, innerWidth);
+				}, 300);
 			} else if (!cardsEnded) {
 				const endCard = document.createElement('div');
 				endCard.classList.add('card', 'end');
@@ -142,8 +142,8 @@ if (TinderCards) {
 				const buttons = document.querySelectorAll('.tinder button');
 				buttons.forEach(button => {
 					if (!button.classList.contains('btn-modal-close')) {
-                        button.style.pointerEvents = 'none';
-                    }
+						button.style.pointerEvents = 'none';
+					}
 				});
 
 				setTimeout(() => {
@@ -151,7 +151,7 @@ if (TinderCards) {
 						TinderCards.removeChild(prev);
 					}
 					isAnimationInProgress = false;
-				}, innerWidth);
+				}, 300);
 
 				current.removeEventListener('pointerdown', onPointerDown);
 				cardsEnded = true;
@@ -164,55 +164,55 @@ if (TinderCards) {
 			setTimeout(() => current.style.transition = '', 100)
 		}
 
-		document.addEventListener("DOMContentLoaded", function() {
-			document.getElementById("tinderForm").addEventListener("submit", function(event) {
+		document.addEventListener("DOMContentLoaded", function () {
+			document.getElementById("tinderForm").addEventListener("submit", function (event) {
 				event.preventDefault();
 
 				const form = document.getElementById('tinderForm');
 				const formData = new FormData(form);
 
 				formData.append('favorite_cars', favorites.join(' | '));
-                const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+				const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
 				// console.log(formData);
 
 				fetch('/favorite-cars', {
 					method: 'POST',
 					body: formData,
-                    headers: {
-                        'X-CSRF-TOKEN': csrfToken
-                    },
+					headers: {
+						'X-CSRF-TOKEN': csrfToken
+					},
 				})
-				.then(response => response.json())
-				.then(data => {
-					if (data.success) {
-						window.location.href = data.redirect_url;
-					} else {
-                        automatchButton.classList.remove('active');
-                        automatchButton.textContent = originalButtonText;
+					.then(response => response.json())
+					.then(data => {
+						if (data.success) {
+							window.location.href = data.redirect_url;
+						} else {
+							automatchButton.classList.remove('active');
+							automatchButton.textContent = originalButtonText;
 
-						var errors = data.errors;
+							var errors = data.errors;
 
-                        document.querySelectorAll('.field--help-info').forEach(function(errorElement) {
-                            errorElement.textContent = '';
-                        });
+							document.querySelectorAll('.field--help-info').forEach(function (errorElement) {
+								errorElement.textContent = '';
+							});
 
-						for (var field in errors) {
-							var fieldElement = $('#' + field + '_error');
+							for (var field in errors) {
+								var fieldElement = $('#' + field + '_error');
 
-							var existingError = fieldElement.next('.field--help-info');
+								var existingError = fieldElement.next('.field--help-info');
 
-							if (existingError.length) {
-								existingError.text(errors[field][0]);
-							} else {
-								fieldElement.after('<div class="field--help-info small-txt text-red mb-2">' +
-									errors[field][0] + '</div>');
+								if (existingError.length) {
+									existingError.text(errors[field][0]);
+								} else {
+									fieldElement.after('<div class="field--help-info small-txt text-red mb-2">' +
+										errors[field][0] + '</div>');
+								}
 							}
 						}
-					}
-				})
-				.catch(response => {
-				});
+					})
+					.catch(response => {
+					});
 			});
 		});
 
@@ -225,50 +225,50 @@ if (TinderCards) {
 const selectButton = document.getElementById("select-send-button");
 var originalText = selectButton.textContent;
 
-document.getElementById("form-сar-selection").addEventListener("submit", function(event) {
-    event.preventDefault();
+document.getElementById("form-сar-selection").addEventListener("submit", function (event) {
+	event.preventDefault();
 
-    const form = document.getElementById('form-сar-selection');
-    const formData = new FormData(form);
-    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+	const form = document.getElementById('form-сar-selection');
+	const formData = new FormData(form);
+	const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-    fetch('/select-cars', {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'X-CSRF-TOKEN': csrfToken
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            window.location.href = data.redirect_url;;
-        } else {
-            selectButton.classList.remove('active');
-            selectButton.textContent = originalText;
+	fetch('/select-cars', {
+		method: 'POST',
+		body: formData,
+		headers: {
+			'X-CSRF-TOKEN': csrfToken
+		},
+	})
+		.then(response => response.json())
+		.then(data => {
+			if (data.success) {
+				window.location.href = data.redirect_url;;
+			} else {
+				selectButton.classList.remove('active');
+				selectButton.textContent = originalText;
 
-            var errors = data.errors;
+				var errors = data.errors;
 
-            document.querySelectorAll('.field--help-info').forEach(function(errorElement) {
-                errorElement.textContent = '';
-            });
+				document.querySelectorAll('.field--help-info').forEach(function (errorElement) {
+					errorElement.textContent = '';
+				});
 
-            for (var field in errors) {
-                var fieldElement = $('#' + field + '_error_select');
+				for (var field in errors) {
+					var fieldElement = $('#' + field + '_error_select');
 
-                var existingError = fieldElement.next('.field--help-info');
+					var existingError = fieldElement.next('.field--help-info');
 
-                if (existingError.length) {
-                    existingError.text(errors[field][0]);
-                } else {
-                    fieldElement.after('<div class="field--help-info small-txt text-red mb-2">' +
-                        errors[field][0] + '</div>');
-                }
-            }
-        }
-    })
-    .catch(response => {
-    });
+					if (existingError.length) {
+						existingError.text(errors[field][0]);
+					} else {
+						fieldElement.after('<div class="field--help-info small-txt text-red mb-2">' +
+							errors[field][0] + '</div>');
+					}
+				}
+			}
+		})
+		.catch(response => {
+		});
 });
 // else {
 // 	// Якщо елемент не знайдено, виведіть повідомлення або виконайте альтернативні дії
