@@ -54,7 +54,7 @@
 
                                         </div>
                                         <div class="col-6">
-                                            <p style="margin-bottom: 8px">{{ trans('admin.main_image_mob') }}</p>
+                                            <p style="margin-bottom: 8px">{{ trans('admin.main_image_mob') . ' (750px x 1400px)' }}</p>
                                             <div class="col-4">
                                                 <img @if(isset($homeMainBlock) && isset($homeMainBlock->image_mob)) src="{{ '/storage/' . $homeMainBlock->image_mob }}" @else style="display: none;" @endif id="home_hero_image_mob" alt="">
                                             </div>
