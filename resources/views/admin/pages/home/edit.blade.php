@@ -283,7 +283,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="video">Video (MP4). {{ trans('admin.video_desktop_desc') }}</label>
+                                    <label for="video">Video (MP4). {{ trans('admin.video_mob_desc') }}</label>
                                     <input type="file" class="form-control" name="drive[video]" accept="video/mp4">
 
                                     <div class="mt-2">
