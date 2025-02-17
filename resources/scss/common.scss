@@ -1930,6 +1930,8 @@ p {
     display: block;
 }
 
-.art-h-100 {
+.art-fit-video {
 	height: 100%;
+	width: 100%;
+	object-fit: cover;
 }
