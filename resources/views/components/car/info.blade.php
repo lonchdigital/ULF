@@ -22,7 +22,7 @@
     @if(!is_null($car->vehicle->driverType))
         <div class="car-properties--item">
             <div class="car-properties--name">{{ trans('web.car_body') }}</div>
-            <div class="car-properties--mean">{{ $car->vehicle->type->name }}</div>
+            <div class="car-properties--mean">{{ $car->vehicle->driverType->name }}</div>
         </div>
     @endif
     <div class="car-properties--item">
