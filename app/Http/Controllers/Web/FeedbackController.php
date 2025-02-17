@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
+use App\Helpers\MultiLangRoute;
 use App\Jobs\SendFeedbackEmailJob;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
@@ -40,7 +41,7 @@ class FeedbackController extends Controller
             'page' => $data['page']
         ]);
 
-        return redirect()->route('thanks');
+        return redirect()->to('/' . session('locale') . '/thanks');
     }
 
     public function testDriveStore(TestDriveFeedbackRequest $request)
