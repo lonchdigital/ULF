@@ -64,9 +64,8 @@ class FeedbackController extends Controller
     {
         $data = $request->validated();
 
-        // dd('hello, STOP!', $data);
         dispatch(new SendFeedbackTinderEmailJob($data));
-        // dispatch(new SendFeedbackEmailJob($data));
+        
         $data['type'] = 'Automatch';
         $data['page'] = 'Main page';
         $this->saveFeedback($data);
