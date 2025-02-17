@@ -9,7 +9,7 @@
     <meta name="app-url" content="{{ env('APP_URL') }}">
 
     {{-- <title>@yield('title', 'Автопарк')</title> --}}
-    @if(env('APP_ENV') !== 'production') <meta name="robots" content="noindex, nofollow"> @endif
+    @if(env('APP_ENV') !== "production") <meta name="robots" content="noindex, nofollow"> @endif
     <meta property="og:image" content="{{ asset('static_images/favicon-32x32.png') }}">
     <link rel="apple-touch-icon" sizes="32x32" href="{{ asset('static_images/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('static_images/favicon-32x32.png') }}">
