@@ -45,7 +45,7 @@
             @if ($homeMainBlock)
                 <section id="section-top" class="section-top {{ ( $homeMainBlock->is_video ) ? 'art-mask' : '' }}">
                     <div class="mx-auto position-relative">
-                        <div class="row pt-18 pt-lg-16 pt-xl-26 pt-xxl-42 pb-8">
+                        <div class="row pt-18 pt-lg-16 pt-xl-26 pt-xxl-36 pb-8">
                             <div class="col">
                                 <div class="section-top--item pb-10 pb-md-22 pb-lg-16 pb-xl-26">
                                     <div class="container">
