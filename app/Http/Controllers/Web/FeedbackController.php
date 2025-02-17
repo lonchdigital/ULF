@@ -57,7 +57,7 @@ class FeedbackController extends Controller
             'page' => $data['page']
         ]);
 
-        return redirect()->route('thanks');
+        return redirect()->to('/' . session('locale') . '/thanks');
     }
 
     public function storeFavorite(StoreAutomatchRequest $request)
