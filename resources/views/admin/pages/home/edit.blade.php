@@ -262,7 +262,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <p style="margin-bottom: 8px">{{ trans('admin.image') . ' (250px x 100px)' }}</p>
+                                    <p style="margin-bottom: 8px">{{ trans('admin.image') . ' (375px x 670px)' }}</p>
                                     <div class="row">
                                         <div class="col-md-2">
                                             <img @if(isset($homeDriveBlock) && isset($homeDriveBlock->image)) src="{{ '/storage/' . $homeDriveBlock->image }}" @else style="display: none;" @endif id="home_drive_image" alt="">
