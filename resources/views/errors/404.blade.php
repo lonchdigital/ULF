@@ -8,19 +8,6 @@
 @section('content')
     <main class="main">
         <div class="content">
-            <section class="section-top pt-5">
-                <div class="container">
-                    <div class="row">
-                        <div class="col mx-auto">
-                            <div class="section-top--info nav-breadcrumb">
-                                <div class="mb-2">
-                                    <a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">{{ trans('web.back') }}</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
             <section class="not-found pb-22 pt-18">
                 <div class="container">
                     <div class="row">

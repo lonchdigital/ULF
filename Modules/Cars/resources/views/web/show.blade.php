@@ -72,9 +72,6 @@
                     <div class="row">
                         <div class="col mx-auto">
                             <div class="section-top--info nav-breadcrumb">
-                                <div class="mb-2">
-                                    <a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">{{ trans('web.back') }}</a>
-                                </div>
                                 <div class="h3 font-m font-weight-bolder mb-2">{{ $car->getName() }}</div>
                                 <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between mb-3">
                                     <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3 mb-lg-0">

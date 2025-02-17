@@ -48,10 +48,6 @@
                     <div class="row">
                         <div class="col-12 col-lg-10 mx-auto">
                             <div class="section-top--info nav-breadcrumb">
-                                <div class="mb-2">
-                                    <a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('blog.page') }}"
-                                        class="btn-ahead btn btn-block rounded-0 p-0 ml-0">{{ trans('web.back') }}</a>
-                                </div>
                                 <div class="h3 font-m font-weight-bolder mb-2">{{ $article->name }}</div>
                                 <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
                                     <ol class="breadcrumb mb-0" itemscope itemtype="https://schema.org/BreadcrumbList">

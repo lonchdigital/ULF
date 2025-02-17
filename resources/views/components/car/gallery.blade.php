@@ -34,9 +34,6 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="mb-2 btn-wrap d-sm-none">
-                        <a href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}" class="btn-ahead btn btn-block rounded-0 p-0 ml-0">{{ trans('web.back') }}</a>
-                    </div>
                     <div class="d-flex d-sm-none flex-column flex-lg-row align-items-lg-center justify-content-between mb-3">
                         <div class="nav-breadcrumb">
                             <div class="h3 font-weight-bolder mb-2">{{ $car->getName() }}</div>
