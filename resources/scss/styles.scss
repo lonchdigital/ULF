@@ -356,7 +356,7 @@
 
 			// pointer-events: none;
 			@include xs-max {
-				position: absolute;
+				position: relative;
 				height: calc(100% + 30px);
 				max-width: 100%;
 			}
