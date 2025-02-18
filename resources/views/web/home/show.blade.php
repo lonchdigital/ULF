@@ -130,8 +130,6 @@
             @endif
 
             <div class="scroll-trigger">
-
-                {{-- @dd($homeDriveBlock) --}}
                 @if ($homeDriveBlock)
                     <section id="ready-drive" class="ready-drive pt-7 pt-md-10 pt-lg-14 pb-7 pb-md-10 pb-lg-34">
                         <div class="container">
@@ -146,7 +144,7 @@
                                             data-thumb="{{ '/storage/' . $homeDriveBlock->image }}">
                                             <video class="js-player specific-player" playsinline
                                                 data-poster="{{ '/storage/' . $homeDriveBlock->image }}">
-                                                <source src="assets/video/example.mp4" type="video/mp4" />
+                                                <source src="{{ '/storage/' . $homeDriveBlock->video }}" type="video/mp4" />
                                             </video>
                                         </a>
                                         <button type="button" class="btn btn-video-play-pause"></button>
