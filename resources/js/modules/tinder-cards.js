@@ -34,11 +34,18 @@ if (TinderCards) {
 			const carComment = current.querySelector('.car-comment');
 			const carCommentValue = carComment ? carComment.textContent : null;
 
-			if (carCommentValue) {
-				favorites.push(carCommentValue);
-			}
+            // if (favorites.length == 2) {
+            //     favorites.push(carCommentValue);
+            //     const button = document.querySelector('.i-favorite');
 
-			console.log(favorites.join(', '));
+            //     if (button) {
+            //         button.click();
+            //     }
+            // }
+
+			// if (carCommentValue && favorites.length < 2) {
+			// 	favorites.push(carCommentValue);
+			// }
 
 			if (!isAnimationInProgress) { // Перевіряємо, чи не триває анімація
 				isAnimationInProgress = true; // Позначаємо, що розпочата анімація
@@ -119,6 +126,22 @@ if (TinderCards) {
 
 			const prev = current;
 			const next = current.nextElementSibling;
+
+            const carComment = current.querySelector('.car-comment');
+            const carCommentValue = carComment ? carComment.textContent : null;
+
+            if (favorites.length == 2) {
+                const button = document.querySelector('.i-favorite');
+
+                if (button) {
+                    button.click();
+                }
+            }
+
+            if (carCommentValue && favorites.length < 2) {
+                favorites.push(carCommentValue);
+            }
+
 			if (next) {
 				initCard(next);
 				current = next;
@@ -183,43 +206,39 @@ if (TinderCards) {
 						'X-CSRF-TOKEN': csrfToken
 					},
 				})
-					.then(response => response.json())
-					.then(data => {
-						if (data.success) {
-							window.location.href = data.redirect_url;
-						} else {
-							automatchButton.classList.remove('active');
-							automatchButton.textContent = originalButtonText;
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.href = data.redirect_url;
+                    } else {
+                        automatchButton.classList.remove('active');
+                        automatchButton.textContent = originalButtonText;
 
-							var errors = data.errors;
+                        var errors = data.errors;
 
-							document.querySelectorAll('.field--help-info').forEach(function (errorElement) {
-								errorElement.textContent = '';
-							});
+                        document.querySelectorAll('.field--help-info').forEach(function (errorElement) {
+                            errorElement.textContent = '';
+                        });
 
-							for (var field in errors) {
-								var fieldElement = $('#' + field + '_error');
+                        for (var field in errors) {
+                            var fieldElement = $('#' + field + '_error');
 
-								var existingError = fieldElement.next('.field--help-info');
+                            var existingError = fieldElement.next('.field--help-info');
 
-								if (existingError.length) {
-									existingError.text(errors[field][0]);
-								} else {
-									fieldElement.after('<div class="field--help-info small-txt text-red mb-2">' +
-										errors[field][0] + '</div>');
-								}
-							}
-						}
-					})
-					.catch(response => {
-					});
+                            if (existingError.length) {
+                                existingError.text(errors[field][0]);
+                            } else {
+                                fieldElement.after('<div class="field--help-info small-txt text-red mb-2">' +
+                                    errors[field][0] + '</div>');
+                            }
+                        }
+                    }
+                })
+                .catch(response => {
+                });
 			});
 		});
-
-
 	}
-
-
 }
 
 const selectButton = document.getElementById("select-send-button");
