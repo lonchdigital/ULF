@@ -134,7 +134,7 @@
                     <section id="ready-drive" class="ready-drive pt-7 pt-md-10 pt-lg-14 pb-7 pb-md-10 pb-lg-34">
                         <div class="container">
                             <div class="row">
-                                <div class="col-12 col-lg-8">
+                                <div class="col-12 col-lg">
                                     <div class="head font-weight-bolder mb-3 mb-md-6 text-center text-lg-left">
                                         {{ $homeDriveBlock->title }}</div>
                                     <div class="h4 mb-3 mb-lg-7">{!! $homeDriveBlock->description !!}</div>
@@ -169,7 +169,7 @@
                                 </div>
                                 @if (!is_null($homeDriveBlock->video) || $homeDriveBlock->youtube)
                                     @if ($homeDriveBlock->youtube)
-                                        <div class="col-4 d-none d-lg-flex ready-to-drive-block">
+                                        <div class="col-auto d-none d-lg-flex ready-to-drive-block">
                                             <div class="video-wrap you-tube-video-wrapper video-wrap--vissible">
                                                 <a data-fancybox="specific-player" href="{{ $homeDriveBlock->youtube }}"
                                                     class="btn you-tube-video btn-video-play-pause">
@@ -180,7 +180,7 @@
                                             </div>
                                         </div>
                                     @else
-                                        <div class="col-4 d-none d-lg-flex">
+                                        <div class="col-auto d-none d-lg-flex">
                                             <div class="video-wrap video-wrap--vissible">
                                                 <a data-fancybox="specific-player" data-src="#specific-player"
                                                     data-thumb="{{ '/storage/' . $homeDriveBlock->image }}">

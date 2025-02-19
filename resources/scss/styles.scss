@@ -340,10 +340,12 @@
 
 	.video-wrap {
 		position: relative;
+		width: 394px;
+		height: 608px;
 
 		@include md-max {
-			height: 500px;
-			max-width: 360px;
+			height: 496px;
+			max-width: 358px;
 			margin: 0 auto;
 		}
 
