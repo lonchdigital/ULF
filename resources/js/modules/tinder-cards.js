@@ -127,20 +127,31 @@ if (TinderCards) {
 			const prev = current;
 			const next = current.nextElementSibling;
 
+//             const carComment = current.querySelector('.car-comment');
+//             const carCommentValue = carComment ? carComment.textContent : null;
+//             console.log(favorites);
+//             console.log(favorites.lenght);
+// console.log((favorites.lenght + 1) % 3);
+//             if ((favorites.lenght + 1) % 3 === 0) {
+//                 console.log(123);
+//                 const button = document.querySelector('.i-favorite');
+
+//                 if (button) {
+//                     button.click();
+//                 }
+//             } else {
+//                 console.log(321);
+//                 favorites.push(carCommentValue);
+//             }
+
+            ///////
             const carComment = current.querySelector('.car-comment');
             const carCommentValue = carComment ? carComment.textContent : null;
 
-            if (favorites.length == 2) {
-                const button = document.querySelector('.i-favorite');
-
-                if (button) {
-                    button.click();
-                }
-            }
-
-            if (carCommentValue && favorites.length < 2) {
+            if (carCommentValue) {
                 favorites.push(carCommentValue);
             }
+            // console.log(favorites.join(', '));
 
 			if (next) {
 				initCard(next);
