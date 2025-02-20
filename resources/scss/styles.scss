@@ -501,7 +501,7 @@
 
 .ready-to-drive-block,
 .scroll-gallery--item {
-	height: 525px;
+	height: 542px; // 525px
 
 	@include sm-max {
 		height: 515px;
@@ -1767,6 +1767,8 @@
 }
 
 .horizontal-scoll-wrapper {
+	min-height: 542px;
+
 	.scroll-gallery-cars--item {
 		// @include md-max {
 		flex: 0 0 auto;
