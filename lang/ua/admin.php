@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'correlation_clients_history' => 'Cпіввідношення: 7:10 (720x1028 або 1080x1540)',
     'video_desktop_desc' => '1280x820 або 1920x1230 (Співвідношення: 16:10)',
     'video_mob_desc' => 'Cпіввідношення сторін: 9:16 1600px х 900px',
     'display_video' => 'Відображати відео',

@@ -36,7 +36,7 @@
                             </div>
 
                             <div class="form-group">
-                                <p style="margin-bottom: 8px">{{ trans('admin.preview') . ' (250px x 100px)' }}</p>
+                                <p style="margin-bottom: 8px">{{ trans('admin.correlation_clients_history') }}</p>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <img style="display: none;" id="article_image" alt="">
@@ -57,7 +57,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="video">video (MP4)</label>
+                                <label for="video">video (MP4) {{ trans('admin.correlation_clients_history') }}</label>
                                 <input type="file" class="form-control" name="video" accept="video/mp4">
 
                                 @error('video')

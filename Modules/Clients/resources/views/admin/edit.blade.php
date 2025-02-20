@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="form-group">
-                                <p style="margin-bottom: 8px">{{ trans('admin.preview') . ' (760px x 1084px)' }}</p>
+                                <p style="margin-bottom: 8px">{{ trans('admin.correlation_clients_history') }}</p>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <img @if(isset($client) && isset($client->image_url)) src="{{ $client->image_url }}" style="width: 300px" @else style="display: none;" @endif id="article_image" alt="">
@@ -67,7 +67,7 @@
 
 
                             <div class="form-group">
-                                <label for="video">video (MP4)</label>
+                                <label for="video">video (MP4) {{ trans('admin.correlation_clients_history') }}</label>
                                 <input type="file" class="form-control" name="video" accept="video/mp4">
 
                                 <div class="mt-2">
