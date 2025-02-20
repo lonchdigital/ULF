@@ -30,9 +30,9 @@
 
     <link rel="shortcut icon" href="##" type="image/x-icon" />
 
-    @section('SEO')
+    {{-- @section('SEO')
         <meta name="description" content="{{ config('app.name') }}">
-    @show
+    @show --}}
 
     @section('OG')
         <meta name="twitter:card" content="summary" />

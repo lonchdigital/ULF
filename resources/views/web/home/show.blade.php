@@ -5,7 +5,7 @@
 @section('head')
     @if ($page->meta_title)
         <title>{{ $page->meta_title }}</title>
-        <meta name="title" content="{{ $page->meta_title }}">
+        {{-- <meta name="title" content="{{ $page->meta_title }}"> --}}
     @endif
 
     @if ($page->meta_description)
@@ -119,8 +119,8 @@
                                     <img class="bg-down d-none d-sm-block"
                                         src="{{ !is_null($homeMainBlock->image) ? '/storage/' . $homeMainBlock->image : '' }}"
                                         alt="img">
-                                    <img class="bg-down d-sm-none" 
-                                        src="{{ !is_null($homeMainBlock->image_mob) ? '/storage/' . $homeMainBlock->image_mob : '' }}" 
+                                    <img class="bg-down d-sm-none"
+                                        src="{{ !is_null($homeMainBlock->image_mob) ? '/storage/' . $homeMainBlock->image_mob : '' }}"
                                         alt="img">
                                 @endif
                             </div>

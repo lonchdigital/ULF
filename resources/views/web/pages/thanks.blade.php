@@ -3,7 +3,7 @@
 @section('head')
     @if(!empty($page->meta_title))
         <title>{{ $page->meta_title ?? config('app.name') }}</title>
-        <meta name="title" content="{{ $page->meta_title ?? config('app.name') }}">
+        {{-- <meta name="title" content="{{ $page->meta_title ?? config('app.name') }}"> --}}
     @endif
 
     @if(!empty($page->meta_description))

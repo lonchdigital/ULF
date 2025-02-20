@@ -7,7 +7,7 @@
 @section('head')
     @if($page->meta_title)
         <title>{{ $page->meta_title }}</title>
-        <meta name="title" content="{{ $page->meta_title }}">
+        {{-- <meta name="title" content="{{ $page->meta_title }}"> --}}
     @endif
 
     @if($page->meta_description)
@@ -178,7 +178,7 @@
                             {{ trans('web.clear') }}
                         </a>
                     </div>
-                    
+
                     @if( !is_null($filters['manufacturers']) )
                         <div class="filter-item">
                             <div class="field-wrap mb-3">
@@ -226,7 +226,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     @if( count($filters['fuelTypes']) > 0 )
                         <div class="filter-item">
                             <div class="field-wrap mb-3">
@@ -272,11 +272,11 @@
                             <div class="mb-6">
                                 @foreach ($filters['types'] as $type)
                                     <div class="custom-control custom-checkbox position-relative mb-2">
-                                        <input 
-                                            type="checkbox" 
-                                            value="{{ $type->id }}" 
-                                            name="body-type-{{ $type->id }}" 
-                                            class="body-type-input custom-control-input" 
+                                        <input
+                                            type="checkbox"
+                                            value="{{ $type->id }}"
+                                            name="body-type-{{ $type->id }}"
+                                            class="body-type-input custom-control-input"
                                             id="body-type-{{ $type->id }}"
                                             @if(in_array($type->id, $selectedBodyTypes)) checked @endif
                                         >
@@ -298,11 +298,11 @@
                             <div class="mb-6">
                                 @foreach ($filters['driverTypes'] as $driverType)
                                     <div class="custom-control custom-checkbox position-relative mb-2">
-                                        <input 
-                                            type="checkbox" 
-                                            value="{{ $driverType->id }}" 
-                                            name="dryver-type-{{ $driverType->id }}" 
-                                            class="dryver-type-input custom-control-input" 
+                                        <input
+                                            type="checkbox"
+                                            value="{{ $driverType->id }}"
+                                            name="dryver-type-{{ $driverType->id }}"
+                                            class="dryver-type-input custom-control-input"
                                             id="dryver-type-{{ $driverType->id }}"
                                             @if(in_array($driverType->id, $selectedDriverTypes)) checked @endif
                                         >
