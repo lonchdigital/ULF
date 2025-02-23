@@ -20,6 +20,8 @@ export default defineConfig({
                 'resources/js/forms/popupForm.js',
                 'resources/js/forms/notifyAboutAvailability.js',
 
+                'resources/js/modules/home-video-settings.js',
+
                 // Modules
                 'Modules/Articles/resources/js/articles-catalog.js',
 

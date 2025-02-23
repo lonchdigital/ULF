@@ -243,6 +243,8 @@ new Swiper(".story-cube--swiper", {
 	}
 });
 
+
+
 function pauseCubeSlider() {
 	// Зупиняємо роботу слайдера куб
 	document.querySelector('.story-cube--swiper').swiper.autoplay.stop();

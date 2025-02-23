@@ -138,15 +138,11 @@
                                     <div class="head font-weight-bolder mb-3 mb-md-6 text-center text-lg-left">
                                         {{ $homeDriveBlock->title }}</div>
                                     <div class="h4 mb-3 mb-lg-7">{!! $homeDriveBlock->description !!}</div>
-                                    <div
-                                        class="video-wrap video-wrap--vissible w-100 d-lg-none d-flex justify-content-center mb-sm-3">
-                                        <a class="w-100" data-fancybox="specific-player-mob" data-src="#specific-player"
-                                            data-thumb="{{ '/storage/' . $homeDriveBlock->image }}">
-                                            <video class="js-player specific-player" playsinline
-                                                data-poster="{{ '/storage/' . $homeDriveBlock->image }}">
-                                                <source src="{{ '/storage/' . $homeDriveBlock->video }}" type="video/mp4" />
-                                            </video>
-                                        </a>
+                                    <div class="video-wrap video-wrap--vissible w-100 d-lg-none d-flex justify-content-center mb-sm-3">
+                                        <video class="js-player specific-player" playsinline
+                                            data-poster="{{ '/storage/' . $homeDriveBlock->image }}">
+                                            <source src="{{ '/storage/' . $homeDriveBlock->video }}" type="video/mp4" />
+                                        </video>
                                         <button type="button" class="btn btn-video-play-pause"></button>
                                     </div>
                                     <ul class="list-decimal mb-6">
@@ -182,22 +178,14 @@
                                     @else
                                         <div class="col-auto d-none d-lg-flex">
                                             <div class="video-wrap video-wrap--vissible">
-                                                <a data-fancybox="specific-player" data-src="#specific-player"
-                                                    data-thumb="{{ '/storage/' . $homeDriveBlock->image }}">
-                                                    <video class="js-player specific-player" playsinline
-                                                        data-poster="{{ '/storage/' . $homeDriveBlock->image }}">
-                                                        <source src="{{ '/storage/' . $homeDriveBlock->video }}"
-                                                            type="video/mp4" />
-                                                    </video>
-                                                </a>
-                                                <button type="button" class="btn btn-video-play-pause"></button>
-                                            </div>
-                                            <div id="specific-player" class="video-wrap hidden" style="display:none">
-                                                <video class="js-player specific-player" playsinline
-                                                    data-poster="{{ '/storage/' . $homeDriveBlock->image }}">
+                                                {{-- autoplay muted loop --}}
+                                                <video class="js-player specific-player" playsinline muted
+                                                    data-poster="{{ '/storage/' . $homeDriveBlock->image }}"
+                                                    >
                                                     <source src="{{ '/storage/' . $homeDriveBlock->video }}"
                                                         type="video/mp4" />
                                                 </video>
+                                                <button type="button" class="btn btn-video-play-pause"></button>
                                             </div>
                                         </div>
                                     @endif
@@ -257,29 +245,16 @@
                                                     @else
                                                         <div class="scroll-gallery--item col-12 col-sm-6 col-xl-4">
                                                             <div class="inner h-100 position-relative">
-                                                                <div class="video-wrap video-wrap--vissible h-100">
-                                                                    <a data-fancybox="scroll-gallery"
-                                                                        data-src="#scroll-gallery-player-{{ $client->id }}"
-                                                                        data-thumb="{{ $client->image_url }}">
-                                                                        <video class=" js-player specific-player" muted
-                                                                            playsinline
-                                                                            data-poster="{{ $client->image_url }}">
-                                                                            <source
-                                                                                src="{{ '/storage/' . $client->video }}"
-                                                                                type="video/mp4" />
-                                                                        </video>
-                                                                    </a>
-                                                                    <button type="button"
-                                                                        class="btn btn-video-play-pause"></button>
-                                                                </div>
-                                                                <div id="scroll-gallery-player-{{ $client->id }}"
-                                                                    class="video-wrap hidden" style="display:none">
-                                                                    <video class="js-player specific-player" playsinline
-                                                                        data-poster="{{ $client->image_url }}">
+                                                                <div class="video-wrap video-wrap--vissible h-100 3333333">
+                                                                    <video class="js-player specific-player" playsinline muted
+                                                                        data-poster="{{ $client->image_url }}"
+                                                                        >
                                                                         <source src="{{ '/storage/' . $client->video }}"
                                                                             type="video/mp4" />
                                                                     </video>
+                                                                    <button type="button" class="btn btn-video-play-pause"></button>
                                                                 </div>
+                    
                                                                 <div class="scroll-gallery--content">
                                                                     <div class="scroll-gallery--head mb-2">
                                                                         {{ $client->history_title }}</div>
@@ -314,8 +289,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="story-cube position-relative d-md-none">
-                                        <div class="story-cube--swiper">
+                                    <div id="customer-stories-mobile" class="story-cube position-relative d-md-none">
+                                        <div class="story-cube--swiper page-home">
                                             <div class="story-cube--wrapper swiper-wrapper">
                                                 @foreach ($clients as $client)
                                                     @if (!is_null($client->video) || $client->youtube)
@@ -345,29 +320,12 @@
                                                                 slot="slide-{{ $client->id }}">
                                                                 <div class="inner h-100 position-relative">
                                                                     <div class="video-wrap video-wrap--vissible h-100">
-                                                                        <a data-fancybox="story-cube-gallery"
-                                                                            data-src="#story-cube-gallery-player-{{ $client->id }}"
-                                                                            data-thumb="{{ $client->image_url }}">
-                                                                            <video class="js-player specific-player"
-                                                                                playsinline
-                                                                                data-poster="{{ $client->image_url }}">
-                                                                                <source
-                                                                                    src="{{ '/storage/' . $client->video }}"
-                                                                                    type="video/mp4" />
-                                                                            </video>
-                                                                        </a>
-                                                                        <button type="button"
-                                                                            class="btn btn-video-play-pause"></button>
-                                                                    </div>
-                                                                    <div id="story-cube-gallery-player-{{ $client->id }}"
-                                                                        class="video-wrap hidden" style="display:none">
-                                                                        <video class="js-player specific-player"
-                                                                            playsinline
+                                                                        <video class="js-player specific-player" playsinline muted
                                                                             data-poster="{{ $client->image_url }}">
-                                                                            <source
-                                                                                src="{{ '/storage/' . $client->video }}"
+                                                                            <source src="{{ '/storage/' . $client->video }}"
                                                                                 type="video/mp4" />
                                                                         </video>
+                                                                        <button type="button" class="btn btn-video-play-pause"></button>
                                                                     </div>
                                                                 </div>
                                                                 <div class="scroll-gallery--content">
@@ -564,5 +522,8 @@
             @endif
         </div>
     </main>
+@endsection
 
+@section('scripts')
+    @vite(['resources/js/modules/home-video-settings.js'])
 @endsection

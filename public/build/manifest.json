@@ -114,6 +114,12 @@
       "_icons-DEock0q4.js"
     ]
   },
+  "resources/js/modules/home-video-settings.js": {
+    "file": "assets/home-video-settings-Sl18mzzz.js",
+    "name": "home-video-settings",
+    "src": "resources/js/modules/home-video-settings.js",
+    "isEntry": true
+  },
   "resources/scss/fonts/Montserrat-Black.woff": {
     "file": "assets/Montserrat-Black-DlvN5Tz0.woff",
     "src": "resources/scss/fonts/Montserrat-Black.woff"
