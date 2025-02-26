@@ -16,7 +16,7 @@ class TrimRouteSuffix
     public function handle(Request $request, Closure $next): Response
     {
         if (!$request->secure()) {
-            return redirect()->secure($request->getRequestUri());
+            return redirect()->secure($request->getRequestUri(), 301);
         }
 
         if($request->is('admin*')) {
