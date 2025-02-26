@@ -15,7 +15,7 @@ class TrimRouteSuffix
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!$request->secure()) {
+        if (!$request->secure() && config('app.env') !== 'local') {
             return redirect()->secure($request->getRequestUri(), 301);
         }
 
