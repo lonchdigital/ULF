@@ -42,17 +42,25 @@
     "src": "resources/css/app.css",
     "isEntry": true
   },
+  "resources/img/icons/i-volume-off.svg": {
+    "file": "assets/i-volume-off-cjvje8MR.svg",
+    "src": "resources/img/icons/i-volume-off.svg"
+  },
+  "resources/img/icons/i-volume-on.svg": {
+    "file": "assets/i-volume-on-BJJ-n2Xu.svg",
+    "src": "resources/img/icons/i-volume-on.svg"
+  },
   "resources/img/icons/icons.svg": {
     "file": "assets/icons-CH-K8qS0.svg",
     "src": "resources/img/icons/icons.svg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-BVOEcSDE.js",
+    "file": "assets/app-Bx41dtIH.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-DC7xL9qQ.css"
+      "assets/app-Co2eoxQ5.css"
     ],
     "assets": [
       "assets/Montserrat-Black-DHRMOOaf.woff2",
@@ -73,7 +81,9 @@
       "assets/Montserrat-SemiBold-CezpTGMO.woff",
       "assets/Montserrat-Thin-DZnZU91S.woff2",
       "assets/Montserrat-Thin-D_BYdjTx.woff",
-      "assets/icons-CH-K8qS0.svg"
+      "assets/icons-CH-K8qS0.svg",
+      "assets/i-volume-on-BJJ-n2Xu.svg",
+      "assets/i-volume-off-cjvje8MR.svg"
     ]
   },
   "resources/js/forms/notifyAboutAvailability.js": {
