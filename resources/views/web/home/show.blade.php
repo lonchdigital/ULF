@@ -323,9 +323,7 @@
                                                                                 type="video/mp4" />
                                                                         </video>
                                                                         {{-- <button type="button" class="btn btn-video-play-pause"></button> --}}
-                                                                        <button type="button" class="btn btn-video-mute-toggle"></button>
-                                                                        {{-- btn-video-play-pause --}}
-                                                                        {{-- <button type="button" class="btn btn-video-mute-toggle">HERE</button> --}}
+                                                                        <button type="button" class="btn btn-video-mute-toggle muted"></button>
                                                                     </div>
                                                                 </div>
                                                                 <div class="scroll-gallery--content">
