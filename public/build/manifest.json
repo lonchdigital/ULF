@@ -38,7 +38,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-DkU-eAcE.css",
+    "file": "assets/app-BveFmRdv.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -47,12 +47,12 @@
     "src": "resources/img/icons/icons.svg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-ntBAr5OV.js",
+    "file": "assets/app-BVOEcSDE.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-_uNnDNqG.css"
+      "assets/app-DC7xL9qQ.css"
     ],
     "assets": [
       "assets/Montserrat-Black-DHRMOOaf.woff2",
@@ -95,7 +95,7 @@
     ]
   },
   "resources/js/libs.js": {
-    "file": "assets/libs-CSo7jqUK.js",
+    "file": "assets/libs-CKpNfMRI.js",
     "name": "libs",
     "src": "resources/js/libs.js",
     "isEntry": true,
@@ -115,7 +115,7 @@
     ]
   },
   "resources/js/modules/home-video-settings.js": {
-    "file": "assets/home-video-settings-Sl18mzzz.js",
+    "file": "assets/home-video-settings-B_OE5iaC.js",
     "name": "home-video-settings",
     "src": "resources/js/modules/home-video-settings.js",
     "isEntry": true

@@ -266,16 +266,13 @@
                                                 @else
                                                     <div class="scroll-gallery--item col-12 col-sm-6 col-xl-4">
                                                         <div class="inner h-100 position-relative">
-                                                            <a data-fancybox="scroll-gallery"
-                                                                href="{{ $client->image_url }}">
-                                                                <div class="scroll-gallery--img">
-                                                                    <div class="wrap-img">
-                                                                        <img class="bg-down"
-                                                                            src="{{ $client->image_url }}"
-                                                                            alt="img">
-                                                                    </div>
+                                                            <div class="scroll-gallery--img">
+                                                                <div class="wrap-img">
+                                                                    <img class="bg-down"
+                                                                        src="{{ $client->image_url }}"
+                                                                        alt="img">
                                                                 </div>
-                                                            </a>
+                                                            </div>
                                                             <div class="scroll-gallery--content">
                                                                 <div class="scroll-gallery--head mb-2">
                                                                     {{ $client->history_title }}</div>
@@ -320,12 +317,15 @@
                                                                 slot="slide-{{ $client->id }}">
                                                                 <div class="inner h-100 position-relative">
                                                                     <div class="video-wrap video-wrap--vissible h-100">
-                                                                        <video class="js-player specific-player" playsinline muted
+                                                                        <video preload="auto" class="js-player specific-player" playsinline muted
                                                                             data-poster="{{ $client->image_url }}">
                                                                             <source src="{{ '/storage/' . $client->video }}"
                                                                                 type="video/mp4" />
                                                                         </video>
-                                                                        <button type="button" class="btn btn-video-play-pause"></button>
+                                                                        {{-- <button type="button" class="btn btn-video-play-pause"></button> --}}
+                                                                        <button type="button" class="btn btn-video-mute-toggle"></button>
+                                                                        {{-- btn-video-play-pause --}}
+                                                                        {{-- <button type="button" class="btn btn-video-mute-toggle">HERE</button> --}}
                                                                     </div>
                                                                 </div>
                                                                 <div class="scroll-gallery--content">
@@ -338,16 +338,13 @@
                                                     @else
                                                         <div class="story-cube--slide swiper-slide"
                                                             slot="slide-{{ $client->id }}">
-                                                            <a data-fancybox="story-cube-gallery"
-                                                                href="{{ $client->image_url }}">
-                                                                <div class="scroll-gallery--img">
-                                                                    <div class="wrap-img">
-                                                                        <img class="bg-down"
-                                                                            src="{{ $client->image_url }}"
-                                                                            alt="img">
-                                                                    </div>
+                                                            <div class="scroll-gallery--img">
+                                                                <div class="wrap-img">
+                                                                    <img class="bg-down"
+                                                                        src="{{ $client->image_url }}"
+                                                                        alt="img">
                                                                 </div>
-                                                            </a>
+                                                            </div>
                                                             <div class="scroll-gallery--content">
                                                                 <div class="scroll-gallery--head mb-2">
                                                                     {{ $client->history_title }}</div>

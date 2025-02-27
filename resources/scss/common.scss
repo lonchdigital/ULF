@@ -572,6 +572,25 @@ p {
 			// }
 		}
 	}
+	&-video-mute-toggle {
+		&::after {
+			content: "";
+			display: block;
+			margin: 0;
+			border: none;
+			width: 24px;
+			height: 24px;
+			position: relative;
+			background: url(../img/icons/icons.svg#i-volume-on) no-repeat center;
+			background-size: contain;
+		}
+		&.muted {
+			&::after {
+				background: url(../img/icons/icons.svg#i-volume-off) no-repeat center;
+				background-size: contain;
+			}
+		}
+	}
 	&-clear-filter {
 		font-size: 14px;
 		font-weight: 500 !important;

@@ -188,6 +188,249 @@ new Swiper(".gallery-car--swiper", {
 
 
 //? story-cube
+document.addEventListener('DOMContentLoaded', function () {
+    const swiperContainer = document.getElementById('customer-stories-mobile'); // Используем id контейнера
+
+    // Функция для инициализации Swiper
+    const initSwiper = () => {
+        const swiper = new Swiper(".story-cube--swiper", {
+            effect: 'fade',
+            watchSlidesProgress: true,
+            loop: true,
+            autoplay: {
+                delay: 15000, // Задержка по умолчанию
+                disableOnInteraction: false
+            },
+            slidesPerView: 1,
+            navigation: {
+                nextEl: ".story-cube--next",
+                prevEl: ".story-cube--prev",
+            },
+            pagination: {
+                el: '.story-cube--pagination',
+                clickable: true,
+                renderBullet: function (index, className) {
+                    return '<div class="' + className + '"> <div class="swiper-pagination-progress"></div> </div>';
+                }
+            },
+            on: {
+                init() {
+                    // Принудительно переключаем на первый слайд после инициализации
+                    this.slideTo(0);
+
+                    // Запускаем видео в первом слайде
+                    const firstSlide = this.slides[0];
+                    const video = firstSlide.querySelector('video');
+                    if (video) {
+                        video.currentTime = 0; // Сбрасываем время на начало
+                        video.play().catch(error => {
+                            console.error('Ошибка воспроизведения видео:', error);
+                        });
+                    }
+                },
+                autoplayTimeLeft(swiper, time, progress) {
+                    const activeSlide = swiper.slides[swiper.activeIndex];
+                    const video = activeSlide.querySelector('video');
+                    const currentBullet = document.querySelectorAll('.story-cube--swiper .swiper-pagination-progress')[swiper.realIndex];
+
+                    if (!currentBullet) return;
+
+                    if (video) {
+                        // Синхронизируем прогресс с видео
+                        const videoProgress = (video.currentTime / video.duration) * 100;
+                        gsap.set(currentBullet, { width: `${videoProgress}%` });
+                    } else {
+                        // Синхронизируем прогресс с автоплеем
+                        const autoplayProgress = (1 - time / swiper.params.autoplay.delay) * 100;
+                        gsap.set(currentBullet, { width: `${autoplayProgress}%` });
+                    }
+                },
+                transitionEnd(swiper) {
+                    // Сбрасываем прогресс для всех буллетов
+                    let allBullets = $('.story-cube--swiper .swiper-pagination-progress');
+                    let bulletsBefore = allBullets.slice(0, swiper.realIndex);
+                    let bulletsAfter = allBullets.slice(swiper.realIndex, allBullets.length);
+                    if (bulletsBefore.length) { gsap.set(bulletsBefore, { width: '100%' }) }
+                    if (bulletsAfter.length) { gsap.set(bulletsAfter, { width: '0%' }) }
+                },
+                slideChange(swiper) {
+                    // Останавливаем все видео на всех слайдах
+                    swiper.slides.forEach((slide) => {
+                        const video = slide.querySelector('video');
+                        if (video) {
+                            video.volume = 0; // Принудительно отключаем звук
+                            video.pause();
+                            video.currentTime = 0; // Сбрасываем время на начало
+                        }
+                    });
+
+                    const activeSlide = swiper.slides[swiper.activeIndex];
+                    const video = activeSlide.querySelector('video');
+
+                    if (video) {
+                        // Останавливаем автоплей
+                        swiper.autoplay.stop();
+
+                        // Устанавливаем задержку автоплея = длительность видео
+                        swiper.params.autoplay.delay = video.duration * 1000;
+
+                        // Сбрасываем время видео перед запуском
+                        video.currentTime = 0;
+
+                        // Восстанавливаем громкость видео
+                        video.volume = 1;
+
+                        // Ожидаем, пока видео будет готово к воспроизведению
+                        const playVideo = () => {
+                            video.play()
+                                .then(() => {
+                                    console.log('Видео запущено');
+
+                                    // Функция для обновления прогресса
+                                    const updateProgress = () => {
+                                        const currentBullet = document.querySelectorAll('.story-cube--swiper .swiper-pagination-progress')[swiper.realIndex];
+                                        if (currentBullet && !video.paused && !video.ended) {
+                                            const videoProgress = (video.currentTime / video.duration) * 100;
+                                            gsap.set(currentBullet, { width: `${videoProgress}%` });
+                                            requestAnimationFrame(updateProgress); // Продолжаем обновление
+                                        }
+                                    };
+                                    updateProgress(); // Запускаем обновление прогресса
+                                })
+                                .catch(error => {
+                                    console.error('Ошибка воспроизведения видео:', error);
+                                    // Если автовоспроизведение заблокировано, показываем кнопку
+                                    const playButton = activeSlide.querySelector('.btn-video-play-pause');
+                                    if (playButton) {
+                                        playButton.style.display = 'block'; // Показываем кнопку
+                                        playButton.addEventListener('click', () => {
+                                            video.play();
+                                            playButton.style.display = 'none'; // Скрываем кнопку после запуска
+                                        }, { once: true });
+                                    }
+                                });
+                        };
+
+                        if (video.readyState >= 3) { // Если видео уже загружено
+                            playVideo();
+                        } else {
+                            video.addEventListener('canplay', playVideo, { once: true });
+                        }
+
+                        // Слушаем событие окончания видео
+                        video.addEventListener('ended', () => {
+                            // Переключаем на следующий слайд
+                            swiper.slideNext();
+                        }, { once: true });
+
+                        // Слушаем событие паузы и перезапускаем прогресс при повторном запуске
+                        video.addEventListener('play', () => {
+                            const updateProgress = () => {
+                                const currentBullet = document.querySelectorAll('.story-cube--swiper .swiper-pagination-progress')[swiper.realIndex];
+                                if (currentBullet && !video.paused && !video.ended) {
+                                    const videoProgress = (video.currentTime / video.duration) * 100;
+                                    gsap.set(currentBullet, { width: `${videoProgress}%` });
+                                    requestAnimationFrame(updateProgress); // Продолжаем обновление
+                                }
+                            };
+                            updateProgress(); // Запускаем обновление прогресса
+                        });
+                    } else {
+                        // Если видео нет, продолжаем автоперелистывание с задержкой по умолчанию
+                        swiper.params.autoplay.delay = 3000; // Задержка по умолчанию
+                        swiper.autoplay.start();
+                    }
+                }
+            }
+        });
+
+        
+		// Обработчик для кнопки паузы/воспроизведения
+        document.querySelectorAll('.btn-video-play-pause').forEach(button => {
+            button.addEventListener('click', function () {
+                const video = this.closest('.video-wrap').querySelector('video');
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        });
+
+        // Слушаем события play/pause для обновления иконки
+        document.querySelectorAll('.story-cube--swiper video').forEach(video => {
+            video.addEventListener('play', function () {
+                const button = this.closest('.video-wrap').querySelector('.btn-video-play-pause');
+                if (button) {
+                    button.classList.remove('playing'); // Убираем класс "воспроизведение"
+                }
+            });
+            video.addEventListener('pause', function () {
+                const button = this.closest('.video-wrap').querySelector('.btn-video-play-pause');
+                if (button) {
+                    button.classList.add('playing'); // Добавляем класс "воспроизведение"
+                }
+            });
+        });
+
+    };
+
+    // Инициализируем Swiper, когда секция становится видимой
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                initSwiper();
+                observer.disconnect(); // Отключаем observer после инициализации
+            }
+        });
+    }, { threshold: 0.5 }); // Порог видимости 50%
+
+    observer.observe(swiperContainer);
+});
+
+
+document.querySelectorAll('.video-wrap').forEach(videoWrap => {
+    videoWrap.addEventListener('click', function (event) {
+        const video = this.querySelector('video');
+        if (!video) return;
+
+        const rect = video.getBoundingClientRect();
+        const clickX = event.clientX - rect.left;
+        const zoneStart = rect.width * 0.2; // 20% от левого края
+        const zoneEnd = rect.width * 0.8; // 80% от левого края
+
+        if (clickX >= zoneStart && clickX <= zoneEnd) {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        }
+    });
+});
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.btn-video-mute-toggle').forEach(button => {
+        button.addEventListener('click', function () {
+            const video = this.closest('.video-wrap').querySelector('video');
+
+            if (video) {
+                video.muted = !video.muted; // Переключаем состояние звука
+                
+                if (video.muted) {
+                    this.classList.add('muted'); // Добавляем класс, если звук выключен
+                } else {
+                    this.classList.remove('muted'); // Убираем класс, если звук включен
+                }
+            }
+        });
+    });
+});
+
+
+
+
+
+/*
 new Swiper(".story-cube--swiper", {
 	// speed: 1000, // Adjust the speed of the transition as needed
 	effect: 'fade', // Set the effect to 'cube'
@@ -201,7 +444,7 @@ new Swiper(".story-cube--swiper", {
 	watchSlidesProgress: true,
 	loop: true,
 	autoplay: {
-		delay: 15000,
+		delay: 3000, // 15000
 		disableOnInteraction: false
 	},
 	slidesPerView: 1,
@@ -232,17 +475,22 @@ new Swiper(".story-cube--swiper", {
 			let bulletsAfter = allBullets.slice(swiper.realIndex, allBullets.length);
 			if (bulletsBefore.length) { gsap.set(bulletsBefore, { width: '100%' }) }
 			if (bulletsAfter.length) { gsap.set(bulletsAfter, { width: '0%' }) }
-
-			let activeSlide = document.querySelectorAll('.story-cube--swiper .swiper-slide')[swiper.realIndex];
-			if (activeSlide.querySelector('video')) {
-				activeSlide.querySelector('video').currentTime = 0;
-			}
-			// Викликаємо функцію pauseAllVideos при завершенні переходу до нового слайда
-			pauseCubeVideos();
 		},
+		slideChange(swiper) {
+			// pauseCubeVideos();
+
+			const activeSlide = document.querySelectorAll('.story-cube--swiper .swiper-slide')[swiper.realIndex];
+			if (activeSlide) {
+				const video = activeSlide.querySelector('video');
+				if (video) {
+					video.play();
+				}
+			}
+
+		}
 	}
 });
-
+*/
 
 
 function pauseCubeSlider() {
