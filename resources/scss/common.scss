@@ -584,6 +584,7 @@ p {
 			background: url(../img/icons/i-volume-on.svg) no-repeat center;
 			background-size: contain;
 		}
+		
 		&.muted {
 			&::after {
 				background: url(../img/icons/i-volume-off.svg) no-repeat center;
