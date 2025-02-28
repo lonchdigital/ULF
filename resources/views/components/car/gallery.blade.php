@@ -9,7 +9,7 @@
                     <div class="gallery-car--swiper mb-4 mb-xl-5">
                         <div class="swiper-wrapper">
 
-                            @foreach ($car->images as $image)
+                            @foreach ($car->images->where('TypeId', 2) as $image)
                                 <div class="swiper-slide">
                                     <a data-fancybox="gallery" href="{{ '/storage/' . $image->Url }}">
                                         <div class="wrap-img">
@@ -25,7 +25,7 @@
                     <!-- thumbs slider -->
                     <div class="gallery-car-thumbs--swiper d-none d-sm-block">
                         <div class="swiper-wrapper">
-                            @foreach ($car->images as $image)
+                            @foreach ($car->images->where('TypeId', 2) as $image)
                                 <div class="swiper-slide">
                                     <div class="wrap-img">
                                         <img src="{{ '/storage/' . $image->Url }}" alt="img">

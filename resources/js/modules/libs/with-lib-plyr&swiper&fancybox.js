@@ -188,6 +188,11 @@ new Swiper(".gallery-car--swiper", {
 
 
 //? story-cube
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const swiperContainer = document.getElementById('customer-stories-mobile'); // Используем id контейнера
 
@@ -408,6 +413,9 @@ document.querySelectorAll('.video-wrap').forEach(videoWrap => {
         }
     });
 });
+
+/*
+
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.btn-video-mute-toggle').forEach(button => {
         button.addEventListener('click', function () {
@@ -422,6 +430,26 @@ document.addEventListener('DOMContentLoaded', function () {
                     this.classList.remove('muted'); // Убираем класс, если звук включен
                 }
             }
+        });
+    });
+});
+
+*/
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.btn-video-mute-toggle').forEach(button => {
+        button.addEventListener('click', function () {
+            const allVideos = document.querySelectorAll('video'); // Берём все видео на странице
+            const isMuted = allVideos.length > 0 ? allVideos[0].muted : true; // Проверяем текущее состояние звука (по первому видео)
+
+            allVideos.forEach(video => {
+                video.muted = false; // Включаем звук у всех видео
+            });
+
+            // Обновляем кнопки
+            document.querySelectorAll('.btn-video-mute-toggle').forEach(btn => {
+                btn.classList.remove('muted'); // Убираем класс "muted", если был
+            });
         });
     });
 });
