@@ -60,6 +60,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const playPauseButton = videoWrap.querySelector(".btn-video-play-pause");
 
+            // Игнорируем видео внутри #customer-stories-mobile
+            if (video.closest("#customer-stories-mobile")) return;
+
             if (entry.isIntersecting) {
                 video.play().catch((error) => {
                     console.warn("Автовоспроизведение заблокировано браузером:", error);
@@ -80,20 +83,20 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }, { threshold: 0.5 });
 
-    // observe video NOT in #customer-stories
+    // observe video NOT in #customer-stories AND NOT in #customer-stories-mobile
     allVideos.forEach((video) => {
-        if (!video.closest("#customer-stories")) {
+        if (!video.closest("#customer-stories") && !video.closest("#customer-stories-mobile")) {
             videoObserver.observe(video);
         }
     });
-
-
 
     // Customer stories section 
     const customerStoriesSection = document.getElementById("customer-stories");
 
     if (customerStoriesSection) {
-        const videosInSection = Array.from(customerStoriesSection.querySelectorAll(".specific-player"));
+        const videosInSection = Array.from(customerStoriesSection.querySelectorAll(".specific-player"))
+            .filter(video => !video.closest("#customer-stories-mobile")); // Исключаем #customer-stories-mobile
+
         let currentVideoIndex = 0;
 
         // play video one by one
@@ -151,4 +154,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+
+
+document.addEventListener('touchstart', () => {
+    document.querySelectorAll('.specific-player').forEach(video => {
+        video.play().catch(error => {
+            console.warn('Автовоспроизведение на iOS не удалось, пробуем еще раз.', error);
+        });
+    });
+}, { once: true });
 
