@@ -143,7 +143,7 @@
                                             data-poster="{{ '/storage/' . $homeDriveBlock->image }}">
                                             <source src="{{ '/storage/' . $homeDriveBlock->video }}" type="video/mp4" />
                                         </video>
-                                        <button type="button" class="btn btn-video-play-pause"></button>
+                                        <button type="button" class="btn btn-video-mute-toggle muted"></button>
                                     </div>
                                     <ul class="list-decimal mb-6">
                                         @if(!is_null($homeDriveBlock->step_one))
@@ -185,7 +185,7 @@
                                                     <source src="{{ '/storage/' . $homeDriveBlock->video }}"
                                                         type="video/mp4" />
                                                 </video>
-                                                <button type="button" class="btn btn-video-play-pause"></button>
+                                                <button type="button" class="btn btn-video-mute-toggle muted"></button>
                                             </div>
                                         </div>
                                     @endif
@@ -216,7 +216,7 @@
                                 <div class="col">
                                     <div class="head font-weight-bolder mb-3 mb-md-6 text-center text-white">
                                         {{ trans('page_name.client_history') }}</div>
-                                    <div class="horizontal-scoll-wrapper d-none d-md-block">
+                                    <div id="customer-stories-pc" class="horizontal-scoll-wrapper d-none d-md-block">
                                         <div class="scroll-gallery horizontal row flex-nowrap">
 
                                             @foreach ($clients as $client)
@@ -252,7 +252,7 @@
                                                                         <source src="{{ '/storage/' . $client->video }}"
                                                                             type="video/mp4" />
                                                                     </video>
-                                                                    <button type="button" class="btn btn-video-play-pause"></button>
+                                                                    <button type="button" class="btn btn-video-mute-toggle muted"></button>
                                                                 </div>
                     
                                                                 <div class="scroll-gallery--content">
@@ -322,7 +322,6 @@
                                                                             <source src="{{ '/storage/' . $client->video }}"
                                                                                 type="video/mp4" />
                                                                         </video>
-                                                                        {{-- <button type="button" class="btn btn-video-play-pause"></button> --}}
                                                                         <button type="button" class="btn btn-video-mute-toggle muted"></button>
                                                                     </div>
                                                                 </div>

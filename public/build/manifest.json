@@ -105,7 +105,7 @@
     ]
   },
   "resources/js/libs.js": {
-    "file": "assets/libs-B7V9aRhU.js",
+    "file": "assets/libs-Ckj26HJS.js",
     "name": "libs",
     "src": "resources/js/libs.js",
     "isEntry": true,
@@ -125,7 +125,7 @@
     ]
   },
   "resources/js/modules/home-video-settings.js": {
-    "file": "assets/home-video-settings-Q9JsBZ1G.js",
+    "file": "assets/home-video-settings-DmQKsv20.js",
     "name": "home-video-settings",
     "src": "resources/js/modules/home-video-settings.js",
     "isEntry": true

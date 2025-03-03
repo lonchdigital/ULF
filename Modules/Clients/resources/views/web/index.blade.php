@@ -83,19 +83,11 @@
                                     <div class="scroll-gallery--item col-12 col-md-6 col-xl-4">
                                         <div class="inner h-100 position-relative">
                                             <div class="video-wrap video-wrap--vissible h-100">
-                                                <a data-src="#scroll-gallery-player-1" data-thumb="{{ $client->image_url }}">
-                                                    <video class=" js-player specific-player" playsinline
-                                                           data-poster="{{ $client->image_url }}">
-                                                        <source src="{{ '/storage/' . $client->video }}" type="video/mp4" />
-                                                    </video>
-                                                </a>
-                                                <button type="button" class="btn btn-video-play-pause"></button>
-                                            </div>
-                                            <div id="scroll-gallery-player-1" class="video-wrap hidden" style="display:none">
-                                                <video class="js-player specific-player" playsinline
-                                                       data-poster="{{ $client->image_url }}">
+                                                <video class=" js-player specific-player" playsinline
+                                                        data-poster="{{ $client->image_url }}">
                                                     <source src="{{ '/storage/' . $client->video }}" type="video/mp4" />
                                                 </video>
+                                                <button type="button" class="btn btn-video-play-pause"></button>
                                             </div>
                                             <div class="scroll-gallery--content">
                                                 <div class="scroll-gallery--head mb-2">{{ $client->history_title }}</div>
@@ -107,13 +99,11 @@
                             @else
                                 <div class="scroll-gallery--item col-12 col-md-6 col-xl-4">
                                     <div class="inner h-100 position-relative">
-                                        <a href="{{ $client->image_url }}">
-                                            <div class="scroll-gallery--img">
-                                                <div class="wrap-img">
-                                                    <img class="bg-down" src="{{ $client->image_url }}" alt="img">
-                                                </div>
+                                        <div class="scroll-gallery--img">
+                                            <div class="wrap-img">
+                                                <img class="bg-down" src="{{ $client->image_url }}" alt="img">
                                             </div>
-                                        </a>
+                                        </div>
                                         <div class="scroll-gallery--content">
                                             <div class="scroll-gallery--head mb-2">{{ $client->history_title }}</div>
                                             <p class="mb-0">{{ $client->description }}</p>
