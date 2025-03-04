@@ -92,7 +92,7 @@
                                             @endforeach
                                         </div>
                                     </div>
-                                    <div dir="rtl" class="section-top--swiper">
+                                    <div dir="rtl" class="section-top--swiper--rtl">
                                         <div class="swiper-wrapper">
                                             @foreach ($homeBenefitBlock->where('row', 2) as $benefitTwo)
                                                 <div class="swiper-slide">
