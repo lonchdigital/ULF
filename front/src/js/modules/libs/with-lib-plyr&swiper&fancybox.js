@@ -134,6 +134,37 @@ new Swiper('.section-top--swiper', {
 	},
 });
 
+//? section-top--swiper--rtl
+new Swiper('.section-top--swiper--rtl', {
+	slidesPerView: 7.5,
+	spaceBetween: 16,
+	loop: true,
+	speed: 6000,
+	autoplay: {
+		enabled: true,
+		delay: 1,
+		// disableOnInteraction: false,
+	},
+	centeredSlides: true,
+	allowTouchMove: false,
+	breakpoints: {
+		1400: {
+		},
+		1200: {
+			slidesPerView: 5.5,
+		},
+		1024: {
+			slidesPerView: 4.5,
+		},
+		768: {
+			slidesPerView: 3.5,
+		},
+		0: {
+			slidesPerView: 2.2,
+		}
+	},
+});
+
 //? gallery-car-thumbs--swiper
 var SwiperWallpaperCollectionThumbs = new Swiper(".gallery-car-thumbs--swiper", {
 	grabCursor: true,
