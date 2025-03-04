@@ -3,18 +3,22 @@
 <div class="h5 font-weight-bold mb-5">{{ $car->description }}</div>
 <div class="h4 font-weight-bolder mb-5">{{ trans('web.information') }}</div>
 <div class="car-properties">
-    <div class="car-properties--item">
-        <div class="car-properties--name">{{ trans('web.engine') }}</div>
-        <div class="car-properties--mean">{{ $car->vehicle->fuelType->name . ', ' . $car->vehicle->engineVolume }}</div>
-    </div>
+    @if(!is_null($car->vehicle->fuelType))
+        <div class="car-properties--item">
+            <div class="car-properties--name">{{ trans('web.engine') }}</div>
+            <div class="car-properties--mean">{{ $car->vehicle->fuelType->name . ', ' . $car->vehicle->engineVolume }}</div>
+        </div>
+    @endif
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.spend_100') }}</div>
         <div class="car-properties--mean">-</div>
     </div>
-    <div class="car-properties--item">
-        <div class="car-properties--name">{{ trans('web.transmission') }}</div>
-        <div class="car-properties--mean">{{ $car->vehicle->transmissionType->name }}</div>
-    </div>
+    @if(!is_null($car->vehicle->transmissionType))
+        <div class="car-properties--item">
+            <div class="car-properties--name">{{ trans('web.transmission') }}</div>
+            <div class="car-properties--mean">{{ $car->vehicle->transmissionType->name }}</div>
+        </div>
+    @endif
     <div class="car-properties--item">
         <div class="car-properties--name">{{ trans('web.mileage') }}</div>
         <div class="car-properties--mean">{{ $car->vehicle->mileage }}</div>
@@ -25,10 +29,12 @@
             <div class="car-properties--mean">{{ $car->vehicle->driverType->name }}</div>
         </div>
     @endif
-    <div class="car-properties--item">
-        <div class="car-properties--name">{{ trans('web.color') }}</div>
-        <div class="car-properties--mean">{{ $car->vehicle->colorType->name }}</div>
-    </div>
+    @if(!is_null($car->vehicle->colorType))
+        <div class="car-properties--item">
+            <div class="car-properties--name">{{ trans('web.color') }}</div>
+            <div class="car-properties--mean">{{ $car->vehicle->colorType->name }}</div>
+        </div>
+    @endif
     @if(!is_null($car->vehicle->equipment))
         <div class="car-properties--item">
             <div class="car-properties--name">{{ trans('web.safety') }}</div>
