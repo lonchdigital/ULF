@@ -72,6 +72,7 @@ class CarUpdateService extends CarBaseService
     }
 
     // Create/Update ONE car that we got by API
+    /*
     public function addOneCar($data)
     {
 
@@ -87,39 +88,33 @@ class CarUpdateService extends CarBaseService
             $existingItem = Car::where('lot_id', $data['id'])->first();
             if($existingItem) {
 
-                DB::transaction(function () use ($data, $existingItem) {
-                    try {
-                        $vehicle = $this->carVehicleService->updateFromApi($data['vehicle'], $existingItem);
-                        $dataToUpdate = $this->setCarData($vehicle, $data);
+                try {
+                    DB::beginTransaction();
 
-                        $vehicle->car->update($dataToUpdate);
+                    $vehicle = $this->carVehicleService->updateFromApi($data['vehicle'], $existingItem);
+                    $dataToUpdate = $this->setCarData($vehicle, $data);
 
-                        if(!is_null($data['images'])){
-                            $this->updateCarImagesApi($data['images'], $vehicle->car);
-                        }
-                    } catch (\Exception $e) {
-                        Log::error('Car updating failed', ['error' => $e->getMessage()]);
-                        throw new \RuntimeException('Internal Server Error', 500);
+                    $vehicle->car->update($dataToUpdate);
+
+                    if(!is_null($data['images'])){
+                        $this->updateCarImagesApi($data['images'], $vehicle->car);
                     }
-                });
+
+                    DB::commit(); // end Transaction
+                    return response()->json(['message' => 'Car added/updated successfully'], 200);
+
+                } catch (\Exception $e) {
+                    DB::rollBack(); // rollBack Transaction
+                    Log::error('Car updating failed', ['error' => $e->getMessage()]);
+
+
+                    header("HTTP/1.1 500 Internal Server Error");
+                    header("Content-Type: application/json");
+                    echo json_encode(['error' => 'Internal Server Error', 'message' => $e->getMessage()]);
+                    exit();
+                }
 
             } else {
-
-                // DB::transaction(function () use ($data) {
-                //     try {
-                //         $vehicle = $this->carVehicleService->createFromApi($data['vehicle']);
-                //         $dataToUpdate = $this->setCarData($vehicle, $data);
-                
-                //         $car = Car::create($dataToUpdate);
-                
-                //         if (!is_null($data['images'])) {
-                //             $this->updateCarImagesApi($data['images'], $car);
-                //         }
-                //     } catch (\Exception $e) {
-                //         Log::error('Car creation failed', ['error' => $e->getMessage()]);
-                //         throw new \RuntimeException('Internal Server Error', 500);
-                //     }
-                // });
 
                 try {
                     DB::beginTransaction();
@@ -134,12 +129,11 @@ class CarUpdateService extends CarBaseService
                     }
                 
                     DB::commit(); // end Transaction
-
                     return response()->json(['message' => 'Car added/updated successfully'], 200);
 
                 } catch (\Exception $e) {
-                    DB::rollBack(); // Откатываем транзакцию
-                    Log::error('Car creation failed 77', ['error' => $e->getMessage()]);
+                    DB::rollBack(); // rollBack Transaction
+                    Log::error('Car creation failed', ['error' => $e->getMessage()]);
 
                     header("HTTP/1.1 500 Internal Server Error");
                     header("Content-Type: application/json");
@@ -154,7 +148,46 @@ class CarUpdateService extends CarBaseService
         }
 
     }
+*/
 
+    public function addOneCar($data)
+    {
+        try {
+            // Валидация
+            $this->validateLotData($data);
+
+            DB::beginTransaction(); // Начинаем одну транзакцию для всех операций
+
+            $existingItem = Car::where('lot_id', $data['id'])->first();
+            
+            if ($existingItem) {
+                $vehicle = $this->carVehicleService->updateFromApi($data['vehicle'], $existingItem);
+                $dataToUpdate = $this->setCarData($vehicle, $data);
+                $vehicle->car->update($dataToUpdate);
+            } else {
+                $vehicle = $this->carVehicleService->createFromApi($data['vehicle']);
+                $dataToUpdate = $this->setCarData($vehicle, $data);
+                $car = Car::create($dataToUpdate);
+            }
+
+            // Обновляем изображения
+            if (!is_null($data['images'])) {
+                $this->updateCarImagesApi($data['images'], $vehicle->car ?? $car);
+            }
+
+            DB::commit(); // Завершаем транзакцию
+
+            return response()->json(['message' => 'Car added/updated successfully'], 200);
+        } catch (\Exception $e) {
+            DB::rollBack(); // Откатываем транзакцию в случае ошибки
+            Log::error('Car creation/update failed', ['error' => $e->getMessage()]);
+
+            return response()->json([
+                'error' => 'Internal Server Error',
+                'message' => $e->getMessage()
+            ], 500);
+        }
+    }
 
 
 
