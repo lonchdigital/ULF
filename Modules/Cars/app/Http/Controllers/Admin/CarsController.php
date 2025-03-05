@@ -99,7 +99,14 @@ class CarsController extends Controller
     {
         try {
             $request->validate([
-                'directories_list' => 'required|array'
+                'directories_list' => ['required', 'array'],
+                'directories_list.VehicleFuelTypes' => ['required', 'boolean'],
+                'directories_list.VehicleColorType' => ['required', 'boolean'],
+                'directories_list.VehicleBodyType' => ['required', 'boolean'],
+                'directories_list.VehicleTransmissionTypes' => ['required', 'boolean'],
+                'directories_list.VehicleManufacturer' => ['required', 'boolean'],
+                'directories_list.VehicleDriverType' => ['required', 'boolean'],
+                'directories_list.VehicleModel' => ['required', 'boolean'],
             ]);
         } catch (\Exception $e) {
             Log::error('Error!', ['error' => $e->getMessage()]);
