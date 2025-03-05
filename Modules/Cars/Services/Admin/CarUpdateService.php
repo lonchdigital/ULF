@@ -134,6 +134,9 @@ class CarUpdateService extends CarBaseService
                     }
                 
                     DB::commit(); // end Transaction
+
+                    return response()->json(['message' => 'Car added/updated successfully'], 200);
+
                 } catch (\Exception $e) {
                     DB::rollBack(); // rollBack Transaction
                     Log::error('Car creation failed', ['error' => $e->getMessage()]);
@@ -141,8 +144,6 @@ class CarUpdateService extends CarBaseService
                 }
 
             }
-
-            return response()->json(['message' => 'Car added/updated successfully'], 200);
 
         } catch (\Exception $e) {
             return response()->json(['error' => 'Failed to add/update car', 'details' => $e->getMessage()], 500);
