@@ -139,9 +139,10 @@ class CarUpdateService extends CarBaseService
 
                 } catch (\Exception $e) {
                     DB::rollBack(); // Откатываем транзакцию
-                    Log::error('Car creation failed 2', ['error' => $e->getMessage()]);
-                    
-                    throw $e;
+                    Log::error('Car creation failed', ['error' => $e->getMessage()]);
+
+                    return response()->json(['error' => 'Internal Server Error'], 500)
+                     ->header('Content-Type', 'application/json');
                 }
 
             }
