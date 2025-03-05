@@ -116,7 +116,7 @@ class CarUpdateService extends CarBaseService
                             $this->updateCarImagesApi($data['images'], $car);
                         }
                     } catch (\Exception $e) {
-                        Log::error('Car creation failed', ['error' => $e->getMessage()]);
+                        Log::error('Car creation failed 1', ['error' => $e->getMessage()]);
                         abort(500, 'Internal Server Error');
                     }
                 });
