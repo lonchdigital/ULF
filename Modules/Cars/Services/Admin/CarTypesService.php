@@ -11,6 +11,7 @@ use Modules\Cars\Models\ColorType;
 use Modules\Cars\Models\DriverType;
 use Modules\Cars\Models\TransmissionType;
 use Modules\Cars\Models\ModelManufacturer;
+use Illuminate\Support\Facades\Log;
 
 class CarTypesService
 {
@@ -163,44 +164,50 @@ class CarTypesService
 
     public function updateDirectoriesByKey(array $directoriesList)
     {
-        $carApiService = new CarApiService;
-        $authService = new AuthService;
-        $authService->getToken();
+        try {
+            $carApiService = new CarApiService;
+            $authService = new AuthService;
+            $authService->getToken();
 
-        if($directoriesList['VehicleFuelTypes']) {
-            $this->updateAllVehicleFuelTypes(
-                $carApiService->getDictionaryByName('VehicleFuelTypes', $authService->accessToken)
-            );
-        }
-        if($directoriesList['VehicleColorType']) {
-            $this->updateAllVehicleColorTypes(
-                $carApiService->getDictionaryByName('VehicleColorType', $authService->accessToken)
-            );
-        }
-        if($directoriesList['VehicleBodyType']) {
-            $this->updateAllVehicleTypes(
-                $carApiService->getDictionaryByName('VehicleBodyType', $authService->accessToken)
-            );
-        }
-        if($directoriesList['VehicleTransmissionTypes']) {
-            $this->updateAllVehicleTransmissionTypes(
-                $carApiService->getDictionaryByName('VehicleTransmissionTypes', $authService->accessToken)
-            );
-        }
-        if($directoriesList['VehicleManufacturer']) {
-            $this->updateAllManufacturers(
-                $carApiService->getDictionaryByName('VehicleManufacturer', $authService->accessToken)
-            );
-        }
-        if($directoriesList['VehicleDriverType']) {
-            $this->updateAllVehicleDriverTypes(
-                $carApiService->getDictionaryByName('VehicleDriverType', $authService->accessToken)
-            );
-        }
-        if($directoriesList['VehicleModel']) {
-            $this->updateAllVehicleModels(
-                $carApiService->getDictionaryByName('VehicleModel', $authService->accessToken)
-            );
+            if($directoriesList['VehicleFuelTypes']) {
+                $this->updateAllVehicleFuelTypes(
+                    $carApiService->getDictionaryByName('VehicleFuelTypes', $authService->accessToken)
+                );
+            }
+            if($directoriesList['VehicleColorType']) {
+                $this->updateAllVehicleColorTypes(
+                    $carApiService->getDictionaryByName('VehicleColorType', $authService->accessToken)
+                );
+            }
+            if($directoriesList['VehicleBodyType']) {
+                $this->updateAllVehicleTypes(
+                    $carApiService->getDictionaryByName('VehicleBodyType', $authService->accessToken)
+                );
+            }
+            if($directoriesList['VehicleTransmissionTypes']) {
+                $this->updateAllVehicleTransmissionTypes(
+                    $carApiService->getDictionaryByName('VehicleTransmissionTypes', $authService->accessToken)
+                );
+            }
+            if($directoriesList['VehicleManufacturer']) {
+                $this->updateAllManufacturers(
+                    $carApiService->getDictionaryByName('VehicleManufacturer', $authService->accessToken)
+                );
+            }
+            if($directoriesList['VehicleDriverType']) {
+                $this->updateAllVehicleDriverTypes(
+                    $carApiService->getDictionaryByName('VehicleDriverType', $authService->accessToken)
+                );
+            }
+            if($directoriesList['VehicleModel']) {
+                $this->updateAllVehicleModels(
+                    $carApiService->getDictionaryByName('VehicleModel', $authService->accessToken)
+                );
+            }
+
+        } catch (\Exception $e) {
+            Log::error('Error!', ['error' => $e->getMessage()]);
+            abort(500, 'Internal Server Error');
         }
     }
 }
