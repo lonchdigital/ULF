@@ -105,21 +105,40 @@ class CarUpdateService extends CarBaseService
 
             } else {
 
-                DB::transaction(function () use ($data) {
-                    try {
-                        $vehicle = $this->carVehicleService->createFromApi($data['vehicle']);
-                        $dataToUpdate = $this->setCarData($vehicle, $data);
+                // DB::transaction(function () use ($data) {
+                //     try {
+                //         $vehicle = $this->carVehicleService->createFromApi($data['vehicle']);
+                //         $dataToUpdate = $this->setCarData($vehicle, $data);
                 
-                        $car = Car::create($dataToUpdate);
+                //         $car = Car::create($dataToUpdate);
                 
-                        if (!is_null($data['images'])) {
-                            $this->updateCarImagesApi($data['images'], $car);
-                        }
-                    } catch (\Exception $e) {
-                        Log::error('Car creation failed', ['error' => $e->getMessage()]);
-                        throw new \RuntimeException('Internal Server Error', 500);
+                //         if (!is_null($data['images'])) {
+                //             $this->updateCarImagesApi($data['images'], $car);
+                //         }
+                //     } catch (\Exception $e) {
+                //         Log::error('Car creation failed', ['error' => $e->getMessage()]);
+                //         throw new \RuntimeException('Internal Server Error', 500);
+                //     }
+                // });
+
+                try {
+                    DB::beginTransaction();
+                
+                    $vehicle = $this->carVehicleService->createFromApi($data['vehicle']);
+                    $dataToUpdate = $this->setCarData($vehicle, $data);
+                
+                    $car = Car::create($dataToUpdate);
+                
+                    if (!is_null($data['images'])) {
+                        $this->updateCarImagesApi($data['images'], $car);
                     }
-                });
+                
+                    DB::commit(); // end Transaction
+                } catch (\Exception $e) {
+                    DB::rollBack(); // rollBack Transaction
+                    Log::error('Car creation failed', ['error' => $e->getMessage()]);
+                    throw new \RuntimeException('Internal Server Error', 500);
+                }
 
             }
 
