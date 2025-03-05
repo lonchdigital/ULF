@@ -72,10 +72,8 @@ class CarUpdateService extends CarBaseService
     }
 
     // Create/Update ONE car that we got by API
-    /*
     public function addOneCar($data)
     {
-
         try {
             $this->validateLotData($data);
         } catch (\Exception $e) {
@@ -83,112 +81,64 @@ class CarUpdateService extends CarBaseService
             abort(500, 'Internal Server Error');
         }
 
-        try {
+        $existingItem = Car::where('lot_id', $data['id'])->first();
+        if($existingItem) {
 
-            $existingItem = Car::where('lot_id', $data['id'])->first();
-            if($existingItem) {
+            try {
+                DB::beginTransaction();
 
-                try {
-                    DB::beginTransaction();
-
-                    $vehicle = $this->carVehicleService->updateFromApi($data['vehicle'], $existingItem);
-                    $dataToUpdate = $this->setCarData($vehicle, $data);
-
-                    $vehicle->car->update($dataToUpdate);
-
-                    if(!is_null($data['images'])){
-                        $this->updateCarImagesApi($data['images'], $vehicle->car);
-                    }
-
-                    DB::commit(); // end Transaction
-                    return response()->json(['message' => 'Car added/updated successfully'], 200);
-
-                } catch (\Exception $e) {
-                    DB::rollBack(); // rollBack Transaction
-                    Log::error('Car updating failed', ['error' => $e->getMessage()]);
-
-
-                    header("HTTP/1.1 500 Internal Server Error");
-                    header("Content-Type: application/json");
-                    echo json_encode(['error' => 'Internal Server Error', 'message' => $e->getMessage()]);
-                    exit();
-                }
-
-            } else {
-
-                try {
-                    DB::beginTransaction();
-                
-                    $vehicle = $this->carVehicleService->createFromApi($data['vehicle']);
-                    $dataToUpdate = $this->setCarData($vehicle, $data);
-                
-                    $car = Car::create($dataToUpdate);
-                
-                    if (!is_null($data['images'])) {
-                        $this->updateCarImagesApi($data['images'], $car);
-                    }
-                
-                    DB::commit(); // end Transaction
-                    return response()->json(['message' => 'Car added/updated successfully'], 200);
-
-                } catch (\Exception $e) {
-                    DB::rollBack(); // rollBack Transaction
-                    Log::error('Car creation failed', ['error' => $e->getMessage()]);
-
-                    header("HTTP/1.1 500 Internal Server Error");
-                    header("Content-Type: application/json");
-                    echo json_encode(['error' => 'Internal Server Error', 'message' => $e->getMessage()]);
-                    exit();
-                }
-
-            }
-
-        } catch (\Exception $e) {
-            return response()->json(['error' => 'Failed to add/update car', 'details' => $e->getMessage()], 500);
-        }
-
-    }
-*/
-
-    public function addOneCar($data)
-    {
-        try {
-            // Валидация
-            $this->validateLotData($data);
-
-            DB::beginTransaction(); // Начинаем одну транзакцию для всех операций
-
-            $existingItem = Car::where('lot_id', $data['id'])->first();
-            
-            if ($existingItem) {
                 $vehicle = $this->carVehicleService->updateFromApi($data['vehicle'], $existingItem);
                 $dataToUpdate = $this->setCarData($vehicle, $data);
+
                 $vehicle->car->update($dataToUpdate);
-            } else {
+
+                if(!is_null($data['images'])){
+                    $this->updateCarImagesApi($data['images'], $vehicle->car);
+                }
+
+                DB::commit(); // end Transaction
+                return response()->json(['message' => 'Car added/updated successfully'], 200);
+
+            } catch (\Exception $e) {
+                DB::rollBack(); // rollBack Transaction
+                Log::error('Car updating failed', ['error' => $e->getMessage()]);
+
+                header("HTTP/1.1 500 Internal Server Error");
+                header("Content-Type: application/json");
+                echo json_encode(['error' => 'Internal Server Error', 'message' => $e->getMessage()]);
+                exit();
+            }
+
+        } else {
+
+            try {
+                DB::beginTransaction();
+            
                 $vehicle = $this->carVehicleService->createFromApi($data['vehicle']);
                 $dataToUpdate = $this->setCarData($vehicle, $data);
+            
                 $car = Car::create($dataToUpdate);
+            
+                if (!is_null($data['images'])) {
+                    $this->updateCarImagesApi($data['images'], $car);
+                }
+            
+                DB::commit(); // end Transaction
+                return response()->json(['message' => 'Car added/updated successfully'], 200);
+
+            } catch (\Exception $e) {
+                DB::rollBack(); // rollBack Transaction
+                Log::error('Car creation failed', ['error' => $e->getMessage()]);
+
+                header("HTTP/1.1 500 Internal Server Error");
+                header("Content-Type: application/json");
+                echo json_encode(['error' => 'Internal Server Error', 'message' => $e->getMessage()]);
+                exit();
             }
 
-            // Обновляем изображения
-            if (!is_null($data['images'])) {
-                $this->updateCarImagesApi($data['images'], $vehicle->car ?? $car);
-            }
-
-            DB::commit(); // Завершаем транзакцию
-
-            return response()->json(['message' => 'Car added/updated successfully'], 200);
-        } catch (\Exception $e) {
-            DB::rollBack(); // Откатываем транзакцию в случае ошибки
-            Log::error('Car creation/update failed', ['error' => $e->getMessage()]);
-
-            return response()->json([
-                'error' => 'Internal Server Error',
-                'message' => $e->getMessage()
-            ], 500);
         }
-    }
 
+    }
 
 
     // Update one car from dashboard
