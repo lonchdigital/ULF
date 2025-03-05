@@ -99,7 +99,7 @@ class CarUpdateService extends CarBaseService
                         }
                     } catch (\Exception $e) {
                         Log::error('Car updating failed', ['error' => $e->getMessage()]);
-                        throw $e;
+                        abort(500, 'Internal Server Error');
                     }
                 });
 
@@ -117,7 +117,7 @@ class CarUpdateService extends CarBaseService
                         }
                     } catch (\Exception $e) {
                         Log::error('Car creation failed', ['error' => $e->getMessage()]);
-                        throw $e;
+                        abort(500, 'Internal Server Error');
                     }
                 });
 
