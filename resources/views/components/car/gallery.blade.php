@@ -9,32 +9,25 @@
                     <div class="gallery-car--swiper mb-4 mb-xl-5">
                         <div class="swiper-wrapper">
 
-                            {{-- <div class="swiper-slide">
-                                <a data-fancybox="gallery" data-src="#gallery-car-video-1">
-                                    <div class="wrap-img">
-                                        <div class="video-wrap">
-                                            <img src="img/gallery-car-1.jpeg" alt="img">
+                            @if( !is_null( $subscriptionExtentional) && !is_null( $subscriptionExtentional->youtube_link ) )
+                                <div class="swiper-slide">
+                                    <a data-fancybox="gallery" data-src="#gallery-car-video-2">
+                                        <div class="wrap-img">
+                                            <div class="video-wrap">
+                                                @php
+                                                    $imageVideo = optional($car->images->where('TypeId', 2)->first())->Url;
+                                                @endphp
+                                                <img src="{{ $imageVideo ? '/storage/' . $imageVideo : null }}" alt="img">
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div id="gallery-car-video-2" class="video-wrap" style="display:none">
+                                        <div class="plyr__video-embed js-player">
+                                            <iframe src="{{ $subscriptionExtentional->youtube_link }}" allowfullscreen allowtransparency allow="autoplay"></iframe>
                                         </div>
                                     </div>
-                                </a>
-                                <div id="gallery-car-video-1" class="video-wrap" style="display:none">
-                                    <video class="js-player" playsinline controls data-poster="img/gallery-car-1.jpeg">
-                                        <source src="assets/video/example.mp4" type="video/mp4" />
-                                    </video>
                                 </div>
-                            </div> --}}
-
-                            <div class="swiper-slide">
-                                <div class="col-auto">
-                                    <div class="video-wrap you-tube-video-wrapper video-wrap--vissible">
-                                        <a data-fancybox="specific-player" href="{{ $subscriptionExtentional->youtube_link }}"
-                                            class="btn you-tube-video btn-video-play-pause">
-                                            <img src="{{ '/storage/' . $car->images->where('TypeId', 2)->first()->Url }}" alt="Client history image">
-                                            <button type="button" class="btn btn-video-play-pause"></button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                            @endif
 
                             @foreach ($car->images->where('TypeId', 2) as $image)
                                 <div class="swiper-slide">
@@ -53,11 +46,15 @@
                     <div class="gallery-car-thumbs--swiper d-none d-sm-block">
                         <div class="swiper-wrapper">
 
-                            <div class="swiper-slide">
-                                <div class="wrap-img">
-                                    <img src="{{ '/storage/' . $car->images->where('TypeId', 2)->first()->Url }}" alt="img">
+                            @if( !is_null( $subscriptionExtentional) && !is_null( $subscriptionExtentional->youtube_link ) )
+                                <div class="swiper-slide">
+                                    <div class="wrap-img">
+                                        <div class="video-wrap">
+                                            <img src="{{ $imageVideo ? '/storage/' . $imageVideo : null }}" alt="img">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
 
                             @foreach ($car->images->where('TypeId', 2) as $image)
                                 <div class="swiper-slide">
