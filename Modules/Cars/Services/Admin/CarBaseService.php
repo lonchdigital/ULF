@@ -70,11 +70,12 @@ class CarBaseService
     public function validateLotData(array $lot): void
     {
         $validator = Validator::make($lot, [
-            'id' => 'required|integer',
+            'id' => 'required|integer',  
             'vehicle' => 'required|array',
             'vehicle.model' => 'required|array',
             'vehicle.model.manufacturer' => 'required|array',
             'images' => 'nullable|array',
+            'subscriptionExtentional' => 'nullable|array'
         ]);
 
         if ($validator->fails()) {

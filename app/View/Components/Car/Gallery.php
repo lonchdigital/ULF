@@ -12,7 +12,10 @@ class Gallery extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public readonly Car $car)
+    public function __construct(
+        public readonly Car $car, 
+        public $subscriptionExtentional
+        )
     {
         //
     }
@@ -23,7 +26,8 @@ class Gallery extends Component
     public function render(): View|Closure|string
     {
         return view('components.car.gallery', [
-            'car' => $this->car
+            'car' => $this->car,
+            'subscriptionExtentional' => $this->subscriptionExtentional,
         ]);
     }
 }

@@ -8,6 +8,7 @@ use Modules\Cars\Models\Vehicle;
 use Modules\Cars\Models\CarImage;
 use Illuminate\Support\Facades\DB;
 use Modules\Cars\Models\CarsAvailability;
+use Modules\Cars\Models\SubscriptionExtentional;
 use Modules\Cars\Models\CarPageTranslation;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
@@ -76,7 +77,7 @@ class CarsService extends CarBaseService
 
         $vehicle = $car->vehicle;
 
-        DB::transaction(function () use ($vehicle) {
+        DB::transaction(function () use ($vehicle, $lotId) {
             if (!is_null($vehicle->car)) {
                 if ($vehicle->car->images->isNotEmpty()) {
                     foreach ($vehicle->car->images as $image) {
@@ -88,6 +89,11 @@ class CarsService extends CarBaseService
                 if ($vehicle->car->page) {
                     $vehicle->car->page->delete();
                 }
+            }
+
+            $subscriptionExtentional = SubscriptionExtentional::where('lot_id', $lotId)->first();
+            if($subscriptionExtentional) {
+                $subscriptionExtentional->delete();
             }
 
             $vehicle->delete();

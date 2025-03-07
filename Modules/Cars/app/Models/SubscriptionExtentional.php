@@ -3,20 +3,19 @@
 namespace Modules\Cars\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Modules\Cars\Database\Factories\SubscriptionExtentionalFactory;
 
 class SubscriptionExtentional extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
+    
+    protected $fillable = [
+        'lot_id',
+        'type_id',
+        'availability_id',
+        'youtube_link',
+        'document_link',
+        'overdrive_price_uah',
+        'subscription_extentional_id'
+    ];
 
-    /**
-     * The attributes that are mass assignable.
-     */
-    protected $fillable = [];
-
-    protected static function newFactory(): SubscriptionExtentionalFactory
-    {
-        //return SubscriptionExtentionalFactory::new();
-    }
 }

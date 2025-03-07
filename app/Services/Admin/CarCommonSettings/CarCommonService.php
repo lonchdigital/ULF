@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Cache;
 use Modules\Cars\Models\SubscribePrice;
 use Modules\Cars\Models\TransmissionType;
 use App\Services\Application\ApplicationConfigService;
+use Modules\Cars\Models\SubscriptionExtentional;
 
 class CarCommonService
 {
@@ -106,6 +107,10 @@ class CarCommonService
             ->inRandomOrder()
             ->take(3)
             ->get();
+    }
+    public function getSubscriptionExtentional(int $lotId)
+    {
+        return SubscriptionExtentional::where('lot_id', $lotId)->first();
     }
     public function getAllCommonCarSettings()
     {

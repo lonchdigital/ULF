@@ -97,7 +97,7 @@
                 </div>
             </section>
 
-            <x-car.gallery :car="$car" />
+            <x-car.gallery :car="$car" :subscriptionExtentional="$subscriptionExtentional" />
 
             <section class="car-content pb-4 pb-md-7 pb-lg-9">
                 <div class="container">

@@ -5,6 +5,7 @@ namespace Modules\Cars\Services\Admin;
 use Modules\Cars\Models\Car;
 use Modules\Cars\Models\CarFaq;
 use Modules\Cars\Models\Vehicle;
+use Modules\Cars\Models\SubscriptionExtentional;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\DataClasses\CarStatusesClass;
@@ -70,6 +71,40 @@ class CarUpdateService extends CarBaseService
 
         return $dataToUpdate;
     }
+    private function createSubscriptionExtentional(array|null $data)
+    {
+        if(!is_null($data)) {
+            $dataToUpdate = [
+                'lot_id' => $data['lotId'],
+                'type_id' => $data['typeId'],
+                'availability_id' => $data['availabilityId'],
+                'youtube_link' => $data['youtubeLink'],
+                'document_link' => $data['documentLink'],
+                'overdrive_price_uah' => $data['overdrivePriceUah'],
+                'subscription_extentional_id' => $data['id'],
+            ];
+
+            SubscriptionExtentional::create($dataToUpdate);
+        }
+    }
+    private function updateSubscriptionExtentional(array|null $data)
+    {
+        $subscriptionExtentional = SubscriptionExtentional::where('lot_id', $data['lotId'])->first();
+        if($subscriptionExtentional) {
+            $dataToUpdate = [
+                'lot_id' => $data['lotId'],
+                'type_id' => $data['typeId'],
+                'availability_id' => $data['availabilityId'],
+                'youtube_link' => $data['youtubeLink'],
+                'document_link' => $data['documentLink'],
+                'overdrive_price_uah' => $data['overdrivePriceUah'],
+                'subscription_extentional_id' => $data['id'],
+            ];
+            $subscriptionExtentional->update($dataToUpdate);
+        } else {
+            $this->createSubscriptionExtentional($data);
+        }
+    }
 
     // Create/Update ONE car that we got by API
     public function addOneCar($data)
@@ -85,7 +120,7 @@ class CarUpdateService extends CarBaseService
         if($existingItem) {
 
             try {
-                DB::beginTransaction();
+                DB::beginTransaction(); // Start Transaction
 
                 $vehicle = $this->carVehicleService->updateFromApi($data['vehicle'], $existingItem);
                 $dataToUpdate = $this->setCarData($vehicle, $data);
@@ -95,6 +130,8 @@ class CarUpdateService extends CarBaseService
                 if(!is_null($data['images'])){
                     $this->updateCarImagesApi($data['images'], $vehicle->car);
                 }
+
+                $this->updateSubscriptionExtentional($data['subscriptionExtentional']);
 
                 DB::commit(); // end Transaction
                 return response()->json(['message' => 'Car added/updated successfully'], 200);
@@ -112,7 +149,7 @@ class CarUpdateService extends CarBaseService
         } else {
 
             try {
-                DB::beginTransaction();
+                DB::beginTransaction(); // Start Transaction
             
                 $vehicle = $this->carVehicleService->createFromApi($data['vehicle']);
                 $dataToUpdate = $this->setCarData($vehicle, $data);
@@ -122,6 +159,8 @@ class CarUpdateService extends CarBaseService
                 if (!is_null($data['images'])) {
                     $this->updateCarImagesApi($data['images'], $car);
                 }
+
+                $this->createSubscriptionExtentional($data['subscriptionExtentional']);
             
                 DB::commit(); // end Transaction
                 return response()->json(['message' => 'Car added/updated successfully'], 200);

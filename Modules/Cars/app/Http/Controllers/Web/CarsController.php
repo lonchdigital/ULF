@@ -48,6 +48,7 @@ class CarsController extends Controller
         return view('cars::web.show', [
             'page' => $carPage,
             'car' => $carPage->car,
+            'subscriptionExtentional' => $this->commonService->getSubscriptionExtentional($carPage->car->lot_id),
             'subscribeMonthSettings' => $this->commonService->getAllSubscribeSettings(),
             'subscribeBenefits' => $this->commonService->getAllSubscribeBenefits(),
             'carDriveBlock' => CarDriveBlock::first(),
