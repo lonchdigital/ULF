@@ -57,6 +57,8 @@ class CarVehicleService
 
         $dataToUpdate = array_merge($dataToUpdate, $this->updateVehicleTypes($data));
 
+        dd($car, $car->vehicle, '555');
+
         $car->vehicle->update($dataToUpdate);
 
         if(!is_null($data['equipment'])){
