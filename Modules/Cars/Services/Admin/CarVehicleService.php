@@ -30,6 +30,8 @@ class CarVehicleService
 
         $dataToUpdate = array_merge($dataToUpdate, $this->updateVehicleTypes($data));
 
+        dd('create Vehicle', $dataToUpdate);
+
         $vehicle = Vehicle::create($dataToUpdate);
 
         if(!is_null($data['equipment'])){
@@ -75,7 +77,7 @@ class CarVehicleService
     {
         $model = Model::where('model_id', $data['model']['id'])->first();
         if(is_null($model)) {
-            throw new \Exception('The model of the car canot be found!');
+            throw new \Exception('The model of the car cannot be found!');
         }
         $dataToUpdate['model_id'] = $model->id;
 
