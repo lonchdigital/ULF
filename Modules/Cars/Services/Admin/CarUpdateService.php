@@ -89,20 +89,22 @@ class CarUpdateService extends CarBaseService
     }
     private function updateSubscriptionExtentional(array|null $data)
     {
-        $subscriptionExtentional = SubscriptionExtentional::where('lot_id', $data['lotId'])->first();
-        if($subscriptionExtentional) {
-            $dataToUpdate = [
-                'lot_id' => $data['lotId'],
-                'type_id' => $data['typeId'],
-                'availability_id' => $data['availabilityId'],
-                'youtube_link' => $data['youtubeLink'],
-                'document_link' => $data['documentLink'],
-                'overdrive_price_uah' => $data['overdrivePriceUah'],
-                'subscription_extentional_id' => $data['id'],
-            ];
-            $subscriptionExtentional->update($dataToUpdate);
-        } else {
-            $this->createSubscriptionExtentional($data);
+        if( !is_null($data) ) {
+            $subscriptionExtentional = SubscriptionExtentional::where('lot_id', $data['lotId'])->first();
+            if($subscriptionExtentional) {
+                $dataToUpdate = [
+                    'lot_id' => $data['lotId'],
+                    'type_id' => $data['typeId'],
+                    'availability_id' => $data['availabilityId'],
+                    'youtube_link' => $data['youtubeLink'],
+                    'document_link' => $data['documentLink'],
+                    'overdrive_price_uah' => $data['overdrivePriceUah'],
+                    'subscription_extentional_id' => $data['id'],
+                ];
+                $subscriptionExtentional->update($dataToUpdate);
+            } else {
+                $this->createSubscriptionExtentional($data);
+            }
         }
     }
 
