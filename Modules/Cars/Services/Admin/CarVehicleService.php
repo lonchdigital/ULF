@@ -58,16 +58,23 @@ class CarVehicleService
         $dataToUpdate = array_merge($dataToUpdate, $this->updateVehicleTypes($data));
         $car->vehicle->update($dataToUpdate);
 
-        dd($car->vehicle->equipment, 'equipment');
-
         if(!is_null($data['equipment'])){
-            $equipmentData = [];
-            foreach($data['equipment'] as $key => $value){
-                $equipmentData[$key] = $value;
-            }
-//            $equipmentData['vehicle_id'] = $vehicle->id;
 
-            $car->vehicle->equipment->update($equipmentData);
+            if(!is_null($car->vehicle->equipment)) {
+                $equipmentData = [];
+                foreach($data['equipment'] as $key => $value){
+                    $equipmentData[$key] = $value;
+                }
+                $car->vehicle->equipment->update($equipmentData);
+            } else {
+                $equipmentData = [];
+                foreach($data['equipment'] as $key => $value){
+                    $equipmentData[$key] = $value;
+                }
+                $equipmentData['vehicle_id'] = $car->vehicle->id;
+                Equipment::create($equipmentData);
+            }
+
         }
 
         return $car->vehicle;
