@@ -125,6 +125,7 @@ class CarUpdateService extends CarBaseService
                 DB::beginTransaction(); // Start Transaction
 
                 $vehicle = $this->carVehicleService->updateFromApi($data['vehicle'], $existingItem);
+                // dd($vehicle);
                 $dataToUpdate = $this->setCarData($vehicle, $data);
 
                 $vehicle->car->update($dataToUpdate);

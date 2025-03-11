@@ -74,7 +74,10 @@ class CarVehicleService
     private function updateVehicleTypes(array $data) : array
     {
         $model = Model::where('model_id', $data['model']['id'])->first();
-        $dataToUpdate['model_id'] = ($model) ? $model->id : null;
+        if(is_null($model)) {
+            throw new \Exception('The model of the car canot be found!');
+        }
+        $dataToUpdate['model_id'] = $model->id;
 
         if(!is_null($data['fuelType'])){
             $fuelType = FuelType::where('fuel_type_id', $data['fuelType']['id'])->first();
