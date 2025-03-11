@@ -58,6 +58,8 @@ class CarVehicleService
         $dataToUpdate = array_merge($dataToUpdate, $this->updateVehicleTypes($data));
         $car->vehicle->update($dataToUpdate);
 
+        dd($car->vehicle->equipment, 'equipment');
+
         if(!is_null($data['equipment'])){
             $equipmentData = [];
             foreach($data['equipment'] as $key => $value){
@@ -67,8 +69,6 @@ class CarVehicleService
 
             $car->vehicle->equipment->update($equipmentData);
         }
-
-        dd('done? 22');
 
         return $car->vehicle;
     }
