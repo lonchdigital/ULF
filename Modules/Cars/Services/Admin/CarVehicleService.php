@@ -56,10 +56,7 @@ class CarVehicleService
         $dataToUpdate['mileage'] = $data['mileage'];
 
         $dataToUpdate = array_merge($dataToUpdate, $this->updateVehicleTypes($data));
-
         $car->vehicle->update($dataToUpdate);
-
-        dd('done?');
 
         if(!is_null($data['equipment'])){
             $equipmentData = [];
@@ -70,6 +67,8 @@ class CarVehicleService
 
             $car->vehicle->equipment->update($equipmentData);
         }
+
+        dd('done? 22');
 
         return $car->vehicle;
     }
