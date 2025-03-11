@@ -118,6 +118,8 @@ class CarUpdateService extends CarBaseService
             abort(500, 'Internal Server Error');
         }
 
+        dd('here ??');
+
         $existingItem = Car::where('lot_id', $data['id'])->first();
         if($existingItem) {
 
