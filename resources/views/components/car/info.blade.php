@@ -1,6 +1,6 @@
 <div class="h3 font-weight-bolder mb-5 d-none d-lg-block">{{ trans('web.about_car') }}</div>
 <div class="h4 font-weight-bolder mb-5 d-lg-none text-center">{{ trans('web.car_info') }}</div>
-<div class="h5 font-weight-bold mb-5"></div>{!! nl2br(e($car->description)) !!}
+<div class="h5 font-weight-bold mb-5">{!! nl2br(e($car->description)) !!}</div>
 <div class="h4 font-weight-bolder mb-5">{{ trans('web.information') }}</div>
 <div class="car-properties">
     @if(!is_null($car->vehicle->fuelType))
