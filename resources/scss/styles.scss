@@ -1812,6 +1812,10 @@
 .horizontal-scoll-wrapper {
 	min-height: 542px;
 
+	@include sm-max() {
+		min-height: unset;
+	}
+
 	.scroll-gallery-cars--item {
 		// @include md-max {
 		flex: 0 0 auto;
