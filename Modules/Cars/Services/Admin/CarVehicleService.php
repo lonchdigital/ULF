@@ -30,8 +30,6 @@ class CarVehicleService
 
         $dataToUpdate = array_merge($dataToUpdate, $this->updateVehicleTypes($data));
 
-        dd('create Vehicle', $dataToUpdate);
-
         $vehicle = Vehicle::create($dataToUpdate);
 
         if(!is_null($data['equipment'])){

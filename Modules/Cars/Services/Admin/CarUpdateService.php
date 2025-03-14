@@ -110,6 +110,8 @@ class CarUpdateService extends CarBaseService
     }
 
     // Create/Update ONE car that we got by API
+    // TODO:: OLD version of adding a new car
+    /*
     public function addOneCar($data)
     {
         try {
@@ -181,7 +183,67 @@ class CarUpdateService extends CarBaseService
         }
 
     }
+    */
 
+    public function addOneCar($data)
+    {
+        try {
+            $this->validateLotData($data);
+        } catch (\Exception $e) {
+            Log::error('Validation failed for car', ['error' => $e->getMessage(), 'car' => $data['id'] ?? null]);
+            return false;
+        }
+
+        $existingItem = Car::where('lot_id', $data['id'])->first();
+
+        if ($existingItem) {
+            try {
+                DB::beginTransaction();
+
+                $vehicle = $this->carVehicleService->updateFromApi($data['vehicle'], $existingItem);
+                $dataToUpdate = $this->setCarData($vehicle, $data);
+
+                $vehicle->car->update($dataToUpdate);
+
+                if (!is_null($data['images'])) {
+                    $this->updateCarImagesApi($data['images'], $vehicle->car);
+                }
+
+                $this->updateSubscriptionExtentional($data['subscriptionExtentional']);
+
+                DB::commit();
+                return true; // Успешно
+
+            } catch (\Exception $e) {
+                DB::rollBack();
+                Log::error('Car updating failed', ['error' => $e->getMessage(), 'car' => $data['id'] ?? null]);
+                return false;
+            }
+        } else {
+            try {
+                DB::beginTransaction();
+
+                $vehicle = $this->carVehicleService->createFromApi($data['vehicle']);
+                $dataToUpdate = $this->setCarData($vehicle, $data);
+
+                $car = Car::create($dataToUpdate);
+
+                if (!is_null($data['images'])) {
+                    $this->updateCarImagesApi($data['images'], $car);
+                }
+
+                $this->createSubscriptionExtentional($data['subscriptionExtentional']);
+
+                DB::commit();
+                return true; // Успешно
+
+            } catch (\Exception $e) {
+                DB::rollBack();
+                Log::error('Car creation failed', ['error' => $e->getMessage(), 'car' => $data['id'] ?? null]);
+                return false;
+            }
+        }
+    }
 
     // Update one car from dashboard
     public function updateCarFromDashboard(Car $car, array $data)

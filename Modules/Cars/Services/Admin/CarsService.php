@@ -172,9 +172,9 @@ class CarsService extends CarBaseService
                 $carsWithData = $carApiService->getLotInfo($authService->accessToken, $carLotsInfo['value'])['value'];
 
                 foreach($carsWithData as $car) {
-                    $this->updateService->addOneCar($car);
+                    $result = $this->updateService->addOneCar($car); // create/update ONE car
 
-                    if (!empty($car['id'])) {
+                    if ($result && !empty($car['id'])) {
                         $apiCarIds[] = $car['id'];
                     }
                 }
@@ -183,5 +183,31 @@ class CarsService extends CarBaseService
             }
         
         } while (!empty($carLotsInfo['value']));
+
+
+        $this->deleteCarsNotInApi($apiCarIds);
+    }
+
+
+    private function deleteCarsNotInApi(array $apiCarIds)
+    {
+        if (empty($apiCarIds)) {
+            Log::info('There are no cars to delete!');
+            return;
+        }
+
+        // get list of lot_id NOT in API
+        $carsToDelete = Car::whereNotIn('lot_id', $apiCarIds)->pluck('lot_id');
+
+        if ($carsToDelete->isEmpty()) {
+            Log::info('No cars found to delete.');
+            return;
+        }
+
+        foreach ($carsToDelete as $lotId) {
+            $this->removeOneCar($lotId);
+        }
+
+        Log::info('Some cars were deleted.', ['count' => count($carsToDelete)]);
     }
 }
