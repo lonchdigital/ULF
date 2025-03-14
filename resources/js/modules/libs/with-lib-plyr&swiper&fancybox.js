@@ -775,6 +775,8 @@ new Swiper('.scroll-gallery-cars--swiper', {
 	freeMode: true,
 	spaceBetween: 20,
 	grabCursor: true,
+	watchOverflow: true,  // Ця опція дозволяє обробляти прокручування через мишку
+	mousewheel: true,     // Це включає прокручування слайдів за допомогою мишки
 	breakpoints: {
 		640: {
 		},
