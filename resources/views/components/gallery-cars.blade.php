@@ -1,7 +1,7 @@
 <section class="gallery-cars bg-dark-black py-7 py-md-10 py-lg-22 mb-7 mb-md-10 mb-lg-22">
     <div class="container-wrap">
         <div class="container">
-            <div class="row mb-6">
+            <div class="row">
                 <div class="col">
                     <div class="horizontal-scoll-wrapper scroll-gallery-cars--swiper">
                         <div class="scroll-gallery-cars row flex-nowrap swiper-wrapper">
