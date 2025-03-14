@@ -207,6 +207,8 @@ class CarUpdateService extends CarBaseService
 
                 if (!is_null($data['images'])) {
                     $this->updateCarImagesApi($data['images'], $vehicle->car);
+                } else {
+                    $this->removeCarImages($vehicle->car);
                 }
 
                 $this->updateSubscriptionExtentional($data['subscriptionExtentional']);
@@ -230,6 +232,8 @@ class CarUpdateService extends CarBaseService
 
                 if (!is_null($data['images'])) {
                     $this->updateCarImagesApi($data['images'], $car);
+                } else {
+                    $this->removeCarImages($vehicle->car);
                 }
 
                 $this->createSubscriptionExtentional($data['subscriptionExtentional']);

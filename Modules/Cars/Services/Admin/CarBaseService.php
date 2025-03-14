@@ -61,6 +61,16 @@ class CarBaseService
 
     }
 
+    public function removeCarImages(Car $car)
+    {
+        if(count($car->images) > 0) {
+            foreach ($car->images as $image) {
+                deleteImage($image->Url);
+                $image->delete();
+            }
+        }
+    }
+
     /**
      * Validate Lot data.
      *

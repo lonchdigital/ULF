@@ -147,11 +147,17 @@ class CarsService extends CarBaseService
 
     public function updateAllDirectories(array $directoriesList)
     {
+        Log::info('=== Updating directories started ===', ['date' => now()->format('d-m-Y H:i:s')]);
+
         $this->typesService->updateDirectoriesByKey($directoriesList);
+        
+        Log::info('=== Updating directories finished ===');
     }
 
     public function updateAllCars()
     {
+        Log::info('=== Updating cars started ===', ['date' => now()->format('d-m-Y H:i:s')]);
+
         try {
             $carApiService = new CarApiService;
             $authService = new AuthService;
@@ -186,6 +192,8 @@ class CarsService extends CarBaseService
 
 
         $this->deleteCarsNotInApi($apiCarIds);
+
+        Log::info('=== Updating cars finished ===');
     }
 
 
