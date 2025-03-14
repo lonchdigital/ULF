@@ -9,8 +9,10 @@ use Modules\Cars\Models\CarImage;
 use Illuminate\Support\Facades\DB;
 use Modules\Cars\Models\CarsAvailability;
 use Modules\Cars\Models\SubscriptionExtentional;
-use Modules\Cars\Models\CarPageTranslation;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use App\Services\CarCommands\AuthService;
+use App\Services\CarCommands\CarApiService;
+use Illuminate\Support\Facades\Log;
 
 class CarsService extends CarBaseService
 {
@@ -146,5 +148,40 @@ class CarsService extends CarBaseService
     public function updateAllDirectories(array $directoriesList)
     {
         $this->typesService->updateDirectoriesByKey($directoriesList);
+    }
+
+    public function updateAllCars()
+    {
+        try {
+            $carApiService = new CarApiService;
+            $authService = new AuthService;
+            $authService->getToken();
+        } catch (\Exception $e) {
+            Log::error('Error!', ['error' => $e->getMessage()]);
+            abort(500, 'Internal Server Error');
+        }
+        
+        $limit = 5;
+        $offset = 0;
+        $apiCarIds = [];
+        
+        do {
+            $carLotsInfo = $carApiService->getLotsList($authService->accessToken, $limit, $offset);
+        
+            if (!empty($carLotsInfo['value'])) {
+                $carsWithData = $carApiService->getLotInfo($authService->accessToken, $carLotsInfo['value'])['value'];
+
+                foreach($carsWithData as $car) {
+                    $this->updateService->addOneCar($car);
+
+                    if (!empty($car['id'])) {
+                        $apiCarIds[] = $car['id'];
+                    }
+                }
+        
+                $offset += $limit;
+            }
+        
+        } while (!empty($carLotsInfo['value']));
     }
 }

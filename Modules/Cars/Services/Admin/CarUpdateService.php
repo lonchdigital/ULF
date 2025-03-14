@@ -18,45 +18,46 @@ class CarUpdateService extends CarBaseService
 {
 
     // Create/Update cars that we got by API
-    public function updateCars($allLots, $console)
-    {
-        foreach($allLots as $lot){
-            try {
-                $console->info('Updating Lot ' . $lot['id']);
-                $this->validateLotData($lot);
-            } catch (\Exception $e) {
-                $console->info($e->getMessage());
-                continue;
-            }
+    // TODO :: remove as we do not need it anymore
+    // public function updateCars($allLots, $console)
+    // {
+    //     foreach($allLots as $lot){
+    //         try {
+    //             $console->info('Updating Lot ' . $lot['id']);
+    //             $this->validateLotData($lot);
+    //         } catch (\Exception $e) {
+    //             $console->info($e->getMessage());
+    //             continue;
+    //         }
 
-            $existingItem = Car::where('lot_id', $lot['id'])->first();
-            if($existingItem) {
+    //         $existingItem = Car::where('lot_id', $lot['id'])->first();
+    //         if($existingItem) {
 
-                $vehicle = $this->carVehicleService->updateFromApi($lot['vehicle'], $existingItem);
+    //             $vehicle = $this->carVehicleService->updateFromApi($lot['vehicle'], $existingItem);
 
-                $dataToUpdate = $this->setCarData($vehicle, $lot);
-                $vehicle->car->update($dataToUpdate);
+    //             $dataToUpdate = $this->setCarData($vehicle, $lot);
+    //             $vehicle->car->update($dataToUpdate);
 
-                if(!is_null($lot['images'])){
-                    $this->updateCarImagesApi($lot['images'], $vehicle->car);
-                }
+    //             if(!is_null($lot['images'])){
+    //                 $this->updateCarImagesApi($lot['images'], $vehicle->car);
+    //             }
 
-            } else {
+    //         } else {
 
-                $vehicle = $this->carVehicleService->createFromApi($lot['vehicle']);
+    //             $vehicle = $this->carVehicleService->createFromApi($lot['vehicle']);
 
-                $dataToUpdate = $this->setCarData($vehicle, $lot);
-                $car = Car::create($dataToUpdate);
+    //             $dataToUpdate = $this->setCarData($vehicle, $lot);
+    //             $car = Car::create($dataToUpdate);
 
-                if(!is_null($lot['images'])){
-                    $this->updateCarImagesApi($lot['images'], $car);
-                }
+    //             if(!is_null($lot['images'])){
+    //                 $this->updateCarImagesApi($lot['images'], $car);
+    //             }
 
-            }
+    //         }
 
-        }
+    //     }
 
-    }
+    // }
     private function setCarData(Vehicle $vehicle, $lot): array
     {
         $page = $this->pageService->updateFromApi([], $vehicle, $lot['id']);

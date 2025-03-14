@@ -13,5 +13,7 @@ use Modules\Cars\Http\Controllers\Admin\CarsController;
 Route::middleware('api.auth')->group(function() {
     Route::post('/add-or-update-car', [CarsController::class, 'addOrUpdateCar'])->name('api.add.car');
     Route::post('/remove-car', [CarsController::class, 'removeCar'])->name('api.remove.car');
+
     Route::post('/update-directories', [CarsController::class, 'updateDirectories'])->name('api.update.directories');
+    Route::post('/update-cars', [CarsController::class, 'updateCars'])->name('api.update.cars');
 });

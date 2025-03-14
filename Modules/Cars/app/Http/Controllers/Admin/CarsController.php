@@ -116,4 +116,9 @@ class CarsController extends Controller
         $this->service->updateAllDirectories($request->all()['directories_list']);
     }
 
+    public function updateCars()
+    {
+        $this->service->updateAllCars();
+    }
+
 }
