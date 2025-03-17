@@ -74,7 +74,7 @@
                                             </li>
                                         @endif
 
-                                        <li><a href="#">{{ trans('page_name.agreements') }}</a></li>
+                                        {{-- <li><a href="#">{{ trans('page_name.agreements') }}</a></li> --}}
                                     </ul>
                                 </div>
                                 <div class="col-12 col-md-6">

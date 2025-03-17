@@ -254,7 +254,7 @@
                                                                     </video>
                                                                     <button type="button" class="btn btn-video-mute-toggle muted"></button>
                                                                 </div>
-                    
+
                                                                 <div class="scroll-gallery--content">
                                                                     <div class="scroll-gallery--head mb-2">
                                                                         {{ $client->history_title }}</div>
@@ -425,7 +425,7 @@
                             <div class="our-fleet-search col">
                                 <div class="our-fleet-search--inner position-relative">
                                     <div class="our-fleet-preview--item bg-main-blue">
-                                        <div class="name text-white text-center">Не знайшов авто мрії в нашому автопарку?
+                                        <div class="name text-white text-center">{{ __('web.did_not_found_dream_car') }}
                                         </div>
                                         <div class="wrap-img">
                                             <img src="{{ asset('static_images/car-6.png') }}" alt="Image">
@@ -434,8 +434,7 @@
                                             <div class="col col-sm-auto mx-auto">
                                                 <button type="button"
                                                     class="btn-default btn-default-white btn btn-block btn-white text-uppercase font-weight-bold"
-                                                    data-toggle="modal" data-target="#popup-сar-selection">НА ПОШУКИ
-                                                    АВТО</button>
+                                                    data-toggle="modal" data-target="#popup-сar-selection">{{ __('web.go_find_the_car') }}</button>
                                             </div>
                                         </div>
                                         <div class="wrap-img wrap-img--hidden">

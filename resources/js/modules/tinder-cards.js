@@ -61,7 +61,7 @@ if (TinderCards) {
 				complete();
 			}
 		}
-        
+
 		document.querySelector('.tinder .i-dislike').onclick = () => {
 			if (!isAnimationInProgress) { // Перевіряємо, чи не триває анімація
 				isAnimationInProgress = true; // Позначаємо, що розпочата анімація
@@ -75,7 +75,7 @@ if (TinderCards) {
 			const carComment = current.querySelector('.name');
 			const carCommentValue = carComment ? carComment.textContent : null;
 
-			if (carCommentValue) {
+			if (carCommentValue && !favorites.includes(carCommentValue)) {
 				favorites.push(carCommentValue);
 			}
 

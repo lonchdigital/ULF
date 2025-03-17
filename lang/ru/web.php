@@ -36,7 +36,7 @@ return [
     'car_info' => 'Информация об авто',
     'engine' => 'Двигатель',
     'spend_100' => 'Расход (л/100км)',
-    'transmission' => 'Карбока',
+    'transmission' => 'Каробка',
     'mileage' => 'Пробег (км)',
     'car_body' => 'Кузов',
     'color' => 'Цвет',
@@ -92,4 +92,6 @@ return [
     'more_answers' => 'Больше ответов',
     'we_are_on_social_networks' => 'Мы в соц сетях',
     'language' => 'Язык',
+    'car_selection' => 'Подбор авто',
+    'specify_the_desired_brand_model_and_parameters' => 'Укажи желаемую марку, модель, параметры.',
 ];
