@@ -41,7 +41,8 @@ class FeedbackController extends Controller
             'page' => $data['page']
         ]);
 
-        return redirect()->to('/' . session('locale') . '/thanks');
+        // return redirect()->to('/' . session('locale') . '/thanks');
+        return redirect()->route('thanks', ['locale' => session('locale')]);
     }
 
     public function testDriveStore(TestDriveFeedbackRequest $request)
@@ -57,7 +58,8 @@ class FeedbackController extends Controller
             'page' => $data['page']
         ]);
 
-        return redirect()->to('/' . session('locale') . '/thanks');
+        // return redirect()->to('/' . session('locale') . '/thanks');
+        return redirect()->route('thanks', ['locale' => session('locale')]);
     }
 
     public function storeFavorite(StoreAutomatchRequest $request)
