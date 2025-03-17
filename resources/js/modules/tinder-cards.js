@@ -31,8 +31,8 @@ if (TinderCards) {
 
 		document.querySelector('.tinder .i-like').onclick = () => {
 			// const nameElement = current.querySelector('.name');
-			const carComment = current.querySelector('.name');
-			const carCommentValue = carComment ? carComment.textContent : null;
+			// const carComment = current.querySelector('.name');
+			// const carCommentValue = carComment ? carComment.textContent : null;
 
             // if (favorites.length == 2) {
             //     favorites.push(carCommentValue);
@@ -47,6 +47,13 @@ if (TinderCards) {
 			// 	favorites.push(carCommentValue);
 			// }
 
+            const carComment = current.querySelector('.name');
+            const carCommentValue = carComment ? carComment.textContent : null;
+
+            if (carCommentValue) {
+                favorites.push(carCommentValue);
+            }
+
 			if (!isAnimationInProgress) { // Перевіряємо, чи не триває анімація
 				isAnimationInProgress = true; // Позначаємо, що розпочата анімація
 				moveX = 1;
@@ -54,6 +61,7 @@ if (TinderCards) {
 				complete();
 			}
 		}
+        
 		document.querySelector('.tinder .i-dislike').onclick = () => {
 			if (!isAnimationInProgress) { // Перевіряємо, чи не триває анімація
 				isAnimationInProgress = true; // Позначаємо, що розпочата анімація
@@ -145,12 +153,7 @@ if (TinderCards) {
 //             }
 
             ///////
-            const carComment = current.querySelector('.name');
-            const carCommentValue = carComment ? carComment.textContent : null;
 
-            if (carCommentValue) {
-                favorites.push(carCommentValue);
-            }
             // console.log(favorites);
 
 			if (next) {
