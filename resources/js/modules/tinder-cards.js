@@ -31,7 +31,7 @@ if (TinderCards) {
 
 		document.querySelector('.tinder .i-like').onclick = () => {
 			// const nameElement = current.querySelector('.name');
-			const carComment = current.querySelector('.car-comment');
+			const carComment = current.querySelector('.name');
 			const carCommentValue = carComment ? carComment.textContent : null;
 
             // if (favorites.length == 2) {
@@ -64,7 +64,7 @@ if (TinderCards) {
 		}
 
 		document.querySelector('.tinder .i-favorite').onclick = () => {
-			const carComment = current.querySelector('.car-comment');
+			const carComment = current.querySelector('.name');
 			const carCommentValue = carComment ? carComment.textContent : null;
 
 			if (carCommentValue) {
@@ -177,7 +177,7 @@ if (TinderCards) {
                 if (button) {
                     button.click();
                 }
-                
+
 				// Заборонити всім кнопкам реагувати на події натискання миші
 				const buttons = document.querySelectorAll('.tinder button');
 				buttons.forEach(button => {
