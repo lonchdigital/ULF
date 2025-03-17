@@ -73,6 +73,6 @@ Route::prefix('/{lang}/')
     ->middleware(['set.locale', 'check.locale'])
     ->group($optionalLanguageRoutes);
 
-Route::middleware(['check.locale'])->group($optionalLanguageRoutes);
+Route::middleware(['set.locale', 'check.locale'])->group($optionalLanguageRoutes);
 
 Route::view('404', 'errors.404');
