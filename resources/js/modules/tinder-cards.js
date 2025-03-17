@@ -145,13 +145,13 @@ if (TinderCards) {
 //             }
 
             ///////
-            const carComment = current.querySelector('.car-comment');
+            const carComment = current.querySelector('.name');
             const carCommentValue = carComment ? carComment.textContent : null;
 
             if (carCommentValue) {
                 favorites.push(carCommentValue);
             }
-            // console.log(favorites.join(', '));
+            // console.log(favorites);
 
 			if (next) {
 				initCard(next);
@@ -172,6 +172,12 @@ if (TinderCards) {
 				endCard.appendChild(endText);
 				TinderCards.appendChild(endCard);
 
+                const button = document.querySelector('.i-favorite');
+
+                if (button) {
+                    button.click();
+                }
+                
 				// Заборонити всім кнопкам реагувати на події натискання миші
 				const buttons = document.querySelectorAll('.tinder button');
 				buttons.forEach(button => {
