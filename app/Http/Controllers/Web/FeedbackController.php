@@ -65,14 +65,17 @@ class FeedbackController extends Controller
         $data = $request->validated();
 
         dispatch(new SendFeedbackTinderEmailJob($data));
-        
+
         $data['type'] = 'Automatch';
         $data['page'] = 'Main page';
         $this->saveFeedback($data);
         $locale = app()->getLocale();
 
-        $locale = (app()->getLocale() != 'ua') ? app()->getLocale() : 'ua';
-        return redirect()->to(url('/' . $locale . '/thanks'));
+        return response()->json([
+            'success' => true,
+            'redirect_url' => $locale === 'ua' ? '/thanks' : "/$locale/thanks",
+        ]);
+
     }
 
     // public function storeFavorite(Request $request)
@@ -114,7 +117,7 @@ class FeedbackController extends Controller
 
     public function callBackForm(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'name_drive' => 'required|string|max:100',
             'phone_drive' => 'required|string|regex:/^[^_]*$/|min:16',
             'agree_drive' => 'accepted',
@@ -127,6 +130,13 @@ class FeedbackController extends Controller
         ]);
 
         dispatch(new SendCallBackFormEmailJob($request->all()));
+
+        $data2 = [];
+        $data2['name'] = $data['name_drive'];
+        $data2['phone'] = $data['phone_drive'];
+        $data2['type'] = 'Call back form';
+        $data2['page'] = $data['current_url'];
+        $this->saveFeedback($data2);
 
         return response()->json([
             'success' => true,
@@ -152,6 +162,14 @@ class FeedbackController extends Controller
 
         $this->carsService->addNoteToCarsAvailability($data['car_id'], $data['email_drive']);
 
+        $data2 = [];
+        $data2['name'] = $data['name_drive'];
+        $data2['phone'] = $data['phone_drive'];
+        $data2['type'] = 'Call back form';
+        $data2['page'] = $data['current_url'];
+        $data2['favorite_cars'] = $data['email_drive'];
+        $this->saveFeedback($data2);
+
         // dispatch(new SendCallBackAvailabilityJob($request->all()));
         return response()->json([
             'success' => true,
@@ -165,7 +183,7 @@ class FeedbackController extends Controller
 
         $service->store([
             'name' => $data['name'],
-            'phone' => $data['phone'],
+            'phone' => preg_replace('~\D+~', '', $data['phone']),
             'cars' => $data['favorite_cars'] ?? '',
             'type' => $data['type'],
             'page' => $data['page'],

@@ -7,7 +7,6 @@ use App\Models\TinderFeedback;
 
 class StoreService
 {
-
     public function store(array $data): void
     {
         TinderFeedback::create([
@@ -19,5 +18,4 @@ class StoreService
             'status' => FeedbackStatus::NEW->value,
         ]);
     }
-
 }
