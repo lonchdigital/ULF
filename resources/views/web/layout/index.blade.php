@@ -21,7 +21,9 @@
             choose_model: "{{ trans('web.choose_model') }}",
             month: "{{ trans('web.month') }}",
             call_me_back: "{{ trans('web.call_me_back') }}",
-            send: "{{ trans('web.send') }}"
+            send: "{{ trans('web.send') }}",
+            show: "{{ trans('web.show') }}",
+            hide: "{{ trans('web.hide') }}"
         };
     </script>
 

@@ -94,4 +94,6 @@ return [
     'language' => 'Язык',
     'car_selection' => 'Подбор авто',
     'specify_the_desired_brand_model_and_parameters' => 'Укажи желаемую марку, модель, параметры.',
+    'show' => 'Показать',
+    'hide' => 'Скрыть',
 ];

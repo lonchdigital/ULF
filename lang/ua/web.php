@@ -97,4 +97,6 @@ return [
     'more_answers' => 'Більше Відповідей',
     'we_are_on_social_networks' => 'Ми у соціальних мережах',
     'language' => 'Мова',
+    'show' => 'Показати',
+    'hide' => 'Сховати',
 ];
