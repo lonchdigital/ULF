@@ -128,7 +128,10 @@ class FeedbackController extends Controller
 
         dispatch(new SendCallBackFormEmailJob($request->all()));
 
-        return response()->json(['success' => true]);
+        return response()->json([
+            'success' => true,
+            'redirect' => url('/' . session('locale') . '/thanks')
+        ]);
     }
 
     public function callBackAvailabilityForm(Request $request)
@@ -150,7 +153,10 @@ class FeedbackController extends Controller
         $this->carsService->addNoteToCarsAvailability($data['car_id'], $data['email_drive']);
 
         // dispatch(new SendCallBackAvailabilityJob($request->all()));
-        return response()->json(['success' => true]);
+        return response()->json([
+            'success' => true,
+            'redirect' => url('/' . session('locale') . '/thanks')
+        ]);
     }
 
     public function saveFeedback($data)

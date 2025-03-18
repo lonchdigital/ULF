@@ -38,7 +38,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-Ct-l0zax.css",
+    "file": "assets/app-2XXNF-hc.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -87,7 +87,7 @@
     ]
   },
   "resources/js/forms/notifyAboutAvailability.js": {
-    "file": "assets/notifyAboutAvailability-DV1buVC_.js",
+    "file": "assets/notifyAboutAvailability--91b9dC3.js",
     "name": "notifyAboutAvailability",
     "src": "resources/js/forms/notifyAboutAvailability.js",
     "isEntry": true,
@@ -96,7 +96,7 @@
     ]
   },
   "resources/js/forms/popupForm.js": {
-    "file": "assets/popupForm-CGSuGQHS.js",
+    "file": "assets/popupForm-DfdCXx5N.js",
     "name": "popupForm",
     "src": "resources/js/forms/popupForm.js",
     "isEntry": true,

@@ -13,7 +13,8 @@ $(document).ready(function() {
     
         runAjax(
             function(data) {
-                if( data ) {
+
+                if( data['success'] ) {
                     formTag.find('.field-error').remove(); // Remove current Form errors
 
                     formTag.find('input[name="name_drive"]').val('');
@@ -23,6 +24,8 @@ $(document).ready(function() {
                     formSubmitButton.addClass('active');
                     formSubmitButton.addClass('btn-modal-close');
                     formSubmitButton.text(`${translations['send']}`);
+
+                    window.location.href = data['redirect'];
                 }
             },
             function(xhr) {
