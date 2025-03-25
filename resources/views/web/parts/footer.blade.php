@@ -366,6 +366,7 @@
         <div class="modal-content py-4 px-2 p-md-5">
             <div class="modal-body p-0">
                 <form class="form-popup-сar-selection" id="form-сar-selection" autocomplete="off">
+                    @csrf
                     <div class="row">
                         <div class="col">
                             <div class="d-flex align-items-start justify-content-between mb-3">
@@ -716,7 +717,7 @@
                         <div class="col-12">
                             <div class="field mb-3">
                                 <label class="control-label"
-                                    for="popup-any-questions--name_drive">{{ trans('web.your_name') }}111</label>
+                                    for="popup-any-questions--name_drive">{{ trans('web.your_name') }}</label>
                                 <input type="text" name="name_drive" id="popup-any-questions--name_drive2"
                                     class="form-control name_drive-field mb-3"
                                     placeholder="{{ trans('web.your_name') }}" autocomplete="no-autofill-please">
@@ -734,7 +735,7 @@
                         </div>
 
                         <input type="hidden" name="current_url" value="{{ url()->full() }}">
-
+                        <input type="hidden" name="page" value="Car show page">
                         <input type="hidden" name="utm_source" value>
                         <input type="hidden" name="utm_medium" value>
                         <input type="hidden" name="utm_campaign" value>

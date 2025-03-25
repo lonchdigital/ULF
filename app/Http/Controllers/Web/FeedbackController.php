@@ -198,7 +198,7 @@ class FeedbackController extends Controller
             'phone' => preg_replace('~\D+~', '', $data['phone']),
             'cars' => $data['favorite_cars'] ?? '',
             'type' => $data['type'],
-            'page' => $data['page'],
+            'page' => mb_substr($data['page'], 0, 200),
         ]);
     }
 }
