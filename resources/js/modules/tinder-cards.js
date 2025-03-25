@@ -281,7 +281,11 @@ document.getElementById("form-сar-selection").addEventListener("submit", functi
 		.then(response => response.json())
 		.then(data => {
 			if (data.success) {
-				window.location.href = data.redirect_url;;
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({ event: "submit_form_select_car" });
+
+
+				window.location.href = data.redirect_url;
 			} else {
 				selectButton.classList.remove('active');
 				selectButton.textContent = originalText;

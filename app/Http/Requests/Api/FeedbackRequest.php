@@ -5,6 +5,7 @@ namespace App\Http\Requests\Api;
 use App\Http\Requests\BaseRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class FeedbackRequest extends BaseRequest
 {
@@ -103,12 +104,22 @@ class FeedbackRequest extends BaseRequest
     }
 
 
+    // protected function failedValidation(Validator $validator)
+    // {
+    //     $redirectUrl = url()->previous() . '#feedBackForm';
+
+    //     throw new \Illuminate\Validation\ValidationException($validator, redirect($redirectUrl)
+    //         ->withInput()
+    //         ->withErrors($validator));
+    // }
+
     protected function failedValidation(Validator $validator)
     {
-        $redirectUrl = url()->previous() . '#feedBackForm';
+        $response = response()->json([
+            'success' => false,
+            'errors' => $validator->errors()
+        ], 422);
 
-        throw new \Illuminate\Validation\ValidationException($validator, redirect($redirectUrl)
-            ->withInput()
-            ->withErrors($validator));
+        throw new HttpResponseException($response);
     }
 }

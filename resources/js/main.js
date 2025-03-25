@@ -10,3 +10,8 @@ import "./modules/pagination.js";
 import "./modules/filter.js";
 import "./modules/tinder-cards.js";
 import "./modules/js.js";
+import "./forms/popupHeaderForm.js";
+import "./forms/testDriveForm.js";
+import "./forms/testDriveForm2.js";
+import "./forms/questionForm.js";
+import "./forms/popupCarForm.js";

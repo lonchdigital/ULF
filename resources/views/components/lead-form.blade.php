@@ -6,9 +6,11 @@
                     <div class="row">
                         <div class="col-12 col-md-10 col-lg-8 col-xl-6 mx-auto">
                             <div class="h3 font-m mb-2 font-weight-bolder text-md-center">{{ trans('web.have_questions') }}</div>
-                            <form id="form-any-questions" action="{{ route('feedback.store') }}" method="post">
+                            <form id="form-any-questions"
+                            {{-- action="{{ route('feedback.store') }}" method="post" --}}
+                            >
                                 @csrf
-                                @method('POST')
+                                {{-- @method('POST') --}}
                                 <div class="row field-wrap">
                                     <div class="col-12 col-md-6">
                                         <div class="field mb-2 mb-md-8">
@@ -48,6 +50,7 @@
                                             @error('agree_lead')
                                             <div class="field--help-info small-txt text-red mb-2">{{ $message }}</div>
                                             @enderror
+                                            <div class="field--help-info small-txt text-red mb-2" id="agree_lead_error_select"></div>
                                         </div>
                                     </div>
                                 </div>

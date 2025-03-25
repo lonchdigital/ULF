@@ -28,49 +28,37 @@
                                     <ul class="footer--nav-list mob-line list-unstyled pb-3 mb-3 pb-md-0 mb-md-0">
                                         @if ($pages->where('key', 'homepage')->first()->is_show_in_footer)
                                             <li><a
-                                                    @if(optional(request()->route())->getName() ?? '' !== 'main.page')
-                                                        href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}"
-                                                    @endif>{{ trans('page_name.index') }}</a>
+                                                    @if (optional(request()->route())->getName() ?? '' !== 'main.page') href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('main.page') }}" @endif>{{ trans('page_name.index') }}</a>
                                             </li>
                                         @endif
 
                                         @if ($pages->where('slug', 'catalog')->first()->is_show_in_footer)
                                             <li><a
-                                                    @if(optional(request()->route())->getName() !== 'catalog.page')
-                                                        href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}"
-                                                    @endif>{{ trans('page_name.footer_catalog') }}</a>
+                                                    @if (optional(request()->route())->getName() !== 'catalog.page') href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('catalog.page') }}" @endif>{{ trans('page_name.footer_catalog') }}</a>
                                             </li>
                                         @endif
 
                                         @if ($pages->where('slug', 'customer-stories')->first()->is_show_in_footer)
                                             <li><a
-                                                    @if(optional(request()->route())->getName() !== 'clients.page')
-                                                        href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('clients.page') }}"
-                                                    @endif>{{ trans('page_name.client_history') }}</a>
+                                                    @if (optional(request()->route())->getName() !== 'clients.page') href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('clients.page') }}" @endif>{{ trans('page_name.client_history') }}</a>
                                             </li>
                                         @endif
 
                                         @if ($pages->where('slug', 'blog')->first()->is_show_in_footer)
                                             <li><a
-                                                    @if(optional(request()->route())->getName() !== 'blog.page')
-                                                        href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('blog.page') }}"
-                                                    @endif>{{ trans('page_name.blog') }}</a>
+                                                    @if (optional(request()->route())->getName() !== 'blog.page') href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('blog.page') }}" @endif>{{ trans('page_name.blog') }}</a>
                                             </li>
                                         @endif
 
                                         @if ($pages->where('slug', 'faq')->first()->is_show_in_footer)
                                             <li><a
-                                                    @if(optional(request()->route())->getName() !== 'faq')
-                                                        href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('faq') }}"
-                                                    @endif>{{ trans('page_name.faqs') }}</a>
+                                                    @if (optional(request()->route())->getName() !== 'faq') href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('faq') }}" @endif>{{ trans('page_name.faqs') }}</a>
                                             </li>
                                         @endif
 
                                         @if ($pages->where('slug', 'contacts')->first()->is_show_in_footer)
                                             <li><a
-                                                    @if(optional(request()->route())->getName() !== 'contacts')
-                                                        href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('contacts') }}"
-                                                    @endif>{{ trans('page_name.contacts') }}</a>
+                                                    @if (optional(request()->route())->getName() !== 'contacts') href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('contacts') }}" @endif>{{ trans('page_name.contacts') }}</a>
                                             </li>
                                         @endif
 
@@ -312,9 +300,8 @@
                 @if (!is_null($policy))
                     <div class="col-12 col-lg-auto mb-3 mb-lg-0">
                         <a
-                            @if(request()->getRequestUri() !== App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $policy->slug]))
-                                href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $policy->slug]) }}"
-                            @endif>
+                            @if (request()->getRequestUri() !==
+                                    App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $policy->slug])) href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $policy->slug]) }}" @endif>
                             {{-- <a href="{{ route('page.single.page', ['slug' => $policy->slug]) }}"> --}}
                             {{ $policy->name }}</a>
                     </div>
@@ -322,9 +309,8 @@
                 @if (!is_null($terms))
                     <div class="col-12 col-lg-auto mb-3 mb-lg-0">
                         <a
-                            @if(request()->getRequestUri() !== App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $terms->slug]))
-                                href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $terms->slug]) }}"
-                            @endif>
+                            @if (request()->getRequestUri() !==
+                                    App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $terms->slug])) href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $terms->slug]) }}" @endif>
                             {{-- <a href="{{ route('page.single.page', ['slug' => $terms->slug]) }}"> --}}
                             {{ $terms->name }}</a>
                     </div>
@@ -332,9 +318,8 @@
                 @if (!is_null($rentalAgreement))
                     <div class="col-12 col-lg-auto mb-3 mb-lg-0">
                         <a
-                            @if(request()->getRequestUri() !== App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $rentalAgreement->slug]))
-                                href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $rentalAgreement->slug]) }}"
-                            @endif>
+                            @if (request()->getRequestUri() !==
+                                    App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $rentalAgreement->slug])) href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $rentalAgreement->slug]) }}" @endif>
                             {{-- <a href="{{ route('page.single.page', ['slug' => $rentalAgreement->slug]) }}"> --}}
                             {{ $rentalAgreement->name }}</a>
                     </div>
@@ -342,9 +327,8 @@
                 @if (!is_null($insuranceContract))
                     <div class="col-12 col-lg-auto mb-3 mb-lg-0">
                         <a
-                            @if(request()->getRequestUri() !== App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $insuranceContract->slug]))
-                                href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $insuranceContract->slug]) }}"
-                            @endif>
+                            @if (request()->getRequestUri() !==
+                                    App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $insuranceContract->slug])) href="{{ App\Helpers\MultiLangRoute::getMultiLangRoute('page.single.page', ['slug' => $insuranceContract->slug]) }}" @endif>
                             {{ $insuranceContract->name }}
                         </a>
                     </div>
@@ -376,8 +360,8 @@
 </div>
 </div>
 
-<div class="modal modal--custom popup-сar-selection fade" id="popup-сar-selection" data-keyboard="false"
-    tabindex="-1" aria-labelledby="popup-сar-selectionLabel" aria-hidden="true">
+<div class="modal modal--custom popup-сar-selection fade" id="popup-сar-selection" data-keyboard="false" tabindex="-1"
+    aria-labelledby="popup-сar-selectionLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content py-4 px-2 p-md-5">
             <div class="modal-body p-0">
@@ -525,6 +509,252 @@
                                             class=""><a
                                                 href="##">{{ trans('web.agreement_two') }}</a></span>.</span>
                                 </label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-auto">
+                            <button type="submit"
+                                class="btn-modal-send btn-default btn-default-orange btn btn-block btn-orange btn-default text-uppercase">{{ trans('web.call_me_back') }}</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal--custom popup-any-questions fade" id="popup-any-questions2" data-keyboard="false"
+    tabindex="-1" aria-labelledby="popup-any-questionsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content py-4 px-2 p-md-5">
+            <div class="modal-body p-0">
+                <form class="form-popup-any-questions" id="call-back-form2" autocomplete="off">
+                    @csrf
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex align-items-start justify-content-between mb-3">
+                                <div class="modal-title font-weight-bolder mb-0">{{ trans('web.have_questions') }}
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">
+                                        <svg>
+                                            <use
+                                                xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-close' }}">
+                                            </use>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div class="field mb-3">
+                                <label class="control-label"
+                                    for="popup-any-questions--name_drive">{{ trans('web.your_name') }}</label>
+                                <input type="text" name="name_drive" id="popup-any-questions--name_drive"
+                                    class="form-control name_drive-field mb-3"
+                                    placeholder="{{ trans('web.your_name') }}" autocomplete="no-autofill-please">
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="field mb-3">
+                                <label class="control-label"
+                                    for="popup-any-questions--phone_drive">{{ trans('web.phone_number') }}</label>
+                                <input type="tel" name="phone_drive" id="popup-any-questions--phone_drive"
+                                    class="form-control phone-field phone_drive-field mb-3" placeholder="+380"
+                                    autocomplete="no-autofill-please">
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="current_url" value="{{ url()->full() }}">
+
+                        <input type="hidden" name="utm_source" value>
+                        <input type="hidden" name="utm_medium" value>
+                        <input type="hidden" name="utm_campaign" value>
+                        <input type="hidden" name="utm_term" value>
+                        <input type="hidden" name="utm_content" value>
+
+                        <div class="col-12">
+                            <div class="custom-control custom-checkbox position-relative mb-5">
+                                <input type="checkbox" class="custom-control-input"
+                                    id="popup-any-questions--agree_drive2" name="agree_drive" value="1">
+                                <label class="custom-control-label agree_drive-field"
+                                    for="popup-any-questions--agree_drive2">
+                                    <span class="custom-checkbox--info">{{ trans('web.agreement_one') }} <span
+                                            class=""><a
+                                                href="##">{{ trans('web.agreement_two') }}</a></span>.</span>
+                                </label>
+                                @error('agree_drive')
+                                    <div class="field--help-info small-txt text-red mb-2">{{ $message }}</div>
+                                @enderror
+                                {{-- <div class="field--help-info small-txt text-red mb-2" id="agree_drive_error_select2"> --}}
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-auto">
+                            <button type="submit"
+                                class="btn-modal-send btn-default btn-default-orange btn btn-block btn-orange btn-default text-uppercase">{{ trans('web.call_me_back') }}</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal--custom popup-any-questions fade" id="popup-test-drive" data-keyboard="false" tabindex="-1"
+    aria-labelledby="popup-any-questionsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content py-4 px-2 p-md-5">
+            <div class="modal-body p-0">
+                <div class="h3 font-m mb-2 font-weight-bolder text-md-center">{{ trans('web.go_on_test_drive') }}</div>
+                            <div class="h4 font-m font-weight-bolder mb-3 mb-md-9 text-md-center">{{ trans('web.you_can_try_than_subscribe') }}</div>
+                <form id="form-test-drive2" {{-- action="{{ route('test.drive.feedback.store') }}" method="post" --}}>
+                    @csrf
+                    {{-- @method('POST') --}}
+                    <div class="row field-wrap">
+                        <div class="col-12 col-md-6">
+                            <div class="field mb-2 mb-md-8">
+                                <label class="control-label" for="name">{{ trans('web.your_name') }}</label>
+                                <input type="text" name="name_drive" id="name" class="form-control mb-2"
+                                    placeholder="{{ trans('web.enter_name') }}" value="{{ old('name_drive') }}">
+                                @error('name_drive')
+                                    <div class="field--help-info small-txt text-red mb-2">{{ $message }}</div>
+                                @enderror
+                                {{-- <div class="field--help-info small-txt text-red mb-2"></div> --}}
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="field mb-2 mb-md-8">
+                                <label class="control-label" for="phone">{{ trans('web.phone_number') }}</label>
+                                <input type="tel" name="phone_drive" id="phone"
+                                    class="form-control phone-field mb-2" placeholder="+380"
+                                    value="{{ old('phone_drive') }}">
+                                @error('phone_drive')
+                                    <div class="field--help-info small-txt text-red mb-2">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="page" value="Car show page">
+                        <input type="hidden" name="current_url" value="{{ url()->full() }}">
+
+                        <input type="hidden" name="utm_source" value>
+                        <input type="hidden" name="utm_medium" value>
+                        <input type="hidden" name="utm_campaign" value>
+                        <input type="hidden" name="utm_term" value>
+                        <input type="hidden" name="utm_content" value>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="custom-control custom-checkbox position-relative mb-5">
+                                <input type="checkbox" class="custom-control-input" id="form-test-drive-check2"
+                                    name="agree_drive" value="1">
+                                <label class="custom-control-label" for="form-test-drive-check2">
+                                    <span class="custom-checkbox--info">{{ trans('web.agreement_one') }} <span
+                                            class="link-underline"><a
+                                                href="/policy">{{ trans('web.agreement_two') }}</a></span>.</span>
+                                </label>
+                                @error('agree_drive')
+                                    <div class="field--help-info small-txt text-red mb-2">{{ $message }}</div>
+                                @enderror
+                                <div class="field--help-info small-txt text-red mb-2" id="agree_drive_error_select3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col col-md-auto mx-auto">
+                            <button role="button" type="submit" id="test-drive-send-button"
+                                class="btn-default btn-default-orange btn btn-block btn-orange text-uppercase">{{ trans('web.want_to_test') }}</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal--custom popup-any-questions fade" id="popup-any-questions3" data-keyboard="false"
+    tabindex="-1" aria-labelledby="popup-any-questionsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content py-4 px-2 p-md-5">
+            <div class="modal-body p-0">
+                <form class="form-popup-any-questions" id="call-back-form3" autocomplete="off">
+                    @csrf
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex align-items-start justify-content-between mb-3">
+                                <div class="modal-title font-weight-bolder mb-0">{{ trans('web.have_questions') }}
+                                </div>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">
+                                        <svg>
+                                            <use
+                                                xlink:href="{{ Vite::asset(config('app.icons_path')) . '#i-close' }}">
+                                            </use>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div class="field mb-3">
+                                <label class="control-label"
+                                    for="popup-any-questions--name_drive">{{ trans('web.your_name') }}111</label>
+                                <input type="text" name="name_drive" id="popup-any-questions--name_drive2"
+                                    class="form-control name_drive-field mb-3"
+                                    placeholder="{{ trans('web.your_name') }}" autocomplete="no-autofill-please">
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="field mb-3">
+                                <label class="control-label"
+                                    for="popup-any-questions--phone_drive">{{ trans('web.phone_number') }}</label>
+                                <input type="tel" name="phone_drive" id="popup-any-questions--phone_drive2"
+                                    class="form-control phone-field phone_drive-field mb-3" placeholder="+380"
+                                    autocomplete="no-autofill-please">
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="current_url" value="{{ url()->full() }}">
+
+                        <input type="hidden" name="utm_source" value>
+                        <input type="hidden" name="utm_medium" value>
+                        <input type="hidden" name="utm_campaign" value>
+                        <input type="hidden" name="utm_term" value>
+                        <input type="hidden" name="utm_content" value>
+
+                        <div class="col-12">
+                            <div class="custom-control custom-checkbox position-relative mb-5">
+                                <input type="checkbox" class="custom-control-input"
+                                    id="popup-any-questions--agree_drive3" name="agree_drive" value="1">
+                                <label class="custom-control-label agree_drive-field"
+                                    for="popup-any-questions--agree_drive3">
+                                    <span class="custom-checkbox--info">{{ trans('web.agreement_one') }} <span
+                                            class=""><a
+                                                href="##">{{ trans('web.agreement_two') }}</a></span>.</span>
+                                </label>
+                                @error('agree_drive')
+                                    <div class="field--help-info small-txt text-red mb-2">{{ $message }}</div>
+                                @enderror
+                                {{-- <div class="field--help-info small-txt text-red mb-2" id="agree_drive_error_select_question"> --}}
                             </div>
                         </div>
 

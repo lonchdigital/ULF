@@ -38,7 +38,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-Ct-l0zax.css",
+    "file": "assets/app-subpZ9UD.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -96,7 +96,7 @@
     ]
   },
   "resources/js/forms/popupForm.js": {
-    "file": "assets/popupForm-DfdCXx5N.js",
+    "file": "assets/popupForm-BsrSRC73.js",
     "name": "popupForm",
     "src": "resources/js/forms/popupForm.js",
     "isEntry": true,
@@ -115,7 +115,7 @@
     ]
   },
   "resources/js/main.js": {
-    "file": "assets/main-DkRQzHs8.js",
+    "file": "assets/main-yXGn3vnq.js",
     "name": "main",
     "src": "resources/js/main.js",
     "isEntry": true,

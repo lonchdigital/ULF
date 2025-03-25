@@ -58,10 +58,10 @@
                         @else
                             <div class="row no-gutters btn-wrap mb-5">
                                 <div class="col-12 col-sm-7 col-lg-12 col-xl-8">
-                                    <button type="button" class="btn btn-default-orange btn-orange btn-default text-uppercase w-100" data-toggle="modal" data-target="#popup-any-questions">{{ trans('web.submit_application') }}</button>
+                                    <button type="button" class="btn btn-default-orange btn-orange btn-default text-uppercase w-100" data-toggle="modal" data-target="#popup-any-questions3">{{ trans('web.submit_application') }}</button>
                                 </div>
                                 <div class="col">
-                                    <a href="##" class="btn-default btn-default-white btn btn-block btn-outline-white text-uppercase mt-0" data-toggle="modal" data-target="#popup-сar-selection">{{ trans('web.test_drive') }}</a>
+                                    <a class="btn-default btn-default-white btn btn-block btn-outline-white text-uppercase mt-0" data-toggle="modal" data-target="#popup-test-drive">{{ trans('web.test_drive') }}</a>
                                 </div>
                             </div>
                         @endif

@@ -41,7 +41,12 @@ class FeedbackController extends Controller
             'page' => $data['page']
         ]);
 
-        return redirect()->to(url('/' . session('locale') . '/thanks'));
+        $locale = app()->getLocale();
+
+        return response()->json([
+            'success' => true,
+            'redirect' => $locale === 'ua' ? '/thanks' : "/$locale/thanks",
+        ]);
     }
 
     public function testDriveStore(TestDriveFeedbackRequest $request)
@@ -57,7 +62,13 @@ class FeedbackController extends Controller
             'page' => $data['page']
         ]);
 
-        return redirect()->to(url('/' . session('locale') . '/thanks'));
+        $locale = app()->getLocale();
+
+        return response()->json([
+            'success' => true,
+            'redirect' => $locale === 'ua' ? '/thanks' : "/$locale/thanks",
+        ]);
+        // return redirect()->to(url('/' . session('locale') . '/thanks'));
     }
 
     public function storeFavorite(StoreAutomatchRequest $request)
@@ -115,19 +126,20 @@ class FeedbackController extends Controller
         ]);
     }
 
-    public function callBackForm(Request $request)
+    public function callBackForm(CallBackFormRequest $request)
     {
-        $data = $request->validate([
-            'name_drive' => 'required|string|max:100',
-            'phone_drive' => 'required|string|regex:/^[^_]*$/|min:16',
-            'agree_drive' => 'accepted',
-            'current_url' => 'required|string',
-            'utm_source' => 'nullable|string',
-            'utm_medium' => 'nullable|string',
-            'utm_campaign' => 'nullable|string',
-            'utm_term' => 'nullable|string',
-            'utm_content' => 'nullable|string',
-        ]);
+        $data = $request->validated();
+        // [
+        //     'name_drive' => 'required|string|max:100',
+        //     'phone_drive' => 'required|string|regex:/^[^_]*$/|min:16',
+        //     'agree_drive' => 'accepted',
+        //     'current_url' => 'required|string',
+        //     'utm_source' => 'nullable|string',
+        //     'utm_medium' => 'nullable|string',
+        //     'utm_campaign' => 'nullable|string',
+        //     'utm_term' => 'nullable|string',
+        //     'utm_content' => 'nullable|string',
+        // ]);
 
         dispatch(new SendCallBackFormEmailJob($request->all()));
 

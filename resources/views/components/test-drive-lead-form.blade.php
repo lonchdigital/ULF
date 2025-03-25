@@ -7,9 +7,11 @@
                         <div class="col-12 col-md-10 col-lg-8 col-xl-6 mx-auto">
                             <div class="h3 font-m mb-2 font-weight-bolder text-md-center">{{ trans('web.go_on_test_drive') }}</div>
                             <div class="h4 font-m font-weight-bolder mb-3 mb-md-9 text-md-center">{{ trans('web.you_can_try_than_subscribe') }}</div>
-                            <form id="form-test-drive"  action="{{ route('test.drive.feedback.store') }}" method="post">
+                            <form id="form-test-drive"
+                             {{-- action="{{ route('test.drive.feedback.store') }}" method="post" --}}
+                             >
                                 @csrf
-                                @method('POST')
+                                {{-- @method('POST') --}}
                                 <div class="row field-wrap">
                                     <div class="col-12 col-md-6">
                                         <div class="field mb-2 mb-md-8">
@@ -18,6 +20,7 @@
                                             @error('name_drive')
                                                 <div class="field--help-info small-txt text-red mb-2">{{ $message }}</div>
                                             @enderror
+                                            {{-- <div class="field--help-info small-txt text-red mb-2"></div> --}}
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-6">
@@ -50,13 +53,14 @@
                                             @error('agree_drive')
                                             <div class="field--help-info small-txt text-red mb-2">{{ $message }}</div>
                                             @enderror
+                                            <div class="field--help-info small-txt text-red mb-2" id="agree_drive_error_select"></div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col col-md-auto mx-auto">
-                                        <button role="button" type="submit" class="btn-default btn-default-orange btn btn-block btn-orange text-uppercase">{{ trans('web.want_to_test') }}</button>
+                                        <button role="button" type="submit" id="test-drive-send-button" class="btn-default btn-default-orange btn btn-block btn-orange text-uppercase">{{ trans('web.want_to_test') }}</button>
                                     </div>
                                 </div>
 

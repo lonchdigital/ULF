@@ -2,7 +2,7 @@ import $ from "jquery";
 
 $(document).ready(function() {
 
-    $('#call-back-form').submit(function(event) {
+    $('#call-back-form2').submit(function(event) {
         event.preventDefault();
 
         let formTag = $(this);
@@ -65,11 +65,10 @@ $(document).ready(function() {
             processData: false,
             dataType: 'json'
         }).done(function(data) {
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({ event: "submit_form_call_back_header" });
-            
             success(data);
-            // console.log('submit_form_call_back_header');
+
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({ event: "submit_form_call_back" });
         }).fail(function (xhr) {
             fail(xhr);
         });

@@ -2,7 +2,7 @@ import $ from "jquery";
 
 $(document).ready(function() {
 
-    $('#call-back-form').submit(function(event) {
+    $('#call-back-form3').submit(function(event) {
         event.preventDefault();
 
         let formTag = $(this);
@@ -43,13 +43,22 @@ $(document).ready(function() {
         );
     });
 
-    function userWriteReviewErrors(errors, formData, formTag)
-    {
+    function userWriteReviewErrors(errors, formData, formTag) {
         for (let fieldName in errors) {
-            if(fieldName != 'agree_drive') {
-                formTag.find('input[name="'+ fieldName +'"]').val('');
+
+            let inputField = formTag.find(`input[name="${fieldName}"], textarea[name="${fieldName}"], select[name="${fieldName}"]`);
+            if (inputField.length && fieldName !== 'agree_drive') {
+                inputField.val('');
             }
-            formTag.find('.' + fieldName + '-field').after(`<div class="field-error field--help-info small-txt text-red mb-2">${errors[fieldName]}</div>`);
+
+            formTag.find(`.${fieldName}-field .field-error`).remove();
+
+            if (fieldName !== 'agree_drive') {
+                inputField.after(`<div class="field-error field--help-info small-txt text-red mb-2">${errors[fieldName]}</div>`);
+            } else {
+                let inputField2 = formTag.find('#' + fieldName + '_error_select');
+                inputField2.text(errors[fieldName]);
+            }
         }
     }
 
@@ -66,13 +75,12 @@ $(document).ready(function() {
             dataType: 'json'
         }).done(function(data) {
             window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({ event: "submit_form_call_back_header" });
-            
+            window.dataLayer.push({ event: "submit_form_any_questions" });
+
             success(data);
             // console.log('submit_form_call_back_header');
         }).fail(function (xhr) {
             fail(xhr);
         });
     }
-
 });

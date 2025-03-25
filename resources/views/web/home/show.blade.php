@@ -71,7 +71,7 @@
                                                                 <button type="button"
                                                                     class="btn-default btn-default-white btn btn-block btn-outline-white text-uppercase mt-0"
                                                                     data-toggle="modal"
-                                                                    data-target="#popup-any-questions">{{ $homeMainBlock->button_two }}</button>
+                                                                    data-target="#popup-any-questions2">{{ $homeMainBlock->button_two }}</button>
                                                             </div>
                                                         </div>
                                                     </div>

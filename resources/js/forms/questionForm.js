@@ -2,7 +2,7 @@ import $ from "jquery";
 
 $(document).ready(function() {
 
-    $('#call-back-form').submit(function(event) {
+    $('#form-any-questions').submit(function(event) {
         event.preventDefault();
 
         let formTag = $(this);
@@ -17,8 +17,8 @@ $(document).ready(function() {
                 if( data['success'] ) {
                     formTag.find('.field-error').remove(); // Remove current Form errors
 
-                    formTag.find('input[name="name_drive"]').val('');
-                    formTag.find('input[name="phone_drive"]').val('');
+                    formTag.find('input[name="name_lead"]').val('');
+                    formTag.find('input[name="phone_lead"]').val('');
                     formTag.find('input[type="checkbox"]').prop('checked', false);
 
                     formSubmitButton.addClass('active');
@@ -43,13 +43,22 @@ $(document).ready(function() {
         );
     });
 
-    function userWriteReviewErrors(errors, formData, formTag)
-    {
+    function userWriteReviewErrors(errors, formData, formTag) {
         for (let fieldName in errors) {
-            if(fieldName != 'agree_drive') {
-                formTag.find('input[name="'+ fieldName +'"]').val('');
+
+            let inputField = formTag.find(`input[name="${fieldName}"], textarea[name="${fieldName}"], select[name="${fieldName}"]`);
+            if (inputField.length && fieldName !== 'agree_lead') {
+                inputField.val('');
             }
-            formTag.find('.' + fieldName + '-field').after(`<div class="field-error field--help-info small-txt text-red mb-2">${errors[fieldName]}</div>`);
+
+            formTag.find(`.${fieldName}-field .field-error`).remove();
+
+            if (fieldName !== 'agree_lead') {
+                inputField.after(`<div class="field-error field--help-info small-txt text-red mb-2">${errors[fieldName]}</div>`);
+            } else {
+                let inputField2 = formTag.find('#' + fieldName + '_error_select');
+                inputField2.text(errors[fieldName]);
+            }
         }
     }
 
@@ -58,7 +67,7 @@ $(document).ready(function() {
         const appUrl = document.head.querySelector('meta[name="app-url"]').content;
 
         $.ajax({
-            url: `${appUrl}/feedback/call-back-form`,
+            url: `${appUrl}/feedback/store`,
             type: 'post',
             data: formData,
             contentType: false,
@@ -66,8 +75,8 @@ $(document).ready(function() {
             dataType: 'json'
         }).done(function(data) {
             window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({ event: "submit_form_call_back_header" });
-            
+            window.dataLayer.push({ event: "submit_form_any_questions" });
+
             success(data);
             // console.log('submit_form_call_back_header');
         }).fail(function (xhr) {

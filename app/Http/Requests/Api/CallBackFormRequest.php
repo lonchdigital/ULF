@@ -5,6 +5,7 @@ namespace App\Http\Requests\Api;
 use App\Http\Requests\BaseRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class CallBackFormRequest extends BaseRequest
 {
@@ -52,7 +53,7 @@ class CallBackFormRequest extends BaseRequest
             'agree_drive' => [
                 'accepted'
             ],
-            
+
             'current_url' => [
                 'required',
                 'string',
@@ -103,13 +104,22 @@ class CallBackFormRequest extends BaseRequest
         ];
     }
 
+    // protected function failedValidation(Validator $validator)
+    // {
+    //     $redirectUrl = url()->previous();
+
+    //     throw new \Illuminate\Validation\ValidationException($validator, redirect($redirectUrl)
+    //         ->withInput()
+    //         ->withErrors($validator));
+    // }
+
     protected function failedValidation(Validator $validator)
     {
-        $redirectUrl = url()->previous();
+        $response = response()->json([
+            'success' => false,
+            'errors' => $validator->errors()
+        ], 422);
 
-        throw new \Illuminate\Validation\ValidationException($validator, redirect($redirectUrl)
-            ->withInput()
-            ->withErrors($validator));
+        throw new HttpResponseException($response);
     }
-
 }
