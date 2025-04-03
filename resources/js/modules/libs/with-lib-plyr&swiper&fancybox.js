@@ -865,6 +865,8 @@ Fancybox.bind('[data-fancybox="scroll-gallery"]', {
 });
 
 //? gallery-car
+const carNameElement = document.getElementById('car-name');
+const carName = carNameElement ? carNameElement.textContent.trim() : '';
 Fancybox.bind('[data-fancybox="gallery"]', {
 	on: {
 		// Обробник події, коли відкривається FancyBox
@@ -894,7 +896,7 @@ Fancybox.bind('[data-fancybox="gallery"]', {
 	Toolbar: {
 		items: {
 			carName: {
-				tpl: `<div class="h4 font-m mb-0 font-weight-bolder text-white">Hyundai Tucson</div>`,
+				tpl: `<div class="h4 font-m mb-0 font-weight-bolder text-white">${carName}</div>`,
 			}
 		},
 		display: {

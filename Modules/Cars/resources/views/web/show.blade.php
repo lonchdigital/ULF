@@ -72,7 +72,7 @@
                     <div class="row">
                         <div class="col mx-auto">
                             <div class="section-top--info nav-breadcrumb">
-                                <div class="h3 font-m font-weight-bolder mb-2">{{ $car->getName() }}</div>
+                                <div id="car-name" class="h3 font-m font-weight-bolder mb-2">{{ $car->getName() }}</div>
                                 <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between mb-3">
                                     <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3 mb-lg-0">
                                         <ol class="breadcrumb mb-0" itemscope itemtype="https://schema.org/BreadcrumbList">
