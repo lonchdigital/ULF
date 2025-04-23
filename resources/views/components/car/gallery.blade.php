@@ -78,7 +78,9 @@
                         </div>
                         <ul class="list-unstyled mb-0 car-properties-preview">
                             <li>{{ $car->vehicle->manufacturedYear }}</li>
-                            <li>{{ $car->vehicle->fuelType->name }}</li> {{-- Бензин, 2.0 --}}
+                            @if(!is_null($car->vehicle->fuelType))
+                                <li>{{ $car->vehicle->fuelType->name }}</li>
+                            @endif
                         </ul>
                     </div>
 
