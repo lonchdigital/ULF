@@ -83,8 +83,12 @@
                                     </nav>
                                     <ul class="list-unstyled mb-0 car-properties-preview">
                                         <li>{{ $car->vehicle->manufacturedYear }}</li>
-                                        <li>{{ $car->vehicle->fuelType->name }}</li>
-                                       <li>{{ $car->vehicle->transmissionType->name }}</li>
+                                        @if(!is_null($car->vehicle->fuelType))
+                                            <li>{{ $car->vehicle->fuelType->name }}</li>
+                                        @endif
+                                        @if(!is_null($car->vehicle->transmissionType))
+                                            <li>{{ $car->vehicle->transmissionType->name }}</li>
+                                        @endif
                                        @if(!is_null($car->vehicle->driverType))
                                             <li>{{ $car->vehicle->driverType->name }}</li>
                                        @endif
